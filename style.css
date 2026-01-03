@@ -1354,10 +1354,11 @@ section {
 }
 
 .contact-card-content {
-    flex: 1;
-    text-align: left;
+    gap: 8px;
+    color: var(--primary);
+    font-weight: 900;
+    font-size: 0.9rem;
 }
-
 .contact-card-content h3 {
     color: var(--primary);
     margin-bottom: 12px;
