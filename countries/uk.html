@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UK Immigration - Suvira Immigration</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .country-hero {
+            padding: 180px 0 80px;
+            background: linear-gradient(rgba(10, 36, 114, 0.9), rgba(10, 36, 114, 0.7)), url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .country-flag-hero {
+            width: 120px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border: 3px solid white;
+            margin: 0 auto 20px;
+        }
+        
+        .country-flag-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .country-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .country-tagline {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+        }
+        
+        .back-button:hover {
+            gap: 12px;
+        }
+        
+        .country-content-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .program-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+        
+        .program-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        
+        .program-body {
+            padding: 25px;
+        }
+        
+        .program-body p {
+            margin-bottom: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .country-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .country-title {
+                font-size: 2.5rem;
+            }
+            
+            .country-hero {
+                padding: 160px 0 60px;
+            }
+            
+            .back-button {
+                top: 20px;
+                left: 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="logo-text">
+                    <a href="../index.html" style="text-decoration: none; color: inherit;">
+                        <h1>SUVIRA<span>IMMIGRATION</span></h1>
+                        <p class="logo-tagline">Trusted Better Futures</p>
+                    </a>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="../index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                <a href="../index.html#services" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+                <a href="index.html" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
+                <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
+                <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <a href="../index.html#contact" class="nav-cta">
+                    <i class="fas fa-phone"></i> Free Consultation
+                </a>
+            </div>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <i class="fas fa-globe-americas"></i>
+                <h3>SUVIRA IMMIGRATION</h3>
+            </div>
+            <button class="close-menu"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-nav">
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="../index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="../index.html#services" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="index.html" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
+            <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
+            <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="tel:+919876543210" class="mobile-cta">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
+        </div>
+    </div>
+
+    <!-- Country Hero -->
+    <section class="country-hero">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Countries
+        </a>
+        
+        <div class="container">
+            <div class="country-flag-hero">
+                <img src="https://flagcdn.com/w320/gb.png" alt="UK Flag">
+            </div>
+            <h1 class="country-title">United Kingdom</h1>
+            <p class="country-tagline">World-class education and career opportunities with various visa pathways in one of the world's most prestigious destinations.</p>
+        </div>
+    </section>
+
+    <!-- Country Content -->
+    <section class="country-content-section">
+        <div class="container">
+            <h2 class="section-title">UK Immigration Programs</h2>
+            
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Skilled Worker Visa</h3>
+                    </div>
+                    <div class="program-body">
+                        <p>Work in the UK with a licensed sponsor. Points-based system with minimum salary requirements.</p>
+                        <p><strong>Processing Time:</strong> 3-8 weeks</p>
+                        <p><strong>IELTS Requirement:</strong> B1 level</p>
+                        <p><strong>Minimum Salary:</strong> £26,200+</p>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Student Visa (Tier 4)</h3>
+                    </div>
+                    <div class="program-body">
+                        <p>Study at UK universities with post-study work visa (Graduate Route) for 2-3 years.</p>
+                        <p><strong>Processing Time:</strong> 3-6 weeks</p>
+                        <p><strong>IELTS Requirement:</strong> 5.5+ bands</p>
+                        <p><strong>Post-Study Work:</strong> 2-3 years</p>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Global Talent Visa</h3>
+                    </div>
+                    <div class="program-body">
+                        <p>For leaders and potential leaders in academia, research, arts, culture, and digital technology.</p>
+                        <p><strong>Processing Time:</strong> 4-8 weeks</p>
+                        <p><strong>Endorsement:</strong> Required</p>
+                        <p><strong>Fields:</strong> Academia, Arts, Tech</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="country-cta">
+                <h2 style="color: white; margin-bottom: 15px;">Start Your UK Journey Today</h2>
+                <p style="opacity: 0.9; margin-bottom: 30px;">Take the first step towards your new life in the United Kingdom</p>
+                
+                <div class="cta-buttons">
+                    <a href="../index.html#contact" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i> Free Eligibility Assessment
+                    </a>
+                    <a href="../index.html#contact" class="btn btn-secondary">
+                        <i class="fas fa-calendar-check"></i> Book Consultation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" style="background: linear-gradient(rgba(8, 26, 84, 0.95), rgba(8, 26, 84, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; margin-top: 0;">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-with-icon">
+                        <i class="fas fa-globe-americas"></i>
+                        <h2>SUVIRA<span>IMMIGRATION</span></h2>
+                    </div>
+                    <p>Building Futures Through Global Opportunities Since 2004</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="../index.html#about"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="../index.html#services"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="index.html"><i class="fas fa-chevron-right"></i> Countries</a>
+                    <a href="../index.html#process"><i class="fas fa-chevron-right"></i> Process</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+                </div>
+                
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Study Abroad</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Work Visa</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> PR Services</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Family Immigration</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Business Visa</a>
+                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h3>Stay Updated</h3>
+                    <p>Subscribe for latest immigration updates and success stories</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    <div class="app-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <h4>Mobile App</h4>
+                            <p>Coming Soon</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span class="current-year">2024</span> Suvira Immigration Consultants. All Rights Reserved.</p>
+                <p>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms & Conditions</a> | 
+                    <a href="#">Disclaimer</a>
+                </p>
+                <p class="compliance">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script src="../script.js"></script>
+</body>
+</html>
