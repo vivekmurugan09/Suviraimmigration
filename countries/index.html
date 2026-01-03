@@ -3,75 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Countries - Suvira Immigration</title>
+    <title>Countries - Suvira Immigration</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        .countries-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .country-item {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-            border: 1px solid var(--light-gray);
-            text-align: center;
-            text-decoration: none;
-        }
-        
-        .country-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
-        }
-        
-        .country-item img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        
-        .country-item-content {
-            padding: 20px;
-        }
-        
-        .country-item h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .country-item p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .back-to-home {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 30px;
-            color: var(--primary);
-            font-weight: 500;
-            text-decoration: none;
-        }
-        
-        .back-to-home:hover {
-            color: var(--primary-light);
-            gap: 12px;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -122,113 +57,268 @@
             <a href="index.html" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
             <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
             <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="tel:+919876543210" class="mobile-cta">
+            <a href="tel:+918807867149" class="mobile-cta">
                 <i class="fas fa-phone"></i> Call Now
             </a>
         </div>
     </div>
 
-<!-- Main Content -->
-<div class="main-content">
-    <section class="hero" style="background: linear-gradient(rgba(10, 36, 114, 0.9), rgba(10, 36, 114, 0.7)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; padding: 150px 0 80px;">
+    <!-- Hero Section -->
+    <section class="country-hero" style="background: linear-gradient(rgba(10, 36, 114, 0.9), rgba(10, 36, 114, 0.7)), url('https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
+        <a href="../index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
         <div class="container">
-            <a href="../index.html" class="back-to-home" style="color: #dc3545;">
-                <i class="fas fa-arrow-left"></i> Back to Home
-            </a>
-            <div class="section-header">
-                <h2 class="section-title" style="color: white;">All Destination Countries</h2>
-                <p class="section-desc" style="color: rgba(255, 255, 255, 0.9);">Choose your dream destination from our comprehensive list of immigration countries</p>
+            <h1 class="country-title">Countries We Serve</h1>
+            <p class="country-tagline">Choose your dream destination from our carefully selected list of immigration-friendly countries</p>
+        </div>
+    </section>
+
+    <!-- Countries Grid -->
+    <section class="country-content-section">
+        <div class="container">
+            <h2 class="country-section-title">Popular Immigration Destinations</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--gray);">
+                Explore our comprehensive immigration programs for each country. Click on any country to learn about visa options, requirements, and processing times.
+            </p>
+            
+            <div class="countries-grid">
+                <!-- Australia -->
+                <a href="australia.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/au.png" alt="Australia Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>Australia</h3>
+                            <p>Skilled migration, student visas, and business innovation visas with fast-track options.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">4-6</div>
+                                    <div class="label">Months</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">8.5</div>
+                                    <div class="label">IELTS Avg</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">85%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Canada -->
+                <a href="canada.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>Canada</h3>
+                            <p>Express Entry, Provincial Nominee Programs, and Study Permit options with PR pathways.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">6-8</div>
+                                    <div class="label">Months</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">CLB 7</div>
+                                    <div class="label">Language</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">92%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- USA -->
+                <a href="usa.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/us.png" alt="USA Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>United States</h3>
+                            <p>H-1B, L-1 visas, and diverse opportunities in technology, research, and business.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">3-6</div>
+                                    <div class="label">Months</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">H-1B</div>
+                                    <div class="label">Visa Type</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">78%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- UK -->
+                <a href="uk.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/gb.png" alt="UK Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>United Kingdom</h3>
+                            <p>Skilled Worker Visa, Graduate Route, and Innovator Founder Visa for entrepreneurs.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">3-8</div>
+                                    <div class="label">Weeks</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">B1</div>
+                                    <div class="label">CEFR Level</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">85%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Germany -->
+                <a href="germany.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>Germany</h3>
+                            <p>Job Seeker Visa, Blue Card EU, and free education opportunities for international students.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">2-4</div>
+                                    <div class="label">Months</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">B1</div>
+                                    <div class="label">German</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">88%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Ireland -->
+                <a href="ireland.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/ie.png" alt="Ireland Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>Ireland</h3>
+                            <p>Critical Skills Employment Permit, Stamp 4, and study opportunities in English-speaking EU country.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">4-8</div>
+                                    <div class="label">Weeks</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">€30k</div>
+                                    <div class="label">Salary Min</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">90%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- New Zealand -->
+                <a href="newzealand.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/nz.png" alt="New Zealand Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>New Zealand</h3>
+                            <p>Skilled Migrant Category, Work to Residence, and Study to Work pathways in a scenic destination.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">6-9</div>
+                                    <div class="label">Months</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">6.5</div>
+                                    <div class="label">IELTS</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">87%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Singapore -->
+                <a href="singapore.html" class="country-card-link">
+                    <div class="country-card">
+                        <div class="country-flag">
+                            <img src="https://flagcdn.com/w320/sg.png" alt="Singapore Flag">
+                        </div>
+                        <div class="country-info">
+                            <h3>Singapore</h3>
+                            <p>Employment Pass, S Pass, and EntrePass for entrepreneurs in Asia's business hub.</p>
+                            <div class="country-stats">
+                                <div class="stat">
+                                    <div class="number">3-8</div>
+                                    <div class="label">Weeks</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">EP</div>
+                                    <div class="label">Main Visa</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="number">82%</div>
+                                    <div class="label">Success Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="country-cta">
+                <h2 style="color: white; margin-bottom: 15px; font-size: 2.2rem;">Need Help Choosing?</h2>
+                <p style="opacity: 0.9; margin-bottom: 30px; font-size: 1.1rem;">Our immigration experts will help you select the best country based on your profile and goals</p>
+                
+                <div class="cta-buttons">
+                    <a href="../index.html#contact" class="btn btn-primary">
+                        <i class="fas fa-user-check"></i> Free Profile Assessment
+                    </a>
+                    <a href="tel:+918807867149" class="btn btn-secondary">
+                        <i class="fas fa-phone-alt"></i> Call Expert Now
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-        <section class="container" style="padding: 80px 0;">
-            <div class="countries-grid">
-                <!-- Canada -->
-                <a href="/canada.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Canada">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/ca.png" alt="Canada Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>Canada</h3>
-                        <p>Express Entry, Provincial Nominees, and family-friendly immigration programs</p>
-                    </div>
-                </a>
-
-                <!-- Australia -->
-                <a href="australia.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Australia">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/au.png" alt="Australia Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>Australia</h3>
-                        <p>Skilled migration and study opportunities with excellent post-study work rights</p>
-                    </div>
-                </a>
-
-                <!-- UK -->
-                <a href="uk.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="UK">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/gb.png" alt="UK Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>United Kingdom</h3>
-                        <p>World-class education and career opportunities with various visa pathways</p>
-                    </div>
-                </a>
-
-                <!-- USA -->
-                <a href="usa.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="USA">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/us.png" alt="USA Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>United States</h3>
-                        <p>H-1B, L-1 visas, and diverse opportunities in technology and research fields</p>
-                    </div>
-                </a>
-
-                <!-- Germany -->
-                <a href="germany.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Germany">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/de.png" alt="Germany Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>Germany</h3>
-                        <p>Tuition-free universities, strong economy, and excellent work opportunities</p>
-                    </div>
-                </a>
-
-                <!-- New Zealand -->
-                <a href="newzealand.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80" alt="New Zealand">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/nz.png" alt="New Zealand Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>New Zealand</h3>
-                        <p>Skilled migrant category with excellent quality of life and natural beauty</p>
-                    </div>
-                </a>
-
-                <!-- Ireland -->
-                <a href="ireland.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1549918864-48ac978761a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Ireland">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/ie.png" alt="Ireland Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>Ireland</h3>
-                        <p>European tech hub with friendly immigration policies and English-speaking environment</p>
-                    </div>
-                </a>
-
-                <!-- Singapore -->
-                <a href="singapore.html" class="country-item">
-                    <img src="https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&auto=format&fit=crop&w=2074&q=80" alt="Singapore">
-                    <div class="country-item-content">
-                        <img src="https://flagcdn.com/w320/sg.png" alt="Singapore Flag" style="width: 60px; height: 40px; border-radius: 4px; margin-bottom: 10px;">
-                        <h3>Singapore</h3>
-                        <p>Global business hub with excellent career opportunities and high standard of living</p>
-                    </div>
-                </a>
-            </div>
-        </section>
-    </div>
-
     <!-- Footer -->
-    <footer class="footer" style="background: linear-gradient(rgba(8, 26, 84, 0.95), rgba(8, 26, 84, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; margin-top: 0;">
+    <footer class="footer" style="background: linear-gradient(rgba(8, 26, 84, 0.95), rgba(8, 26, 84, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -296,7 +386,7 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/918807867149" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -308,39 +398,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-
-
-
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Testing country links...');
-        
-        // Check each link
-        document.querySelectorAll('.country-item').forEach(link => {
-            const href = link.getAttribute('href');
-            console.log(`Link: ${href}`);
-            
-            link.addEventListener('click', function(e) {
-                console.log(`Clicked: ${href}`);
-                
-                // Check if file exists
-                fetch(href)
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`${href} exists!`);
-                        } else {
-                            console.log(`${href} does NOT exist (${response.status})`);
-                            e.preventDefault();
-                            alert(`The ${href} page is under construction. Please check back soon or contact us.`);
-                        }
-                    })
-                    .catch(error => {
-                        console.log(`${href} error: ${error}`);
-                        e.preventDefault();
-                        alert(`The ${href} page is not available. Please check back soon.`);
-                    });
-            });
-        });
-    });
-    </script>
