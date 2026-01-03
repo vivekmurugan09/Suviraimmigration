@@ -4,152 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Australia Immigration - Suvira Immigration</title>
+    
+    <!-- Main CSS -->
     <link rel="stylesheet" href="../style.css">
+    
+    <!-- Countries Shared CSS -->
+    <link rel="stylesheet" href="../css/countries.css">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        .country-hero {
-            padding: 180px 0 80px;
-            background: linear-gradient(rgba(10, 36, 114, 0.9), rgba(10, 36, 114, 0.7)), url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            position: relative;
-        }
-        
-        .country-flag-hero {
-            width: 120px;
-            height: 80px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 3px solid white;
-            margin: 0 auto 20px;
-        }
-        
-        .country-flag-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .country-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .country-tagline {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        .back-button {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-        
-        .back-button:hover {
-            gap: 12px;
-        }
-        
-        .country-content-section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .program-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            border: 1px solid var(--light-gray);
-        }
-        
-        .program-header {
-            padding: 25px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-        }
-        
-        .program-header h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-        
-        .program-body {
-            padding: 25px;
-        }
-        
-        .program-body p {
-            margin-bottom: 15px;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        .country-cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            border-radius: 20px;
-            margin: 60px 0;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        @media (max-width: 768px) {
-            .country-title {
-                font-size: 2.5rem;
-            }
-            
-            .country-hero {
-                padding: 160px 0 60px;
-            }
-            
-            .back-button {
-                top: 20px;
-                left: 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
@@ -207,7 +76,7 @@
     </div>
 
     <!-- Country Hero -->
-    <section class="country-hero">
+    <section class="country-hero" style="background-image: url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i> Back to Countries
         </a>
@@ -232,9 +101,13 @@
                         <h3>Skilled Independent Visa (Subclass 189)</h3>
                     </div>
                     <div class="program-body">
-                        <p>Points-based visa for skilled workers who are not sponsored by an employer, state or territory, or family member.</p>
-                        <p><strong>Processing Time:</strong> 8-12 months</p>
-                        <p><strong>Points Required:</strong> 65+</p>
+                        <p>Points-based visa for skilled workers who are not sponsored by an employer, state or territory, or family member. This visa allows you to live and work in Australia permanently.</p>
+                        <div class="program-details">
+                            <p><strong>Processing Time:</strong> 8-12 months</p>
+                            <p><strong>Points Required:</strong> 65+</p>
+                            <p><strong>IELTS Requirement:</strong> 6.0+ bands each</p>
+                            <p><strong>Visa Type:</strong> Permanent Resident</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -243,9 +116,13 @@
                         <h3>Student Visa (Subclass 500)</h3>
                     </div>
                     <div class="program-body">
-                        <p>Study in Australian universities with post-study work rights and pathway to permanent residency.</p>
-                        <p><strong>Processing Time:</strong> 4-8 weeks</p>
-                        <p><strong>IELTS Requirement:</strong> 6.0+ bands</p>
+                        <p>Study in Australian universities with post-study work rights and pathway to permanent residency. Australia offers world-class education and research opportunities.</p>
+                        <div class="program-details">
+                            <p><strong>Processing Time:</strong> 4-8 weeks</p>
+                            <p><strong>IELTS Requirement:</strong> 6.0+ bands</p>
+                            <p><strong>Post-Study Work:</strong> 2-4 years</p>
+                            <p><strong>Work Rights:</strong> 40 hours/fortnight</p>
+                        </div>
                     </div>
                 </div>
                 
@@ -254,16 +131,20 @@
                         <h3>Employer Sponsored Visa</h3>
                     </div>
                     <div class="program-body">
-                        <p>Work for an approved employer in Australia with pathway to permanent residency.</p>
-                        <p><strong>Processing Time:</strong> 6-12 months</p>
-                        <p><strong>Job Offer:</strong> Required</p>
+                        <p>Work for an approved employer in Australia with pathway to permanent residency. Various subclasses available based on occupation and employer sponsorship.</p>
+                        <div class="program-details">
+                            <p><strong>Processing Time:</strong> 6-12 months</p>
+                            <p><strong>Job Offer:</strong> Required</p>
+                            <p><strong>Sponsorship:</strong> Employer must be approved</p>
+                            <p><strong>PR Pathway:</strong> After 3 years</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
             <div class="country-cta">
-                <h2 style="color: white; margin-bottom: 15px;">Start Your Australian Journey Today</h2>
-                <p style="opacity: 0.9; margin-bottom: 30px;">Take the first step towards your new life in Australia</p>
+                <h2>Start Your Australian Journey Today</h2>
+                <p>Take the first step towards your new life in Australia with our expert guidance and support</p>
                 
                 <div class="cta-buttons">
                     <a href="../index.html#contact" class="btn btn-primary">
@@ -278,7 +159,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer" style="background: linear-gradient(rgba(8, 26, 84, 0.95), rgba(8, 26, 84, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; margin-top: 0;">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
@@ -358,8 +239,3 @@
     <script src="../script.js"></script>
 </body>
 </html>
-
-
-
-
-
