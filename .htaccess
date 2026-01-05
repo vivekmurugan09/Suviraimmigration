@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect double countries path to single
+RedirectMatch 301 ^/countries/countries/(.*)\.html$ /countries/$1.html
+
+# Remove .html extension (optional)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
