@@ -348,9 +348,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Fix double countries path dynamically
-if (window.location.pathname.includes('/countries/countries/')) {
-    const correctPath = window.location.pathname.replace('/countries/countries/', '/countries/');
-    window.location.replace(correctPath);
-}
+                
