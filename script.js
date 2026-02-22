@@ -332,20 +332,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Add this to script.js or in a <script> tag
-document.addEventListener('DOMContentLoaded', function() {
-    // Fix all country links on main homepage
-    const countryFiles = ['australia', 'canada', 'uk', 'usa', 'germany', 'newzealand', 'ireland', 'singapore'];
-    
-    document.querySelectorAll('a').forEach(link => {
-        const href = link.getAttribute('href');
-        
-        countryFiles.forEach(country => {
-            if (href === `${country}.html` || href === `/${country}.html`) {
-                console.log(`Fixing link: ${href} -> countries/${country}.html`);
-                link.setAttribute('href', `countries/${country}.html`);
-            }
-        });
-    });
-});
-                
+});                
