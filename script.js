@@ -214,40 +214,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Initialize Swiper
-    if (typeof Swiper !== 'undefined') {
-        const swiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            grabCursor: true,
-            speed: 800,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: {
-                    slidesPerView: 2,
-                    spaceBetween: 30,
-                },
-                1024: {
-                    slidesPerView: 3,
-                    spaceBetween: 40,
-                },
-            },
-        });
-    }
+    // Swiper initialization removed for countries (moved to grid)
 
     // Scroll to Top Button
     const scrollTopBtn = document.querySelector('.scroll-top');
