@@ -214,7 +214,30 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Swiper initialization removed for countries (moved to grid)
+    // --- PREMIUM COUNTRIES GALLERY ---
+    const gallery = document.getElementById('countriesGallery');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    const galleryProgress = document.getElementById('galleryProgress');
+
+    if (gallery && galleryPrev && galleryNext) {
+        galleryNext.addEventListener('click', () => {
+            gallery.scrollBy({ left: 430, behavior: 'smooth' });
+        });
+
+        galleryPrev.addEventListener('click', () => {
+            gallery.scrollBy({ left: -430, behavior: 'smooth' });
+        });
+
+        gallery.addEventListener('scroll', () => {
+            const scrollPercentage = (gallery.scrollLeft / (gallery.scrollWidth - gallery.clientWidth)) * 100;
+            if (galleryProgress) {
+                galleryProgress.style.width = Math.min(Math.max(scrollPercentage, 10), 100) + '%';
+            }
+        });
+    }
+
+    // Swiper initialization removed (moved to high-end gallery)
 
     // Scroll to Top Button
     const scrollTopBtn = document.querySelector('.scroll-top');
