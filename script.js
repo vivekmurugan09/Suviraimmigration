@@ -185,48 +185,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Animated Counter for Stats (Improved with IntersectionObserver)
-    const statNumbers = document.querySelectorAll('[data-count]');
-
-    const countOptions = {
-        threshold: 0.5
-    };
-
-    const countObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const stat = entry.target;
-                const target = parseInt(stat.getAttribute('data-count'));
-                if (!stat.classList.contains('animated')) {
-                    stat.classList.add('animated');
-                    animateCounter(stat, target);
-                }
-                observer.unobserve(stat); // Stop observing after animation starts
-            }
-        });
-    }, countOptions);
-
-    statNumbers.forEach(stat => {
-        countObserver.observe(stat);
-    });
-
-    function animateCounter(element, target) {
-        let current = 0;
-        const duration = 2000; // 2 seconds
-        const stepTime = 20;
-        const totalSteps = duration / stepTime;
-        const increment = target / totalSteps;
-
-        const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-                current = target;
-                clearInterval(timer);
-            }
-            // Use Math.ceil if target is small, or just Math.round
-            element.textContent = Math.round(current).toLocaleString();
-        }, stepTime);
-    }
 
     // --- COUNTRIES SLIDER (SWIPER) ---
     if (typeof Swiper !== 'undefined') {
