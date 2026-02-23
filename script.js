@@ -214,30 +214,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // --- PREMIUM COUNTRIES GALLERY ---
-    const gallery = document.getElementById('countriesGallery');
-    const galleryPrev = document.getElementById('galleryPrev');
-    const galleryNext = document.getElementById('galleryNext');
-    const galleryProgress = document.getElementById('galleryProgress');
-
-    if (gallery && galleryPrev && galleryNext) {
-        galleryNext.addEventListener('click', () => {
-            gallery.scrollBy({ left: 430, behavior: 'smooth' });
-        });
-
-        galleryPrev.addEventListener('click', () => {
-            gallery.scrollBy({ left: -430, behavior: 'smooth' });
-        });
-
-        gallery.addEventListener('scroll', () => {
-            const scrollPercentage = (gallery.scrollLeft / (gallery.scrollWidth - gallery.clientWidth)) * 100;
-            if (galleryProgress) {
-                galleryProgress.style.width = Math.min(Math.max(scrollPercentage, 10), 100) + '%';
-            }
+    // --- COUNTRIES SLIDER (SWIPER) ---
+    if (typeof Swiper !== 'undefined') {
+        new Swiper('.mySwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
         });
     }
-
-    // Swiper initialization removed (moved to high-end gallery)
 
     // Scroll to Top Button
     const scrollTopBtn = document.querySelector('.scroll-top');
