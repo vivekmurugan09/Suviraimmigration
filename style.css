@@ -1,9 +1,9 @@
 :root {
-    --primary: #1E3A8A; /* Deep Blue */
-    --primary-light: #2563EB;
-    --primary-dark: #1E40AF;
-    --secondary: #F97316; /* Vibrant Orange */
-    --accent: #8B5CF6; /* Purple for middle gradient */
+    --primary: #2E004B; /* Deep Amethyst Purple */
+    --primary-light: #4A007A;
+    --primary-dark: #1A002A;
+    --secondary: #FF007F; /* Neon Pink */
+    --accent: #D10068; 
     --light: #F8FAFC;
     --dark: #0F172A;
     --gray: #64748B;
@@ -13,14 +13,14 @@
     --danger: #EF4444;
     --info: #3B82F6;
     
-    --gradient-vibrant: linear-gradient(135deg, #1E3A8A 0%, #8B5CF6 50%, #F97316 100%);
-    --gradient-orange: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+    --gradient-vibrant: linear-gradient(135deg, #2E004B 0%, #4A007A 50%, #FF007F 100%);
+    --gradient-orange: linear-gradient(135deg, #FF007F 0%, #FF3399 100%); /* Reused var name for CTA button gradient */
 
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Poppins', sans-serif;
 
     --border-radius: 12px;
-    --box-shadow: 0 10px 30px rgba(30, 58, 138, 0.15);
+    --box-shadow: 0 10px 30px rgba(46, 0, 75, 0.2);
     --transition: all 0.3s ease;
 }
 
