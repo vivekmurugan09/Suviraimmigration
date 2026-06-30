@@ -1,23 +1,23 @@
 :root {
-    --primary: #4a1a8b;
-    --primary-light: #5e22b0;
-    --primary-dark: #350f6a;
-    --secondary: #c9a84c;
-    --accent: #9b59b6;
-    --light: #f8f5ff;
-    --dark: #1a0933;
-    --gray: #6c757d;
-    --light-gray: #ede8f5;
-    --success: #28a745;
-    --warning: #c9a84c;
-    --danger: #dc3545;
-    --info: #9b59b6;
+    --primary: #0A192F;
+    --primary-light: #112240;
+    --primary-dark: #020C1B;
+    --secondary: #FF6B35;
+    --accent: #FF8A5B;
+    --light: #F8F9FA;
+    --dark: #020C1B;
+    --gray: #64748B;
+    --light-gray: #E2E8F0;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --info: #3B82F6;
 
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Poppins', sans-serif;
 
     --border-radius: 12px;
-    --box-shadow: 0 10px 30px rgba(74, 26, 139, 0.12);
+    --box-shadow: 0 10px 30px rgba(10, 25, 47, 0.15);
     --transition: all 0.3s ease;
 }
 
@@ -113,7 +113,7 @@ ul {
 .btn-primary:hover {
     background: var(--primary-light);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(74, 26, 139, 0.2);
+    box-shadow: 0 10px 20px rgba(10, 25, 47, 0.2);
 }
 
 .btn-secondary {
@@ -122,9 +122,9 @@ ul {
 }
 
 .btn-secondary:hover {
-    background: #b8922a;
+    background: #E65A28;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(201, 168, 76, 0.2);
+    box-shadow: 0 10px 20px rgba(255, 107, 53, 0.2);
 }
 
 .btn-outline {
@@ -255,7 +255,7 @@ ul {
 }
 
 .nav-cta:hover {
-    background: #b8922a;
+    background: #E65A28;
     color: white;
 }
 
@@ -568,7 +568,7 @@ section {
     margin: 0 auto 20px;
     color: white;
     font-size: 1.8rem;
-    box-shadow: 0 5px 15px rgba(74, 26, 139, 0.2);
+    box-shadow: 0 5px 15px rgba(10, 25, 47, 0.2);
 }
 
 .section-subtitle {
@@ -1061,7 +1061,7 @@ section {
 }
 
 .countries-slider-section .swiper-pagination-bullet-active {
-    background: #c9a84c !important;
+    background: #FF6B35 !important;
     width: 25px !important;
     border-radius: 10px !important;
 }
@@ -1084,7 +1084,7 @@ section {
 }
 
 .view-all-modern .btn-primary:hover {
-    background: #c9a84c;
+    background: #FF6B35;
     transform: translateY(-3px);
     box-shadow: 0 15px 30px rgba(255, 107, 53, 0.3);
 }
@@ -1206,7 +1206,7 @@ section {
 .country-image-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(74, 26, 139, 0.2), rgba(74, 26, 139, 0.6));
+    background: linear-gradient(to bottom, rgba(10, 25, 47, 0.2), rgba(10, 25, 47, 0.6));
     opacity: 0.4;
     transition: opacity 0.5s ease;
 }
@@ -1360,7 +1360,7 @@ section {
     font-size: 0.95rem;
     transition: all 0.4s ease;
     margin-top: auto;
-    box-shadow: 0 10px 20px rgba(74, 26, 139, 0.2);
+    box-shadow: 0 10px 20px rgba(10, 25, 47, 0.2);
 }
 
 .country-btn-modern:hover {
@@ -1571,7 +1571,7 @@ section {
     color: white;
     font-size: 1.4rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(74, 26, 139, 0.2);
+    box-shadow: 0 4px 12px rgba(10, 25, 47, 0.2);
 }
 
 .contact-card-content {
@@ -2119,7 +2119,7 @@ section {
 }
 
 .newsletter-form button:hover {
-    background: #b8922a;
+    background: #E65A28;
     transform: translateY(-2px);
 }
 
@@ -2215,7 +2215,7 @@ section {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    box-shadow: 0 5px 15px rgba(74, 26, 139, 0.3);
+    box-shadow: 0 5px 15px rgba(10, 25, 47, 0.3);
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
