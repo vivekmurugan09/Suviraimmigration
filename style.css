@@ -1,9 +1,9 @@
 :root {
-    --primary: #2E004B; /* Deep Amethyst Purple */
-    --primary-light: #4A007A;
-    --primary-dark: #1A002A;
-    --secondary: #FF007F; /* Neon Pink */
-    --accent: #D10068; 
+    --primary: #0724A8; /* Vibrant Blue */
+    --primary-light: #0B2FF7;
+    --primary-dark: #031169;
+    --secondary: #F87034; /* Vibrant Orange */
+    --accent: #892CDC; /* Violet */
     --light: #F8FAFC;
     --dark: #0F172A;
     --gray: #64748B;
@@ -13,14 +13,14 @@
     --danger: #EF4444;
     --info: #3B82F6;
     
-    --gradient-vibrant: linear-gradient(135deg, #2E004B 0%, #4A007A 50%, #FF007F 100%);
-    --gradient-orange: linear-gradient(135deg, #FF007F 0%, #FF3399 100%); /* Reused var name for CTA button gradient */
+    --gradient-vibrant: linear-gradient(135deg, #0724A8 0%, #892CDC 50%, #F87034 100%);
+    --gradient-orange: linear-gradient(135deg, #F87034 0%, #FF9F1C 100%);
 
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
 
     --border-radius: 12px;
-    --box-shadow: 0 10px 30px rgba(46, 0, 75, 0.2);
+    --box-shadow: 0 10px 30px rgba(7, 36, 168, 0.2);
     --transition: all 0.3s ease;
 }
 
@@ -2518,7 +2518,7 @@ section {
 }
 /* PREMIUM THEME REDESIGN - HIGH LEVEL ESTHETICS */
 .hero-gradient {
-    background: radial-gradient(circle at 80% 20%, rgba(255, 0, 127, 0.15) 0%, transparent 50%),
+    background: radial-gradient(circle at 80% 20%, rgba(248, 112, 52, 0.15) 0%, transparent 50%),
                 radial-gradient(circle at 20% 80%, rgba(74, 0, 122, 0.3) 0%, transparent 50%),
                 #120124 !important;
     position: relative;
@@ -2566,7 +2566,7 @@ section {
     position: absolute;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(255, 0, 127, 0.3) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(248, 112, 52, 0.3) 0%, transparent 70%);
     z-index: 1;
     filter: blur(30px);
 }
@@ -2590,8 +2590,8 @@ section {
 
 .hero-pill {
     display: inline-block;
-    background: rgba(255, 0, 127, 0.1);
-    border: 1px solid rgba(255, 0, 127, 0.3);
+    background: rgba(248, 112, 52, 0.1);
+    border: 1px solid rgba(248, 112, 52, 0.3);
     padding: 6px 16px;
     border-radius: 50px;
     font-size: 0.8rem;
@@ -2601,7 +2601,7 @@ section {
     margin-bottom: 25px;
     text-transform: uppercase;
     backdrop-filter: blur(5px);
-    box-shadow: 0 4px 20px rgba(255, 0, 127, 0.1);
+    box-shadow: 0 4px 20px rgba(248, 112, 52, 0.1);
 }
 
 .hero-features-pill {
@@ -2628,7 +2628,7 @@ section {
 
 .feature-pill:hover {
     background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 0, 127, 0.3);
+    border-color: rgba(248, 112, 52, 0.3);
 }
 
 .feature-pill i {
@@ -2648,7 +2648,7 @@ section {
     align-items: center;
     gap: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 10px 25px rgba(255, 0, 127, 0.3);
+    box-shadow: 0 10px 25px rgba(248, 112, 52, 0.3);
     position: relative;
     overflow: hidden;
 }
@@ -2663,7 +2663,7 @@ section {
 
 .btn-gradient:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(255, 0, 127, 0.4);
+    box-shadow: 0 15px 30px rgba(248, 112, 52, 0.4);
     color: white;
 }
 
@@ -2717,7 +2717,7 @@ section {
     display: flex;
     justify-content: space-between;
     padding: 35px 45px;
-    box-shadow: 0 25px 50px rgba(46, 0, 75, 0.08);
+    box-shadow: 0 25px 50px rgba(7, 36, 168, 0.08);
 }
 
 .stat-item {
@@ -2770,7 +2770,7 @@ section {
     font-size: 1.3rem;
     margin: 0;
     flex-shrink: 0;
-    box-shadow: 0 8px 20px rgba(255, 0, 127, 0.2);
+    box-shadow: 0 8px 20px rgba(248, 112, 52, 0.2);
 }
 
 .service-grid-new {
@@ -2804,8 +2804,8 @@ section {
 .service-card-clean:hover {
     transform: translateY(-5px);
     background: white;
-    border-color: rgba(255, 0, 127, 0.25);
-    box-shadow: 0 15px 35px rgba(46, 0, 75, 0.08);
+    border-color: rgba(248, 112, 52, 0.25);
+    box-shadow: 0 15px 35px rgba(7, 36, 168, 0.08);
 }
 
 /* Glass Navbar */
@@ -2818,12 +2818,12 @@ section {
 
 .nav-cta {
     background: var(--gradient-orange) !important;
-    box-shadow: 0 8px 20px rgba(255, 0, 127, 0.2) !important;
+    box-shadow: 0 8px 20px rgba(248, 112, 52, 0.2) !important;
 }
 
 .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(255, 0, 127, 0.3) !important;
+    box-shadow: 0 10px 25px rgba(248, 112, 52, 0.3) !important;
 }
 
 /* Responsiveness for Hero */
