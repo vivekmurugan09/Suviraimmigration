@@ -335,7 +335,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initial calculation on load
     calculatePoints();
+
+    const activeTheme = localStorage.getItem('suvira_site_theme') || 't6';
+    switchSiteTheme(activeTheme);
+    const select = document.getElementById('themeSelectDropdown');
+    if (select) select.value = activeTheme;
 });
+
+function switchSiteTheme(themeVal) {
+    document.documentElement.setAttribute('data-theme', themeVal);
+    document.body.setAttribute('data-theme', themeVal);
+    localStorage.setItem('suvira_site_theme', themeVal);
+}
 
 const heroGalleryData = [
     {
