@@ -301,7 +301,111 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
+
+    // --- INTERACTIVE ELIGIBILITY CALCULATOR ---
+    const calcTabs = document.querySelectorAll('.calc-tab');
+    calcTabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+            calcTabs.forEach(t => {
+                t.classList.remove('active');
+                t.style.background = '#E2E8F0';
+                t.style.color = '#475569';
+            });
+            this.classList.add('active');
+            this.style.background = 'var(--primary)';
+            this.style.color = 'white';
+
+            const target = this.getAttribute('data-tab');
+            const targetInput = document.getElementById('calcTargetCountry');
+            if (targetInput) {
+                targetInput.value = target;
+            }
+            calculatePoints();
+        });
+    });
+
+    // Initial calculation on load
+    calculatePoints();
 });
+
+// Global functions for calculator
+function calculatePoints() {
+    const targetCountry = document.getElementById('calcTargetCountry') ? document.getElementById('calcTargetCountry').value : 'canada-crs';
+    const age = document.getElementById('calcAge') ? document.getElementById('calcAge').value : '20-29';
+    const edu = document.getElementById('calcEdu') ? document.getElementById('calcEdu').value : 'master';
+    const exp = document.getElementById('calcExp') ? document.getElementById('calcExp').value : '3+';
+    const ielts = document.getElementById('calcIelts') ? document.getElementById('calcIelts').value : 'clb9';
+
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const scoreUnit = document.getElementById('scoreUnit');
+    const scoreAdvice = document.getElementById('scoreAdvice');
+
+    if (!scoreDisplay) return;
+
+    let score = 0;
+
+    if (targetCountry === 'canada-crs') {
+        // Canada Express Entry CRS Approximation
+        score += (age === '20-29' ? 110 : age === '30-34' ? 95 : age === '35-39' ? 75 : 50);
+        score += (edu === 'phd' ? 150 : edu === 'master' ? 135 : edu === 'bachelor' ? 120 : 110);
+        score += (exp === '5+' ? 80 : exp === '3+' ? 64 : exp === '1-2' ? 40 : 0);
+        score += (ielts === 'clb9' ? 124 : ielts === 'clb8' ? 96 : ielts === 'clb7' ? 68 : 30);
+
+        scoreDisplay.textContent = score;
+        scoreUnit.textContent = "CRS Points (67-Pt FSW Eligible)";
+        if (score >= 450) {
+            scoreAdvice.textContent = "Excellent score! High probability for Express Entry STEM/Category-Based Draws or PNP Nomination.";
+        } else if (score >= 400) {
+            scoreAdvice.textContent = "Good score! Provincial Nominee Programs (PNP like OINP, AINP) provide an instant +600 points boost.";
+        } else {
+            scoreAdvice.textContent = "Eligible for FSW 67-point grid! We recommend strategic PNP nomination or IELTS score optimization.";
+        }
+    } else if (targetCountry === 'australia-pr') {
+        // Australia SkillSelect 65 Point Pass Mark System
+        score += (age === '20-29' ? 30 : age === '30-34' ? 25 : age === '35-39' ? 15 : 0);
+        score += (edu === 'phd' ? 20 : edu === 'master' || edu === 'bachelor' ? 15 : 10);
+        score += (exp === '5+' ? 15 : exp === '3+' ? 10 : exp === '1-2' ? 5 : 0);
+        score += (ielts === 'clb9' ? 20 : ielts === 'clb8' ? 10 : 0);
+
+        scoreDisplay.textContent = score;
+        scoreUnit.textContent = "Points (Pass Mark: 65 Points)";
+        if (score >= 75) {
+            scoreAdvice.textContent = "Competitive score for Subclass 189 Skilled Independent and Subclass 190 State Nominated Visas.";
+        } else if (score >= 65) {
+            scoreAdvice.textContent = "Meets the official Australian 65-point EOI lodging threshold. State Nomination (Subclass 190/491) advised.";
+        } else {
+            scoreAdvice.textContent = "Score below 65 pts. Profile boosting via Partner points, NAATI CCL, or Regional State sponsorship recommended.";
+        }
+    } else if (targetCountry === 'germany-card') {
+        // Germany Opportunity Card (Chancenkarte 2026) 6-Point System
+        score += (edu === 'master' || edu === 'phd' || edu === 'bachelor' ? 4 : 2);
+        score += (exp === '5+' ? 3 : exp === '3+' ? 2 : 1);
+        score += (age === '20-29' ? 2 : age === '30-34' ? 1 : 0);
+        score += (ielts === 'clb9' || ielts === 'clb8' ? 1 : 0);
+
+        scoreDisplay.textContent = Math.min(score, 6);
+        scoreUnit.textContent = "Points (Pass Mark: 6 Points)";
+        scoreAdvice.textContent = score >= 6 
+            ? "Qualified! You meet the 6-point requirement for the 1-Year Opportunity Card with part-time work rights."
+            : "Recognized degree qualification gives direct Route 1 qualification without points!";
+    }
+}
+
+function prefillContactForm() {
+    const targetCountry = document.getElementById('calcTargetCountry') ? document.getElementById('calcTargetCountry').value : '';
+    const countrySelect = document.getElementById('country');
+    const serviceSelect = document.getElementById('serviceType');
+
+    if (countrySelect) {
+        if (targetCountry.includes('canada')) countrySelect.value = 'canada';
+        else if (targetCountry.includes('australia')) countrySelect.value = 'australia';
+        else if (targetCountry.includes('germany')) countrySelect.value = 'germany';
+    }
+
+    if (serviceSelect) {
+        serviceSelect.value = 'pr';
+    }
+}
 
 
 

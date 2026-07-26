@@ -2884,3 +2884,31 @@ section {
         display: none;
     }
 }
+
+/* Calculator, Pricing & Story Cards Styling Enhancements */
+.calc-tab:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.story-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06) !important;
+}
+
+@media (max-width: 768px) {
+    .calc-result-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+    
+    .calc-result-box div {
+        text-align: center;
+    }
+}
