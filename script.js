@@ -579,6 +579,50 @@ function handleHomeTouchSubmit(e) {
     }
 }
 
+// Homepage Instant Score Preview Tab Switcher
+function switchHomeScoreTab(e, country) {
+    if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+    const label = document.getElementById('homeScoreLabel');
+    const val   = document.getElementById('homeScoreVal');
+    const unit  = document.getElementById('homeScoreUnit');
+    const desc  = document.getElementById('homeScoreDesc');
+
+    const btnCa = document.getElementById('tabCanada');
+    const btnAu = document.getElementById('tabAustralia');
+    const btnDe = document.getElementById('tabGermany');
+
+    // Reset tab button background and colors
+    [btnCa, btnAu, btnDe].forEach(btn => {
+        if (btn) {
+            btn.style.background = '#F1F5F9';
+            btn.style.color = '#475569';
+        }
+    });
+
+    if (country === 'canada') {
+        if (btnCa) { btnCa.style.background = '#0724A8'; btnCa.style.color = 'white'; }
+        if (label) label.innerText = 'ESTIMATED CANADA CRS SCORE';
+        if (val)   val.innerText   = '433';
+        if (unit)  unit.innerText  = 'Points';
+        if (desc)  desc.innerText  = '✅ 67-Pt FSW Eligible — Express Entry Ready';
+    } else if (country === 'australia') {
+        if (btnAu) { btnAu.style.background = '#0724A8'; btnAu.style.color = 'white'; }
+        if (label) label.innerText = 'ESTIMATED AUSTRALIA GSM SCORE';
+        if (val)   val.innerText   = '75';
+        if (unit)  unit.innerText  = 'Points';
+        if (desc)  desc.innerText  = '✅ Subclass 189/190 Eligible — EOI Ready';
+    } else if (country === 'germany') {
+        if (btnDe) { btnDe.style.background = '#0724A8'; btnDe.style.color = 'white'; }
+        if (label) label.innerText = 'GERMANY CHANCENKARTE SCORE';
+        if (val)   val.innerText   = '6 / 6';
+        if (unit)  unit.innerText  = 'Points';
+        if (desc)  desc.innerText  = '✅ 100% Eligible — Opportunity Card Ready';
+    }
+}
+
 
 
 
