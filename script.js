@@ -446,7 +446,7 @@ function calculatePoints() {
 
         scoreDisplay.textContent = Math.min(score, 6);
         scoreUnit.textContent = "Points (Pass Mark: 6 Points)";
-        scoreAdvice.textContent = score >= 6 
+        scoreAdvice.textContent = score >= 6
             ? "Qualified! You meet the 6-point requirement for the 1-Year Opportunity Card with part-time work rights."
             : "Recognized degree qualification gives direct Route 1 qualification without points!";
     }
