@@ -3,151 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Australia Immigration - Suvira Immigration</title>
+    <title>Australia Skilled Migration & PR Visas - Suvira Immigration</title>
     <link rel="stylesheet" href="../style.css?v=2.2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .country-hero {
-            padding: 180px 0 80px;
-            background: linear-gradient(rgba(7, 36, 168, 0.9), rgba(7, 36, 168, 0.7)), url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+        .country-hero-pro {
+            padding: 160px 0 80px;
+            background: linear-gradient(135deg, rgba(7, 36, 168, 0.94), rgba(3, 17, 105, 0.9)), url('https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
             color: white;
-            text-align: center;
             position: relative;
         }
         
-        .country-flag-hero {
-            width: 120px;
-            height: 80px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 3px solid white;
-            margin: 0 auto 20px;
-        }
-        
-        .country-flag-hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .country-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .country-tagline {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-            opacity: 0.9;
-        }
-        
-        .back-button {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-        
-        .back-button:hover {
-            gap: 12px;
-        }
-        
-        .country-content-section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 30px;
+        .fact-box {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             text-align: center;
         }
         
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+        .fact-box h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #FF9F1C;
+            margin-bottom: 5px;
         }
         
-        .program-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-            border: 1px solid var(--light-gray);
-        }
-        
-        .program-header {
-            padding: 25px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+        .fact-box p {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
             color: white;
-        }
-        
-        .program-header h3 {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-        }
-        
-        .program-body {
-            padding: 25px;
-        }
-        
-        .program-body p {
-            margin-bottom: 15px;
-            color: var(--gray);
-            line-height: 1.6;
-        }
-        
-        .country-cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            padding: 60px 0;
-            text-align: center;
-            border-radius: 20px;
-            margin: 60px 0;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-        
-        @media (max-width: 768px) {
-            .country-title {
-                font-size: 2.5rem;
-            }
-            
-            .country-hero {
-                padding: 160px 0 60px;
-            }
-            
-            .back-button {
-                top: 20px;
-                left: 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
         }
     </style>
 </head>
@@ -163,7 +54,9 @@
             <div class="nav-links">
                 <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
                 <a href="../index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                <a href="../index.html#calculator" class="nav-link"><i class="fas fa-calculator"></i> Calculator</a>
                 <a href="../index.html#services" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+                <a href="../index.html#pricing" class="nav-link"><i class="fas fa-tags"></i> Pricing</a>
                 <a href="index.html" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
                 <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
                 <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
@@ -189,7 +82,9 @@
         <div class="mobile-nav">
             <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
             <a href="../index.html#about" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="../index.html#calculator" class="nav-link"><i class="fas fa-calculator"></i> Points Calculator</a>
             <a href="../index.html#services" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="../index.html#pricing" class="nav-link"><i class="fas fa-tags"></i> Pricing</a>
             <a href="index.html" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
             <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
             <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
@@ -200,77 +95,175 @@
     </div>
 
     <!-- Country Hero -->
-    <section class="country-hero">
-        <a href="index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Back to Countries
-        </a>
+    <section class="country-hero-pro">
+        <div class="container">
+            <a href="index.html" style="color: #FF9F1C; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 25px;">
+                <i class="fas fa-arrow-left"></i> Back to All Destinations
+            </a>
+            
+            <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
+                <div style="width: 70px; height: 48px; border-radius: 8px; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.3); border: 2px solid white;">
+                    <img src="https://flagcdn.com/w320/au.png" alt="Australia Flag" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div>
+                    <h1 style="font-size: 3rem; font-weight: 800; margin: 0; color: white;">Australia Immigration Guide</h1>
+                </div>
+            </div>
+            
+            <p style="font-size: 1.15rem; max-width: 800px; color: rgba(255, 255, 255, 0.9); line-height: 1.6; margin-bottom: 35px;">SkillSelect points-based permanent residency, State Nomination, and post-study work rights in top Australian cities.</p>
+            
+            <!-- Fact Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; max-width: 900px;">
+                <div class="fact-box">
+                    <h4>Capital City</h4>
+                    <p>Canberra</p>
+                </div>
+                <div class="fact-box">
+                    <h4>Official Language</h4>
+                    <p>English</p>
+                </div>
+                <div class="fact-box">
+                    <h4>Top Program</h4>
+                    <p>Subclass 189/190/491</p>
+                </div>
+                <div class="fact-box">
+                    <h4>Avg Timeline</h4>
+                    <p>8-12 Months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Country Programs Section -->
+    <section style="padding: 80px 0; background: #F8FAFC;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 45px;">
+                <h2 class="section-title" style="color: var(--primary); font-size: 2.2rem;">Available Australia Visa &amp; PR Pathways</h2>
+                <p class="section-desc" style="color: var(--gray); max-width: 700px; margin: 0 auto;">Select your desired pathway to check eligibility requirements and detailed consultation.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px;">
+                
+                <div class="program-card-pro" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div style="position: absolute; top: 15px; right: 20px; background: #DBEAFE; color: #1E40AF; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 15px;">
+                        Direct PR
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; padding-right: 80px;">Skilled Independent (Subclass 189)</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">Permanent visa for points-tested skilled workers without needing state nomination or sponsor.</p>
+                        
+                        <div style="background: #F8FAFC; border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #475569; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span><i class="fas fa-clock" style="color: var(--primary);"></i> <strong>Est. Processing:</strong></span>
+                                <span>8 - 12 Months</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fas fa-certificate" style="color: var(--primary);"></i> <strong>Criteria / Score:</strong></span>
+                                <span>Pass Mark: 65 Points</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="btn-gradient" style="width: 100%; text-align: center; border-radius: 8px; font-weight: 600; padding: 10px;">
+                        Check Australia Eligibility
+                    </a>
+                </div>
         
-        <div class="container">
-            <div class="country-flag-hero">
-                <img src="https://flagcdn.com/w320/au.png" alt="Australia Flag">
+                <div class="program-card-pro" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div style="position: absolute; top: 15px; right: 20px; background: #DBEAFE; color: #1E40AF; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 15px;">
+                        +5 Extra Points
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; padding-right: 80px;">State Nominated (Subclass 190)</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">Permanent visa nominated by an Australian state or territory government giving +5 points.</p>
+                        
+                        <div style="background: #F8FAFC; border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #475569; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span><i class="fas fa-clock" style="color: var(--primary);"></i> <strong>Est. Processing:</strong></span>
+                                <span>9 - 14 Months</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fas fa-certificate" style="color: var(--primary);"></i> <strong>Criteria / Score:</strong></span>
+                                <span>State Nomination</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="btn-gradient" style="width: 100%; text-align: center; border-radius: 8px; font-weight: 600; padding: 10px;">
+                        Check Australia Eligibility
+                    </a>
+                </div>
+        
+                <div class="program-card-pro" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div style="position: absolute; top: 15px; right: 20px; background: #DBEAFE; color: #1E40AF; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 15px;">
+                        +15 Extra Points
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; padding-right: 80px;">Skilled Work Regional (Subclass 491)</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">5-year provisional visa to live and work in regional Australia with +15 points boost and PR pathway.</p>
+                        
+                        <div style="background: #F8FAFC; border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #475569; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span><i class="fas fa-clock" style="color: var(--primary);"></i> <strong>Est. Processing:</strong></span>
+                                <span>8 - 12 Months</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fas fa-certificate" style="color: var(--primary);"></i> <strong>Criteria / Score:</strong></span>
+                                <span>Regional Stream</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="btn-gradient" style="width: 100%; text-align: center; border-radius: 8px; font-weight: 600; padding: 10px;">
+                        Check Australia Eligibility
+                    </a>
+                </div>
+        
+                <div class="program-card-pro" style="background: white; border-radius: 16px; border: 1px solid #E2E8F0; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div style="position: absolute; top: 15px; right: 20px; background: #DBEAFE; color: #1E40AF; font-size: 0.75rem; font-weight: 700; padding: 4px 12px; border-radius: 15px;">
+                        Study & Work
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.3rem; color: var(--primary); margin-bottom: 12px; padding-right: 80px;">Student Visa (Subclass 500)</h3>
+                        <p style="color: #64748B; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">Study in leading Australian universities with generous post-study work rights (Subclass 485).</p>
+                        
+                        <div style="background: #F8FAFC; border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #475569; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                                <span><i class="fas fa-clock" style="color: var(--primary);"></i> <strong>Est. Processing:</strong></span>
+                                <span>4 - 8 Weeks</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span><i class="fas fa-certificate" style="color: var(--primary);"></i> <strong>Criteria / Score:</strong></span>
+                                <span>IELTS 6.0 / PTE 50</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="../index.html#contact" class="btn-gradient" style="width: 100%; text-align: center; border-radius: 8px; font-weight: 600; padding: 10px;">
+                        Check Australia Eligibility
+                    </a>
+                </div>
+        
             </div>
-            <h1 class="country-title">Australia</h1>
-            <p class="country-tagline">Skilled migration and study opportunities with excellent post-study work rights, beautiful landscapes, and high standard of living.</p>
+
+            <!-- Quick Profile Assessment CTA Box -->
+            <div style="background: linear-gradient(135deg, #0724A8 0%, #031169 100%); color: white; border-radius: 20px; padding: 40px; text-align: center; max-width: 900px; margin: 0 auto; box-shadow: 0 15px 40px rgba(7,36,168,0.2);">
+                <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 10px; color: white;">Get Free Australia Profile Evaluation</h3>
+                <p style="font-size: 1.05rem; opacity: 0.9; max-width: 650px; margin: 0 auto 25px;">Our Chennai expert team will evaluate your educational credentials, work experience, and language scores for Australia immigration.</p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                    <a href="../index.html#contact" class="btn-gradient" style="padding: 14px 30px; font-weight: 700;">
+                        <i class="fas fa-file-signature"></i> Start Free Assessment
+                    </a>
+                    <a href="tel:+919940352086" class="btn-transparent" style="padding: 14px 30px; font-weight: 700;">
+                        <i class="fas fa-phone-alt"></i> Call +91 99403 52086
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Country Content -->
-    <section class="country-content-section">
-        <div class="container">
-            <h2 class="section-title">Australia Immigration Programs</h2>
-            
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-header">
-                        <h3>Skilled Independent Visa (Subclass 189)</h3>
-                    </div>
-                    <div class="program-body">
-                        <p>Points-based visa for skilled workers who are not sponsored by an employer, state or territory, or family member.</p>
-                        <p><strong>Processing Time:</strong> 8-12 months</p>
-                        <p><strong>Points Required:</strong> 65+</p>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-header">
-                        <h3>Student Visa (Subclass 500)</h3>
-                    </div>
-                    <div class="program-body">
-                        <p>Study in Australian universities with post-study work rights and pathway to permanent residency.</p>
-                        <p><strong>Processing Time:</strong> 4-8 weeks</p>
-                        <p><strong>IELTS Requirement:</strong> 6.0+ bands</p>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-header">
-                        <h3>Employer Sponsored Visa</h3>
-                    </div>
-                    <div class="program-body">
-                        <p>Work for an approved employer in Australia with pathway to permanent residency.</p>
-                        <p><strong>Processing Time:</strong> 6-12 months</p>
-                        <p><strong>Job Offer:</strong> Required</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="country-cta">
-                <h2 style="color: white; margin-bottom: 15px;">Start Your Australian Journey Today</h2>
-                <p style="opacity: 0.9; margin-bottom: 30px;">Take the first step towards your new life in Australia</p>
-                
-                <div class="cta-buttons">
-                    <a href="../index.html#contact" class="btn btn-primary">
-                        <i class="fas fa-file-alt"></i> Free Eligibility Assessment
-                    </a>
-                    <a href="../index.html#contact" class="btn btn-secondary">
-                        <i class="fas fa-calendar-check"></i> Book Consultation
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Production Footer -->
     <footer class="footer" style="background: linear-gradient(rgba(3, 17, 105, 0.95), rgba(3, 17, 105, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; margin-top: 0;">
         <div class="container">
             <div class="footer-content">
@@ -278,7 +271,7 @@
                     <div class="logo-with-icon">
                         <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo" style="height: 90px; width: auto; object-fit: contain; background: white; border-radius: 12px; padding: 6px 12px;">
                     </div>
-                    <p>Building Futures Through Global Opportunities Since 2004</p>
+                    <p>Your Trusted Chennai Immigration Partner Since 2004</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -324,20 +317,23 @@
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; <span class="current-year">2024</span> Suvira Immigration Consultants. All Rights Reserved.</p>
-                <p>
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px;">
+                <p>&copy; <span class="current-year">2026</span> Suvira Immigration Consultants. All Rights Reserved.</p>
+                <p style="margin: 10px 0;">
                     <a href="#">Privacy Policy</a> | 
-                    <a href="#">Terms & Conditions</a> | 
+                    <a href="#">Terms &amp; Conditions</a> | 
                     <a href="#">Disclaimer</a>
                 </p>
-                <p class="compliance">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <p class="disclaimer-note" style="font-size: 0.8rem; opacity: 0.7; max-width: 900px; margin: 12px auto 0; line-height: 1.5; color: #CBD5E1;">
+                    <strong>Regulatory Disclaimer</strong>: Visa approvals are granted solely by the relevant government authorities. Suvira Immigration provides professional consultancy, profile assessment, SOP/documentation preparation, and filing support. We strictly adhere to ethical immigration practices and do not make false guarantee claims.
+                </p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -346,11 +342,6 @@
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <script src="/script.js"></script>
+    <script src="../script.js"></script>
 </body>
 </html>
-
-
-
-
-
