@@ -223,128 +223,80 @@
             </div>
         </section>
 
-        <!-- 3. INTERACTIVE PR POINTS & ELIGIBILITY CALCULATOR SECTION -->
-        <section class="calculator-section" id="calculator"
-            style="padding: 80px 0; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 40px;">
-                    <div class="section-icon"
-                        style="margin: 0 auto 15px; width: 60px; height: 60px; background: rgba(7, 36, 168, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem;">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h2 class="section-title" style="color: var(--primary); font-size: 2.3rem;">Free PR &amp; Visa
-                        Eligibility Calculator</h2>
-                    <p class="section-desc" style="color: var(--gray); max-width: 700px; margin: 0 auto;">Assess your
-                        Canada Express Entry CRS score, Australia 65-point requirement, or Germany Opportunity Card
-                        eligibility in 60 seconds.</p>
-                </div>
+        <!-- 3. CALCULATOR TEASER SECTION -->
+        <section class="calculator-section" id="calculator" style="padding: 85px 0; background: #F8FAFC; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+            <div class="container" style="max-width: 1280px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; align-items: center;">
 
-                <div class="calculator-card"
-                    style="background: white; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 35px; max-width: 900px; margin: 0 auto; border: 1px solid #E2E8F0;">
-                    <div class="calc-tabs"
-                        style="display: flex; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #F1F5F9; padding-bottom: 15px; justify-content: center; flex-wrap: wrap;">
-                        <button type="button" class="calc-tab active" data-tab="canada-crs"
-                            style="padding: 10px 24px; border: none; background: var(--primary); color: white; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                            <i class="fab fa-canadian-maple-leaf"></i> Canada CRS / FSW
-                        </button>
-                        <button type="button" class="calc-tab" data-tab="australia-pr"
-                            style="padding: 10px 24px; border: none; background: #E2E8F0; color: #475569; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                            <i class="fas fa-globe-oceania"></i> Australia PR Points
-                        </button>
-                        <button type="button" class="calc-tab" data-tab="germany-card"
-                            style="padding: 10px 24px; border: none; background: #E2E8F0; color: #475569; border-radius: 30px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
-                            <i class="fas fa-certificate"></i> Germany Opportunity Card
-                        </button>
-                    </div>
+                    <!-- Left: Teaser Info -->
+                    <div>
+                        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(7, 36, 168, 0.08); color: var(--primary); border: 1px solid rgba(7, 36, 168, 0.2); padding: 6px 18px; border-radius: 50px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;">
+                            <i class="fas fa-calculator" style="color: var(--secondary);"></i> FREE ELIGIBILITY TOOL
+                        </div>
+                        <h2 style="font-size: 2.5rem; font-weight: 800; color: #0F172A; line-height: 1.2; margin-bottom: 20px;">
+                            Free PR &amp; Visa Eligibility Calculator
+                        </h2>
+                        <p style="color: #475569; font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
+                            Check your eligibility in <strong>60 seconds</strong>. Assess your <strong>Canada CRS score</strong>, <strong>Australia 65-point</strong> requirement, or <strong>Germany Opportunity Card</strong> eligibility — instantly and for free.
+                        </p>
 
-                    <form id="eligibilityCalcForm" onsubmit="event.preventDefault(); calculatePoints();">
-                        <input type="hidden" id="calcTargetCountry" value="canada-crs">
-
-                        <div class="calc-grid"
-                            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 25px;">
-                            <div class="calc-group">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #1E293B;"><i
-                                        class="fas fa-birthday-cake" style="color: var(--primary);"></i> Age
-                                    Group</label>
-                                <select id="calcAge"
-                                    style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.95rem;"
-                                    onchange="calculatePoints()">
-                                    <option value="20-29">18 - 29 years (Max points)</option>
-                                    <option value="30-34">30 - 34 years</option>
-                                    <option value="35-39">35 - 39 years</option>
-                                    <option value="40+">40+ years</option>
-                                </select>
+                        <!-- 3 Quick Highlight Pills -->
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 35px;">
+                            <div style="display: inline-flex; align-items: center; gap: 8px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 18px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; color: #0F172A;">
+                                <img src="https://flagcdn.com/w40/ca.png" style="height: 16px; border-radius: 2px;"> Canada CRS
                             </div>
-
-                            <div class="calc-group">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #1E293B;"><i
-                                        class="fas fa-user-graduate" style="color: var(--primary);"></i> Highest
-                                    Education</label>
-                                <select id="calcEdu"
-                                    style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.95rem;"
-                                    onchange="calculatePoints()">
-                                    <option value="master">Master's Degree / Professional Degree</option>
-                                    <option value="bachelor">Bachelor's Degree (3+ years)</option>
-                                    <option value="diploma">Two or more Post-Secondary Diplomas</option>
-                                    <option value="phd">Doctoral (Ph.D.)</option>
-                                </select>
+                            <div style="display: inline-flex; align-items: center; gap: 8px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 18px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; color: #0F172A;">
+                                <img src="https://flagcdn.com/w40/au.png" style="height: 16px; border-radius: 2px;"> Australia Points
                             </div>
-
-                            <div class="calc-group">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #1E293B;"><i
-                                        class="fas fa-briefcase" style="color: var(--primary);"></i> Skilled Work
-                                    Experience</label>
-                                <select id="calcExp"
-                                    style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.95rem;"
-                                    onchange="calculatePoints()">
-                                    <option value="3+">3+ Years Skilled Experience</option>
-                                    <option value="1-2">1 - 2 Years Skilled Experience</option>
-                                    <option value="5+">5+ Years Skilled Experience</option>
-                                    <option value="0">Less than 1 Year</option>
-                                </select>
-                            </div>
-
-                            <div class="calc-group">
-                                <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #1E293B;"><i
-                                        class="fas fa-language" style="color: var(--primary);"></i> English/Language
-                                    Proficiency</label>
-                                <select id="calcIelts"
-                                    style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.95rem;"
-                                    onchange="calculatePoints()">
-                                    <option value="clb9">IELTS 8,7,7,7 (CLB 9 / Superior)</option>
-                                    <option value="clb8">IELTS 7.5,6.5,6.5,6.5 (CLB 8)</option>
-                                    <option value="clb7">IELTS 6.0 in each (CLB 7)</option>
-                                    <option value="pending">Test Not Taken Yet</option>
-                                </select>
+                            <div style="display: inline-flex; align-items: center; gap: 8px; background: #F8FAFC; border: 1px solid #E2E8F0; padding: 10px 18px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; color: #0F172A;">
+                                <img src="https://flagcdn.com/w40/de.png" style="height: 16px; border-radius: 2px;"> Germany Card
                             </div>
                         </div>
 
-                        <div class="calc-result-box"
-                            style="background: linear-gradient(135deg, #0724A8 0%, #031169 100%); color: white; border-radius: 12px; padding: 25px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; margin-bottom: 25px;">
-                            <div>
-                                <h4
-                                    style="font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; margin-bottom: 5px;">
-                                    Estimated Score</h4>
-                                <div style="display: flex; align-items: baseline; gap: 10px;">
-                                    <span id="scoreDisplay"
-                                        style="font-size: 2.8rem; font-weight: 800; color: white;">468</span>
-                                    <span id="scoreUnit" style="font-size: 1.1rem; opacity: 0.85;">Points (High
-                                        Eligibility Range)</span>
+                        <!-- CTA Redirect Button -->
+                        <div>
+                            <a href="calculator/index.html" class="btn-gradient" style="padding: 14px 32px; font-size: 1.05rem; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; border-radius: 14px;">
+                                <i class="fas fa-calculator"></i> Check My Eligibility Free <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right: Preview Card (clickable) -->
+                    <div style="position: relative;">
+                        <a href="calculator/index.html" style="text-decoration: none; display: block;">
+                            <div style="background: white; border-radius: 24px; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12); border: 2px solid #E2E8F0; padding: 30px; transition: transform 0.35s ease, box-shadow 0.35s ease;">
+                                <!-- Mini preview of calculator UI -->
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div style="width: 56px; height: 56px; background: rgba(7,36,168,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--primary); font-size: 1.5rem;">
+                                        <i class="fas fa-calculator"></i>
+                                    </div>
+                                    <h4 style="font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">Instant Score Preview</h4>
+                                    <p style="color: #64748B; font-size: 0.88rem;">Click to open full calculator</p>
                                 </div>
-                                <p id="scoreAdvice" style="font-size: 0.9rem; margin-top: 5px; opacity: 0.9;">Great
-                                    profile for Express Entry &amp; Provincial Nominee Programs (PNP).</p>
+                                <!-- Sample Score Display -->
+                                <div style="background: linear-gradient(135deg, #0724A8, #031169); border-radius: 14px; padding: 20px 24px; color: white; margin-bottom: 16px;">
+                                    <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; font-weight: 700; margin-bottom: 6px;">ESTIMATED CRS SCORE</div>
+                                    <div style="font-size: 2.6rem; font-weight: 800; line-height: 1;">433 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span></div>
+                                    <div style="font-size: 0.85rem; margin-top: 6px; opacity: 0.9;">✅ 67-Pt FSW Eligible — Express Entry Ready</div>
+                                </div>
+                                <!-- Tabs row -->
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <span style="background: var(--primary); color: white; font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 20px;">🍁 Canada CRS</span>
+                                    <span style="background: #F1F5F9; color: #475569; font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;">🌏 Australia</span>
+                                    <span style="background: #F1F5F9; color: #475569; font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;">🇩🇪 Germany</span>
+                                </div>
+                                <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">
+                                    Open Full Calculator <i class="fas fa-arrow-right"></i>
+                                </div>
                             </div>
-                            <div>
-                                <a href="#contact" class="btn-gradient" onclick="prefillContactForm()"
-                                    style="padding: 12px 25px; white-space: nowrap;">
-                                    <i class="fas fa-check-circle"></i> Get Detailed Profile Evaluation
-                                </a>
-                            </div>
-                        </div>
-                    </form>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </section>
+
+
 
         <!-- 4. SERVICES SECTION -->
         <section class="services-preview" id="services"
