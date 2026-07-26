@@ -363,6 +363,35 @@
 
     <script src="../script.js?v=60.0"></script>
     <script>
+        // Auto-select dropdown option if redirected from Services page with ?service=...
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const serviceParam = params.get('service');
+            if (serviceParam) {
+                const select = document.getElementById('cService');
+                const map = {
+                    'pr': 'Canada PR / Express Entry',
+                    'germany': 'Germany Opportunity Card 2026',
+                    'study': 'Overseas Study Visa',
+                    'visitor': 'Visitor / Tourist Visa',
+                    'family': 'Dependent & Family Reunification',
+                    'business': 'Business & Investor Visas',
+                    'sop': 'SOP & Resume Writing',
+                    'resume': 'SOP & Resume Writing',
+                    'pcc': 'PCC & Apostille Attestation'
+                };
+                const val = map[serviceParam.toLowerCase()];
+                if (val) {
+                    for (let i = 0; i < select.options.length; i++) {
+                        if (select.options[i].text.includes(val) || select.options[i].value.includes(val) || val.includes(select.options[i].value)) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
         function handleContactPageSubmit(e) {
             e.preventDefault();
             const name    = document.getElementById('cName').value;
