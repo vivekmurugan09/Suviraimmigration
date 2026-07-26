@@ -3078,3 +3078,69 @@ section {
     97.5% { opacity: 1; transform: scale(1.04); }
     100% { opacity: 0; transform: scale(1.08); }
 }
+
+/* COMPREHENSIVE MOBILE FRAME & RESPONSIVE PERFECTION */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 8px 16px !important;
+    }
+    .navbar .logo img {
+        height: 52px !important;
+    }
+    .mobile-menu-btn {
+        display: block !important;
+        font-size: 1.4rem !important;
+        color: #0724A8 !important;
+        padding: 8px;
+    }
+    .nav-links {
+        display: none !important;
+    }
+    .mobile-menu {
+        overflow-y: auto;
+        width: 85vw;
+        max-width: 320px;
+    }
+    .hero, .calc-hero, .services-hero-pro, .about-hero-pro {
+        padding: 100px 16px 50px !important;
+    }
+    .page-wrapper {
+        padding: 0 12px !important;
+        margin: 24px auto 40px !important;
+    }
+    .form-card {
+        padding: 22px 18px !important;
+        border-radius: 16px !important;
+    }
+    .form-body {
+        padding: 18px 12px !important;
+    }
+    .fg-2, .fg-3 {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+    .stats-inner {
+        gap: 16px !important;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding: 0 16px 8px;
+    }
+    .stat-chip {
+        flex-shrink: 0;
+    }
+    .submit-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 14px 20px !important;
+    }
+    .country-card-pro, .service-card-pro {
+        padding: 22px 18px !important;
+    }
+    .flag-strip {
+        gap: 6px !important;
+    }
+    .flag-chip {
+        font-size: 0.76rem !important;
+        padding: 5px 10px !important;
+    }
+}
