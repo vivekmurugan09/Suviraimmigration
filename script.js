@@ -541,6 +541,44 @@ if (document.readyState === 'loading') {
     initRunningCounters();
 }
 
+// Homepage Direct Contact Form Handler
+function handleHomeTouchSubmit(e) {
+    e.preventDefault();
+    const name    = document.getElementById('htName').value;
+    const phone   = document.getElementById('htPhone').value;
+    const email   = document.getElementById('htEmail').value;
+    const service = document.getElementById('htService').value;
+    const msg     = document.getElementById('htMsg').value;
+
+    try {
+        const formData = new FormData();
+        formData.append("Full Name", name);
+        formData.append("Phone / WhatsApp", phone);
+        formData.append("Email Address", email);
+        formData.append("Service Required", service);
+        formData.append("Message", msg);
+        formData.append("_subject", `New Inquiry from Homepage: ${name} (${service})`);
+        formData.append("_captcha", "false");
+
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        });
+    } catch (err) {
+        console.log(err);
+    }
+
+    const box = document.getElementById('htSuccess');
+    if (box) {
+        box.style.display = 'flex';
+        setTimeout(() => {
+            document.getElementById('homeTouchForm').reset();
+            box.style.display = 'none';
+        }, 3000);
+    }
+}
+
 
 
 
