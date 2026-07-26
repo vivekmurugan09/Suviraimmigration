@@ -4,32 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immigration & Visa Services - Suvira Immigration | Your Trusted Chennai Partner</title>
+    <title>Immigration & Visa Services - Suvira Immigration | Chennai</title>
+    <meta name="description" content="Explore Suvira Immigration's full range of PR Visas, Germany Opportunity Card, Study Visas, Visitor Visas, SOP Writing, Resume formatting, Apostille, and PCC attestation services.">
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../style.css?v=18.0">
+    <link rel="stylesheet" href="../style.css?v=48.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Outfit', sans-serif; background: #F8FAFC; color: #0F172A; }
+
         .services-hero-pro {
-            padding: 160px 0 80px;
-            background: linear-gradient(135deg, rgba(15, 10, 28, 0.92) 0%, rgba(26, 12, 45, 0.88) 50%, rgba(15, 10, 28, 0.94) 100%),
-                url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            padding: 140px 0 80px;
+            background: linear-gradient(135deg, #0724A8 0%, #031169 60%, #0F1F8A 100%);
             color: white;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .services-hero-pro::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=20') center/cover no-repeat;
+            opacity: 0.08;
         }
 
         .service-category-badge {
-            display: inline-block;
-            background: rgba(248, 112, 52, 0.2);
-            color: var(--secondary);
-            border: 1px solid rgba(248, 112, 52, 0.4);
-            padding: 6px 18px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            color: #FF9F1C;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 20px;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 700;
@@ -43,82 +56,101 @@
             justify-content: center;
             gap: 12px;
             flex-wrap: wrap;
-            margin: 40px 0 20px;
+            margin: 36px 0 10px;
+            position: relative;
+            z-index: 2;
         }
 
         .filter-btn {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.22);
             color: #F8FAFC;
-            padding: 10px 22px;
+            padding: 10px 24px;
             border-radius: 30px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            font-family: 'Outfit', sans-serif;
         }
 
         .filter-btn:hover,
         .filter-btn.active {
-            background: var(--gradient-orange);
+            background: linear-gradient(135deg, #F87034, #E8501A);
             border-color: transparent;
             color: white;
-            box-shadow: 0 4px 15px rgba(248, 112, 52, 0.35);
+            box-shadow: 0 6px 20px rgba(248, 112, 52, 0.4);
+        }
+
+        .section-heading-bar {
+            text-align: center;
+            margin: 50px 0 35px;
+        }
+        .section-heading-bar h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0724A8;
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-heading-bar p {
+            color: #64748B;
+            font-size: 1.05rem;
         }
 
         .services-grid-full {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
         }
 
         .service-card-pro {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: white;
             border-radius: 20px;
-            padding: 35px 30px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #E2E8F0;
+            padding: 32px 28px;
+            transition: all 0.35s ease;
             position: relative;
-            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
         .service-card-pro:hover {
-            transform: translateY(-8px);
-            border-color: rgba(248, 112, 52, 0.5);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-            background: rgba(30, 41, 59, 0.85);
+            transform: translateY(-6px);
+            border-color: rgba(7, 36, 168, 0.3);
+            box-shadow: 0 20px 45px rgba(7, 36, 168, 0.12);
         }
 
         .service-icon-wrapper {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: var(--gradient-orange);
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #0724A8, #031169);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: white;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 20px rgba(248, 112, 52, 0.3);
+            margin-bottom: 22px;
+            box-shadow: 0 8px 20px rgba(7, 36, 168, 0.25);
         }
 
         .service-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #F8FAFC;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 10px;
         }
 
         .service-desc {
-            color: #94A3B8;
+            color: #475569;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
             margin-bottom: 20px;
         }
 
@@ -129,17 +161,19 @@
         }
 
         .service-features-list li {
-            color: #CBD5E1;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            color: #334155;
+            font-size: 0.88rem;
+            margin-bottom: 9px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 500;
         }
 
         .service-features-list li i {
-            color: #34D399;
+            color: #10B981;
             font-size: 0.85rem;
+            flex-shrink: 0;
         }
 
         .service-cta-btn {
@@ -147,46 +181,67 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
+            background: #F8FAFC;
+            border: 1.5px solid #E2E8F0;
+            color: #0724A8;
             padding: 12px 24px;
             border-radius: 12px;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 0.92rem;
             text-decoration: none;
             transition: all 0.3s ease;
             width: 100%;
         }
 
         .service-card-pro:hover .service-cta-btn {
-            background: var(--gradient-orange);
+            background: linear-gradient(135deg, #F87034, #E8501A);
             border-color: transparent;
-            box-shadow: 0 4px 15px rgba(248, 112, 52, 0.3);
+            color: white;
+            box-shadow: 0 6px 18px rgba(248, 112, 52, 0.35);
         }
 
         .popular-tag {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--gradient-orange);
+            background: linear-gradient(135deg, #F87034, #E8501A);
             color: white;
-            font-size: 0.75rem;
+            font-size: 0.73rem;
             font-weight: 800;
             padding: 4px 12px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.6rem;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
+            z-index: 9999;
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
     </style>
 </head>
 
 <body>
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav class="navbar scrolled">
         <div class="container">
             <div class="logo">
-                <a href="../index.html"
-                    style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                <a href="../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
                     <img src="../images/suvira-logo-transparent.png" alt="Suvira Immigration Logo"
                         style="height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.9));">
                 </a>
@@ -210,326 +265,301 @@
         </div>
     </nav>
 
-    <!-- Services Hero Header -->
-    <section class="services-hero-pro">
-        <div class="container">
-            <span class="service-category-badge"><i class="fas fa-award"></i> Premier Immigration Solutions</span>
-            <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2;">
-                Comprehensive Visa &amp; Migration Services
-            </h1>
-            <p style="font-size: 1.15rem; color: #E2E8F0; max-width: 800px; margin: 0 auto 30px; line-height: 1.6;">
-                From Permanent Residency (PR) and Student Visas to SOP drafting, PCC, and post-landing settlement —
-                Suvira Immigration delivers 100% transparent, benchmarked guidance for global aspirants.
-            </p>
-
-            <div class="services-filter-bar">
-                <button class="filter-btn active" onclick="filterServices('all', this)">All Services</button>
-                <button class="filter-btn" onclick="filterServices('visa', this)">Core PR &amp; Visas</button>
-                <button class="filter-btn" onclick="filterServices('value', this)">Value-Added Docs</button>
-                <button class="filter-btn" onclick="filterServices('family', this)">Family &amp; Business</button>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="mobile-logo">
+                <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo" style="height: 60px; width: auto; object-fit: contain;">
             </div>
+            <button class="close-menu"><i class="fas fa-times"></i></button>
         </div>
-    </section>
-
-    <!-- Services Grid Section -->
-    <section style="padding: 80px 0; background: #0F172A;">
-        <div class="container">
-
-            <div class="services-grid-full" id="servicesGrid">
-
-                <!-- Service 1: PR Visas -->
-                <div class="service-card-pro" data-category="visa">
-                    <span class="popular-tag">High Demand</span>
-                    <div>
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-id-card"></i>
-                        </div>
-                        <h3 class="service-title">Permanent Residency (PR) Visas</h3>
-                        <p class="service-desc">
-                            Complete end-to-end guidance for Express Entry (Canada), Australia Subclass 189/190/491, and
-                            European PR pathways with expert points optimization.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> ECA &amp; Skills Assessment Assistance</li>
-                            <li><i class="fas fa-check-circle"></i> EOI / Express Entry Profile Creation</li>
-                            <li><i class="fas fa-check-circle"></i> Provincial Nomination (PNP) Strategy</li>
-                            <li><i class="fas fa-check-circle"></i> Post-ITA Document Auditing</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Check PR Eligibility <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 2: Germany Opportunity Card -->
-                <div class="service-card-pro" data-category="visa" style="border: 2px solid var(--secondary);">
-                    <span class="popular-tag" style="background: #10B981;">New 2026 Route</span>
-                    <div>
-                        <div class="service-icon-wrapper"
-                            style="background: linear-gradient(135deg, #10B981, #059669);">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h3 class="service-title">Germany Opportunity Card (Chancenkarte 2026)</h3>
-                        <p class="service-desc">
-                            Work in Germany under the new point-based job seeker visa. Secure employment without an
-                            initial German job offer.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> 6-Point Score Calculation &amp; Verification</li>
-                            <li><i class="fas fa-check-circle"></i> Qualification Recognition (Anabin/ZAB)</li>
-                            <li><i class="fas fa-check-circle"></i> Blocked Account &amp; Financial Guidance</li>
-                            <li><i class="fas fa-check-circle"></i> German Embassy Interview Preparation</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Apply Chancenkarte <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 3: Study Visas -->
-                <div class="service-card-pro" data-category="visa">
-                    <div>
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h3 class="service-title">Study Abroad &amp; Student Visas</h3>
-                        <p class="service-desc">
-                            Admission guidance, offer letter processing, and student visa filing for top universities in
-                            Canada, UK, Australia, USA, Germany, and Ireland.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> Course &amp; University Shortlisting</li>
-                            <li><i class="fas fa-check-circle"></i> SOP &amp; Recommendation Letter Guidance</li>
-                            <li><i class="fas fa-check-circle"></i> GIC &amp; Proof of Funds Assistance</li>
-                            <li><i class="fas fa-check-circle"></i> Post-Study Work Permit (PSWP) Planning</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Explore Universities <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 4: Visitor Visa -->
-                <div class="service-card-pro" data-category="visa">
-                    <div>
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-plane"></i>
-                        </div>
-                        <h3 class="service-title">Visitor &amp; Tourist Visas</h3>
-                        <p class="service-desc">
-                            Fast-track tourist &amp; visitor visa processing for Schengen area, Canada, USA B1/B2, UK,
-                            and Australia with high success rates.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> Custom Travel Itinerary &amp; Cover Letter</li>
-                            <li><i class="fas fa-check-circle"></i> Sponsor Invitation Letter Review</li>
-                            <li><i class="fas fa-check-circle"></i> Financial Tie-back Proofing</li>
-                            <li><i class="fas fa-check-circle"></i> Embassy Appointment Slot Booking</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Apply Visitor Visa <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 5: Dependent & Family Visa -->
-                <div class="service-card-pro" data-category="family">
-                    <div>
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="service-title">Family Reunification &amp; Spousal Visas</h3>
-                        <p class="service-desc">
-                            Reunite with your spouse, children, or parents abroad through dedicated spousal sponsorship
-                            and dependent PR visa pathways.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> Marriage Certificate &amp; Relationship Audit</li>
-                            <li><i class="fas fa-check-circle"></i> Sponsor Income &amp; Tax Verification</li>
-                            <li><i class="fas fa-check-circle"></i> Open Work Permit for Spouses</li>
-                            <li><i class="fas fa-check-circle"></i> Parent Super Visa Assistance</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Sponsor Family <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 6: Business & Investor Visa -->
-                <div class="service-card-pro" data-category="family">
-                    <div>
-                        <div class="service-icon-wrapper">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="service-title">Business &amp; Investor Visas</h3>
-                        <p class="service-desc">
-                            Expand your enterprise globally or secure residency through business innovation, startup
-                            visa programs, and golden investor PR routes.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> Business Plan &amp; Market Feasibility Audit</li>
-                            <li><i class="fas fa-check-circle"></i> Designated Incubator / Angel Endorsements</li>
-                            <li><i class="fas fa-check-circle"></i> Net Worth &amp; Capital Audit Filing</li>
-                            <li><i class="fas fa-check-circle"></i> Direct PR Pathway for Entrepreneurs</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Consult Business PR <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 7: SOP Statement of Purpose -->
-                <div class="service-card-pro" data-category="value">
-                    <span class="popular-tag">Must Have</span>
-                    <div>
-                        <div class="service-icon-wrapper"
-                            style="background: linear-gradient(135deg, #0284C7, #0369A1);">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <h3 class="service-title">SOP - Statement of Purpose Writing</h3>
-                        <p class="service-desc">
-                            High-impact, customized SOP drafting by expert visa copywriters tailored to university
-                            admissions and strict visa officer standards.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> 100% Unique, Plagiarism-Free Content</li>
-                            <li><i class="fas fa-check-circle"></i> Visa Refusal Risk Mitigation Analysis</li>
-                            <li><i class="fas fa-check-circle"></i> Academic &amp; Career Alignment Focus</li>
-                            <li><i class="fas fa-check-circle"></i> Unlimited Revisions Until Approval</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Get Professional SOP <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 8: Resume Writing -->
-                <div class="service-card-pro" data-category="value">
-                    <div>
-                        <div class="service-icon-wrapper"
-                            style="background: linear-gradient(135deg, #0284C7, #0369A1);">
-                            <i class="fas fa-file-invoice"></i>
-                        </div>
-                        <h3 class="service-title">ATS-Compliant Resume Writing</h3>
-                        <p class="service-desc">
-                            Professional Canadian (Chronological format) and Australian (ANZSCO-aligned) resume &amp;
-                            cover letter drafting for job seekers and PR applicants.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> ANZSCO &amp; NOC Code Optimization</li>
-                            <li><i class="fas fa-check-circle"></i> ATS Scanner Keyword Integration</li>
-                            <li><i class="fas fa-check-circle"></i> Custom Targeted Cover Letters</li>
-                            <li><i class="fas fa-check-circle"></i> Editable Word &amp; PDF Formats</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Format My Resume <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-                <!-- Service 9: Apostille & PCC -->
-                <div class="service-card-pro" data-category="value">
-                    <div>
-                        <div class="service-icon-wrapper"
-                            style="background: linear-gradient(135deg, #0284C7, #0369A1);">
-                            <i class="fas fa-stamp"></i>
-                        </div>
-                        <h3 class="service-title">Apostille, Attestation &amp; PCC</h3>
-                        <p class="service-desc">
-                            Hassle-free document attestation (HRD, MEA, Apostille) and Police Clearance Certificate
-                            (PCC) guidance for overseas deployment.
-                        </p>
-                        <ul class="service-features-list">
-                            <li><i class="fas fa-check-circle"></i> Ministry of External Affairs (MEA) Apostille</li>
-                            <li><i class="fas fa-check-circle"></i> Embassy &amp; Consulate Legalization</li>
-                            <li><i class="fas fa-check-circle"></i> Passport Seva Kendra PCC Slot Booking</li>
-                            <li><i class="fas fa-check-circle"></i> Educational Transcript Verification</li>
-                        </ul>
-                    </div>
-                    <a href="../index.html#contact" class="service-cta-btn">
-                        Attest Documents <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Consultation CTA -->
-    <section
-        style="padding: 80px 0; background: linear-gradient(135deg, #031169 0%, #0724A8 100%); color: white; text-align: center;">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 15px;">Ready to Begin Your Global Journey?
-            </h2>
-            <p style="font-size: 1.1rem; color: #E0E7FF; max-width: 650px; margin: 0 auto 30px;">
-                Speak directly with our senior immigration specialists in Chennai for honest evaluation and zero hidden
-                charges.
-            </p>
-            <a href="tel:+919940352086"
-                style="display: inline-flex; align-items: center; gap: 12px; background: var(--gradient-orange); color: white; padding: 16px 36px; border-radius: 30px; font-size: 1.1rem; font-weight: 700; text-decoration: none; box-shadow: 0 8px 25px rgba(248, 112, 52, 0.4);">
-                <i class="fas fa-phone-alt"></i> Call +91 99403 52086
+        <div class="mobile-nav">
+            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="../about/index.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="../calculator/index.html" class="nav-link"><i class="fas fa-calculator"></i> Calculator</a>
+            <a href="index.html" class="nav-link active"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="../index.html#pricing" class="nav-link"><i class="fas fa-tags"></i> Pricing</a>
+            <a href="../countries/index.html" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
+            <a href="../index.html#process" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
+            <a href="../index.html#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="tel:+919940352086" class="mobile-cta">
+                <i class="fas fa-phone"></i> Call Now
             </a>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer"
-        style="background: linear-gradient(rgba(3, 17, 105, 0.95), rgba(3, 17, 105, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo-with-icon">
-                        <img src="../images/suvira-logo-transparent.png" alt="Suvira Immigration Logo"
-                            style="height: 90px; width: auto; object-fit: contain;">
-                    </div>
-                    <p>Your Trusted Chennai Immigration Partner Since 2004</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/suviraimmigration/" target="_blank" rel="noopener noreferrer"
-                            title="Follow Suvira Immigration on Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/suvira-immigration-36b25a41a" target="_blank"
-                            rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
 
-                <div class="footer-links">
-                    <h3>Quick Links</h3>
-                    <a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a>
-                    <a href="../index.html#about"><i class="fas fa-chevron-right"></i> About Us</a>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> Services</a>
-                    <a href="../countries/index.html"><i class="fas fa-chevron-right"></i> Countries</a>
-                    <a href="../index.html#process"><i class="fas fa-chevron-right"></i> Process</a>
-                    <a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a>
-                </div>
+        <!-- Services Hero Header -->
+        <section class="services-hero-pro">
+            <div class="container">
+                <span class="service-category-badge"><i class="fas fa-award"></i> Premier Immigration Solutions</span>
+                <h1 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; margin-bottom: 18px; line-height: 1.2;">
+                    Comprehensive Migration &amp; Value-Added Services
+                </h1>
+                <p style="font-size: 1.1rem; color: rgba(255, 255, 255, 0.88); max-width: 800px; margin: 0 auto 30px; line-height: 1.65;">
+                    From Permanent Residency (PR) and Student Visas to SOP drafting, PCC, and post-landing settlement —
+                    Suvira Immigration delivers 100% transparent, benchmarked guidance for global aspirants.
+                </p>
 
-                <div class="footer-services">
-                    <h3>Our Services</h3>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> PR Visas</a>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> Germany Chancenkarte</a>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> Study Abroad</a>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> SOP &amp; Resume</a>
-                    <a href="index.html"><i class="fas fa-chevron-right"></i> Apostille &amp; PCC</a>
-                </div>
-
-                <div class="footer-newsletter">
-                    <h3>Stay Updated</h3>
-                    <p>Subscribe for latest immigration updates and success stories</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </div>
+                <div class="services-filter-bar">
+                    <button class="filter-btn active" onclick="filterServices('all', this)">All Services</button>
+                    <button class="filter-btn" onclick="filterServices('visa', this)">Visa &amp; Immigration</button>
+                    <button class="filter-btn" onclick="filterServices('value', this)">Value-Added Services</button>
+                    <button class="filter-btn" onclick="filterServices('family', this)">Family &amp; Business</button>
                 </div>
             </div>
+        </section>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Suvira Immigration. All rights reserved. | <a href="../index.html#home">Privacy
-                        Policy</a> | <a href="../index.html#home">Terms of Service</a></p>
+        <!-- Services Grid Section -->
+        <section style="padding: 60px 0 80px; background: #F8FAFC;">
+            <div class="container">
+
+                <div class="services-grid-full" id="servicesGrid">
+
+                    <!-- Service 1: PR Visas -->
+                    <div class="service-card-pro" data-category="visa">
+                        <span class="popular-tag">High Demand</span>
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="fas fa-id-card"></i>
+                            </div>
+                            <h3 class="service-title">Permanent Residency (PR) Visas</h3>
+                            <p class="service-desc">
+                                End-to-end guidance for Express Entry (Canada), Australia Subclass 189/190/491, and European PR pathways with expert points optimization.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> ECA &amp; Skills Assessment Assistance</li>
+                                <li><i class="fas fa-check-circle"></i> EOI / Express Entry Profile Creation</li>
+                                <li><i class="fas fa-check-circle"></i> Provincial Nomination (PNP) Strategy</li>
+                                <li><i class="fas fa-check-circle"></i> Post-ITA Document Auditing</li>
+                            </ul>
+                        </div>
+                        <a href="../calculator/index.html" class="service-cta-btn">
+                            Check PR Eligibility <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 2: Germany Opportunity Card -->
+                    <div class="service-card-pro" data-category="visa" style="border: 2px solid #F87034;">
+                        <span class="popular-tag" style="background: #10B981;">Chancenkarte 2026</span>
+                        <div>
+                            <div class="service-icon-wrapper" style="background: linear-gradient(135deg, #F87034, #E8501A);">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <h3 class="service-title">Germany Opportunity Card</h3>
+                            <p class="service-desc">
+                                Live and search for employment in Germany under the new point-based job seeker visa — no German job offer required initially.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> 6-Point Score Audit &amp; Verification</li>
+                                <li><i class="fas fa-check-circle"></i> Qualification Recognition (Anabin/ZAB)</li>
+                                <li><i class="fas fa-check-circle"></i> Blocked Account &amp; Financial Guidance</li>
+                                <li><i class="fas fa-check-circle"></i> Embassy Interview Coaching</li>
+                            </ul>
+                        </div>
+                        <a href="../calculator/index.html" class="service-cta-btn">
+                            Apply Chancenkarte <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 3: Study Visas -->
+                    <div class="service-card-pro" data-category="visa">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="service-title">Study Abroad &amp; Student Visas</h3>
+                            <p class="service-desc">
+                                University shortlisting, admission processing, and visa filing for top institutes in Canada, UK, Australia, USA, Germany, and Ireland.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> University Offer Letter Processing</li>
+                                <li><i class="fas fa-check-circle"></i> Statement of Purpose (SOP) Assistance</li>
+                                <li><i class="fas fa-check-circle"></i> GIC &amp; Proof of Funds Auditing</li>
+                                <li><i class="fas fa-check-circle"></i> Post-Study Work Permit Guidance</li>
+                            </ul>
+                        </div>
+                        <a href="../calculator/index.html" class="service-cta-btn">
+                            Apply Student Visa <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 4: Visitor Visa -->
+                    <div class="service-card-pro" data-category="visa">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <h3 class="service-title">Visitor &amp; Tourist Visas</h3>
+                            <p class="service-desc">
+                                Fast-track tourist &amp; visitor visa processing for Schengen area, Canada, USA B1/B2, UK, and Australia with high success rates.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> Customized Travel Itinerary &amp; Cover Letter</li>
+                                <li><i class="fas fa-check-circle"></i> Sponsor Invitation Letter Review</li>
+                                <li><i class="fas fa-check-circle"></i> Financial &amp; Home-Tie Proofing</li>
+                                <li><i class="fas fa-check-circle"></i> Embassy Appointment Booking</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Apply Visitor Visa <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 5: Dependent & Family Visa -->
+                    <div class="service-card-pro" data-category="family">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="service-title">Dependent &amp; Family Reunification</h3>
+                            <p class="service-desc">
+                                Reunite with your spouse, children, or parents abroad through dedicated spousal sponsorship and dependent PR visa pathways.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> Spousal Open Work Permit (SOWP)</li>
+                                <li><i class="fas fa-check-circle"></i> Child Dependent Visa Filing</li>
+                                <li><i class="fas fa-check-circle"></i> Parent &amp; Grandparent Super Visa</li>
+                                <li><i class="fas fa-check-circle"></i> Marriage Certificate Verification</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Sponsor Family <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 6: Business & Investor Visa -->
+                    <div class="service-card-pro" data-category="family">
+                        <div>
+                            <div class="service-icon-wrapper">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <h3 class="service-title">Business &amp; Investor Visas</h3>
+                            <p class="service-desc">
+                                Expand your enterprise globally or secure residency through business innovation, startup visa programs, and golden investor PR routes.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> Business Plan &amp; Market Audit</li>
+                                <li><i class="fas fa-check-circle"></i> Incubator &amp; Angel Endorsements</li>
+                                <li><i class="fas fa-check-circle"></i> Net Worth &amp; Capital Audit Filing</li>
+                                <li><i class="fas fa-check-circle"></i> Direct Entrepreneur PR Route</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Consult Business PR <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 7: SOP Statement of Purpose -->
+                    <div class="service-card-pro" data-category="value">
+                        <span class="popular-tag" style="background:#0724A8;">Value-Added</span>
+                        <div>
+                            <div class="service-icon-wrapper" style="background: linear-gradient(135deg, #0284C7, #0369A1);">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <h3 class="service-title">SOP - Statement of Purpose</h3>
+                            <p class="service-desc">
+                                High-impact, customized SOP drafting by expert copywriters tailored to university admissions and strict visa officer requirements.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> 100% Unique &amp; Plagiarism-Free</li>
+                                <li><i class="fas fa-check-circle"></i> Refusal Risk Mitigation Strategy</li>
+                                <li><i class="fas fa-check-circle"></i> Career &amp; Academic Alignment</li>
+                                <li><i class="fas fa-check-circle"></i> Revisions Until Satisfaction</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Get Professional SOP <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 8: Resume Writing -->
+                    <div class="service-card-pro" data-category="value">
+                        <span class="popular-tag" style="background:#0724A8;">Value-Added</span>
+                        <div>
+                            <div class="service-icon-wrapper" style="background: linear-gradient(135deg, #0284C7, #0369A1);">
+                                <i class="fas fa-file-invoice"></i>
+                            </div>
+                            <h3 class="service-title">ATS Resume &amp; Cover Letter</h3>
+                            <p class="service-desc">
+                                Professional Canadian (Chronological format) and Australian (ANZSCO-aligned) resume &amp; cover letter drafting for job seekers.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> ANZSCO &amp; NOC Code Alignment</li>
+                                <li><i class="fas fa-check-circle"></i> ATS Scanner Keyword Optimization</li>
+                                <li><i class="fas fa-check-circle"></i> Country-Specific Formatting</li>
+                                <li><i class="fas fa-check-circle"></i> Editable Word &amp; PDF Delivery</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Format My Resume <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 9: Apostille, Attestation & PCC -->
+                    <div class="service-card-pro" data-category="value">
+                        <span class="popular-tag" style="background:#0724A8;">Value-Added</span>
+                        <div>
+                            <div class="service-icon-wrapper" style="background: linear-gradient(135deg, #0284C7, #0369A1);">
+                                <i class="fas fa-stamp"></i>
+                            </div>
+                            <h3 class="service-title">Apostille, Attestation &amp; PCC</h3>
+                            <p class="service-desc">
+                                Complete document attestation (HRD, MEA, Apostille) and Police Clearance Certificate (PCC) guidance for overseas deployment.
+                            </p>
+                            <ul class="service-features-list">
+                                <li><i class="fas fa-check-circle"></i> MEA Apostille &amp; Embassy Stamping</li>
+                                <li><i class="fas fa-check-circle"></i> Passport Seva Kendra PCC Slotting</li>
+                                <li><i class="fas fa-check-circle"></i> Medical Clearance Certificate (MCC)</li>
+                                <li><i class="fas fa-check-circle"></i> Passport Renewal Assistance</li>
+                            </ul>
+                        </div>
+                        <a href="../index.html#contact" class="service-cta-btn">
+                            Attest Documents <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                </div>
+
             </div>
-        </div>
-    </footer>
+        </section>
+
+        <!-- Consultation CTA Banner -->
+        <section style="padding: 70px 0; background: linear-gradient(135deg, #031169 0%, #0724A8 100%); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 2.3rem; font-weight: 800; margin-bottom: 14px;">Ready to Begin Your Global Journey?</h2>
+                <p style="font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 650px; margin: 0 auto 28px;">
+                    Speak directly with our senior immigration specialists in Chennai for honest evaluation and zero hidden charges.
+                </p>
+                <a href="tel:+919940352086" style="display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #F87034, #E8501A); color: white; padding: 15px 36px; border-radius: 30px; font-size: 1.05rem; font-weight: 700; text-decoration: none; box-shadow: 0 8px 25px rgba(248, 112, 52, 0.4);">
+                    <i class="fas fa-phone-alt"></i> Call +91 99403 52086
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="background: linear-gradient(135deg, #1020B8 0%, #0F1FA8 50%, #1527CC 100%); color: #CBD5E1; padding: 40px 0; text-align: center;">
+            <div class="container">
+                <p>&copy; 2026 Suvira Immigration Consultants. All Rights Reserved.</p>
+                <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:8px;">
+                    <a href="../index.html" style="color: #FF9F1C; text-decoration: none;">Home</a>
+                    <a href="../about/index.html" style="color: #FF9F1C; text-decoration: none;">About Us</a>
+                    <a href="../calculator/index.html" style="color: #FF9F1C; text-decoration: none;">Calculator</a>
+                    <a href="../countries/index.html" style="color: #FF9F1C; text-decoration: none;">Countries</a>
+                    <a href="../index.html#contact" style="color: #FF9F1C; text-decoration: none;">Contact</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- end .main-content -->
+
+    <!-- Floating Buttons -->
+    <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         function filterServices(category, btn) {
