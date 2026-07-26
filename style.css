@@ -2548,26 +2548,75 @@ section {
     pointer-events: none;
 }
 
-.hero-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    position: relative;
-    z-index: 2;
+.hero-gradient .hero-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    text-align: left !important;
+    gap: 50px !important;
+    width: 100% !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
 }
 
-.hero-content {
-    flex: 1;
-    max-width: 650px;
+.hero-gradient .hero-content {
+    flex: 1 1 55% !important;
+    max-width: 680px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    text-align: left !important;
 }
 
-.hero-graphic {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+.hero-gradient .hero-title {
+    text-align: left !important;
+}
+
+.hero-gradient .hero-subtitle {
+    text-align: left !important;
+}
+
+.hero-gradient .hero-features-pill {
+    justify-content: flex-start !important;
+}
+
+.hero-gradient .hero-btns {
+    justify-content: flex-start !important;
+}
+
+.hero-gradient .hero-graphic {
+    flex: 1 1 45% !important;
+    max-width: 520px !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+@media (max-width: 991px) {
+    .hero-gradient .hero-container {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 40px !important;
+    }
+    
+    .hero-gradient .hero-content {
+        align-items: center !important;
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+    
+    .hero-gradient .hero-title,
+    .hero-gradient .hero-subtitle {
+        text-align: center !important;
+    }
+    
+    .hero-gradient .hero-features-pill,
+    .hero-gradient .hero-btns {
+        justify-content: center !important;
+    }
 }
 
 .hero-graphic::after {
