@@ -182,28 +182,91 @@
     <!-- Production Hero Banner -->
     <div class="main-content">
         <section class="hero"
-            style="background: linear-gradient(135deg, rgba(7, 36, 168, 0.95), rgba(3, 17, 105, 0.92)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; padding: 160px 0 90px; text-align: center; color: white;">
-            <div class="container">
-                <div
-                    style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; color: #FF9F1C;">
-                    <i class="fas fa-globe-americas"></i> GLOBAL IMMIGRATION DESTINATIONS
+            style="background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(7, 36, 168, 0.85) 50%, rgba(3, 17, 105, 0.92) 100%), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center; padding: 150px 0 80px; text-align: center; color: white; position: relative; overflow: hidden;">
+            
+            <!-- Glowing background radial mesh -->
+            <div style="position: absolute; inset: 0; background: radial-gradient(circle at 50% 30%, rgba(248, 112, 52, 0.22), transparent 60%); pointer-events: none;"></div>
+
+            <div class="container" style="position: relative; z-index: 2; max-width: 1100px;">
+                <!-- Glowing Top Badge -->
+                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.25); padding: 8px 22px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin-bottom: 22px; color: #FF9F1C; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
+                    <i class="fas fa-globe-americas"></i> 15+ GLOBAL DESTINATIONS &amp; PR PATHWAYS
                 </div>
-                <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 15px;">Explore World's Top PR &amp; Visa
-                    Pathways</h1>
-                <p
-                    style="font-size: 1.15rem; max-width: 750px; margin: 0 auto; color: rgba(255, 255, 255, 0.9); line-height: 1.6;">
-                    Personalized eligibility guidance for Permanent Residency, Work Permits, Higher Education, and Job
-                    Seeker Visas across 15+ top destinations.</p>
+
+                <!-- Main Hero Title -->
+                <h1 style="font-size: 3.1rem; font-weight: 800; margin-bottom: 18px; line-height: 1.15; letter-spacing: -0.5px;">
+                    Explore World's Top <span style="background: linear-gradient(135deg, #FF9F1C 0%, #F87034 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PR &amp; Visa Pathways</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p style="font-size: 1.15rem; max-width: 780px; margin: 0 auto 35px; color: rgba(255, 255, 255, 0.9); line-height: 1.65; font-weight: 400;">
+                    Personalized eligibility guidance for Permanent Residency, Work Permits, Higher Education, and Job Seeker Visas across top global destinations with 100% transparent processing.
+                </p>
+
+                <!-- Glassmorphic Search & Quick Filter Hub -->
+                <div style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.22); padding: 22px 28px; border-radius: 24px; max-width: 860px; margin: 0 auto 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.25);">
+                    <div style="position: relative; margin-bottom: 18px;">
+                        <i class="fas fa-search" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #0724A8; font-size: 1.1rem;"></i>
+                        <input type="text" id="countrySearchInput" onkeyup="filterCountries()" placeholder="Search destination (e.g., Canada, Germany, MBBS, Australia, UK...)"
+                            style="width: 100%; padding: 14px 20px 14px 50px; border-radius: 14px; border: 2px solid rgba(255, 255, 255, 0.8); background: white; color: #0F172A; font-size: 1rem; font-weight: 600; outline: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    </div>
+
+                    <!-- Category Pills -->
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;" id="filterPillGroup">
+                        <button onclick="setFilterCategory('all', this)" class="country-filter-pill active-pill" style="padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.4); background: #FF9F1C; color: #0F172A; font-weight: 700; font-size: 0.83rem; cursor: pointer; transition: all 0.25s ease;">
+                            ✨ All Destinations
+                        </button>
+                        <button onclick="setFilterCategory('pr', this)" class="country-filter-pill" style="padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.25s ease;">
+                            🇨🇦 Permanent Residency (PR)
+                        </button>
+                        <button onclick="setFilterCategory('germany', this)" class="country-filter-pill" style="padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.25s ease;">
+                            🇩🇪 Opportunity Card
+                        </button>
+                        <button onclick="setFilterCategory('mbbs', this)" class="country-filter-pill" style="padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.25s ease;">
+                            🏥 MBBS Medical Study
+                        </button>
+                        <button onclick="setFilterCategory('study', this)" class="country-filter-pill" style="padding: 7px 16px; border-radius: 20px; border: 1.5px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); color: white; font-weight: 600; font-size: 0.83rem; cursor: pointer; transition: all 0.25s ease;">
+                            🎓 Overseas Study Visas
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Highlight Metrics Grid -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 960px; margin: 0 auto;">
+                    <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 18px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #FF9F1C;">15+ Top</div>
+                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.85); font-weight: 500;">Global Destinations</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 18px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #38BDF8;">100% Verified</div>
+                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.85); font-weight: 500;">Official PR &amp; Visa Rules</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 18px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #4ADE80;">Zero Hidden</div>
+                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.85); font-weight: 500;">Consultancy Charges</div>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); padding: 14px 18px; border-radius: 16px; text-align: center;">
+                        <div style="font-size: 1.4rem; font-weight: 800; color: #F472B6;">98.4%</div>
+                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.85); font-weight: 500;">Visa Approval Track Record</div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- Destination Cards Grid Section -->
-        <section style="padding: 80px 0; background: #F8FAFC;">
+        <section style="padding: 70px 0 90px; background: #F8FAFC;">
             <div class="container">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+                <div id="noResultsMsg" style="display: none; text-align: center; padding: 40px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px;">
+                    <i class="fas fa-search" style="font-size: 2.5rem; color: #94A3B8; margin-bottom: 12px;"></i>
+                    <h3 style="color: #0F172A; font-size: 1.3rem; margin-bottom: 8px;">No matching destinations found</h3>
+                    <p style="color: #64748B;">Try typing another country name or select "All Destinations".</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;" id="countryGrid">
 
                     <!-- Canada -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="pr study canada">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1544984243-ec57ea16fe25?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Canada Skyline">
@@ -241,7 +304,7 @@
                     </div>
 
                     <!-- Australia -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="pr study australia">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Australia Opera House">
@@ -279,7 +342,7 @@
                     </div>
 
                     <!-- Germany -->
-                    <div class="country-card-pro" style="border: 2px solid var(--secondary);">
+                    <div class="country-card-pro" data-category="germany study pr" style="border: 2px solid var(--secondary);">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1599946347371-68eb71b16afc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Germany Skyline">
@@ -316,7 +379,7 @@
                     </div>
 
                     <!-- United Kingdom -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="study pr uk">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="UK Big Ben">
@@ -355,7 +418,7 @@
 
 
                     <!-- New Zealand -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="pr study newzealand">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="New Zealand Skyline">
@@ -393,7 +456,7 @@
                     </div>
 
                     <!-- Ireland -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="study pr ireland">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1549918864-48ac978761a4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Ireland Skyline">
@@ -431,7 +494,7 @@
                     </div>
 
                     <!-- Singapore -->
-                    <div class="country-card-pro">
+                    <div class="country-card-pro" data-category="study pr singapore">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Singapore Marina Bay">
@@ -469,7 +532,7 @@
                     </div>
 
                     <!-- Russia (MBBS) -->
-                    <div class="country-card-pro" style="border: 2px solid #DC2626;">
+                    <div class="country-card-pro" data-category="mbbs study russia" style="border: 2px solid #DC2626;">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1513326738677-b964603b136d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Russia Moscow Red Square">
@@ -516,7 +579,7 @@
                     </div>
 
                     <!-- Ukraine (MBBS) -->
-                    <div class="country-card-pro" style="border: 2px solid #2563EB;">
+                    <div class="country-card-pro" data-category="mbbs study ukraine" style="border: 2px solid #2563EB;">
                         <div class="country-card-banner">
                             <img src="https://images.unsplash.com/photo-1580130601254-05fa235abeab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                                 alt="Ukraine Kyiv Architecture">
@@ -659,6 +722,55 @@
     </div>
 
     <script src="../script.js"></script>
+    <script>
+        let currentCategory = 'all';
+
+        function setFilterCategory(cat, btn) {
+            currentCategory = cat;
+            
+            // Highlight active button
+            const pills = document.querySelectorAll('.country-filter-pill');
+            pills.forEach(p => {
+                p.style.background = 'rgba(255,255,255,0.12)';
+                p.style.color = 'white';
+                p.style.borderColor = 'rgba(255,255,255,0.3)';
+                p.classList.remove('active-pill');
+            });
+
+            btn.style.background = '#FF9F1C';
+            btn.style.color = '#0F172A';
+            btn.style.borderColor = '#FF9F1C';
+            btn.classList.add('active-pill');
+
+            filterCountries();
+        }
+
+        function filterCountries() {
+            const query = (document.getElementById('countrySearchInput').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.country-card-pro');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const categories = (card.getAttribute('data-category') || '').toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                const matchesCat = (currentCategory === 'all') || categories.includes(currentCategory);
+                const matchesSearch = !query || cardText.includes(query) || categories.includes(query);
+
+                if (matchesCat && matchesSearch) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noRes = document.getElementById('noResultsMsg');
+            if (noRes) {
+                noRes.style.display = (visibleCount === 0) ? 'block' : 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>
