@@ -3101,8 +3101,8 @@ section {
         width: 85vw;
         max-width: 320px;
     }
-    .hero, .calc-hero, .services-hero-pro, .about-hero-pro {
-        padding: 100px 16px 50px !important;
+    .hero, .calc-hero, .services-hero-pro, .about-hero-pro, .process-hero-pro {
+        padding: 100px 16px 45px !important;
     }
     .page-wrapper {
         padding: 0 12px !important;
@@ -3133,8 +3133,16 @@ section {
         justify-content: center !important;
         padding: 14px 20px !important;
     }
-    .country-card-pro, .service-card-pro {
+    .country-card-pro, .service-card-pro, .proc-card {
         padding: 22px 18px !important;
+    }
+    .touch-section {
+        padding: 24px 16px !important;
+        margin: 24px 12px 50px !important;
+    }
+    .touch-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
     }
     .flag-strip {
         gap: 6px !important;
@@ -3142,5 +3150,12 @@ section {
     .flag-chip {
         font-size: 0.76rem !important;
         padding: 5px 10px !important;
+    }
+    .whatsapp-float {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 1.4rem !important;
     }
 }
