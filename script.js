@@ -479,54 +479,67 @@ function prefillContactForm() {
     }
 }
 
-// Animated Running Numbers Counter (Re-triggers Every Time You Scroll Into View)
-document.addEventListener('DOMContentLoaded', function () {
+// Animated Running Numbers Counter (Instant-Start & Scroll Re-trigger)
+function initRunningCounters() {
     const statCounters = document.querySelectorAll('.stat-counter');
-    if (statCounters.length > 0) {
+    if (!statCounters || statCounters.length === 0) return;
+
+    function runCounterAnimation(counter) {
+        const target = parseInt(counter.getAttribute('data-target')) || 0;
+        const suffix = counter.getAttribute('data-suffix') || '';
+        const isComma = counter.getAttribute('data-format') === 'comma';
+        const duration = 1800;
+        let startTime = null;
+
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+            const easeOutVal = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.floor(easeOutVal * target);
+
+            if (isComma) {
+                counter.innerText = currentVal.toLocaleString('en-US') + suffix;
+            } else {
+                counter.innerText = currentVal + suffix;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                if (isComma) {
+                    counter.innerText = target.toLocaleString('en-US') + suffix;
+                } else {
+                    counter.innerText = target + suffix;
+                }
+            }
+        }
+
+        requestAnimationFrame(step);
+    }
+
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-target'));
-                const suffix = counter.getAttribute('data-suffix') || '';
-                const isComma = counter.getAttribute('data-format') === 'comma';
-
                 if (entry.isIntersecting) {
-                    const duration = 1800;
-                    const startTime = performance.now();
-
-                    function updateCount(currentTime) {
-                        const elapsedTime = currentTime - startTime;
-                        const progress = Math.min(elapsedTime / duration, 1);
-                        const easeProgress = 1 - Math.pow(1 - progress, 3);
-                        const currentVal = Math.floor(easeProgress * target);
-
-                        if (isComma) {
-                            counter.innerText = currentVal.toLocaleString('en-US') + suffix;
-                        } else {
-                            counter.innerText = currentVal + suffix;
-                        }
-
-                        if (progress < 1) {
-                            requestAnimationFrame(updateCount);
-                        } else {
-                            if (isComma) {
-                                counter.innerText = target.toLocaleString('en-US') + suffix;
-                            } else {
-                                counter.innerText = target + suffix;
-                            }
-                        }
-                    }
-
-                    requestAnimationFrame(updateCount);
+                    runCounterAnimation(entry.target);
                 } else {
-                    counter.innerText = '0' + suffix;
+                    const suffix = entry.target.getAttribute('data-suffix') || '';
+                    entry.target.innerText = '0' + suffix;
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1 });
 
         statCounters.forEach(counter => observer.observe(counter));
+    } else {
+        statCounters.forEach(counter => runCounterAnimation(counter));
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRunningCounters);
+} else {
+    initRunningCounters();
+}
 
 
 
