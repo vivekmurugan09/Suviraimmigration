@@ -848,28 +848,26 @@
 
             // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
             try {
+                const formData = new FormData();
+                formData.append("Full Name", n);
+                formData.append("Date of Birth", d);
+                formData.append("Phone / WhatsApp", p);
+                formData.append("Email Address", em);
+                formData.append("Highest Education", ed);
+                formData.append("Language Test Result", ie);
+                formData.append("Years of Experience", ex);
+                formData.append("Occupation / Field", oc);
+                formData.append("Marital Status", ma);
+                formData.append("Preferred Destination", co);
+                formData.append("Visa Category", vi);
+                formData.append("Additional Notes", no);
+                formData.append("_subject", `New Assessment Submission from ${n} (${co})`);
+                formData.append("_captcha", "false");
+
                 fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
                     method: "POST",
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: n,
-                        dob: d,
-                        phone: p,
-                        email: em,
-                        education: ed,
-                        language_test: ie,
-                        experience: ex,
-                        occupation: oc,
-                        marital_status: ma,
-                        target_country: co,
-                        visa_category: vi,
-                        notes: no,
-                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
-                        _captcha: "false"
-                    })
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
                 });
             } catch (err) {
                 console.log(err);
