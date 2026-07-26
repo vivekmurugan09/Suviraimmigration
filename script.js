@@ -336,7 +336,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (heroDots[currentHeroSlide]) {
                 heroDots[currentHeroSlide].classList.remove('active');
                 heroDots[currentHeroSlide].style.width = '8px';
-                heroDots[currentHeroSlide].style.background = 'rgba(255,255,255,0.5)';
+                heroDots[currentHeroSlide].style.background = 'rgba(255,255,255,0.6)';
+                heroDots[currentHeroSlide].style.boxShadow = 'none';
             }
 
             currentHeroSlide = (currentHeroSlide + 1) % heroSlideImgs.length;
@@ -345,8 +346,9 @@ document.addEventListener('DOMContentLoaded', function () {
             heroSlideImgs[currentHeroSlide].classList.add('active');
             if (heroDots[currentHeroSlide]) {
                 heroDots[currentHeroSlide].classList.add('active');
-                heroDots[currentHeroSlide].style.width = '24px';
-                heroDots[currentHeroSlide].style.background = 'white';
+                heroDots[currentHeroSlide].style.width = '28px';
+                heroDots[currentHeroSlide].style.background = '#FF9F1C';
+                heroDots[currentHeroSlide].style.boxShadow = '0 0 10px #FF9F1C';
             }
         }, 3500);
     }
