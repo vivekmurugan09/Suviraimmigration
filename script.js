@@ -324,6 +324,33 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    // --- HERO COMPACT IMAGE CAROUSEL SLIDER ---
+    const heroSlideImgs = document.querySelectorAll('.hero-slide-img');
+    const heroDots = document.querySelectorAll('.hero-dot');
+    let currentHeroSlide = 0;
+
+    if (heroSlideImgs.length > 0) {
+        setInterval(() => {
+            heroSlideImgs[currentHeroSlide].style.opacity = '0';
+            heroSlideImgs[currentHeroSlide].classList.remove('active');
+            if (heroDots[currentHeroSlide]) {
+                heroDots[currentHeroSlide].classList.remove('active');
+                heroDots[currentHeroSlide].style.width = '8px';
+                heroDots[currentHeroSlide].style.background = 'rgba(255,255,255,0.5)';
+            }
+
+            currentHeroSlide = (currentHeroSlide + 1) % heroSlideImgs.length;
+
+            heroSlideImgs[currentHeroSlide].style.opacity = '1';
+            heroSlideImgs[currentHeroSlide].classList.add('active');
+            if (heroDots[currentHeroSlide]) {
+                heroDots[currentHeroSlide].classList.add('active');
+                heroDots[currentHeroSlide].style.width = '24px';
+                heroDots[currentHeroSlide].style.background = 'white';
+            }
+        }, 3500);
+    }
+
     // Initial calculation on load
     calculatePoints();
 });
