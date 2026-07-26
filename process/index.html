@@ -433,6 +433,29 @@
             const service = document.getElementById('tService').value;
             const msg     = document.getElementById('tMsg').value;
 
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        service: service,
+                        message: msg,
+                        _subject: `New Inquiry from Process Page: ${name} (${service})`,
+                        _captcha: "false"
+                    })
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            // 2. Mailto fallback
             const subject = encodeURIComponent(`Inquiry from Process Page: ${name} (${service})`);
             const body    = encodeURIComponent(
                 `SUVIRA IMMIGRATION — PROCESS PAGE GET IN TOUCH INQUIRY\n\n` +

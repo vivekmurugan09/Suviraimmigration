@@ -464,6 +464,29 @@
             const country = document.getElementById('clientCountry').value;
             const notes = document.getElementById('clientNotes').value || 'N/A';
 
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        target_country: country,
+                        notes: notes,
+                        _subject: `New Profile Verification Request: ${name} (${country})`,
+                        _captcha: "false"
+                    })
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            // 2. Mailto fallback
             const subject = encodeURIComponent(`1-on-1 Profile Verification Request: ${name} (${country})`);
             const body = encodeURIComponent(
                 `SUVIRA IMMIGRATION - CLIENT PROFILE AUDIT REQUEST\n\n` +
@@ -476,7 +499,7 @@
             );
 
             window.location.href = `mailto:reachus@suviraimmigration.com?subject=${subject}&body=${body}`;
-            alert(`Thank you, ${name}! Your details have been submitted. Sending email notification to reachus@suviraimmigration.com for 1-on-1 profile verification.`);
+            alert(`Thank you, ${name}! Your details have been submitted to reachus@suviraimmigration.com for 1-on-1 profile verification.`);
         }
     </script>
 </body>

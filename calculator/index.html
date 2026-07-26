@@ -846,6 +846,36 @@
             const vi = document.getElementById('eVisa').value;
             const no = document.getElementById('eNotes').value || 'None';
 
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: n,
+                        dob: d,
+                        phone: p,
+                        email: em,
+                        education: ed,
+                        language_test: ie,
+                        experience: ex,
+                        occupation: oc,
+                        marital_status: ma,
+                        target_country: co,
+                        visa_category: vi,
+                        notes: no,
+                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
+                        _captcha: "false"
+                    })
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            // 2. Mailto fallback
             const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
             const body = encodeURIComponent(
 `SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
