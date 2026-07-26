@@ -2601,18 +2601,18 @@ section {
         text-align: center !important;
         gap: 40px !important;
     }
-    
+
     .hero-gradient .hero-content {
         align-items: center !important;
         text-align: center !important;
         max-width: 100% !important;
     }
-    
+
     .hero-gradient .hero-title,
     .hero-gradient .hero-subtitle {
         text-align: center !important;
     }
-    
+
     .hero-gradient .hero-features-pill,
     .hero-gradient .hero-btns {
         justify-content: center !important;
@@ -3007,76 +3007,255 @@ section {
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-loop-img-1 { animation-name: cssLoopFade8_1; }
-.hero-loop-img-2 { animation-name: cssLoopFade8_2; }
-.hero-loop-img-3 { animation-name: cssLoopFade8_3; }
-.hero-loop-img-4 { animation-name: cssLoopFade8_4; }
-.hero-loop-img-5 { animation-name: cssLoopFade8_5; }
-.hero-loop-img-6 { animation-name: cssLoopFade8_6; }
-.hero-loop-img-7 { animation-name: cssLoopFade8_7; }
-.hero-loop-img-8 { animation-name: cssLoopFade8_8; }
+.hero-loop-img-1 {
+    animation-name: cssLoopFade8_1;
+}
+
+.hero-loop-img-2 {
+    animation-name: cssLoopFade8_2;
+}
+
+.hero-loop-img-3 {
+    animation-name: cssLoopFade8_3;
+}
+
+.hero-loop-img-4 {
+    animation-name: cssLoopFade8_4;
+}
+
+.hero-loop-img-5 {
+    animation-name: cssLoopFade8_5;
+}
+
+.hero-loop-img-6 {
+    animation-name: cssLoopFade8_6;
+}
+
+.hero-loop-img-7 {
+    animation-name: cssLoopFade8_7;
+}
+
+.hero-loop-img-8 {
+    animation-name: cssLoopFade8_8;
+}
 
 @keyframes cssLoopFade8_1 {
-    0% { opacity: 1; transform: scale(1); }
-    10% { opacity: 1; transform: scale(1.04); }
-    12.5% { opacity: 0; transform: scale(1.08); }
-    97.5% { opacity: 0; transform: scale(0.95); }
-    100% { opacity: 1; transform: scale(1); }
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    10% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    12.5% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    97.5% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 @keyframes cssLoopFade8_2 {
-    0%, 10% { opacity: 0; transform: scale(0.95); }
-    12.5% { opacity: 1; transform: scale(1); }
-    22.5% { opacity: 1; transform: scale(1.04); }
-    25% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    10% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    12.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    22.5% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    25% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_3 {
-    0%, 22.5% { opacity: 0; transform: scale(0.95); }
-    25% { opacity: 1; transform: scale(1); }
-    35% { opacity: 1; transform: scale(1.04); }
-    37.5% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    22.5% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    25% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    35% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    37.5% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_4 {
-    0%, 37.5% { opacity: 0; transform: scale(0.95); }
-    40% { opacity: 1; transform: scale(1); }
-    47.5% { opacity: 1; transform: scale(1.04); }
-    50% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    37.5% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    47.5% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_5 {
-    0%, 50% { opacity: 0; transform: scale(0.95); }
-    52.5% { opacity: 1; transform: scale(1); }
-    60% { opacity: 1; transform: scale(1.04); }
-    62.5% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    50% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    52.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    62.5% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_6 {
-    0%, 62.5% { opacity: 0; transform: scale(0.95); }
-    65% { opacity: 1; transform: scale(1); }
-    72.5% { opacity: 1; transform: scale(1.04); }
-    75% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    62.5% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    65% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    72.5% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    75% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_7 {
-    0%, 75% { opacity: 0; transform: scale(0.95); }
-    77.5% { opacity: 1; transform: scale(1); }
-    85% { opacity: 1; transform: scale(1.04); }
-    87.5% { opacity: 0; transform: scale(1.08); }
-    100% { opacity: 0; }
+
+    0%,
+    75% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    77.5% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    85% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    87.5% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 @keyframes cssLoopFade8_8 {
-    0%, 87.5% { opacity: 0; transform: scale(0.95); }
-    90% { opacity: 1; transform: scale(1); }
-    97.5% { opacity: 1; transform: scale(1.04); }
-    100% { opacity: 0; transform: scale(1.08); }
+
+    0%,
+    87.5% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    97.5% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
 }
 
 /* COMPREHENSIVE MOBILE FRAME & RESPONSIVE PERFECTION */
@@ -3084,78 +3263,192 @@ section {
     .navbar {
         padding: 8px 16px !important;
     }
+
     .navbar .logo img {
         height: 52px !important;
     }
+
     .mobile-menu-btn {
         display: block !important;
         font-size: 1.4rem !important;
         color: #0724A8 !important;
         padding: 8px;
     }
+
     .nav-links {
         display: none !important;
     }
+
     .mobile-menu {
         overflow-y: auto;
         width: 85vw;
         max-width: 320px;
     }
-    .hero, .calc-hero, .services-hero-pro, .about-hero-pro, .process-hero-pro {
+
+    .hero,
+    .calc-hero,
+    .services-hero-pro,
+    .about-hero-pro,
+    .process-hero-pro {
         padding: 100px 16px 45px !important;
     }
+
     .page-wrapper {
         padding: 0 12px !important;
         margin: 24px auto 40px !important;
     }
+
     .form-card {
         padding: 22px 18px !important;
         border-radius: 16px !important;
     }
+
     .form-body {
         padding: 18px 12px !important;
     }
-    .fg-2, .fg-3 {
+
+    .fg-2,
+    .fg-3 {
         grid-template-columns: 1fr !important;
         gap: 14px !important;
     }
+
     .stats-inner {
         gap: 16px !important;
         justify-content: flex-start;
         overflow-x: auto;
         padding: 0 16px 8px;
     }
+
     .stat-chip {
         flex-shrink: 0;
     }
+
     .submit-btn {
         width: 100% !important;
         justify-content: center !important;
         padding: 14px 20px !important;
     }
-    .country-card-pro, .service-card-pro, .proc-card {
+
+    .country-card-pro,
+    .service-card-pro,
+    .proc-card {
         padding: 22px 18px !important;
     }
+
     .touch-section {
         padding: 24px 16px !important;
         margin: 24px 12px 50px !important;
     }
+
     .touch-grid {
         grid-template-columns: 1fr !important;
         gap: 24px !important;
     }
+
     .flag-strip {
         gap: 6px !important;
     }
+
     .flag-chip {
         font-size: 0.76rem !important;
         padding: 5px 10px !important;
     }
+
     .whatsapp-float {
         bottom: 20px !important;
         right: 20px !important;
         width: 50px !important;
         height: 50px !important;
         font-size: 1.4rem !important;
+    }
+}
+
+/* ════════════════════════════════════════════════════════════════ */
+/* GLOBAL CONTACT MODAL ("SEND US A MESSAGE" POPUP)                 */
+/* ════════════════════════════════════════════════════════════════ */
+.contact-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.contact-modal-card {
+    background: white;
+    width: 100%;
+    max-width: 580px;
+    border-radius: 24px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s ease;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-modal-overlay.active .contact-modal-card {
+    transform: translateY(0) scale(1);
+}
+
+.contact-modal-header {
+    background: linear-gradient(135deg, #0724A8 0%, #031169 100%);
+    color: white;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contact-modal-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-modal-close {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background 0.2s;
+}
+.contact-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.contact-modal-body {
+    padding: 24px 28px;
+    overflow-y: auto;
+}
+
+@media (max-width: 576px) {
+    .contact-modal-body {
+        padding: 18px 16px;
     }
 }
