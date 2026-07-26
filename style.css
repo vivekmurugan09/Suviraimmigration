@@ -3002,52 +3002,79 @@ section {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    animation-duration: 20s;
+    animation-duration: 24s;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-loop-img-1 { animation-name: cssLoopFade5_1; }
-.hero-loop-img-2 { animation-name: cssLoopFade5_2; }
-.hero-loop-img-3 { animation-name: cssLoopFade5_3; }
-.hero-loop-img-4 { animation-name: cssLoopFade5_4; }
-.hero-loop-img-5 { animation-name: cssLoopFade5_5; }
+.hero-loop-img-1 { animation-name: cssLoopFade8_1; }
+.hero-loop-img-2 { animation-name: cssLoopFade8_2; }
+.hero-loop-img-3 { animation-name: cssLoopFade8_3; }
+.hero-loop-img-4 { animation-name: cssLoopFade8_4; }
+.hero-loop-img-5 { animation-name: cssLoopFade8_5; }
+.hero-loop-img-6 { animation-name: cssLoopFade8_6; }
+.hero-loop-img-7 { animation-name: cssLoopFade8_7; }
+.hero-loop-img-8 { animation-name: cssLoopFade8_8; }
 
-@keyframes cssLoopFade5_1 {
+@keyframes cssLoopFade8_1 {
     0% { opacity: 1; transform: scale(1); }
-    16% { opacity: 1; transform: scale(1.05); }
-    20% { opacity: 0; transform: scale(1.08); }
-    96% { opacity: 0; transform: scale(0.95); }
+    10% { opacity: 1; transform: scale(1.04); }
+    12.5% { opacity: 0; transform: scale(1.08); }
+    97.5% { opacity: 0; transform: scale(0.95); }
     100% { opacity: 1; transform: scale(1); }
 }
 
-@keyframes cssLoopFade5_2 {
-    0%, 16% { opacity: 0; transform: scale(0.95); }
-    20% { opacity: 1; transform: scale(1); }
-    36% { opacity: 1; transform: scale(1.05); }
-    40% { opacity: 0; transform: scale(1.08); }
+@keyframes cssLoopFade8_2 {
+    0%, 10% { opacity: 0; transform: scale(0.95); }
+    12.5% { opacity: 1; transform: scale(1); }
+    22.5% { opacity: 1; transform: scale(1.04); }
+    25% { opacity: 0; transform: scale(1.08); }
     100% { opacity: 0; }
 }
 
-@keyframes cssLoopFade5_3 {
-    0%, 36% { opacity: 0; transform: scale(0.95); }
+@keyframes cssLoopFade8_3 {
+    0%, 22.5% { opacity: 0; transform: scale(0.95); }
+    25% { opacity: 1; transform: scale(1); }
+    35% { opacity: 1; transform: scale(1.04); }
+    37.5% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
+}
+
+@keyframes cssLoopFade8_4 {
+    0%, 37.5% { opacity: 0; transform: scale(0.95); }
     40% { opacity: 1; transform: scale(1); }
-    56% { opacity: 1; transform: scale(1.05); }
-    60% { opacity: 0; transform: scale(1.08); }
+    47.5% { opacity: 1; transform: scale(1.04); }
+    50% { opacity: 0; transform: scale(1.08); }
     100% { opacity: 0; }
 }
 
-@keyframes cssLoopFade5_4 {
-    0%, 56% { opacity: 0; transform: scale(0.95); }
-    60% { opacity: 1; transform: scale(1); }
-    76% { opacity: 1; transform: scale(1.05); }
-    80% { opacity: 0; transform: scale(1.08); }
+@keyframes cssLoopFade8_5 {
+    0%, 50% { opacity: 0; transform: scale(0.95); }
+    52.5% { opacity: 1; transform: scale(1); }
+    60% { opacity: 1; transform: scale(1.04); }
+    62.5% { opacity: 0; transform: scale(1.08); }
     100% { opacity: 0; }
 }
 
-@keyframes cssLoopFade5_5 {
-    0%, 76% { opacity: 0; transform: scale(0.95); }
-    80% { opacity: 1; transform: scale(1); }
-    96% { opacity: 1; transform: scale(1.05); }
+@keyframes cssLoopFade8_6 {
+    0%, 62.5% { opacity: 0; transform: scale(0.95); }
+    65% { opacity: 1; transform: scale(1); }
+    72.5% { opacity: 1; transform: scale(1.04); }
+    75% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
+}
+
+@keyframes cssLoopFade8_7 {
+    0%, 75% { opacity: 0; transform: scale(0.95); }
+    77.5% { opacity: 1; transform: scale(1); }
+    85% { opacity: 1; transform: scale(1.04); }
+    87.5% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
+}
+
+@keyframes cssLoopFade8_8 {
+    0%, 87.5% { opacity: 0; transform: scale(0.95); }
+    90% { opacity: 1; transform: scale(1); }
+    97.5% { opacity: 1; transform: scale(1.04); }
     100% { opacity: 0; transform: scale(1.08); }
 }
