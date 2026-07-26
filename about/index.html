@@ -10,11 +10,39 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../style.css?v=32.0">
+    <link rel="stylesheet" href="../style.css?v=36.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+    <style>
+        body {
+            background-color: #F8FAFC !important;
+            color: #0F172A !important;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .footer {
+            background: #0F172A !important;
+            color: #F8FAFC !important;
+            padding: 80px 0 40px !important;
+        }
+
+        .footer h3 {
+            color: #FFFFFF !important;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer p, .footer li a, .footer-bottom p {
+            color: #94A3B8 !important;
+            text-decoration: none;
+        }
+
+        .footer li a:hover {
+            color: #F87034 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -85,8 +113,8 @@
                         Over two decades of excellence in Permanent Residency (PR), Skilled Overseas Careers, Opportunity Cards, Study Visas, and Legal Documentation support. Built on 100% transparency, ethical guidance, and zero false promises.
                     </p>
                     <div class="hero-btns" style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="../calculator/index.html" class="btn-gradient">
-                            <i class="fas fa-calculator"></i> Check Eligibility Free
+                        <a href="#clientAuditForm" class="btn-gradient">
+                            <i class="fas fa-user-edit"></i> Fill Client Verification Form
                         </a>
                         <a href="tel:+919940352086" class="btn-transparent">
                             <i class="fas fa-phone-alt"></i> Speak to Specialist
@@ -171,7 +199,7 @@
                     <div class="section-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h2 class="section-title">The Suvira Standard of Excellence</h2>
+                    <h2 class="section-title" style="color: #0F172A;">The Suvira Standard of Excellence</h2>
                     <p style="color: #64748B; font-size: 1.05rem;">Four foundational principles that guide every client profile we represent.</p>
                 </div>
 
@@ -247,31 +275,76 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section style="padding: 80px 0; background: linear-gradient(135deg, #0724A8 0%, #1E40AF 100%); color: white; text-align: center;">
-            <div class="container" style="max-width: 900px;">
-                <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px;">Ready to Begin Your Global Migration Journey?</h2>
-                <p style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 35px; line-height: 1.6;">
-                    Get an honest, transparent profile assessment from Chennai's most trusted immigration consultants today.
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <a href="../calculator/index.html" class="btn-gradient" style="font-size: 1.1rem; padding: 14px 32px;">
-                        <i class="fas fa-calculator"></i> Calculate PR Points Free
-                    </a>
-                    <a href="tel:+919940352086" class="btn-transparent" style="font-size: 1.1rem; padding: 14px 32px; border-color: white; color: white;">
-                        <i class="fas fa-phone-alt"></i> Call +91 99403 52086
-                    </a>
+        <!-- Client Information & 1-on-1 Profile Verification Lead Form Section -->
+        <section id="clientAuditForm" style="padding: 90px 0; background: linear-gradient(135deg, #0724A8 0%, #1E40AF 100%); color: white;">
+            <div class="container" style="max-width: 920px;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 6px 20px; border-radius: 50px; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; color: #FF9F1C; margin-bottom: 16px;">
+                        <i class="fas fa-user-check"></i> FREE 1-ON-1 PROFILE ASSESSMENT
+                    </div>
+                    <h2 style="font-size: 2.5rem; font-weight: 800; color: white; margin-bottom: 14px; line-height: 1.2;">
+                        Submit Your Details for 1-on-1 Verification
+                    </h2>
+                    <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.9); max-width: 680px; margin: 0 auto; line-height: 1.6;">
+                        Please provide your contact information and target destination below. Our senior migration specialists will conduct a thorough profile audit and email you a personalized pathway evaluation.
+                    </p>
+                </div>
+
+                <!-- Client Information Lead Form -->
+                <div style="background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2); padding: 45px 40px; border-radius: 28px; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);">
+                    <form id="aboutClientForm" onsubmit="handleAboutFormSubmit(event)">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 24px;">
+                            <div>
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #F8FAFC;">Full Name *</label>
+                                <input type="text" id="clientName" required placeholder="Enter your full name" style="width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.6); color: white; font-size: 0.95rem; outline: none;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #F8FAFC;">Phone / WhatsApp Number *</label>
+                                <input type="tel" id="clientPhone" required placeholder="+91 99403 52086" style="width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.6); color: white; font-size: 0.95rem; outline: none;">
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 24px;">
+                            <div>
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #F8FAFC;">Email Address *</label>
+                                <input type="email" id="clientEmail" required placeholder="your.email@example.com" style="width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.6); color: white; font-size: 0.95rem; outline: none;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #F8FAFC;">Preferred Target Country *</label>
+                                <select id="clientCountry" required style="width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.9); color: white; font-size: 0.95rem; outline: none;">
+                                    <option value="" disabled selected>Select Country</option>
+                                    <option value="Canada">Canada (Express Entry / PNP)</option>
+                                    <option value="Australia">Australia (Subclass 189 / 190)</option>
+                                    <option value="Germany">Germany (Chancenkarte 2026)</option>
+                                    <option value="United Kingdom">United Kingdom (Skilled Work / Student)</option>
+                                    <option value="USA">United States (H1B / EB Visas)</option>
+                                    <option value="Other Country">Other Global Country</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 28px;">
+                            <label style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; color: #F8FAFC;">Qualifications &amp; Work Experience Overview (Optional)</label>
+                            <textarea id="clientNotes" rows="3" placeholder="e.g. Master's degree in IT, 5 years experience, IELTS CLB 8..." style="width: 100%; padding: 14px 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(15, 23, 42, 0.6); color: white; font-size: 0.95rem; outline: none; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn-gradient" style="padding: 16px 42px; font-size: 1.1rem; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; border-radius: 16px;">
+                                <i class="fas fa-paper-plane"></i> Submit Client Info for 1-on-1 Audit
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
 
         <!-- Footer -->
-        <footer class="footer">
+        <footer class="footer" style="background: #0F172A !important; color: #F8FAFC !important; padding: 80px 0 40px !important;">
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-col company-col">
                         <img src="../images/suvira-logo-transparent.png" alt="Suvira Immigration Logo" class="footer-logo" style="height: 60px; filter: brightness(0) invert(1);">
-                        <p class="company-desc">
+                        <p class="company-desc" style="color: #94A3B8 !important;">
                             Chennai's premier global immigration &amp; overseas career consultancy since 2004. Transparent guidance for Canada PR, Australia Subclass 189/190, Germany Chancenkarte 2026, UK, USA &amp; European Student &amp; Work Visas.
                         </p>
                         <div class="social-links">
@@ -281,35 +354,35 @@
                         </div>
                     </div>
                     <div class="footer-col">
-                        <h3>Quick Links</h3>
+                        <h3 style="color: #FFFFFF !important;">Quick Links</h3>
                         <ul>
-                            <li><a href="../index.html">Home</a></li>
-                            <li><a href="index.html">About Us</a></li>
-                            <li><a href="../calculator/index.html">PR Calculator</a></li>
-                            <li><a href="../services/index.html">Our Services</a></li>
-                            <li><a href="../countries/index.html">Destinations</a></li>
+                            <li><a href="../index.html" style="color: #94A3B8 !important;">Home</a></li>
+                            <li><a href="index.html" style="color: #94A3B8 !important;">About Us</a></li>
+                            <li><a href="../calculator/index.html" style="color: #94A3B8 !important;">PR Calculator</a></li>
+                            <li><a href="../services/index.html" style="color: #94A3B8 !important;">Our Services</a></li>
+                            <li><a href="../countries/index.html" style="color: #94A3B8 !important;">Destinations</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
-                        <h3>Core Destinations</h3>
+                        <h3 style="color: #FFFFFF !important;">Core Destinations</h3>
                         <ul>
-                            <li><a href="../countries/canada.html">Canada Express Entry</a></li>
-                            <li><a href="../countries/australia.html">Australia General Skilled</a></li>
-                            <li><a href="../countries/germany.html">Germany Opportunity Card</a></li>
-                            <li><a href="../countries/uk.html">UK Skilled Worker</a></li>
-                            <li><a href="../countries/usa.html">USA EB &amp; H1B Visas</a></li>
+                            <li><a href="../countries/canada.html" style="color: #94A3B8 !important;">Canada Express Entry</a></li>
+                            <li><a href="../countries/australia.html" style="color: #94A3B8 !important;">Australia General Skilled</a></li>
+                            <li><a href="../countries/germany.html" style="color: #94A3B8 !important;">Germany Opportunity Card</a></li>
+                            <li><a href="../countries/uk.html" style="color: #94A3B8 !important;">UK Skilled Worker</a></li>
+                            <li><a href="../countries/usa.html" style="color: #94A3B8 !important;">USA EB &amp; H1B Visas</a></li>
                         </ul>
                     </div>
                     <div class="footer-col contact-col">
-                        <h3>Chennai Office</h3>
-                        <p><i class="fas fa-map-marker-alt"></i> Suvira Immigration, Main Road, Chennai, Tamil Nadu, India</p>
-                        <p><i class="fas fa-phone-alt"></i> <a href="tel:+919940352086" style="color: inherit; text-decoration: none;">+91 99403 52086</a></p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:suviraimmigration@gmail.com" style="color: inherit; text-decoration: none;">suviraimmigration@gmail.com</a></p>
+                        <h3 style="color: #FFFFFF !important;">Chennai Office</h3>
+                        <p style="color: #94A3B8 !important;"><i class="fas fa-map-marker-alt"></i> Suvira Immigration, Main Road, Chennai, Tamil Nadu, India</p>
+                        <p style="color: #94A3B8 !important;"><i class="fas fa-phone-alt"></i> <a href="tel:+919940352086" style="color: #94A3B8 !important; text-decoration: none;">+91 99403 52086</a></p>
+                        <p style="color: #94A3B8 !important;"><i class="fas fa-envelope"></i> <a href="mailto:suviraimmigration@gmail.com" style="color: #94A3B8 !important; text-decoration: none;">suviraimmigration@gmail.com</a></p>
                     </div>
                 </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 Suvira Immigration. All rights reserved.</p>
-                    <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 40px; text-align: center;">
+                    <p style="color: #94A3B8 !important;">&copy; 2026 Suvira Immigration. All rights reserved.</p>
+                    <p class="compliance" style="font-size: 0.85rem; color: #64748B !important; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
                 </div>
             </div>
         </footer>
@@ -321,7 +394,31 @@
     </a>
 
     <!-- Scripts -->
-    <script src="../script.js?v=32.0"></script>
+    <script src="../script.js?v=36.0"></script>
+    <script>
+        function handleAboutFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value;
+            const country = document.getElementById('clientCountry').value;
+            const notes = document.getElementById('clientNotes').value || 'N/A';
+
+            const subject = encodeURIComponent(`1-on-1 Profile Verification Request: ${name} (${country})`);
+            const body = encodeURIComponent(
+                `SUVIRA IMMIGRATION - CLIENT PROFILE AUDIT REQUEST\n\n` +
+                `Full Name: ${name}\n` +
+                `Phone / WhatsApp: ${phone}\n` +
+                `Email Address: ${email}\n` +
+                `Target Country: ${country}\n` +
+                `Qualifications & Notes: ${notes}\n\n` +
+                `Submitted via Suvira Immigration About Us Page.`
+            );
+
+            window.location.href = `mailto:suviraimmigration@gmail.com?subject=${subject}&body=${body}`;
+            alert(`Thank you, ${name}! Your details have been submitted. Sending email notification to suviraimmigration@gmail.com for 1-on-1 profile verification.`);
+        }
+    </script>
 </body>
 
 </html>
