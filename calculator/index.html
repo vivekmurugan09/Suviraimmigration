@@ -1038,10 +1038,15 @@
 
     </div><!-- end .main-content -->
 
-    <!-- Floating Buttons -->
-    <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Floating Action Buttons Container -->
+    <div class="floating-actions-wrapper">
+        <a href="../contact/index.html" class="contact-float" title="Contact Us Direct">
+            <i class="fas fa-envelope-open-text"></i>
+        </a>
+        <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
     <div class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </div>
@@ -1138,36 +1143,6 @@ Submitted via: Suvira Immigration — Calculator / Eligibility Page`
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
         }
-
-        // Auto-select preferred destination if URL parameter ?country=... is passed
-        window.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            const countryParam = params.get('country');
-            if (countryParam) {
-                const select = document.getElementById('eCountry');
-                if (select) {
-                    const map = {
-                        'canada': 'Canada',
-                        'australia': 'Australia',
-                        'germany': 'Germany',
-                        'uk': 'United Kingdom',
-                        'russia': 'Russia',
-                        'ukraine': 'Ukraine'
-                    };
-                    const match = map[countryParam.toLowerCase()] || countryParam;
-                    for (let i = 0; i < select.options.length; i++) {
-                        if (select.options[i].text.toLowerCase().includes(match.toLowerCase()) || select.options[i].value.toLowerCase().includes(match.toLowerCase())) {
-                            select.selectedIndex = i;
-                            break;
-                        }
-                    }
-                    setTimeout(function() {
-                        const formCard = document.querySelector('.form-card');
-                        if (formCard) formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 300);
-                }
-            }
-        });
     </script>
 </body>
 
