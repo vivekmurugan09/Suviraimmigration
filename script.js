@@ -324,38 +324,70 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- HERO COMPACT IMAGE CAROUSEL SLIDER ---
-    const heroSlideImgs = document.querySelectorAll('.hero-slide-img');
-    const heroDots = document.querySelectorAll('.hero-dot');
-    let currentHeroSlide = 0;
-
-    if (heroSlideImgs.length > 0) {
-        setInterval(() => {
-            heroSlideImgs[currentHeroSlide].style.opacity = '0';
-            heroSlideImgs[currentHeroSlide].classList.remove('active');
-            if (heroDots[currentHeroSlide]) {
-                heroDots[currentHeroSlide].classList.remove('active');
-                heroDots[currentHeroSlide].style.width = '8px';
-                heroDots[currentHeroSlide].style.background = 'rgba(255,255,255,0.6)';
-                heroDots[currentHeroSlide].style.boxShadow = 'none';
-            }
-
-            currentHeroSlide = (currentHeroSlide + 1) % heroSlideImgs.length;
-
-            heroSlideImgs[currentHeroSlide].style.opacity = '1';
-            heroSlideImgs[currentHeroSlide].classList.add('active');
-            if (heroDots[currentHeroSlide]) {
-                heroDots[currentHeroSlide].classList.add('active');
-                heroDots[currentHeroSlide].style.width = '28px';
-                heroDots[currentHeroSlide].style.background = '#FF9F1C';
-                heroDots[currentHeroSlide].style.boxShadow = '0 0 10px #FF9F1C';
-            }
-        }, 3500);
-    }
+    // --- HERO MULTI-IMAGE GALLERY INTERACTIVE SHOWCASE ---
+    setInterval(() => {
+        const thumbs = document.querySelectorAll('.hero-thumb-card');
+        if (thumbs.length > 0) {
+            currentHeroIndex = (currentHeroIndex + 1) % heroGalleryData.length;
+            switchHeroGallery(currentHeroIndex);
+        }
+    }, 3800);
 
     // Initial calculation on load
     calculatePoints();
 });
+
+const heroGalleryData = [
+    {
+        src: 'images/hero-immigration.png',
+        title: 'Global Immigration Success',
+        sub: 'End-to-End Guidance for Families & Professionals'
+    },
+    {
+        src: 'images/hero-immigration-2.png',
+        title: 'International Airport Arrivals',
+        sub: 'Seamless Landing & Settlement Assistance'
+    },
+    {
+        src: 'images/hero-immigration-3.png',
+        title: 'Tech & Student Pathways',
+        sub: 'Qualified Work Permits & University Admissions'
+    }
+];
+
+let currentHeroIndex = 0;
+
+function switchHeroGallery(index) {
+    currentHeroIndex = index;
+    const mainImg = document.getElementById('mainHeroImg');
+    const title = document.getElementById('mainHeroCaptionTitle');
+    const sub = document.getElementById('mainHeroCaptionSub');
+    const thumbs = document.querySelectorAll('.hero-thumb-card');
+
+    if (mainImg) {
+        mainImg.style.opacity = '0.3';
+        setTimeout(() => {
+            mainImg.src = heroGalleryData[index].src;
+            if (title) title.textContent = heroGalleryData[index].title;
+            if (sub) sub.textContent = heroGalleryData[index].sub;
+            mainImg.style.opacity = '1';
+        }, 150);
+    }
+
+    thumbs.forEach((t, i) => {
+        if (i === index) {
+            t.classList.add('active');
+            t.style.border = '2px solid #FF9F1C';
+            t.style.boxShadow = '0 0 12px rgba(255, 159, 28, 0.4)';
+            t.style.opacity = '1';
+        } else {
+            t.classList.remove('active');
+            t.style.border = '2px solid rgba(255, 255, 255, 0.3)';
+            t.style.boxShadow = 'none';
+            t.style.opacity = '0.75';
+        }
+    });
+}
 
 // Global functions for calculator
 function calculatePoints() {

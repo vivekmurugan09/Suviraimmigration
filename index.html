@@ -101,24 +101,35 @@
                     </div>
                 </div>
                 
-                <div class="hero-graphic" style="position: relative; width: 100%; max-width: 520px; margin: 0 auto;">
-                    <!-- Ambient Luxury Glow Backdrop -->
-                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 110%; height: 110%; background: radial-gradient(circle, rgba(248, 112, 52, 0.35) 0%, rgba(7, 36, 168, 0.45) 50%, transparent 75%); filter: blur(40px); z-index: 1; pointer-events: none;"></div>
+                <div class="hero-graphic" style="position: relative; width: 100%; max-width: 580px; margin: 0 auto;">
+                    <!-- Ambient Glow Backdrop -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 105%; height: 105%; background: radial-gradient(circle, rgba(248, 112, 52, 0.25) 0%, rgba(7, 36, 168, 0.35) 50%, transparent 75%); filter: blur(35px); pointer-events: none;"></div>
 
-                    <!-- Ultra-Premium Image Showcase Frame -->
-                    <div class="hero-image-slider-frame" style="width: 100%; height: 380px; border-radius: 24px; overflow: hidden; box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(248, 112, 52, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); position: relative; background: #0F172A; z-index: 2;">
-                        <img src="images/hero-immigration.png" alt="Suvira Immigration Successful Clients" class="hero-slide-img active" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 1; transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);">
-                        <img src="images/hero-immigration-2.png" alt="Happy Clients Arriving at International Airport" class="hero-slide-img" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);">
-                        <img src="images/hero-immigration-3.png" alt="Global IT Professionals and Students Approved" class="hero-slide-img" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1);">
+                    <!-- Main Showcase Image -->
+                    <div class="hero-main-showcase" style="width: 100%; height: 320px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4); border: 2px solid rgba(255, 255, 255, 0.25); position: relative; background: #0F172A; margin-bottom: 15px;">
+                        <img id="mainHeroImg" src="images/hero-immigration.png" alt="Suvira Immigration Successful Clients" style="width: 100%; height: 100%; object-fit: cover; transition: all 0.5s ease-in-out;">
+                        <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px 20px; background: linear-gradient(to top, rgba(15,23,42,0.85), transparent); color: white; display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div>
+                                <h4 id="mainHeroCaptionTitle" style="margin: 0; font-size: 1.05rem; font-weight: 700; color: #FF9F1C;">Global Immigration Success</h4>
+                                <p id="mainHeroCaptionSub" style="margin: 3px 0 0; font-size: 0.8rem; opacity: 0.9;">End-to-End Guidance for Families &amp; Professionals</p>
+                            </div>
+                            <span style="background: rgba(255,159,28,0.25); border: 1px solid #FF9F1C; color: #FF9F1C; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: 700;">Verified Success</span>
+                        </div>
+                    </div>
 
-                        <!-- Luxury Gradient Vignette Overlay -->
-                        <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent); pointer-events: none; z-index: 3;"></div>
-
-                        <!-- Sleek Minimalist Slider Dots -->
-                        <div class="hero-slider-dots" style="position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 4;">
-                            <span class="hero-dot active" style="width: 28px; height: 5px; background: #FF9F1C; border-radius: 4px; transition: all 0.4s ease; box-shadow: 0 0 10px #FF9F1C;"></span>
-                            <span class="hero-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.6); border-radius: 4px; transition: all 0.4s ease;"></span>
-                            <span class="hero-dot" style="width: 8px; height: 5px; background: rgba(255,255,255,0.6); border-radius: 4px; transition: all 0.4s ease;"></span>
+                    <!-- Visible Multi-Image Thumbnails Bar (Showing All 3 Photos Together) -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; position: relative; z-index: 2;">
+                        <div class="hero-thumb-card active" onclick="switchHeroGallery(0)" style="height: 75px; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid #FF9F1C; box-shadow: 0 0 12px rgba(255, 159, 28, 0.4); position: relative; transition: all 0.3s ease;">
+                            <img src="images/hero-immigration.png" alt="Global Families" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: white; font-size: 0.68rem; padding: 3px; text-align: center; font-weight: 600;">Global Clients</div>
+                        </div>
+                        <div class="hero-thumb-card" onclick="switchHeroGallery(1)" style="height: 75px; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255, 255, 255, 0.3); opacity: 0.75; position: relative; transition: all 0.3s ease;">
+                            <img src="images/hero-immigration-2.png" alt="Airport Arrival" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: white; font-size: 0.68rem; padding: 3px; text-align: center; font-weight: 600;">Airport Arrival</div>
+                        </div>
+                        <div class="hero-thumb-card" onclick="switchHeroGallery(2)" style="height: 75px; border-radius: 12px; overflow: hidden; cursor: pointer; border: 2px solid rgba(255, 255, 255, 0.3); opacity: 0.75; position: relative; transition: all 0.3s ease;">
+                            <img src="images/hero-immigration-3.png" alt="Tech Campus" style="width: 100%; height: 100%; object-fit: cover;">
+                            <div style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: white; font-size: 0.68rem; padding: 3px; text-align: center; font-weight: 600;">Tech &amp; Students</div>
                         </div>
                     </div>
                 </div>
