@@ -1138,6 +1138,36 @@ Submitted via: Suvira Immigration — Calculator / Eligibility Page`
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
         }
+
+        // Auto-select preferred destination if URL parameter ?country=... is passed
+        window.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const countryParam = params.get('country');
+            if (countryParam) {
+                const select = document.getElementById('eCountry');
+                if (select) {
+                    const map = {
+                        'canada': 'Canada',
+                        'australia': 'Australia',
+                        'germany': 'Germany',
+                        'uk': 'United Kingdom',
+                        'russia': 'Russia',
+                        'ukraine': 'Ukraine'
+                    };
+                    const match = map[countryParam.toLowerCase()] || countryParam;
+                    for (let i = 0; i < select.options.length; i++) {
+                        if (select.options[i].text.toLowerCase().includes(match.toLowerCase()) || select.options[i].value.toLowerCase().includes(match.toLowerCase())) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    setTimeout(function() {
+                        const formCard = document.querySelector('.form-card');
+                        if (formCard) formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300);
+                }
+            }
+        });
     </script>
 </body>
 

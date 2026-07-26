@@ -322,57 +322,16 @@
 
                             <!-- Interactive Tabs row -->
                             <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px;">
-                                <button type="button" id="tabCanada" onclick="switchHomeScoreTab(event, 'canada')" style="background: #0724A8; color: white; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
+                                <a href="calculator/index.html?country=canada" id="tabCanada" style="background: #0724A8; color: white; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; text-decoration: none; display: inline-block;">
                                     🍁 Canada CRS
-                                </button>
-                                <button type="button" id="tabAustralia" onclick="switchHomeScoreTab(event, 'australia')" style="background: #F1F5F9; color: #475569; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
-                                    🌏 Australia
-                                </button>
-                                <button type="button" id="tabGermany" onclick="switchHomeScoreTab(event, 'germany')" style="background: #F1F5F9; color: #475569; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
-                                    🇩🇪 Germany
-                                </button>
+                                </a>
+                                <a href="calculator/index.html?country=australia" id="tabAustralia" style="background: #0724A8; color: white; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; text-decoration: none; display: inline-block; box-shadow: 0 4px 12px rgba(7,36,168,0.25);">
+                                    🌏 Australia Points
+                                </a>
+                                <a href="calculator/index.html?country=germany" id="tabGermany" style="background: #0724A8; color: white; border: none; font-size: 0.8rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; text-decoration: none; display: inline-block; box-shadow: 0 4px 12px rgba(7,36,168,0.25);">
+                                    🇩🇪 Germany Card
+                                </a>
                             </div>
-
-                            <script>
-                                function switchHomeScoreTab(e, country) {
-                                    if (e) {
-                                        e.preventDefault();
-                                        e.stopPropagation();
-                                    }
-                                    var label = document.getElementById('homeScoreLabel');
-                                    var val   = document.getElementById('homeScoreVal');
-                                    var unit  = document.getElementById('homeScoreUnit');
-                                    var desc  = document.getElementById('homeScoreDesc');
-
-                                    var btnCa = document.getElementById('tabCanada');
-                                    var btnAu = document.getElementById('tabAustralia');
-                                    var btnDe = document.getElementById('tabGermany');
-
-                                    if (btnCa) { btnCa.style.background = '#F1F5F9'; btnCa.style.color = '#475569'; }
-                                    if (btnAu) { btnAu.style.background = '#F1F5F9'; btnAu.style.color = '#475569'; }
-                                    if (btnDe) { btnDe.style.background = '#F1F5F9'; btnDe.style.color = '#475569'; }
-
-                                    if (country === 'canada') {
-                                        if (btnCa) { btnCa.style.background = '#0724A8'; btnCa.style.color = 'white'; }
-                                        if (label) label.innerText = 'ESTIMATED CANADA CRS SCORE';
-                                        if (val)   val.innerText   = '433';
-                                        if (unit)  unit.innerText  = 'Points';
-                                        if (desc)  desc.innerText  = '✅ 67-Pt FSW Eligible — Express Entry Ready';
-                                    } else if (country === 'australia') {
-                                        if (btnAu) { btnAu.style.background = '#0724A8'; btnAu.style.color = 'white'; }
-                                        if (label) label.innerText = 'ESTIMATED AUSTRALIA GSM SCORE';
-                                        if (val)   val.innerText   = '75';
-                                        if (unit)  unit.innerText  = 'Points';
-                                        if (desc)  desc.innerText  = '✅ Subclass 189/190 Eligible — EOI Ready';
-                                    } else if (country === 'germany') {
-                                        if (btnDe) { btnDe.style.background = '#0724A8'; btnDe.style.color = 'white'; }
-                                        if (label) label.innerText = 'GERMANY CHANCENKARTE SCORE';
-                                        if (val)   val.innerText   = '6 / 6';
-                                        if (unit)  unit.innerText  = 'Points';
-                                        if (desc)  desc.innerText  = '✅ 100% Eligible — Opportunity Card Ready';
-                                    }
-                                }
-                            </script>
 
                             <a href="calculator/index.html" style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">
                                 Open Full Calculator <i class="fas fa-arrow-right"></i>
