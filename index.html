@@ -259,35 +259,44 @@
                         </div>
                     </div>
 
-                    <!-- Right: Preview Card (clickable) -->
+                    <!-- Right: Preview Card with Interactive Country Switcher -->
                     <div style="position: relative;">
-                        <a href="calculator/index.html" style="text-decoration: none; display: block;">
-                            <div style="background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; padding: 30px; transition: transform 0.35s ease, box-shadow 0.35s ease;">
-                                <!-- Mini preview of calculator UI -->
-                                <div style="text-align: center; margin-bottom: 20px;">
-                                    <div style="width: 56px; height: 56px; background: rgba(7,36,168,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--primary); font-size: 1.5rem;">
-                                        <i class="fas fa-calculator"></i>
-                                    </div>
-                                    <h4 style="font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">Instant Score Preview</h4>
-                                    <p style="color: #64748B; font-size: 0.88rem;">Click to open full calculator</p>
+                        <div style="background: white; border-radius: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E2E8F0; padding: 30px; transition: transform 0.35s ease, box-shadow 0.35s ease;">
+                            <!-- Mini preview of calculator UI -->
+                            <div style="text-align: center; margin-bottom: 18px;">
+                                <div style="width: 56px; height: 56px; background: rgba(7,36,168,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--primary); font-size: 1.5rem;">
+                                    <i class="fas fa-calculator"></i>
                                 </div>
-                                <!-- Sample Score Display -->
-                                <div style="background: linear-gradient(135deg, #0724A8, #031169); border-radius: 14px; padding: 20px 24px; color: white; margin-bottom: 16px;">
-                                    <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; font-weight: 700; margin-bottom: 6px;">ESTIMATED CRS SCORE</div>
-                                    <div style="font-size: 2.6rem; font-weight: 800; line-height: 1;">433 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span></div>
-                                    <div style="font-size: 0.85rem; margin-top: 6px; opacity: 0.9;">✅ 67-Pt FSW Eligible — Express Entry Ready</div>
-                                </div>
-                                <!-- Tabs row -->
-                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                                    <span style="background: var(--primary); color: white; font-size: 0.78rem; font-weight: 700; padding: 5px 12px; border-radius: 20px;">🍁 Canada CRS</span>
-                                    <span style="background: #F1F5F9; color: #475569; font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;">🌏 Australia</span>
-                                    <span style="background: #F1F5F9; color: #475569; font-size: 0.78rem; font-weight: 600; padding: 5px 12px; border-radius: 20px;">🇩🇪 Germany</span>
-                                </div>
-                                <div style="margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">
-                                    Open Full Calculator <i class="fas fa-arrow-right"></i>
-                                </div>
+                                <h4 style="font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">Instant Score Preview</h4>
+                                <p style="color: #64748B; font-size: 0.88rem;">Select a country tab below to view estimated points</p>
                             </div>
-                        </a>
+
+                            <!-- Tabs row -->
+                            <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px;">
+                                <button id="tabCanada" onclick="switchHomeScore('ca')" style="background: var(--primary); color: white; border: none; font-size: 0.8rem; font-weight: 700; padding: 7px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; font-family: inherit;">
+                                    🍁 Canada CRS
+                                </button>
+                                <button id="tabAustralia" onclick="switchHomeScore('au')" style="background: #F1F5F9; color: #475569; border: none; font-size: 0.8rem; font-weight: 700; padding: 7px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; font-family: inherit;">
+                                    🌏 Australia
+                                </button>
+                                <button id="tabGermany" onclick="switchHomeScore('de')" style="background: #F1F5F9; color: #475569; border: none; font-size: 0.8rem; font-weight: 700; padding: 7px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s; font-family: inherit;">
+                                    🇩🇪 Germany
+                                </button>
+                            </div>
+
+                            <!-- Dynamic Sample Score Display -->
+                            <a href="calculator/index.html" style="text-decoration: none; display: block;">
+                                <div style="background: linear-gradient(135deg, #0724A8, #031169); border-radius: 16px; padding: 22px 24px; color: white; margin-bottom: 18px;">
+                                    <div id="homeScoreTitle" style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; font-weight: 700; margin-bottom: 6px;">ESTIMATED CRS SCORE</div>
+                                    <div id="homeScoreVal" style="font-size: 2.6rem; font-weight: 800; line-height: 1;">433 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span></div>
+                                    <div id="homeScoreSub" style="font-size: 0.85rem; margin-top: 8px; opacity: 0.9;">✅ 67-Pt FSW Eligible — Express Entry Ready</div>
+                                </div>
+
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--primary); font-weight: 700; font-size: 0.95rem;">
+                                    Open Full Calculator &amp; Get Audit <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </a>
+                        </div>
                     </div>
 
                 </div>

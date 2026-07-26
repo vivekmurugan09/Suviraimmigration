@@ -541,6 +541,48 @@ if (document.readyState === 'loading') {
     initRunningCounters();
 }
 
+// Homepage Instant Score Preview Tab Switcher
+function switchHomeScore(country) {
+    const title = document.getElementById('homeScoreTitle');
+    const val   = document.getElementById('homeScoreVal');
+    const sub   = document.getElementById('homeScoreSub');
+    const tabCa = document.getElementById('tabCanada');
+    const tabAu = document.getElementById('tabAustralia');
+    const tabDe = document.getElementById('tabGermany');
 
+    if (!title || !val || !sub) return;
 
+    // Reset tab button colors
+    [tabCa, tabAu, tabDe].forEach(t => {
+        if (t) {
+            t.style.background = '#F1F5F9';
+            t.style.color = '#475569';
+        }
+    });
 
+    if (country === 'ca') {
+        if (tabCa) {
+            tabCa.style.background = 'var(--primary)';
+            tabCa.style.color = 'white';
+        }
+        title.innerText = 'ESTIMATED CRS SCORE';
+        val.innerHTML = '433 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span>';
+        sub.innerText = '✅ 67-Pt FSW Eligible — Express Entry Ready';
+    } else if (country === 'au') {
+        if (tabAu) {
+            tabAu.style.background = 'var(--primary)';
+            tabAu.style.color = 'white';
+        }
+        title.innerText = 'ESTIMATED GSM POINTS SCORE';
+        val.innerHTML = '75 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span>';
+        sub.innerText = '✅ Subclass 189 / 190 Eligible — EOI Ready';
+    } else if (country === 'de') {
+        if (tabDe) {
+            tabDe.style.background = 'var(--primary)';
+            tabDe.style.color = 'white';
+        }
+        title.innerText = 'CHANCENKARTE POINTS SCORE';
+        val.innerHTML = '6 / 6 <span style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span>';
+        sub.innerText = '✅ Opportunity Card 2026 Eligible — Job Seeker Ready';
+    }
+}
