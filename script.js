@@ -623,6 +623,25 @@ function switchHomeScoreTab(e, country) {
     }
 }
 
+// FAQ Accordion Toggle Handler
+function toggleFaqAccordion(headerEl) {
+    if (!headerEl) return;
+    const parentItem = headerEl.parentElement;
+    if (!parentItem) return;
+    const answerEl = parentItem.querySelector('.faq-answer');
+    const iconEl   = headerEl.querySelector('.fa-chevron-down');
+
+    if (answerEl) {
+        if (answerEl.style.display === 'none') {
+            answerEl.style.display = 'block';
+            if (iconEl) iconEl.style.transform = 'rotate(180deg)';
+        } else {
+            answerEl.style.display = 'none';
+            if (iconEl) iconEl.style.transform = 'rotate(0deg)';
+        }
+    }
+}
+
 
 
 
