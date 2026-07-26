@@ -479,6 +479,55 @@ function prefillContactForm() {
     }
 }
 
+// Animated Running Numbers Counter (Re-triggers Every Time You Scroll Into View)
+document.addEventListener('DOMContentLoaded', function () {
+    const statCounters = document.querySelectorAll('.stat-counter');
+    if (statCounters.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const isComma = counter.getAttribute('data-format') === 'comma';
+
+                if (entry.isIntersecting) {
+                    const duration = 1800;
+                    const startTime = performance.now();
+
+                    function updateCount(currentTime) {
+                        const elapsedTime = currentTime - startTime;
+                        const progress = Math.min(elapsedTime / duration, 1);
+                        const easeProgress = 1 - Math.pow(1 - progress, 3);
+                        const currentVal = Math.floor(easeProgress * target);
+
+                        if (isComma) {
+                            counter.innerText = currentVal.toLocaleString('en-US') + suffix;
+                        } else {
+                            counter.innerText = currentVal + suffix;
+                        }
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            if (isComma) {
+                                counter.innerText = target.toLocaleString('en-US') + suffix;
+                            } else {
+                                counter.innerText = target + suffix;
+                            }
+                        }
+                    }
+
+                    requestAnimationFrame(updateCount);
+                } else {
+                    counter.innerText = '0' + suffix;
+                }
+            });
+        }, { threshold: 0.15 });
+
+        statCounters.forEach(counter => observer.observe(counter));
+    }
+});
+
 
 
 
