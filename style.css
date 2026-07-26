@@ -2980,17 +2980,17 @@ section {
     }
 }
 
-/* 100% Pure CSS Infinite Looping Hero Slider */
+/* PRODUCTION-GRADE 5-IMAGE HERO SLIDER FRAME */
 .hero-loop-frame {
     position: relative;
     width: 100%;
-    max-width: 520px;
-    height: 350px;
+    max-width: 540px;
+    height: 360px;
     margin: 0 auto;
-    border-radius: 24px;
+    border-radius: 26px;
     overflow: hidden;
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 35px rgba(248, 112, 52, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65), 0 0 45px rgba(248, 112, 52, 0.35);
+    border: 2px solid rgba(245, 158, 11, 0.5);
     background: #0F172A;
 }
 
@@ -3002,105 +3002,52 @@ section {
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    animation-duration: 12s;
+    animation-duration: 20s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.hero-loop-img-1 {
-    animation-name: cssLoopFade1;
+.hero-loop-img-1 { animation-name: cssLoopFade5_1; }
+.hero-loop-img-2 { animation-name: cssLoopFade5_2; }
+.hero-loop-img-3 { animation-name: cssLoopFade5_3; }
+.hero-loop-img-4 { animation-name: cssLoopFade5_4; }
+.hero-loop-img-5 { animation-name: cssLoopFade5_5; }
+
+@keyframes cssLoopFade5_1 {
+    0% { opacity: 1; transform: scale(1); }
+    16% { opacity: 1; transform: scale(1.05); }
+    20% { opacity: 0; transform: scale(1.08); }
+    96% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
-.hero-loop-img-2 {
-    animation-name: cssLoopFade2;
+@keyframes cssLoopFade5_2 {
+    0%, 16% { opacity: 0; transform: scale(0.95); }
+    20% { opacity: 1; transform: scale(1); }
+    36% { opacity: 1; transform: scale(1.05); }
+    40% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
 }
 
-.hero-loop-img-3 {
-    animation-name: cssLoopFade3;
+@keyframes cssLoopFade5_3 {
+    0%, 36% { opacity: 0; transform: scale(0.95); }
+    40% { opacity: 1; transform: scale(1); }
+    56% { opacity: 1; transform: scale(1.05); }
+    60% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
 }
 
-@keyframes cssLoopFade1 {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
-
-    28% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-
-    33% {
-        opacity: 0;
-        transform: scale(1.08);
-    }
-
-    95% {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+@keyframes cssLoopFade5_4 {
+    0%, 56% { opacity: 0; transform: scale(0.95); }
+    60% { opacity: 1; transform: scale(1); }
+    76% { opacity: 1; transform: scale(1.05); }
+    80% { opacity: 0; transform: scale(1.08); }
+    100% { opacity: 0; }
 }
 
-@keyframes cssLoopFade2 {
-    0% {
-        opacity: 0;
-        transform: scale(1.12) translateX(25px);
-    }
-
-    28% {
-        opacity: 0;
-        transform: scale(1.12) translateX(25px);
-    }
-
-    33% {
-        opacity: 1;
-        transform: scale(1) translateX(0);
-    }
-
-    61% {
-        opacity: 1;
-        transform: scale(1.06) translateX(-12px);
-    }
-
-    66% {
-        opacity: 0;
-        transform: scale(1.1) translateX(-25px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(1.12) translateX(25px);
-    }
-}
-
-@keyframes cssLoopFade3 {
-    0% {
-        opacity: 0;
-        transform: scale(0.92) translateY(20px);
-    }
-
-    61% {
-        opacity: 0;
-        transform: scale(0.92) translateY(20px);
-    }
-
-    66% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-
-    95% {
-        opacity: 1;
-        transform: scale(1.06) translateY(-12px);
-    }
-
-    100% {
-        opacity: 0;
-        transform: scale(1.1);
-    }
+@keyframes cssLoopFade5_5 {
+    0%, 76% { opacity: 0; transform: scale(0.95); }
+    80% { opacity: 1; transform: scale(1); }
+    96% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; transform: scale(1.08); }
 }
