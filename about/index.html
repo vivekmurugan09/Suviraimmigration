@@ -626,45 +626,29 @@
 
             // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
             try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Target Country", country);
+                formData.append("Qualifications & Notes", notes);
+                formData.append("_subject", `New Profile Audit Request: ${name} (${country})`);
+                formData.append("_captcha", "false");
+
                 fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
                     method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        target_country: country,
-                        notes: notes,
-                        _subject: `New Profile Verification Request: ${name} (${country})`,
-                        _captcha: "false"
-                    })
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
                 });
             } catch (err) {
                 console.log(err);
             }
 
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`1-on-1 Profile Verification Request: ${name} (${country})`);
-            const body = encodeURIComponent(
-                `SUVIRA IMMIGRATION - CLIENT PROFILE AUDIT REQUEST\n\n` +
-                `Full Name: ${name}\n` +
-                `Phone / WhatsApp: ${phone}\n` +
-                `Email Address: ${email}\n` +
-                `Target Country: ${country}\n` +
-                `Qualifications & Notes: ${notes}\n\n` +
-                `Submitted via Suvira Immigration About Us Page.`
-            );
-
-            window.location.href = `mailto:reachus@suviraimmigration.com?subject=${subject}&body=${body}`;
-            alert(`Thank you, ${name}! Your details have been submitted to reachus@suviraimmigration.com for 1-on-1 profile verification.`);
+            alert(`Thank you, ${name}! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.`);
+            document.getElementById('aboutAuditForm').reset();
         }
     </script>
 </body>
-
-</html>
 
 
 </body>

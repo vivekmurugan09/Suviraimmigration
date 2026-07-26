@@ -509,46 +509,31 @@
             const service = document.getElementById('tService').value;
             const msg = document.getElementById('tMsg').value;
 
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
             try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Service Required", service);
+                formData.append("Message", msg);
+                formData.append("_subject", `New Inquiry from Process Page: ${name} (${service})`);
+                formData.append("_captcha", "false");
+
                 fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
                     method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        phone: phone,
-                        email: email,
-                        service: service,
-                        message: msg,
-                        _subject: `New Inquiry from Process Page: ${name} (${service})`,
-                        _captcha: "false"
-                    })
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
                 });
             } catch (err) {
                 console.log(err);
             }
 
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`Inquiry from Process Page: ${name} (${service})`);
-            const body = encodeURIComponent(
-                `SUVIRA IMMIGRATION — PROCESS PAGE GET IN TOUCH INQUIRY\n\n` +
-                `Full Name   : ${name}\n` +
-                `Phone/WA    : ${phone}\n` +
-                `Email       : ${email}\n` +
-                `Service     : ${service}\n\n` +
-                `Message:\n${msg}\n\n` +
-                `Submitted via: Process Page (Get In Touch)`
-            );
-
-            window.location.href = `mailto:reachus@suviraimmigration.com?subject=${subject}&body=${body}`;
-
             const box = document.getElementById('touchSuccess');
-            box.style.display = 'flex';
-            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => document.getElementById('processTouchForm').reset(), 1500);
+            if (box) {
+                box.style.display = 'flex';
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => document.getElementById('processTouchForm').reset(), 1500);
+            }
         }
     </script>
 </body>
