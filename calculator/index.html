@@ -873,47 +873,7 @@
                 console.log(err);
             }
 
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
-            const body = encodeURIComponent(
-`SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PERSONAL INFORMATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Full Name       : ${n}
-Date of Birth   : ${d}
-Phone/WhatsApp  : ${p}
-Email           : ${em}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EDUCATION & LANGUAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Highest Education : ${ed}
-Language Test     : ${ie}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-WORK EXPERIENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Experience      : ${ex}
-Occupation      : ${oc}
-Marital Status  : ${ma}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TARGET DESTINATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Country         : ${co}
-Visa Category   : ${vi}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADDITIONAL NOTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${no}
-
-Submitted via: Suvira Immigration — Calculator / Eligibility Page`
-            );
-
-            window.location.href = `mailto:reachus@suviraimmigration.com?subject=${subject}&body=${body}`;
-
+            // Show success notification on screen without opening Gmail / mail client
             const msg = document.getElementById('successMsg');
             msg.style.display = 'flex';
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
