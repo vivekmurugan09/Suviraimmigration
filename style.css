@@ -2888,12 +2888,12 @@ section {
     box-shadow: 0 15px 35px rgba(7, 36, 168, 0.08);
 }
 
-/* Glass Navbar */
+/* Solid White Navbar */
 .navbar {
-    background: rgba(255, 255, 255, 0.8) !important;
-    backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03) !important;
+    background: #FFFFFF !important;
+    backdrop-filter: none !important;
+    border-bottom: 1px solid #E2E8F0 !important;
+    box-shadow: 0 2px 15px rgba(15, 23, 42, 0.08) !important;
 }
 
 .nav-cta {
