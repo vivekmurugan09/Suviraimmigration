@@ -3365,3 +3365,54 @@ section {
         font-size: 1.4rem !important;
     }
 }
+
+/* ═══ UNIFIED SUBPAGE HERO HEADER SYSTEM ═══ */
+.page-hero {
+    background: linear-gradient(135deg, #031169 0%, #0724A8 60%, #0F1F8A 100%);
+    padding: 140px 0 70px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(248, 112, 52, 0.18) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.page-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FF9F1C;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+}
+
+.page-hero-title {
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.page-hero-subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 780px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 400;
+}
