@@ -337,10 +337,48 @@ document.addEventListener('DOMContentLoaded', function () {
     calculatePoints();
 
     const activeTheme = localStorage.getItem('suvira_site_theme') || 't6';
-    switchSiteTheme(activeTheme);
-    const select = document.getElementById('themeSelectDropdown');
-    if (select) select.value = activeTheme;
+    // Trigger stat counters rolling animation
+    animateStatCounters();
 });
+
+// --- ANIMATED ROLLING STAT COUNTERS ---
+function animateStatCounters() {
+    const counters = document.querySelectorAll('.stat-counter');
+    if (!counters.length) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = parseInt(el.getAttribute('data-target')) || 0;
+                const suffix = el.getAttribute('data-suffix') || '';
+                const format = el.getAttribute('data-format') || '';
+                const duration = 1800; // 1.8 seconds smooth roll
+                const stepTime = 20;
+                const steps = duration / stepTime;
+                const increment = target / steps;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    let formattedVal = Math.floor(current);
+                    if (format === 'comma') {
+                        formattedVal = formattedVal.toLocaleString();
+                    }
+                    el.innerText = formattedVal + suffix;
+                }, stepTime);
+
+                obs.unobserve(el);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    counters.forEach(counter => observer.observe(counter));
+}
 
 function switchSiteTheme(themeVal) {
     document.documentElement.setAttribute('data-theme', themeVal);
