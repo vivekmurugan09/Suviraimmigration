@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (targetInput) {
                 targetInput.value = target;
             }
-            calculatePoints();
+            if (typeof calculatePoints === 'function') calculatePoints();
         });
     });
 
@@ -334,7 +334,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 3800);
 
     // Initial calculation on load
-    calculatePoints();
+    if (typeof calculatePoints === 'function') calculatePoints();
 
     const activeTheme = localStorage.getItem('suvira_site_theme') || 't6';
     // Trigger stat counters rolling animation

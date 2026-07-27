@@ -2194,27 +2194,33 @@ section {
 }
 
 /* Floating Buttons */
-.whatsapp-float {
+.whatsapp-float,
+.whatsapp-float-btn {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25d366;
+    bottom: 25px;
+    right: 25px;
+    left: auto !important;
+    width: 58px;
+    height: 58px;
+    background: #25D366;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.8rem;
-    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-    z-index: 100;
-    transition: var(--transition);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    animation: whatsappPulse 2s infinite;
 }
 
-.whatsapp-float:hover {
+.whatsapp-float:hover,
+.whatsapp-float-btn:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    color: white;
 }
 
 .scroll-top {
