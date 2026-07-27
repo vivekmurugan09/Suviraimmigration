@@ -774,7 +774,185 @@
         </div>
 
         <!-- ═══ MAIN LAYOUT ════════════════════════════════════════ -->
-        <div class="page-wrapper">
+        <div class="page-wrapper" style="max-width: 1240px; margin: 0 auto; padding: 40px 20px;">
+
+            <!-- ═══ INTERACTIVE 3-TAB REAL-TIME POINTS CALCULATOR CARD ═══ -->
+            <div style="background: white; border-radius: 24px; padding: 40px; border: 1.5px solid #E2E0D9; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08); margin-bottom: 40px;">
+                <div style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
+                    <div style="display: inline-flex; align-items: center; gap: 8px; background: #EEF3FF; color: #1B4FBB; padding: 6px 18px; border-radius: 50px; font-weight: 700; font-size: 0.82rem; text-transform: uppercase;">
+                        <i class="fas fa-sliders-h"></i> INSTANT REAL-TIME CALCULATOR
+                    </div>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; color: #111111; margin-top: 12px; line-height: 1.2;">
+                        Calculate Your 2026 Immigration Points
+                    </h2>
+                    <p style="color: #666666; font-size: 1rem; margin-top: 6px;">Select your target destination below for instant score breakdown.</p>
+                </div>
+
+                <!-- Tab Selector Buttons -->
+                <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 35px;">
+                    <button type="button" onclick="switchCalcTab('canada')" id="tabBtnCanada" style="padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; background: #1B4FBB; color: white; box-shadow: 0 4px 14px rgba(27,79,187,0.25);">
+                        🍁 Canada Express Entry (CRS)
+                    </button>
+                    <button type="button" onclick="switchCalcTab('australia')" id="tabBtnAustralia" style="padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; background: #F8F7F4; color: #111111; border: 1px solid #E2E0D9;">
+                        🇦🇺 Australia Skilled PR (GSM)
+                    </button>
+                    <button type="button" onclick="switchCalcTab('germany')" id="tabBtnGermany" style="padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; background: #F8F7F4; color: #111111; border: 1px solid #E2E0D9;">
+                        🇩🇪 Germany Opportunity Card (Chancenkarte)
+                    </button>
+                </div>
+
+                <!-- Calculator Container Grid (Controls Left, Score Meter Right) -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; align-items: start;">
+                    
+                    <!-- LEFT: CONTROLS AREA -->
+                    <div>
+                        <!-- CANADA TAB CONTENT -->
+                        <div id="calcPanelCanada">
+                            <div style="display: grid; gap: 18px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Age Group</label>
+                                    <select id="cAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="110">18 – 29 years (+110 pts max)</option>
+                                        <option value="105">30 years (+105 pts)</option>
+                                        <option value="99">31 years (+99 pts)</option>
+                                        <option value="94">32 years (+94 pts)</option>
+                                        <option value="88">33 years (+88 pts)</option>
+                                        <option value="77">34 years (+77 pts)</option>
+                                        <option value="60">35–39 years (+60 pts)</option>
+                                        <option value="35">40–44 years (+35 pts)</option>
+                                        <option value="0">45+ years (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Level of Education</label>
+                                    <select id="cEdu" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="135" selected>Master's Degree / Post-Grad (+135 pts)</option>
+                                        <option value="120">Bachelor's Degree (3+ yrs) (+120 pts)</option>
+                                        <option value="128">Two or more Diplomas/Degrees (+128 pts)</option>
+                                        <option value="150">Doctoral / Ph.D. (+150 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. First Official Language (IELTS / PTE)</label>
+                                    <select id="cLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="124" selected>IELTS CLB 9 (8, 7, 7, 7) (+124 pts)</option>
+                                        <option value="136">IELTS CLB 10 (8.5, 8, 7.5, 7.5) (+136 pts)</option>
+                                        <option value="96">IELTS CLB 8 (7.5, 6.5, 6.5, 6.5) (+96 pts)</option>
+                                        <option value="68">IELTS CLB 7 (6.0 each) (+68 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Foreign Work Experience</label>
+                                    <select id="cExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="50" selected>3 or more years (+50 pts skill transferability)</option>
+                                        <option value="25">1 to 2 years (+25 pts)</option>
+                                        <option value="0">Less than 1 year (0 pts)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AUSTRALIA TAB CONTENT -->
+                        <div id="calcPanelAustralia" style="display: none;">
+                            <div style="display: grid; gap: 18px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Age Group</label>
+                                    <select id="aAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="30" selected>25 – 32 years (+30 pts)</option>
+                                        <option value="25">18 – 24 years (+25 pts)</option>
+                                        <option value="25">33 – 39 years (+25 pts)</option>
+                                        <option value="15">40 – 44 years (+15 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Qualification</label>
+                                    <select id="aEdu" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="15" selected>Bachelor's or Master's Degree (+15 pts)</option>
+                                        <option value="20">Doctorate / Ph.D. (+20 pts)</option>
+                                        <option value="10">Diploma or Trade Certificate (+10 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. English Proficiency</label>
+                                    <select id="aLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Superior (IELTS 8.0 / PTE 79+) (+20 pts)</option>
+                                        <option value="10">Proficient (IELTS 7.0 / PTE 65+) (+10 pts)</option>
+                                        <option value="0">Competent (IELTS 6.0 / PTE 50+) (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Overseas Work Experience</label>
+                                    <select id="aExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="15" selected>8+ years (+15 pts)</option>
+                                        <option value="10">5 to 7 years (+10 pts)</option>
+                                        <option value="5">3 to 4 years (+5 pts)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GERMANY TAB CONTENT -->
+                        <div id="calcPanelGermany" style="display: none;">
+                            <div style="display: grid; gap: 18px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Qualification Recognition (ZAB / Anabin)</label>
+                                    <select id="gQual" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="4" selected>Fully Recognized Foreign Degree (+4 pts)</option>
+                                        <option value="2">Partial Recognition (+2 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Professional Experience</label>
+                                    <select id="gExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="3" selected>5+ years experience in qualification field (+3 pts)</option>
+                                        <option value="2">2 to 4 years experience (+2 pts)</option>
+                                        <option value="0">Less than 2 years (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. Language Proficiency</label>
+                                    <select id="gLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="2" selected>German B1 (+2 pts)</option>
+                                        <option value="1">German A2 OR English C1 (+1 pt)</option>
+                                        <option value="0">English B2 / IELTS 6.5 (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Age Threshold</label>
+                                    <select id="gAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="1" selected>Under 35 years of age (+1 pt)</option>
+                                        <option value="0">35 – 40 years of age (0 pts)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: LIVE SCORE DISPLAY & VERDICT METER -->
+                    <div style="background: linear-gradient(135deg, #031169, #0724A8); color: white; padding: 35px; border-radius: 20px; text-align: center; box-shadow: 0 12px 30px rgba(7, 36, 168, 0.25);">
+                        <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: rgba(255,255,255,0.15); padding: 5px 14px; border-radius: 20px; color: #FF9F1C;">
+                            ESTIMATED SCORE RESULT
+                        </span>
+                        
+                        <div style="margin: 24px 0 10px;">
+                            <span id="liveScoreNum" style="font-size: 4rem; font-weight: 900; line-height: 1; color: white;">419</span>
+                            <span id="liveScoreMax" style="font-size: 1.3rem; opacity: 0.75;"> / 1200 Pts</span>
+                        </div>
+
+                        <div id="liveScoreVerdict" style="background: rgba(37, 211, 102, 0.2); border: 1px solid #25D366; color: #25D366; font-weight: 700; padding: 10px 18px; border-radius: 12px; font-size: 0.92rem; margin-bottom: 20px;">
+                            🟢 High Chance of PR Direct Invitation
+                        </div>
+
+                        <p id="liveScoreDesc" style="font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 25px;">
+                            Your profile exceeds standard requirements. You are eligible for Express Entry ITA &amp; Provincial Nomination routing.
+                        </p>
+
+                        <a href="#eligibilityForm" style="display: block; width: 100%; background: #25D366; color: white; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                            Submit Profile to Lock In Score &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
 
             <!-- ── FORM ─────────────────────────── -->
             <div class="form-card">
@@ -1257,6 +1435,103 @@ ${no}
             msg.style.display = 'flex';
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
+        }
+
+        // Live Interactive Tab Switcher & Calculator Logic
+        let activeTab = 'canada';
+
+        function switchCalcTab(tab) {
+            activeTab = tab;
+            const btnCanada = document.getElementById('tabBtnCanada');
+            const btnAustralia = document.getElementById('tabBtnAustralia');
+            const btnGermany = document.getElementById('tabBtnGermany');
+            
+            const panelCanada = document.getElementById('calcPanelCanada');
+            const panelAustralia = document.getElementById('calcPanelAustralia');
+            const panelGermany = document.getElementById('calcPanelGermany');
+
+            btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9';
+            btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9';
+            btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9';
+
+            panelCanada.style.display = 'none';
+            panelAustralia.style.display = 'none';
+            panelGermany.style.display = 'none';
+
+            if (tab === 'canada') {
+                btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none';
+                panelCanada.style.display = 'block';
+            } else if (tab === 'australia') {
+                btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none';
+                panelAustralia.style.display = 'block';
+            } else if (tab === 'germany') {
+                btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none';
+                panelGermany.style.display = 'block';
+            }
+            calculateLiveScore();
+        }
+
+        function calculateLiveScore() {
+            const numEl = document.getElementById('liveScoreNum');
+            const maxEl = document.getElementById('liveScoreMax');
+            const verdictEl = document.getElementById('liveScoreVerdict');
+            const descEl = document.getElementById('liveScoreDesc');
+
+            if (activeTab === 'canada') {
+                const age = parseInt(document.getElementById('cAge').value) || 110;
+                const edu = parseInt(document.getElementById('cEdu').value) || 135;
+                const lang = parseInt(document.getElementById('cLang').value) || 124;
+                const exp = parseInt(document.getElementById('cExp').value) || 50;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 1200 Pts';
+                if (total >= 460) {
+                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
+                }
+            } else if (activeTab === 'australia') {
+                const age = parseInt(document.getElementById('aAge').value) || 30;
+                const edu = parseInt(document.getElementById('aEdu').value) || 15;
+                const lang = parseInt(document.getElementById('aLang').value) || 20;
+                const exp = parseInt(document.getElementById('aExp').value) || 15;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 100 Pts';
+                if (total >= 65) {
+                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
+                } else {
+                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
+                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
+                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
+                }
+            } else if (activeTab === 'germany') {
+                const qual = parseInt(document.getElementById('gQual').value) || 4;
+                const exp = parseInt(document.getElementById('gExp').value) || 3;
+                const lang = parseInt(document.getElementById('gLang').value) || 2;
+                const age = parseInt(document.getElementById('gAge').value) || 1;
+                const total = qual + exp + lang + age;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 6 Points';
+                if (total >= 6) {
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
+                }
+            }
         }
     </script>
     <!-- Floating WhatsApp Button (Production Feature) -->
