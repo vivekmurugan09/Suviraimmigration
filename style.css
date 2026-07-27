@@ -152,7 +152,6 @@ ul {
     right: 0;
     background: #FFFFFF !important;
     box-shadow: 0 2px 15px rgba(15, 23, 42, 0.08);
-    border-bottom: 1px solid #E2E8F0;
     z-index: 1000;
     padding: 12px 0;
     transition: var(--transition);
@@ -2888,7 +2887,7 @@ section {
     box-shadow: 0 15px 35px rgba(7, 36, 168, 0.08);
 }
 
-/* Solid White Navbar */
+/* Solid White Navbar for Standard Color Consistency Across All Pages */
 .navbar {
     background: #FFFFFF !important;
     backdrop-filter: none !important;
