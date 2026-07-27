@@ -1453,9 +1453,9 @@
             const vi = document.getElementById('eVisa').value;
             const no = document.getElementById('eNotes').value || 'None';
 
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            // 1. Direct background submit to info@suviraimmigration.com via FormSubmit API
             try {
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.co/ajax/info@suviraimmigration.com", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -1533,7 +1533,7 @@ ${no}
                 formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.co/ajax/info@suviraimmigration.com", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData

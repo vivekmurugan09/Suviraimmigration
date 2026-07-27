@@ -683,7 +683,7 @@
             const country = document.getElementById('clientCountry').value;
             const notes = document.getElementById('clientNotes').value || 'N/A';
 
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            // 1. Direct background submit to info@suviraimmigration.com via FormSubmit API
             try {
                 const formData = new FormData();
                 formData.append("Full Name", name);
@@ -694,7 +694,7 @@
                 formData.append("_subject", `New Profile Audit Request: ${name} (${country})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.co/ajax/info@suviraimmigration.com", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData
@@ -703,7 +703,7 @@
                 console.log(err);
             }
 
-            alert(`Thank you, ${name}! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.`);
+            alert(`Thank you, ${name}! Your details have been sent to info@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.`);
             document.getElementById('aboutAuditForm').reset();
         }
     </script>
