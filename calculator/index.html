@@ -17,6 +17,115 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <script>
+        window.activeTab = 'canada';
+
+        window.switchCalcTab = function(tab) {
+            window.activeTab = tab;
+            const btnCanada = document.getElementById('tabBtnCanada');
+            const btnAustralia = document.getElementById('tabBtnAustralia');
+            const btnGermany = document.getElementById('tabBtnGermany');
+            
+            const panelCanada = document.getElementById('calcPanelCanada');
+            const panelAustralia = document.getElementById('calcPanelAustralia');
+            const panelGermany = document.getElementById('calcPanelGermany');
+
+            if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
+            if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
+            if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
+
+            if (panelCanada) panelCanada.style.display = 'none';
+            if (panelAustralia) panelAustralia.style.display = 'none';
+            if (panelGermany) panelGermany.style.display = 'none';
+
+            if (tab === 'canada') {
+                if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
+                if (panelCanada) panelCanada.style.display = 'block';
+            } else if (tab === 'australia') {
+                if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
+                if (panelAustralia) panelAustralia.style.display = 'block';
+            } else if (tab === 'germany') {
+                if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
+                if (panelGermany) panelGermany.style.display = 'block';
+            }
+            window.calculateLiveScore();
+        };
+
+        window.calculateLiveScore = function() {
+            const numEl = document.getElementById('liveScoreNum');
+            const maxEl = document.getElementById('liveScoreMax');
+            const verdictEl = document.getElementById('liveScoreVerdict');
+            const descEl = document.getElementById('liveScoreDesc');
+            if (!numEl || !maxEl || !verdictEl || !descEl) return;
+
+            if (window.activeTab === 'canada') {
+                const age = parseInt(document.getElementById('cAge')?.value) || 110;
+                const edu = parseInt(document.getElementById('cEdu')?.value) || 135;
+                const lang = parseInt(document.getElementById('cLang')?.value) || 124;
+                const exp = parseInt(document.getElementById('cExp')?.value) || 50;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 1200 Pts';
+                if (total >= 460) {
+                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
+                }
+            } else if (window.activeTab === 'australia') {
+                const age = parseInt(document.getElementById('aAge')?.value) || 30;
+                const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
+                const lang = parseInt(document.getElementById('aLang')?.value) || 20;
+                const exp = parseInt(document.getElementById('aExp')?.value) || 15;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 100 Pts';
+                if (total >= 65) {
+                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
+                } else {
+                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
+                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
+                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
+                }
+            } else if (window.activeTab === 'germany') {
+                const qual = parseInt(document.getElementById('gQual')?.value) || 4;
+                const exp = parseInt(document.getElementById('gExp')?.value) || 3;
+                const lang = parseInt(document.getElementById('gLang')?.value) || 2;
+                const age = parseInt(document.getElementById('gAge')?.value) || 1;
+                const total = qual + exp + lang + age;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 6 Points';
+                if (total >= 6) {
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnCa = document.getElementById('tabBtnCanada');
+            const btnAu = document.getElementById('tabBtnAustralia');
+            const btnDe = document.getElementById('tabBtnGermany');
+            if (btnCa) btnCa.addEventListener('click', function() { window.switchCalcTab('canada'); });
+            if (btnAu) btnAu.addEventListener('click', function() { window.switchCalcTab('australia'); });
+            if (btnDe) btnDe.addEventListener('click', function() { window.switchCalcTab('germany'); });
+            window.calculateLiveScore();
+        });
+    </script>
+
     <style>
         *,
         *::before,
