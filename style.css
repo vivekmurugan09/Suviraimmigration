@@ -1979,7 +1979,7 @@ section {
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
     gap: 40px;
     margin-bottom: 60px;
     position: relative;
@@ -2039,6 +2039,7 @@ section {
 
 .footer-links h3,
 .footer-services h3,
+.footer-contact h3,
 .footer-newsletter h3 {
     color: white;
     font-size: 1.2rem;
@@ -2050,6 +2051,7 @@ section {
 
 .footer-links h3::after,
 .footer-services h3::after,
+.footer-contact h3::after,
 .footer-newsletter h3::after {
     content: '';
     position: absolute;
