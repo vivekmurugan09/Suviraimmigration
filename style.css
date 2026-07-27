@@ -1,29 +1,36 @@
 :root {
-    --primary: #0724A8;
-    /* Vibrant Blue */
-    --primary-light: #0B2FF7;
-    --primary-dark: #031169;
-    --secondary: #F87034;
-    /* Vibrant Orange */
-    --accent: #892CDC;
-    /* Violet */
-    --light: #F8FAFC;
-    --dark: #0F172A;
-    --gray: #64748B;
-    --light-gray: #F1F5F9;
-    --success: #10B981;
+    --primary: #1B4FBB;
+    /* Authoritative Royal Blue */
+    --primary-light: #3B72EC;
+    --primary-dark: #0F3A8A;
+    --secondary: #1B4FBB;
+    --accent: #1B4FBB;
+    --accent-light: #EEF3FF;
+    /* Soft Blue Tint */
+    --bg-offwhite: #F8F7F4;
+    /* Page Base - Light, Clean, Legible */
+    --light: #F8F7F4;
+    --dark: #111111;
+    /* Headings & Body Primary */
+    --gray: #666666;
+    /* Secondary copy */
+    --light-gray: #E2E0D9;
+    /* Card borders */
+    --success: #2E7D32;
+    /* Fact-anchored Green */
+    --success-bg: #EAF3DE;
     --warning: #F59E0B;
     --danger: #EF4444;
-    --info: #3B82F6;
+    --info: #1B4FBB;
 
-    --gradient-vibrant: linear-gradient(135deg, #0724A8 0%, #892CDC 50%, #F87034 100%);
-    --gradient-orange: linear-gradient(135deg, #F87034 0%, #FF9F1C 100%);
+    --gradient-vibrant: linear-gradient(135deg, #1B4FBB 0%, #0F3A8A 100%);
+    --gradient-orange: linear-gradient(135deg, #1B4FBB 0%, #3B72EC 100%);
 
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-heading: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
+    --font-body: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Inter, sans-serif;
 
     --border-radius: 12px;
-    --box-shadow: 0 10px 30px rgba(7, 36, 168, 0.2);
+    --box-shadow: 0 4px 20px rgba(27, 79, 187, 0.08);
     --transition: all 0.3s ease;
 }
 
