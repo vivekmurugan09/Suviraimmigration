@@ -1,3 +1,5 @@
+@import url('https://cdn.jsdelivr.net/gh/fontalternative/glacial-indifference@latest/font.css');
+
 :root {
     --primary: #1B4FBB;
     /* Authoritative Royal Blue */
@@ -26,7 +28,7 @@
     --gradient-vibrant: linear-gradient(135deg, #1B4FBB 0%, #0F3A8A 100%);
     --gradient-orange: linear-gradient(135deg, #1B4FBB 0%, #3B72EC 100%);
 
-    --font-heading: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-heading: 'Glacial Indifference', 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     --border-radius: 12px;
