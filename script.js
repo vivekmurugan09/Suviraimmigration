@@ -598,7 +598,7 @@ function handleHomeTouchSubmit(e) {
         formData.append("_subject", `New Inquiry from Homepage: ${name} (${service})`);
         formData.append("_captcha", "false");
 
-        fetch("https://formsubmit.co/ajax/info@suviraimmigration.com", {
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
             method: "POST",
             headers: { 'Accept': 'application/json' },
             body: formData
