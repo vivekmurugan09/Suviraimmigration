@@ -65,7 +65,9 @@ body {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: var(--light);
+    background-color: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .container {
