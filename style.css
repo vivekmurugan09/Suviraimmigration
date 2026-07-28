@@ -2675,20 +2675,20 @@ section {
     gap: 8px;
     background: rgba(255, 255, 255, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.35);
-    padding: 8px 20px;
+    padding: 8px 22px;
     border-radius: 50px;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 1.2px;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     margin-bottom: 25px;
     text-transform: uppercase;
     backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .hero-pill i {
-    color: #FF9F1C;
+    color: #FFB703 !important;
     font-size: 0.95rem;
 }
 
