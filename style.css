@@ -2670,19 +2670,26 @@ section {
 }
 
 .hero-pill {
-    display: inline-block;
-    background: rgba(248, 112, 52, 0.1);
-    border: 1px solid rgba(248, 112, 52, 0.3);
-    padding: 6px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    padding: 8px 20px;
     border-radius: 50px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: var(--secondary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    color: #FFFFFF;
     margin-bottom: 25px;
     text-transform: uppercase;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 4px 20px rgba(248, 112, 52, 0.1);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.hero-pill i {
+    color: #FF9F1C;
+    font-size: 0.95rem;
 }
 
 .hero-features-pill {
