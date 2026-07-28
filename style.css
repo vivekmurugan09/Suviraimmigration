@@ -3542,3 +3542,11 @@ section {
 .top-header-bar a:hover {
     color: #FF9F1C;
 }
+
+/* Unified Hero Page Title Font Size & Font Weight */
+.hero-title, 
+.page-hero-title, 
+.country-hero-pro h1 {
+    font-size: clamp(2.0rem, 5vw, 3.0rem) !important;
+    font-weight: 600 !important;
+}
