@@ -4,9 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Suvira Immigration</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: var(--font-body);
             background: linear-gradient(rgba(10, 36, 114, 0.9), rgba(10, 36, 114, 0.85));
             color: white;
             text-align: center;
@@ -22,20 +27,26 @@
             padding: 40px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .checkmark {
-            font-size: 80px;
+            font-size: clamp(3rem, 8vw, 4.5rem);
             color: #4CAF50;
             margin-bottom: 20px;
+            line-height: 1;
         }
         h1 {
-            font-size: 36px;
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            font-weight: 800;
             margin-bottom: 20px;
+            color: white;
         }
         p {
-            font-size: 18px;
-            margin-bottom: 30px;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
+            margin-bottom: 20px;
             line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
         }
         .btn {
             display: inline-block;
@@ -45,6 +56,8 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
             margin: 10px;
             transition: all 0.3s ease;
         }
@@ -63,7 +76,7 @@
         <a href="index.html" class="btn">Return to Homepage</a>
         <a href="tel:+919940352086" class="btn">Call us now</a>
     </div>
-    <!-- Floating WhatsApp Button (Production Feature) -->
+    <!-- Floating WhatsApp Button -->
     <a href="https://api.whatsapp.com/send?phone=919940352086&text=Hello%20Suvira%20Immigration,%20I%20want%20a%20free%20visa%20consultation" class="whatsapp-float-btn" target="_blank" title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
