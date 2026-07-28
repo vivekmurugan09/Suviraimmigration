@@ -41,20 +41,22 @@
     box-sizing: border-box;
 }
 
+html, body {
+    background-color: #031169 !important;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
-    background-color: #031169 !important;
 }
 
 body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: var(--dark);
-    background: var(--light);
     overflow-x: hidden;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
