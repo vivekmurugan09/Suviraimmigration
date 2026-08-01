@@ -1,0 +1,3 @@
+# Set @vivekmurugan09 as the default reviewer/owner for all files in the repository.
+# Any Pull Request opened will automatically request their review and require their approval to merge.
+* @vivekmurugan09
