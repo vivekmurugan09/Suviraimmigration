@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style.css?v=102.0">
+    <link rel="stylesheet" href="style.css?v=103.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
@@ -1156,4 +1156,45 @@
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;c1b8544d0c8642efb65eb1e2edb77950&quot;,&quot;r&quot;:1}" crossorigin="anonymous"></script>
 
 
+
+<!-- Floating CTA & Modal -->
+<button class="floating-cta btn-gradient" onclick="document.getElementById('leadModal').classList.add('active')">
+    <i class="fas fa-file-signature"></i> Free Assessment
+</button>
+
+<div class="modal-overlay" id="leadModal">
+    <div class="modal-glass">
+        <button class="modal-close" onclick="document.getElementById('leadModal').classList.remove('active')"><i class="fas fa-times"></i></button>
+        <div style="text-align: center; margin-bottom: 20px;">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(7, 36, 168, 0.08); padding: 5px 16px; border-radius: 50px; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; color: #0724A8; margin-bottom: 12px;">
+                <i class="fas fa-user-check"></i> FREE 1-ON-1 ASSESSMENT
+            </div>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: #0F172A; margin-bottom: 8px;">Submit Your Details</h2>
+        </div>
+        <form id="popupClientForm" onsubmit="event.preventDefault(); alert('Request Submitted successfully!'); document.getElementById('leadModal').classList.remove('active');">
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: #0F172A; text-transform: uppercase;">Full Name *</label>
+                <input type="text" required placeholder="Enter your full name" class="modal-input">
+            </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: #0F172A; text-transform: uppercase;">Phone / WhatsApp *</label>
+                <input type="tel" required placeholder="+91 99403 52086" class="modal-input">
+            </div>
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 6px; color: #0F172A; text-transform: uppercase;">Target Country *</label>
+                <select required class="modal-input">
+                    <option value="" disabled selected>Select Country</option>
+                    <option value="Canada">🇨🇦 Canada</option>
+                    <option value="Australia">🇦🇺 Australia</option>
+                    <option value="Germany">🇩🇪 Germany</option>
+                    <option value="UK">🇬🇧 United Kingdom</option>
+                    <option value="Other">🌍 Other</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-gradient" style="width: 100%; padding: 13px; font-size: 1rem; font-weight: 700; border: none; cursor: pointer; border-radius: 12px; margin-top: 10px; color: white;">
+                <i class="fas fa-paper-plane"></i> Submit Request
+            </button>
+        </form>
+    </div>
+</div>
 </body></html>
