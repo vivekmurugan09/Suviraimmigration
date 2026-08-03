@@ -2576,10 +2576,10 @@ section {
 
 /* PREMIUM THEME REDESIGN - HIGH LEVEL ESTHETICS */
 .hero-gradient {
-    background: linear-gradient(135deg, rgba(15, 10, 28, 0.90) 0%, rgba(26, 12, 45, 0.86) 50%, rgba(15, 10, 28, 0.92) 100%),
-        url('https://images.unsplash.com/photo-1542296332-2e4473faf563?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') !important;
-    background-size: cover !important;
-    background-position: center !important;
+    background: linear-gradient(135deg, rgba(15, 10, 28, 0.95) 0%, rgba(26, 12, 45, 0.92) 50%, rgba(15, 10, 28, 0.96) 100%),
+        url('images/suvira-logo-transparent.png') !important;
+    background-size: 800px !important;
+    background-position: right center !important;
     background-repeat: no-repeat !important;
     position: relative;
     overflow: hidden;
