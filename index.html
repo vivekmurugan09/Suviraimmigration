@@ -1158,9 +1158,7 @@
 
 
 <!-- Floating CTA & Modal -->
-<button class="floating-cta btn-gradient" onclick="document.getElementById('leadModal').classList.add('active')">
-    <i class="fas fa-file-signature"></i> Free Assessment
-</button>
+
 
 <div class="modal-overlay" id="leadModal">
     <div class="modal-glass">
@@ -1197,4 +1195,14 @@
         </form>
     </div>
 </div>
+
+<script>
+    // Auto-show popup after 4 seconds
+    setTimeout(function() {
+        if(!sessionStorage.getItem('popupShown')) {
+            document.getElementById('leadModal').classList.add('active');
+            sessionStorage.setItem('popupShown', 'true');
+        }
+    }, 4000);
+</script>
 </body></html>
