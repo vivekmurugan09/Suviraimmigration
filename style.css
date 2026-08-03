@@ -3858,3 +3858,43 @@ section {
     opacity: 0.85; /* Blend slightly with the wall */
     transform: perspective(600px) rotateY(-5deg); /* Slight angle to match wall depth */
 }
+
+/* Phase 3 UI Upgrades */
+.premium-glass-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+.premium-glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 75px rgba(15, 23, 42, 0.15);
+    border-color: rgba(248, 112, 52, 0.4);
+}
+.premium-glass-card:hover .fas, .premium-glass-card:hover .fa-solid {
+    text-shadow: 0 0 15px rgba(248, 112, 52, 0.4);
+}
+
+.showcase-card-inner {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+    border: 2px solid #E2E8F0;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+    position: relative;
+}
+.showcase-card-inner:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
+    border-color: #F87034;
+}
+.showcase-card-inner:hover .fa-arrow-right {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
