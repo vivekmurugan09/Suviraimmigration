@@ -3848,11 +3848,13 @@ section {
 /* Exact Logo Overlay */
 .overlay-logo {
     position: absolute;
-    top: 25%;
-    right: 18%;
-    width: 40%;
+    top: 8%;
+    right: 6%;
+    width: 16%;
     height: auto;
     z-index: 5;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
     pointer-events: none;
+    opacity: 0.85; /* Blend slightly with the wall */
+    transform: perspective(600px) rotateY(-5deg); /* Slight angle to match wall depth */
 }
