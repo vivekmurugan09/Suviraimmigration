@@ -947,66 +947,6 @@ function toggleFaqAccordion(headerEl) {
                 console.log(err);
             }
 
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
-            const body = encodeURIComponent(
-                `SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PERSONAL INFORMATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Full Name       : ${n}
-Date of Birth   : ${d}
-Phone/WhatsApp  : ${p}
-Email           : ${em}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EDUCATION & LANGUAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Highest Education : ${ed}
-Language Test     : ${ie}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-WORK EXPERIENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Experience      : ${ex}
-Occupation      : ${oc}
-Marital Status  : ${ma}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TARGET DESTINATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Country         : ${co}
-Visa Category   : ${vi}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADDITIONAL NOTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${no}
-
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Age", age);
-                formData.append("Education Level", edu);
-                formData.append("English Proficiency", eng);
-                formData.append("Work Experience", ex);
-                formData.append("Target Country", co);
-                formData.append("Visa Category", vi);
-                formData.append("Notes", no);
-                formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
-                formData.append("_captcha", "false");
-
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
-            }
-
             const msg = document.getElementById('successMsg');
             msg.style.display = 'flex';
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
