@@ -21,7 +21,7 @@
     --info: #0A1128;
 
     --gradient-vibrant: linear-gradient(135deg, #0A1128 0%, #1A2754 100%);
-    --gradient-orange: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+    --gradient-orange: linear-gradient(135deg, #EA580C 0%, var(--secondary) 100%);
 
     --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
     --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -42,14 +42,14 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     height: 100%;
-    background-color: #031169;
+    background-color: var(--primary);
 }
 
 body {
     font-family: var(--font-body);
     line-height: 1.6;
     color: var(--dark);
-    background-color: #031169;
+    background-color: var(--primary);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@ body {
     flex: 1 0 auto;
     display: flex;
     flex-direction: column;
-    background-color: #031169;
+    background-color: var(--primary);
 }
 
 .container {
@@ -2017,7 +2017,7 @@ section {
     color: white;
     padding: 80px 0 40px;
     position: relative;
-    background-color: #031169;
+    background-color: var(--primary);
     margin-top: auto !important;
     margin-bottom: 0 !important;
     flex-shrink: 0;
@@ -3332,7 +3332,7 @@ section {
     .mobile-menu-btn {
         display: block !important;
         font-size: 1.4rem !important;
-        color: #0724A8 !important;
+        color: var(--primary) !important;
         padding: 8px;
     }
 
@@ -3427,7 +3427,7 @@ section {
 
 /* ═══ UNIFIED SUBPAGE HERO HEADER SYSTEM ═══ */
 .page-hero {
-    background: linear-gradient(135deg, #031169 0%, #0724A8 60%, #0F1F8A 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary) 60%, #0F1F8A 100%);
     padding: 140px 0 70px;
     text-align: center;
     color: white;
@@ -3521,7 +3521,7 @@ section {
 
 /* Production Top Header Bar */
 .top-header-bar {
-    background: #031169;
+    background: var(--primary);
     color: rgba(255, 255, 255, 0.9);
     padding: 8px 0;
     font-size: 0.85rem;
