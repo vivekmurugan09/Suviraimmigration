@@ -1,9 +1,44 @@
-/* Interactive Floating Chatbot Widget */
+/* Interactive Floating Chatbot Widget & Zoho SalesIQ Integration */
 
 (function() {
-    // 1. Inject Chatbot HTML structure on load
+    // --------------------------------------------------------------------------------------
+    // ZOHO SALESIQ LIVE CHAT CONFIGURATION
+    // --------------------------------------------------------------------------------------
+    // 1. Log in to your Zoho SalesIQ account (https://www.zoho.com/salesiq/)
+    // 2. Go to Settings > Brands > [Your Brand] > Installation > Website.
+    // 3. Copy the widget snippet and locate the 'widgetcode' value (a long alphanumeric string).
+    // 4. Paste your widget code below (replace "YOUR_ZOHO_WIDGET_CODE_HERE").
+    // 5. Connect Zoho SalesIQ to Zoho Cliq under SalesIQ Settings > Integrations > Zoho Cliq.
+    //
+    // Note: If left as "YOUR_ZOHO_WIDGET_CODE_HERE", the script will default to loading the 
+    // premium custom automated virtual assistant to capture telephone callback leads.
+    // --------------------------------------------------------------------------------------
+    const ZOHO_WIDGET_CODE = "YOUR_ZOHO_WIDGET_CODE_HERE";
+    // --------------------------------------------------------------------------------------
+
+    // Check if Zoho SalesIQ integration is active
+    if (ZOHO_WIDGET_CODE && ZOHO_WIDGET_CODE !== "YOUR_ZOHO_WIDGET_CODE_HERE") {
+        window.$zoho = window.$zoho || {};
+        window.$zoho.salesiq = window.$zoho.salesiq || { widgetcode: ZOHO_WIDGET_CODE, values: {}, ready: function() {} };
+        
+        const d = document;
+        const s = d.createElement("script");
+        s.type = "text/javascript";
+        s.id = "zsiqscript";
+        s.defer = true;
+        s.src = "https://salesiq.zoho.com/widget";
+        
+        const firstScript = d.getElementsByTagName("script")[0];
+        if (firstScript && firstScript.parentNode) {
+            firstScript.parentNode.insertBefore(s, firstScript);
+        } else {
+            d.head.appendChild(s);
+        }
+        return; // Suppress custom chatbot execution since SalesIQ is loading
+    }
+
+    // Load custom automated chatbot if Zoho SalesIQ is not yet configured
     document.addEventListener("DOMContentLoaded", function() {
-        // Avoid duplicate injections
         if (document.getElementById("suviraChatBtn")) return;
 
         // Launcher Button
@@ -40,11 +75,9 @@
         document.body.appendChild(chatBtn);
         document.body.appendChild(chatPanel);
 
-        // Event Listeners for toggle
         chatBtn.addEventListener("click", toggleChat);
         document.getElementById("suviraChatClose").addEventListener("click", toggleChat);
 
-        // Initialize messages
         initChat();
     });
 
@@ -64,7 +97,6 @@
     }
 
     function initChat() {
-        // Pre-setup empty chat messages area
         const messagesContainer = document.getElementById("suviraChatMessages");
         if (messagesContainer) {
             messagesContainer.innerHTML = "";
@@ -82,7 +114,6 @@
         return hours + ':' + minutes + ' ' + ampm;
     }
 
-    // Append a message bubble to the chat area
     function appendMessage(sender, content, isHtml = false) {
         const container = document.getElementById("suviraChatMessages");
         if (!container) return;
@@ -108,7 +139,6 @@
         container.scrollTop = container.scrollHeight;
     }
 
-    // Show/hide typing indicator
     let typingIndicator = null;
     function showTyping(show) {
         const container = document.getElementById("suviraChatMessages");
@@ -129,7 +159,6 @@
         }
     }
 
-    // Bot message dispatcher with simulated typing delay
     function botReply(text, delay = 800, isHtml = false, options = []) {
         showTyping(true);
         setTimeout(function() {
@@ -141,7 +170,6 @@
         }, delay);
     }
 
-    // Render interactive options buttons
     function renderOptions(options) {
         const container = document.getElementById("suviraChatMessages");
         if (!container) return;
@@ -154,7 +182,6 @@
             btn.className = "suvira-chat-option";
             btn.innerHTML = `${opt.text} <i class="fas fa-chevron-right"></i>`;
             btn.addEventListener("click", function() {
-                // Remove other option buttons once clicked
                 optionsDiv.remove();
                 handleUserSelection(opt);
             });
@@ -165,7 +192,6 @@
         container.scrollTop = container.scrollHeight;
     }
 
-    // Handle user selection click
     function handleUserSelection(option) {
         appendMessage("user", option.text);
 
@@ -236,7 +262,6 @@
         }
     }
 
-    // Render callback form
     function renderLeadForm() {
         const container = document.getElementById("suviraChatMessages");
         if (!container) return;
@@ -267,7 +292,6 @@
                 return;
             }
 
-            // Remove form and log user response
             form.remove();
             appendMessage("user", `Requesting callback for ${name} (${phone})`);
             
