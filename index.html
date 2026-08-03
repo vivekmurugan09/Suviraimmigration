@@ -307,34 +307,35 @@
                     <!-- Right: Interactive Instant Score Preview Card -->
                     <div style="position: relative;">
                         <div
-                            style="background: white; border-radius: 24px; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12); border: 2px solid #E2E8F0; padding: 30px; transition: transform 0.35s ease, box-shadow 0.35s ease;">
+                            style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-radius: 24px; box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15); border: 1px solid rgba(255,255,255,0.7); padding: 30px; transition: all 0.3s ease; position: relative; overflow: hidden;">
                             <!-- Mini preview header -->
                             <div style="text-align: center; margin-bottom: 20px;">
                                 <div
-                                    style="width: 56px; height: 56px; background: rgba(7,36,168,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: var(--primary); font-size: 1.5rem;">
+                                    style="width: 56px; height: 56px; background: rgba(7,36,168,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #0724A8; font-size: 1.5rem; border: 1px solid rgba(7, 36, 168, 0.15);">
                                     <i class="fas fa-calculator"></i>
                                 </div>
-                                <h4 style="font-size: 1.1rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">
+                                <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 4px; letter-spacing: 0.5px;">
                                     Instant Score Preview
                                 </h4>
-                                <p style="color: #64748B; font-size: 0.88rem;">Click a tab below to switch score preview
-                                </p>
+                                <p style="color: #64748B; font-size: 0.88rem; font-weight: 500;">Select a track to preview estimated points</p>
                             </div>
 
                             <!-- Dynamic Score Display Card -->
                             <div id="homeScoreCard"
-                                style="background: linear-gradient(135deg, #0724A8, #031169); border-radius: 14px; padding: 20px 24px; color: white; margin-bottom: 20px; transition: all 0.3s ease;">
+                                style="background: linear-gradient(135deg, #0724A8, #1B4FBB, #031169); border-radius: 16px; padding: 22px 26px; color: white; margin-bottom: 20px; transition: all 0.3s ease; box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.15), 0 12px 30px rgba(7, 36, 168, 0.25); text-align: center;">
                                 <div id="homeScoreLabel"
-                                    style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: #FF9F1C; font-weight: 700; margin-bottom: 6px;">
+                                    style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; color: #FF9F1C; font-weight: 700; margin-bottom: 8px;">
                                     ESTIMATED CRS SCORE
                                 </div>
-                                <div style="font-size: 2.6rem; font-weight: 800; line-height: 1;">
-                                    <span id="homeScoreVal">433</span>
+                                <div style="font-size: 3.2rem; font-weight: 900; line-height: 1; margin-bottom: 4px;">
+                                    <span id="homeScoreVal" style="display: inline-block; text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);">433</span>
                                     <span id="homeScoreUnit"
-                                        style="font-size: 1rem; font-weight: 400; opacity: 0.85;">Points</span>
+                                        style="font-size: 1.1rem; font-weight: 500; opacity: 0.85; margin-left: 2px;">Points</span>
                                 </div>
-                                <div id="homeScoreBadge" style="font-size: 0.85rem; margin-top: 8px; opacity: 0.95;">
-                                    ✅ 67-Pt FSW Eligible — Express Entry Ready
+                                <div style="margin-top: 10px;">
+                                    <span id="homeScoreBadge" style="font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.15); padding: 6px 14px; border-radius: 30px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1);">
+                                        🍁 67-Pt FSW Eligible — Express Entry Ready
+                                    </span>
                                 </div>
                             </div>
 
@@ -342,22 +343,22 @@
                             <div
                                 style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
                                 <button type="button" id="tabCanada" onclick="switchHomeScore('canada', event)"
-                                    style="background: #0724A8; color: white; border: none; font-size: 0.82rem; font-weight: 700; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
+                                    style="background: #0724A8; color: white; border: none; font-size: 0.82rem; font-weight: 700; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(7, 36, 168, 0.25);">
                                     🍁 Canada CRS
                                 </button>
                                 <button type="button" id="tabAustralia" onclick="switchHomeScore('australia', event)"
-                                    style="background: #F1F5F9; color: #475569; border: none; font-size: 0.82rem; font-weight: 600; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
+                                    style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0; font-size: 0.82rem; font-weight: 600; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease;">
                                     🌏 Australia
                                 </button>
                                 <button type="button" id="tabGermany" onclick="switchHomeScore('germany', event)"
-                                    style="background: #F1F5F9; color: #475569; border: none; font-size: 0.82rem; font-weight: 600; padding: 8px 14px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;">
+                                    style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0; font-size: 0.82rem; font-weight: 600; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease;">
                                     🇩🇪 Germany
                                 </button>
                             </div>
 
                             <!-- Open Full Calculator Button -->
                             <a id="homeCalcLink" href="calculator/index.html" class="btn-gradient"
-                                style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 13px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 4px 15px rgba(7,36,168,0.2);">
+                                style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; text-decoration: none; background: linear-gradient(135deg, #F87034, #E8501A) !important; color: white !important; box-shadow: 0 6px 20px rgba(248, 112, 52, 0.3) !important; border: none !important; transition: all 0.3s ease;">
                                 Open Full Calculator <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>

@@ -696,38 +696,64 @@ function toggleFaqAccordion(headerEl) {
                             const badge = document.getElementById('homeScoreBadge');
                             const link = document.getElementById('homeCalcLink');
 
+                            if (val) {
+                                val.classList.remove('score-pulse');
+                                void val.offsetWidth; // trigger reflow to reset animation
+                                val.classList.add('score-pulse');
+                            }
+
                             const tabCa = document.getElementById('tabCanada');
                             const tabAu = document.getElementById('tabAustralia');
                             const tabDe = document.getElementById('tabGermany');
 
                             [tabCa, tabAu, tabDe].forEach(t => {
                                 if (t) {
-                                    t.style.background = '#F1F5F9';
+                                    t.style.background = '#F8FAFC';
                                     t.style.color = '#475569';
                                     t.style.fontWeight = '600';
+                                    t.style.border = '1px solid #E2E8F0';
+                                    t.style.boxShadow = 'none';
                                 }
                             });
 
                             if (country === 'australia') {
-                                if (tabAu) { tabAu.style.background = '#0724A8'; tabAu.style.color = 'white'; tabAu.style.fontWeight = '700'; }
+                                if (tabAu) { 
+                                    tabAu.style.background = '#0724A8'; 
+                                    tabAu.style.color = 'white'; 
+                                    tabAu.style.fontWeight = '700'; 
+                                    tabAu.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabAu.style.border = 'none'; 
+                                }
                                 if (label) label.innerText = 'ESTIMATED GSM POINTS';
                                 if (val) val.innerText = '75';
                                 if (unit) unit.innerText = 'Points';
-                                if (badge) badge.innerText = '✅ 65-Pt Skilled Independent (Subclass 189/190) Qualified';
+                                if (badge) badge.innerHTML = '🌏 65-Pt Skilled Independent (Subclass 189/190) Qualified';
                                 if (link) link.href = 'calculator/index.html?country=australia';
                             } else if (country === 'germany') {
-                                if (tabDe) { tabDe.style.background = '#0724A8'; tabDe.style.color = 'white'; tabDe.style.fontWeight = '700'; }
+                                if (tabDe) { 
+                                    tabDe.style.background = '#0724A8'; 
+                                    tabDe.style.color = 'white'; 
+                                    tabDe.style.fontWeight = '700'; 
+                                    tabDe.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabDe.style.border = 'none'; 
+                                }
                                 if (label) label.innerText = 'CHANCENKARTE SCORE';
                                 if (val) val.innerText = '6 / 6';
                                 if (unit) unit.innerText = 'Pts';
-                                if (badge) badge.innerText = '✅ 6/6 Points Maximum — Opportunity Card Eligible';
+                                if (badge) badge.innerHTML = '🇩🇪 6/6 Points Maximum — Opportunity Card Eligible';
                                 if (link) link.href = 'calculator/index.html?country=germany';
                             } else {
-                                if (tabCa) { tabCa.style.background = '#0724A8'; tabCa.style.color = 'white'; tabCa.style.fontWeight = '700'; }
+                                if (tabCa) { 
+                                    tabCa.style.background = '#0724A8'; 
+                                    tabCa.style.color = 'white'; 
+                                    tabCa.style.fontWeight = '700'; 
+                                    tabCa.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabCa.style.border = 'none'; 
+                                }
                                 if (label) label.innerText = 'ESTIMATED CRS SCORE';
                                 if (val) val.innerText = '433';
                                 if (unit) unit.innerText = 'Points';
-                                if (badge) badge.innerText = '✅ 67-Pt FSW Eligible — Express Entry Ready';
+                                if (badge) badge.innerHTML = '🍁 67-Pt FSW Eligible — Express Entry Ready';
                                 if (link) link.href = 'calculator/index.html?country=canada';
                             }
                         }
