@@ -4135,3 +4135,49 @@ section {
     background: #FFFFFF;
     box-shadow: 0 0 0 4px rgba(248, 112, 52, 0.1);
 }
+
+/* Animated Success Marquee */
+.premium-marquee-section {
+    background: #0F172A;
+    color: white;
+    padding: 15px 0;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 2px solid rgba(248, 112, 52, 0.4);
+}
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+}
+.marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scrollMarquee 30s linear infinite;
+}
+.marquee-item {
+    padding: 0 40px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+@keyframes scrollMarquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* Global Reach Hover Glow */
+.hover-glow {
+    transition: all 0.4s ease;
+}
+.hover-glow:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(248, 112, 52, 0.15);
+    border-color: rgba(248, 112, 52, 0.3) !important;
+}
