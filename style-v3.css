@@ -4360,7 +4360,7 @@ input:focus, select:focus, textarea:focus {
 /* Country Pages CSS Added */
 .country-hero-title-flex { display: flex; align-items: center; gap: 20px; margin-bottom: 20px; }
 .country-hero-title-flex img { width: 80px; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid var(--light-gray); }
-.country-hero-title-flex h1 { margin: 0; font-size: 2.5rem; color: var(--primary); }
+.country-hero-title-flex h1 { margin: 0; font-size: 2.5rem; color: white; }
 .country-hero-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; margin-top: 40px; }
 .fact-box { background: white; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--light-gray); box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: center; }
 .fact-box h4 { font-size: 0.85rem; color: var(--gray); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
