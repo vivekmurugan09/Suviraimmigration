@@ -1,130 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
+    <meta name="robots" content="noindex, nofollow">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free PR & Visa Eligibility Assessment - Suvira Immigration | Chennai</title>
-    <meta name="description"
-        content="Submit your profile for a free PR and Visa eligibility assessment by Suvira Immigration's senior consultants in Chennai. Get a response within 24 hours.">
+    <title>Free Canada CRS Score Calculator 2026 | Australia Points | Germany Chancenkarte | Suvira</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <meta name="description" content="Check your Canada CRS score, Australia immigration points, or Germany Chancenkarte eligibility free. Instant results with pathway recommendations. Suvira Immigration Chennai.">
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../style.css?v=90.0">
+    <link rel="stylesheet" href="../style-v3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
-    <script>
-        window.activeTab = 'canada';
-
-        window.switchCalcTab = function(tab) {
-            window.activeTab = tab;
-            const btnCanada = document.getElementById('tabBtnCanada');
-            const btnAustralia = document.getElementById('tabBtnAustralia');
-            const btnGermany = document.getElementById('tabBtnGermany');
-            
-            const panelCanada = document.getElementById('calcPanelCanada');
-            const panelAustralia = document.getElementById('calcPanelAustralia');
-            const panelGermany = document.getElementById('calcPanelGermany');
-
-            if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
-            if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
-            if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
-
-            if (panelCanada) panelCanada.style.display = 'none';
-            if (panelAustralia) panelAustralia.style.display = 'none';
-            if (panelGermany) panelGermany.style.display = 'none';
-
-            if (tab === 'canada') {
-                if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
-                if (panelCanada) panelCanada.style.display = 'block';
-            } else if (tab === 'australia') {
-                if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
-                if (panelAustralia) panelAustralia.style.display = 'block';
-            } else if (tab === 'germany') {
-                if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
-                if (panelGermany) panelGermany.style.display = 'block';
-            }
-            window.calculateLiveScore();
-        };
-
-        window.calculateLiveScore = function() {
-            const numEl = document.getElementById('liveScoreNum');
-            const maxEl = document.getElementById('liveScoreMax');
-            const verdictEl = document.getElementById('liveScoreVerdict');
-            const descEl = document.getElementById('liveScoreDesc');
-            if (!numEl || !maxEl || !verdictEl || !descEl) return;
-
-            if (window.activeTab === 'canada') {
-                const age = parseInt(document.getElementById('cAge')?.value) || 110;
-                const edu = parseInt(document.getElementById('cEdu')?.value) || 135;
-                const lang = parseInt(document.getElementById('cLang')?.value) || 124;
-                const exp = parseInt(document.getElementById('cExp')?.value) || 50;
-                const total = age + edu + lang + exp;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 1200 Pts';
-                if (total >= 460) {
-                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
-                }
-            } else if (window.activeTab === 'australia') {
-                const age = parseInt(document.getElementById('aAge')?.value) || 30;
-                const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
-                const lang = parseInt(document.getElementById('aLang')?.value) || 20;
-                const exp = parseInt(document.getElementById('aExp')?.value) || 15;
-                const total = age + edu + lang + exp;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 100 Pts';
-                if (total >= 65) {
-                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
-                } else {
-                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
-                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
-                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
-                }
-            } else if (window.activeTab === 'germany') {
-                const qual = parseInt(document.getElementById('gQual')?.value) || 4;
-                const exp = parseInt(document.getElementById('gExp')?.value) || 3;
-                const lang = parseInt(document.getElementById('gLang')?.value) || 2;
-                const age = parseInt(document.getElementById('gAge')?.value) || 1;
-                const total = qual + exp + lang + age;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 6 Points';
-                if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
-                }
-            }
-        };
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const btnCa = document.getElementById('tabBtnCanada');
-            const btnAu = document.getElementById('tabBtnAustralia');
-            const btnDe = document.getElementById('tabBtnGermany');
-            if (btnCa) btnCa.addEventListener('click', function() { window.switchCalcTab('canada'); });
-            if (btnAu) btnAu.addEventListener('click', function() { window.switchCalcTab('australia'); });
-            if (btnDe) btnDe.addEventListener('click', function() { window.switchCalcTab('germany'); });
-            window.calculateLiveScore();
-        });
-    </script>
+    
 
     <style>
         *,
@@ -774,23 +665,19 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="../index.html"
-                    style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-                    <img src="../images/suvira-logo-transparent.png" alt="Suvira Immigration Logo"
-                        style="height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.9));">
+                <a href="../" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
+                    <img src="../images/suvira-logo-transparent.png" alt="Suvira Immigration Logo" style="height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.9));" loading="lazy">
                 </a>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-                <a href="../about/index.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-                <a href="index.html" class="nav-link active"><i class="fas fa-calculator"></i> Free Eligibility Check</a>
-                <a href="../services/index.html" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
-                <a href="../countries/index.html" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
-                <a href="../process/index.html" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
-                <a href="../contact/index.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="tel:+919940352086" class="nav-cta">
-                    <i class="fas fa-phone"></i> Book free consultation
-                </a>
+                <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+                <a href="../about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+                <a href="./" class="nav-link active"><i class="fas fa-calculator"></i> Eligibility Check</a>
+                <a href="../services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+                <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
+                <a href="../process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
+                <a href="../contact/" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+                <button onclick="document.getElementById('leadModal').style.display='flex'" style="background:#c9a227;color:#0a1628;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer">Eligibility Check</button>
             </div>
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -803,22 +690,19 @@
     <div class="mobile-menu">
         <div class="mobile-menu-header">
             <div class="mobile-logo">
-                <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo"
-                    style="height: 60px; width: auto; object-fit: contain;">
+                <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo" style="height: 60px; width: auto; object-fit: contain;" loading="lazy">
             </div>
             <button class="close-menu"><i class="fas fa-times"></i></button>
         </div>
         <div class="mobile-nav">
-            <a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
-            <a href="../about/index.html" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="index.html" class="nav-link active"><i class="fas fa-calculator"></i> Free Eligibility Check</a>
-            <a href="../services/index.html" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
-            <a href="../countries/index.html" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
-            <a href="../process/index.html" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
-            <a href="../contact/index.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="tel:+919940352086" class="mobile-cta">
-                <i class="fas fa-phone"></i> Call us now
-            </a>
+            <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="../about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="./" class="nav-link active"><i class="fas fa-calculator"></i> Eligibility Check</a>
+            <a href="../services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
+            <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
+            <a href="../process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
+            <a href="../contact/" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+            <button onclick="document.getElementById('leadModal').style.display='flex'" style="background:#c9a227;color:#0a1628;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer">Eligibility Check</button>
         </div>
     </div>
 
@@ -828,20 +712,20 @@
         <section class="page-hero">
             <div class="container">
                 <div class="page-hero-badge"><i class="fas fa-calculator"></i> 2026 OFFICIAL EVALUATION</div>
-                <h1 class="page-hero-title">Free Eligibility Check</h1>
+                <h1 class="page-hero-title">Eligibility Check</h1>
                 <p class="page-hero-subtitle">
-                    Instant points calculation & profile assessment for Canada Express Entry, Australia Skilled Visas, Germany Opportunity Card, UK & European Pathways.
+                    Instant points calculation &amp; profile assessment for Canada Express Entry, Australia Skilled Visas, Germany Opportunity Card, UK &amp; European Pathways.
                 </p>
                 <div class="flag-strip" style="justify-content: center; margin-top: 20px;">
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ca.png" alt="Canada"> Canada PR</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/au.png" alt="Australia"> Australia PR</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/de.png" alt="Germany"> Germany Card</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/gb.png" alt="UK"> UK Visa</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/nz.png" alt="NZ"> NZ Pathway</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ie.png" alt="Ireland"> Ireland EU</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/sg.png" alt="Singapore"> Singapore EP</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ru.png" alt="Russia"> MBBS Russia</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine"> MBBS Ukraine</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ca.png" alt="Canada" loading="lazy"> Canada PR</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/au.png" alt="Australia" loading="lazy"> Australia PR</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/de.png" alt="Germany" loading="lazy"> Germany Card</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/gb.png" alt="UK" loading="lazy"> UK Visa</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/nz.png" alt="NZ" loading="lazy"> NZ Pathway</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ie.png" alt="Ireland" loading="lazy"> Ireland EU</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/sg.png" alt="Singapore" loading="lazy"> Singapore EP</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ru.png" alt="Russia" loading="lazy"> MBBS Russia</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" loading="lazy"> MBBS Ukraine</div>
                 </div>
             </div>
         </section>
@@ -850,32 +734,27 @@
         <div class="stats-strip">
             <div class="stats-inner">
                 <div class="stat-chip">
-                    <div
-                        style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
+                    <div style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
                         <i class="fas fa-users"></i></div>
                     <div><strong>5,000+</strong><br><span>Profiles Assessed</span></div>
                 </div>
                 <div class="stat-chip">
-                    <div
-                        style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
+                    <div style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
                         <i class="fas fa-clock"></i></div>
                     <div><strong>24 Hours</strong><br><span>Response Time</span></div>
                 </div>
                 <div class="stat-chip">
-                    <div
-                        style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
+                    <div style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
                         <i class="fas fa-award"></i></div>
                     <div><strong>20+ Years</strong><br><span>Immigration Experience</span></div>
                 </div>
                 <div class="stat-chip">
-                    <div
-                        style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
+                    <div style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
                         <i class="fas fa-shield-alt"></i></div>
                     <div><strong>100%</strong><br><span>Confidential</span></div>
                 </div>
                 <div class="stat-chip">
-                    <div
-                        style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
+                    <div style="width:34px;height:34px;background:rgba(7,36,168,0.08);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#0724A8;font-size:0.85rem;flex-shrink:0;">
                         <i class="fas fa-globe"></i></div>
                     <div><strong>10+</strong><br><span>Countries Covered</span></div>
                 </div>
@@ -894,6 +773,49 @@
                     </h2>
                     <p style="color: #666666; font-size: 1rem; margin-top: 6px;">Select your target destination below for instant score breakdown.</p>
                 </div>
+
+                
+<div id="calcStep1" style="max-width:500px;margin:0 auto 30px;background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden">
+  <div style="background:#0a1628;padding:22px">
+    <p style="color:#f0d98a;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">Free eligibility assessment</p>
+    <h2 style="color:#fff;font-size:20px;margin-bottom:5px;font-weight:700">Get your free immigration score</h2>
+    <p style="color:#94a3b8;font-size:12px;margin:0">Tell us about yourself — takes 30 seconds</p>
+  </div>
+  <div style="padding:22px">
+    <div style="margin-bottom:13px">
+      <label style="display:block;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Full Name *</label>
+      <input type="text" id="g_name" required placeholder="Anand Kumar" style="width:100%;padding:10px 13px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none">
+    </div>
+    <div style="margin-bottom:13px">
+      <label style="display:block;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">WhatsApp Number *</label>
+      <input type="tel" id="g_phone" required placeholder="+91 98765 43210" style="width:100%;padding:10px 13px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none">
+    </div>
+    <div style="margin-bottom:13px">
+      <label style="display:block;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Email Address *</label>
+      <input type="email" id="g_email" required placeholder="anand@email.com" style="width:100%;padding:10px 13px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none">
+    </div>
+    <div style="margin-bottom:18px">
+      <label style="display:block;font-size:10px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">Target Country</label>
+      <select id="g_country" style="width:100%;padding:10px 13px;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none;background:#fff">
+        <option value="">Select your target country...</option>
+        <option value="canada">Canada (Express Entry / PNP)</option>
+        <option value="australia">Australia (Subclass 189 / 190)</option>
+        <option value="germany">Germany (Chancenkarte 2026)</option>
+        <option value="uk">United Kingdom (Skilled Worker)</option>
+        <option value="other">Other / Not sure yet</option>
+      </select>
+    </div>
+    <button onclick="submitCalcGate()" style="width:100%;padding:13px;background:#c9a227;color:#0a1628;font-size:14px;font-weight:700;border:none;border-radius:10px;cursor:pointer">Show my eligibility score &rarr;</button>
+    <p style="text-align:center;font-size:11px;color:#94a3b8;margin-top:9px">100% confidential. We respond within 3 hours.</p>
+  </div>
+</div>
+
+<div id="calcStep2" style="display:none">
+<div style="display:flex;justify-content:center;gap:8px;margin-bottom:20px">
+  <span style="padding:4px 12px;border-radius:20px;font-size:11px;background:#f0fdf4;color:#15803d;font-weight:600">&#10003; Step 1 done</span>
+  <span style="padding:4px 12px;border-radius:20px;font-size:11px;background:#c9a227;color:#0a1628;font-weight:600">Step 2: Calculate</span>
+  <span style="padding:4px 12px;border-radius:20px;font-size:11px;background:#f1f5f9;color:#94a3b8;font-weight:600">Step 3: Results</span>
+</div>
 
                 <!-- Tab Selector Buttons -->
                 <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 35px;">
@@ -933,25 +855,16 @@
                                 <div>
                                     <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Level of Education</label>
                                     <select id="cEdu" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="135" selected>Master's Degree / Post-Grad (+135 pts)</option>
+                                        <option value="135" selected="">Master's Degree / Post-Grad (+135 pts)</option>
                                         <option value="120">Bachelor's Degree (3+ yrs) (+120 pts)</option>
                                         <option value="128">Two or more Diplomas/Degrees (+128 pts)</option>
                                         <option value="150">Doctoral / Ph.D. (+150 pts)</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. First Official Language (IELTS / PTE)</label>
-                                    <select id="cLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="124" selected>IELTS CLB 9 (8, 7, 7, 7) (+124 pts)</option>
-                                        <option value="136">IELTS CLB 10 (8.5, 8, 7.5, 7.5) (+136 pts)</option>
-                                        <option value="96">IELTS CLB 8 (7.5, 6.5, 6.5, 6.5) (+96 pts)</option>
-                                        <option value="68">IELTS CLB 7 (6.0 each) (+68 pts)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Foreign Work Experience</label>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. Foreign Work Experience</label>
                                     <select id="cExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="50" selected>3 or more years (+50 pts skill transferability)</option>
+                                        <option value="50" selected="">3 or more years (+50 pts skill transferability)</option>
                                         <option value="25">1 to 2 years (+25 pts)</option>
                                         <option value="0">Less than 1 year (0 pts)</option>
                                     </select>
@@ -965,7 +878,7 @@
                                 <div>
                                     <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Age Group</label>
                                     <select id="aAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="30" selected>25 – 32 years (+30 pts)</option>
+                                        <option value="30" selected="">25 – 32 years (+30 pts)</option>
                                         <option value="25">18 – 24 years (+25 pts)</option>
                                         <option value="25">33 – 39 years (+25 pts)</option>
                                         <option value="15">40 – 44 years (+15 pts)</option>
@@ -974,23 +887,15 @@
                                 <div>
                                     <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Qualification</label>
                                     <select id="aEdu" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="15" selected>Bachelor's or Master's Degree (+15 pts)</option>
+                                        <option value="15" selected="">Bachelor's or Master's Degree (+15 pts)</option>
                                         <option value="20">Doctorate / Ph.D. (+20 pts)</option>
                                         <option value="10">Diploma or Trade Certificate (+10 pts)</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. English Proficiency</label>
-                                    <select id="aLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="20" selected>Superior (IELTS 8.0 / PTE 79+) (+20 pts)</option>
-                                        <option value="10">Proficient (IELTS 7.0 / PTE 65+) (+10 pts)</option>
-                                        <option value="0">Competent (IELTS 6.0 / PTE 50+) (0 pts)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Overseas Work Experience</label>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. Overseas Work Experience</label>
                                     <select id="aExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="15" selected>8+ years (+15 pts)</option>
+                                        <option value="15" selected="">8+ years (+15 pts)</option>
                                         <option value="10">5 to 7 years (+10 pts)</option>
                                         <option value="5">3 to 4 years (+5 pts)</option>
                                     </select>
@@ -1004,30 +909,22 @@
                                 <div>
                                     <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Qualification Recognition (ZAB / Anabin)</label>
                                     <select id="gQual" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="4" selected>Fully Recognized Foreign Degree (+4 pts)</option>
+                                        <option value="4" selected="">Fully Recognized Foreign Degree (+4 pts)</option>
                                         <option value="2">Partial Recognition (+2 pts)</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Professional Experience</label>
                                     <select id="gExp" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="3" selected>5+ years experience in qualification field (+3 pts)</option>
+                                        <option value="3" selected="">5+ years experience in qualification field (+3 pts)</option>
                                         <option value="2">2 to 4 years experience (+2 pts)</option>
                                         <option value="0">Less than 2 years (0 pts)</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. Language Proficiency</label>
-                                    <select id="gLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="2" selected>German B1 (+2 pts)</option>
-                                        <option value="1">German A2 OR English C1 (+1 pt)</option>
-                                        <option value="0">English B2 / IELTS 6.5 (0 pts)</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Age Threshold</label>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. Age Threshold</label>
                                     <select id="gAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
-                                        <option value="1" selected>Under 35 years of age (+1 pt)</option>
+                                        <option value="1" selected="">Under 35 years of age (+1 pt)</option>
                                         <option value="0">35 – 40 years of age (0 pts)</option>
                                     </select>
                                 </div>
@@ -1047,7 +944,7 @@
                         </div>
 
                         <div id="liveScoreVerdict" style="background: rgba(37, 211, 102, 0.2); border: 1px solid #25D366; color: #25D366; font-weight: 700; padding: 10px 18px; border-radius: 12px; font-size: 0.92rem; margin-bottom: 20px;">
-                            🟢 High Chance of PR Direct Invitation
+                            🟢 Your estimated score. Book a consultation to confirm your pathway.
                         </div>
 
                         <p id="liveScoreDesc" style="font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 25px;">
@@ -1055,10 +952,19 @@
                         </p>
 
                         <a href="#eligibilityForm" style="display: block; width: 100%; background: #25D366; color: white; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
-                            Submit Profile to Lock In Score &rarr;
+                            Submit Profile to Lock In Score →
                         </a>
                     </div>
                 </div>
+
+<div id="calcResults" style="display:none;margin-top:16px;padding:14px;background:#f0fdf4;border:1px solid #86efac;border-radius:12px;text-align:center">
+  <div id="calcBadge" style="font-size:14px;font-weight:700;color:#15803d;margin-bottom:6px"></div>
+  <p style="font-size:12px;color:#166534;margin-bottom:14px">Our consultant will confirm your pathway and fastest route to PR.</p>
+  <button onclick="document.getElementById('leadModal').style.display='flex'" style="background:#c9a227;color:#0a1628;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer;margin-right:8px">Book Consultation</button>
+  <a href="https://wa.me/919940352086" style="display:inline-block;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;color:#0d7c66;border:1px solid #0d7c66;text-decoration:none">WhatsApp now</a>
+</div>
+</div><!-- end calcStep2 -->
+
             </div>
         </section>
 
@@ -1113,21 +1019,21 @@
                         <div class="fg-2">
                             <div class="fgroup">
                                 <label>Full Name *</label>
-                                <input type="text" id="eName" required placeholder="Enter your full name">
+                                <input type="text" id="eName" required="" placeholder="Enter your full name">
                             </div>
                             <div class="fgroup">
                                 <label>Date of Birth *</label>
-                                <input type="date" id="eDob" required>
+                                <input type="date" id="eDob" required="">
                             </div>
                         </div>
                         <div class="fg-2">
                             <div class="fgroup">
                                 <label>Phone / WhatsApp *</label>
-                                <input type="tel" id="ePhone" required placeholder="+91 99403 52086">
+                                <input type="tel" id="ePhone" required="" placeholder="+91 99403 52086">
                             </div>
                             <div class="fgroup">
                                 <label>Email Address *</label>
-                                <input type="email" id="eEmail" required placeholder="your.email@example.com">
+                                <input type="email" id="eEmail" required="" placeholder="your.email@example.com">
                             </div>
                         </div>
 
@@ -1139,8 +1045,8 @@
                         <div class="fg-2">
                             <div class="fgroup">
                                 <label>Highest Education *</label>
-                                <select id="eEdu" required>
-                                    <option value="" disabled selected>Select qualification</option>
+                                <select id="eEdu" required="">
+                                    <option value="" disabled="" selected="">Select qualification</option>
                                     <option value="PhD">Doctoral / Ph.D.</option>
                                     <option value="Master's Degree">Master's Degree / PG Diploma</option>
                                     <option value="Bachelor's Degree">Bachelor's Degree (3+ years)</option>
@@ -1169,8 +1075,8 @@
                         <div class="fg-3">
                             <div class="fgroup">
                                 <label>Years of Experience *</label>
-                                <select id="eExp" required>
-                                    <option value="" disabled selected>Select</option>
+                                <select id="eExp" required="">
+                                    <option value="" disabled="" selected="">Select</option>
                                     <option value="Less than 1 year">Less than 1 year</option>
                                     <option value="1–2 Years">1 – 2 Years</option>
                                     <option value="3–4 Years">3 – 4 Years</option>
@@ -1199,8 +1105,8 @@
                         <div class="fg-2">
                             <div class="fgroup">
                                 <label>Preferred Destination *</label>
-                                <select id="eCountry" required>
-                                    <option value="" disabled selected>Select country</option>
+                                <select id="eCountry" required="">
+                                    <option value="" disabled="" selected="">Select country</option>
                                     <option value="Canada (Express Entry / PNP)">🇨🇦 Canada (Express Entry / PNP)
                                     </option>
                                     <option value="Australia (Subclass 189 / 190)">🇦🇺 Australia (Subclass 189 / 190)
@@ -1234,22 +1140,20 @@
                         <!-- 5. Additional Notes -->
                         <div class="section-divider">
                             <div class="sdiv-icon"><i class="fas fa-comment-dots"></i></div>
-                            <h3>Additional Information <span
-                                    style="font-weight:500;color:#94A3B8;text-transform:none;letter-spacing:0;">(Optional)</span>
+                            <h3>Additional Information <span style="font-weight:500;color:#94A3B8;text-transform:none;letter-spacing:0;">(Optional)</span>
                             </h3>
                         </div>
                         <div class="fg-1">
                             <div class="fgroup">
                                 <label>Any specific requirements or questions?</label>
-                                <textarea id="eNotes" rows="3"
-                                    placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…"></textarea>
+                                <textarea id="eNotes" rows="3" placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…"></textarea>
                             </div>
                         </div>
 
                         <!-- Submit -->
                         <div class="submit-row">
                             <button type="submit" class="submit-btn">
-                                <i class="fas fa-paper-plane"></i> Submit Profile for Free Assessment
+                                <i class="fas fa-paper-plane"></i> Submit
                             </button>
                             <div class="submit-note">
                                 <i class="fas fa-lock"></i> Your data is 100% confidential. We never share your
@@ -1264,15 +1168,15 @@
                                 <div>
                                     <strong style="font-size: 1.15rem; color: #111111;">Want Suvira to Review Your Full Profile?</strong><br>
                                     <p style="font-size: 0.9rem; color: #666666; margin: 4px 0 14px;">Enter your email below to get a detailed points summary PDF and consultant evaluation within 3 business hours.</p>
-                                    <form onsubmit="alert('Thank you! Your detailed assessment PDF has been sent to your email.'); return false;" style="display: flex; gap: 8px; max-width: 450px;">
-                                        <input type="email" placeholder="Enter your email address" required style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.9rem; outline: none;">
-                                        <button type="submit" style="background: #1B4FBB; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; flex-shrink: 0;">Get Assessment &rarr;</button>
-                                    </form>
+                                    
+                                        <input type="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.9rem; outline: none;">
+                                        <button type="submit" style="background: #1B4FBB; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; flex-shrink: 0;">Get Assessment →</button>
+                                    
                                 </div>
                             </div>
-                        </div>
+                        </div></form>
 
-                    </form>
+                    
                 </div>
             </div>
 
@@ -1318,19 +1222,19 @@
                     </div>
                     <div class="side-card-body">
                         <div class="country-list">
-                            <div class="country-row"><img src="https://flagcdn.com/w40/ca.png" alt="CA"> Canada —
+                            <div class="country-row"><img src="https://flagcdn.com/w40/ca.png" alt="CA" loading="lazy"> Canada —
                                 Express Entry / PNP</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/au.png" alt="AU"> Australia —
+                            <div class="country-row"><img src="https://flagcdn.com/w40/au.png" alt="AU" loading="lazy"> Australia —
                                 Subclass 189 / 190</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/de.png" alt="DE"> Germany —
+                            <div class="country-row"><img src="https://flagcdn.com/w40/de.png" alt="DE" loading="lazy"> Germany —
                                 Chancenkarte 2026</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/gb.png" alt="GB"> United Kingdom
+                            <div class="country-row"><img src="https://flagcdn.com/w40/gb.png" alt="GB" loading="lazy"> United Kingdom
                                 — Skilled Work</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/nz.png" alt="NZ"> New Zealand —
+                            <div class="country-row"><img src="https://flagcdn.com/w40/nz.png" alt="NZ" loading="lazy"> New Zealand —
                                 SMC</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/ru.png" alt="RU"> Russia — MBBS
+                            <div class="country-row"><img src="https://flagcdn.com/w40/ru.png" alt="RU" loading="lazy"> Russia — MBBS
                                 Abroad</div>
-                            <div class="country-row"><img src="https://flagcdn.com/w40/ua.png" alt="UA"> Ukraine — MBBS
+                            <div class="country-row"><img src="https://flagcdn.com/w40/ua.png" alt="UA" loading="lazy"> Ukraine — MBBS
                                 Abroad</div>
                         </div>
                     </div>
@@ -1343,89 +1247,112 @@
                 <!-- Footer -->
         </div>
 
-    <footer class="footer"
-            style="background: linear-gradient(rgba(3, 17, 105, 0.95), rgba(3, 17, 105, 0.9)), url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'); background-size: cover; background-position: center;">
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <div class="logo-with-icon">
-                            <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo"
-                                style="height: 90px; width: auto; object-fit: contain; background: white; border-radius: 12px; padding: 6px 12px;">
-                        </div>
-                        <p>Chennai's immigration partner since 2004</p>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="https://www.instagram.com/suviraimmigration/" target="_blank"
-                                rel="noopener noreferrer" title="Follow Suvira Immigration on Instagram"><i
-                                    class="fab fa-instagram"></i></a>
-                            <a href="https://www.linkedin.com/in/suvira-immigration-36b25a41a" target="_blank"
-                                rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-youtube"></i></a>
-                        </div>
+    
+<!-- Trust Badges Section -->
+<div class="trust-badges" style="background-color: #FFFFFF; padding: 40px 24px; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0;">
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; text-align: center;">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <i class="fas fa-certificate" style="font-size: 2.5rem; color: #0724A8;"></i>
+            <span style="font-weight: 700; color: #0F172A; font-size: 1.1rem;">Certified Experts</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <i class="fas fa-history" style="font-size: 2.5rem; color: #F87034;"></i>
+            <span style="font-weight: 700; color: #0F172A; font-size: 1.1rem;">20+ Years Legacy</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <i class="fas fa-star" style="font-size: 2.5rem; color: #F59E0B;"></i>
+            <span style="font-weight: 700; color: #0F172A; font-size: 1.1rem;">5-Star Rated</span>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; transition: transform 0.3s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+            <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: #10B981;"></i>
+            <span style="font-weight: 700; color: #0F172A; font-size: 1.1rem;">100% Transparent</span>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-with-icon">
+                        <img src="../images/suvira-logo.png" alt="Suvira Immigration Logo" style="height: 90px; width: auto; object-fit: contain; background: white; border-radius: 12px; padding: 6px 12px;" loading="lazy">
                     </div>
-
-                    <div class="footer-links">
-                        <h3>Quick Links</h3>
-                        <a href="../index.html"><i class="fas fa-chevron-right"></i> Home</a>
-                        <a href="../about/index.html"><i class="fas fa-chevron-right"></i> About Us</a>
-                        <a href="../calculator/index.html"><i class="fas fa-chevron-right"></i> Free Eligibility Check</a>
-                        <a href="../services/index.html"><i class="fas fa-chevron-right"></i> Services</a>
-                        <a href="../countries/index.html"><i class="fas fa-chevron-right"></i> Countries</a>
-                        <a href="../process/index.html"><i class="fas fa-chevron-right"></i> Process</a>
-                        <a href="../contact/index.html"><i class="fas fa-chevron-right"></i> Contact</a>
-                    </div>
-
-                    <div class="footer-services">
-                        <h3>Our Services</h3>
-                        <a href="../contact/index.html?service=study"><i class="fas fa-chevron-right"></i> Study Abroad</a>
-                        <a href="../contact/index.html?service=pr"><i class="fas fa-chevron-right"></i> PR Services</a>
-                        <a href="../contact/index.html?service=family"><i class="fas fa-chevron-right"></i> Family Immigration</a>
-                        <a href="../contact/index.html?service=business"><i class="fas fa-chevron-right"></i> Business Visa</a>
-                        <a href="../contact/index.html?service=visitor"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
-                    </div>
-
-                    <div class="footer-contact">
-                        <h3>Head Office</h3>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
-                            <i class="fas fa-map-marker-alt" style="color: #FF9F1C; font-size: 1rem; margin-top: 3px;"></i>
-                            <span>Venkateshwara flats, Thalapathi Stalin 1st St, Santhosapuram, Sembakkam, Chennai-73</span>
-                        </p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-phone-alt" style="color: #FF9F1C; font-size: 0.95rem;"></i>
-                            <a href="tel:+919940352086" style="color: #FF9F1C; font-weight: 700; text-decoration: none;">+91 99403 52086</a>
-                        </p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-envelope" style="color: #FF9F1C; font-size: 0.95rem;"></i>
-                            <a href="mailto:reachus@suviraimmigration.com" style="color: #FF9F1C; font-weight: 600; text-decoration: none;">reachus@suviraimmigration.com</a>
-                        </p>
-                        <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-top: 12px; display: flex; align-items: center; gap: 8px;">
-                            <i class="fas fa-clock" style="color: #FF9F1C; font-size: 0.9rem;"></i>
-                            <span>Mon - Sat: 9:30 AM - 6:30 PM</span>
-                        </p>
+                    <p>Chennai's immigration partner since 2004</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/suviraimmigration/" target="_blank" rel="noopener noreferrer" title="Follow Suvira Immigration on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/suvira-immigration-36b25a41a" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <div class="footer-bottom"
-                    style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px;">
-                    <p>&copy; <span class="current-year">2026</span> Suvira Immigration Consultants. All Rights Reserved.</p>
-                    <p style="margin: 10px 0;">
-                        <a href="#">Privacy Policy</a> |
-                        <a href="#">Terms &amp; Conditions</a> |
-                        <a href="#">Disclaimer</a>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="../about/"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="/calculator/"><i class="fas fa-chevron-right"></i> Eligibility Check</a>
+                    <a href="../services/"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="/countries/"><i class="fas fa-chevron-right"></i> Countries</a>
+                    <a href="../process/"><i class="fas fa-chevron-right"></i> Process</a>
+                    <a href="../contact/"><i class="fas fa-chevron-right"></i> Contact</a>
+                </div>
+
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <a href="/contact/?service=study"><i class="fas fa-chevron-right"></i> Study Abroad</a>
+                    <a href="/contact/?service=pr"><i class="fas fa-chevron-right"></i> PR Services</a>
+                    <a href="/contact/?service=family"><i class="fas fa-chevron-right"></i> Family
+                        Immigration</a>
+                    <a href="/contact/?service=business"><i class="fas fa-chevron-right"></i> Business Visa</a>
+                    <a href="/contact/?service=visitor"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Head Office</h3>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                        <i class="fas fa-map-marker-alt" style="color: #FF9F1C; font-size: 1rem; margin-top: 3px;"></i>
+                        <span>Venkateshwara flats, Thalapathi Stalin 1st St, Santhosapuram, Sembakkam, Chennai-73</span>
                     </p>
-                    <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
-                    <p class="disclaimer-note"
-                        style="font-size: 0.8rem; opacity: 0.7; max-width: 900px; margin: 12px auto 0; line-height: 1.5; color: #CBD5E1;">
-                        <strong>Regulatory Disclaimer</strong>: Visa approvals are granted solely by the relevant government authorities (such as IRCC Canada, Australian Department of Home Affairs, German Federal Foreign Office). Suvira Immigration provides professional consultancy, profile assessment, SOP/documentation preparation, and filing support. We strictly adhere to ethical immigration practices and do not make false guarantee claims.
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-phone-alt" style="color: #FF9F1C; font-size: 0.95rem;"></i>
+                        <a href="tel:+919940352086" style="color: #FF9F1C; font-weight: 700; text-decoration: none;">+91
+                            99403 52086</a>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-envelope" style="color: #FF9F1C; font-size: 0.95rem;"></i>
+                        <a href="mailto:reachus@suviraimmigration.com" style="color: #FF9F1C; font-weight: 600; text-decoration: none;">reachus@suviraimmigration.com</a>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.85rem; margin-top: 12px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-clock" style="color: #FF9F1C; font-size: 0.9rem;"></i>
+                        <span>Mon - Sat: 9:00 AM - 6:00 PM IST</span>
                     </p>
                 </div>
             </div>
-        </footer><!-- end .main-content -->
+
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px;">
+                <p>© <span class="current-year">2026</span> Suvira Immigration Consultants. All Rights Reserved.
+                </p>
+                <p style="margin: 10px 0;">
+                    <a href="/privacy-policy/">Privacy Policy</a> |
+                    <a href="/terms/">Terms &amp; Conditions</a> |
+                    <a href="/disclaimer/">Disclaimer</a>
+                </p>
+                <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with
+                    Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <p class="disclaimer-note" style="font-size: 0.8rem; opacity: 0.7; max-width: 900px; margin: 12px auto 0; line-height: 1.5; color: #CBD5E1;">
+                    <strong>Regulatory Disclaimer</strong>: Visa approvals are granted solely by the relevant government
+                    authorities (such as IRCC Canada, Australian Department of Home Affairs, German Federal Foreign
+                    Office). Suvira Immigration provides professional consultancy, profile assessment, SOP/documentation
+                    preparation, and filing support. We strictly adhere to ethical immigration practices and do not make
+                    false guarantee claims.
+                </p>
+            </div>
+        </div>
+    </footer><!-- end .main-content -->
 
     <!-- Floating Action Buttons Container -->
     <div class="floating-actions-wrapper">
-        <a href="../contact/index.html" class="contact-float" title="Contact Us Direct">
+        <a href="../contact/" class="contact-float" title="Contact Us Direct">
             <i class="fas fa-envelope-open-text"></i>
         </a>
         <a href="https://wa.me/919940352086" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
@@ -1437,219 +1364,71 @@
     </div>
 
     <script src="../script.js?v=45.0"></script>
-    <script>
-        function handleEligibilitySubmit(e) {
-            e.preventDefault();
-            const n = document.getElementById('eName').value;
-            const d = document.getElementById('eDob').value;
-            const p = document.getElementById('ePhone').value;
-            const em = document.getElementById('eEmail').value;
-            const ed = document.getElementById('eEdu').value;
-            const ie = document.getElementById('eIelts').value;
-            const ex = document.getElementById('eExp').value;
-            const oc = document.getElementById('eOcc').value || 'N/A';
-            const ma = document.getElementById('eMarital').value;
-            const co = document.getElementById('eCountry').value;
-            const vi = document.getElementById('eVisa').value;
-            const no = document.getElementById('eNotes').value || 'None';
 
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
-            try {
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: n,
-                        dob: d,
-                        phone: p,
-                        email: em,
-                        education: ed,
-                        language_test: ie,
-                        experience: ex,
-                        occupation: oc,
-                        marital_status: ma,
-                        target_country: co,
-                        visa_category: vi,
-                        notes: no,
-                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
-                        _captcha: "false"
-                    })
-                });
-            } catch (err) {
-                console.log(err);
-            }
 
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
-            const body = encodeURIComponent(
-                `SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PERSONAL INFORMATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Full Name       : ${n}
-Date of Birth   : ${d}
-Phone/WhatsApp  : ${p}
-Email           : ${em}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EDUCATION & LANGUAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Highest Education : ${ed}
-Language Test     : ${ie}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-WORK EXPERIENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Experience      : ${ex}
-Occupation      : ${oc}
-Marital Status  : ${ma}
+<div id="leadModal" style="display:none;position:fixed;inset:0;background:rgba(10,22,40,.82);z-index:9999;align-items:center;justify-content:center;padding:16px">
+  <div style="background:#fff;border-radius:16px;max-width:440px;width:100%;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35)">
+    <div style="background:#0a1628;padding:16px 20px;display:flex;justify-content:space-between;align-items:start">
+      <div>
+        <div style="color:#f0d98a;font-size:10px;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">Consultation</div>
+        <h3 style="color:#fff;font-size:17px;margin:0;font-weight:700">Check Your Eligibility</h3>
+        <p style="color:#94a3b8;font-size:11px;margin-top:3px">We respond within 3 business hours</p>
+      </div>
+      <button onclick="document.getElementById('leadModal').style.display='none'" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;padding:0;line-height:1">&times;</button>
+    </div>
+    <form id="leadModalForm" style="padding:16px 20px">
+      <input type="text" name="name" required placeholder="Your full name" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
+      <input type="tel" name="phone" required placeholder="WhatsApp number" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
+      <input type="email" name="email" required placeholder="Email address" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
+      <select name="service" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:14px;outline:none;background:#fff;display:block">
+        <option value="">Service required...</option>
+        <option>Canada PR / Express Entry</option>
+        <option>Germany Chancenkarte 2026</option>
+        <option>Australia Subclass 189 / 190</option>
+        <option>Overseas Study Visa</option>
+        <option>Visitor / Tourist Visa</option>
+        <option>Dependent & Family Visa</option>
+        <option>SOP & Resume Service</option>
+        <option>Apostille & PCC</option>
+      </select>
+      <button type="submit" style="width:100%;padding:12px;background:#c9a227;color:#0a1628;font-size:13px;font-weight:700;border:none;border-radius:9px;cursor:pointer">Get Consultation</button>
+      <p style="text-align:center;font-size:10px;color:#94a3b8;margin-top:8px">No spam. Your details stay private. We call you back.</p>
+    </form>
+  </div>
+</div>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TARGET DESTINATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Country         : ${co}
-Visa Category   : ${vi}
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADDITIONAL NOTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${no}
+<div id="mbar" style="display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;padding:10px 14px;z-index:9997;gap:8px">
+  <a href="tel:+919940352086" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px 6px;border:1px solid #e2e8f0;border-radius:8px;color:#0a1628;text-decoration:none;font-size:11px;font-weight:600">📞 Call</a>
+  <a href="https://wa.me/919940352086" style="flex:1;display:flex;align-items:center;justify-content:center;padding:9px 6px;background:#0d7c66;border-radius:8px;color:#fff;text-decoration:none;font-size:11px;font-weight:600">WhatsApp</a>
+  <button onclick="document.getElementById('leadModal').style.display='flex'" style="flex:1;padding:9px 6px;background:#c9a227;border:none;border-radius:8px;color:#0a1628;font-size:11px;font-weight:700;cursor:pointer">Check</button>
+</div>
 
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Age", age);
-                formData.append("Education Level", edu);
-                formData.append("English Proficiency", eng);
-                formData.append("Work Experience", ex);
-                formData.append("Target Country", co);
-                formData.append("Visa Category", vi);
-                formData.append("Notes", no);
-                formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
-                formData.append("_captcha", "false");
+<style>
+@media(max-width:768px){
+  #mbar{display:flex!important}
+  body{padding-bottom:66px}
+  #waBubble{bottom:78px!important}
+}
+</style>
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
-            }
-
-            const msg = document.getElementById('successMsg');
-            msg.style.display = 'flex';
-            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
-        }
-
-        // Live Interactive Tab Switcher & Calculator Logic
-        window.activeTab = 'canada';
-
-        window.switchCalcTab = function(tab) {
-            window.activeTab = tab;
-            const btnCanada = document.getElementById('tabBtnCanada');
-            const btnAustralia = document.getElementById('tabBtnAustralia');
-            const btnGermany = document.getElementById('tabBtnGermany');
-            
-            const panelCanada = document.getElementById('calcPanelCanada');
-            const panelAustralia = document.getElementById('calcPanelAustralia');
-            const panelGermany = document.getElementById('calcPanelGermany');
-
-            if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
-            if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
-            if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
-
-            if (panelCanada) panelCanada.style.display = 'none';
-            if (panelAustralia) panelAustralia.style.display = 'none';
-            if (panelGermany) panelGermany.style.display = 'none';
-
-            if (tab === 'canada') {
-                if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
-                if (panelCanada) panelCanada.style.display = 'block';
-            } else if (tab === 'australia') {
-                if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
-                if (panelAustralia) panelAustralia.style.display = 'block';
-            } else if (tab === 'germany') {
-                if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
-                if (panelGermany) panelGermany.style.display = 'block';
-            }
-            window.calculateLiveScore();
-        };
-
-        window.calculateLiveScore = function() {
-            const numEl = document.getElementById('liveScoreNum');
-            const maxEl = document.getElementById('liveScoreMax');
-            const verdictEl = document.getElementById('liveScoreVerdict');
-            const descEl = document.getElementById('liveScoreDesc');
-            if (!numEl || !maxEl || !verdictEl || !descEl) return;
-
-            if (window.activeTab === 'canada') {
-                const age = parseInt(document.getElementById('cAge')?.value) || 110;
-                const edu = parseInt(document.getElementById('cEdu')?.value) || 135;
-                const lang = parseInt(document.getElementById('cLang')?.value) || 124;
-                const exp = parseInt(document.getElementById('cExp')?.value) || 50;
-                const total = age + edu + lang + exp;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 1200 Pts';
-                if (total >= 460) {
-                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
-                }
-            } else if (window.activeTab === 'australia') {
-                const age = parseInt(document.getElementById('aAge')?.value) || 30;
-                const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
-                const lang = parseInt(document.getElementById('aLang')?.value) || 20;
-                const exp = parseInt(document.getElementById('aExp')?.value) || 15;
-                const total = age + edu + lang + exp;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 100 Pts';
-                if (total >= 65) {
-                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
-                } else {
-                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
-                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
-                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
-                }
-            } else if (window.activeTab === 'germany') {
-                const qual = parseInt(document.getElementById('gQual')?.value) || 4;
-                const exp = parseInt(document.getElementById('gExp')?.value) || 3;
-                const lang = parseInt(document.getElementById('gLang')?.value) || 2;
-                const age = parseInt(document.getElementById('gAge')?.value) || 1;
-                const total = qual + exp + lang + age;
-
-                numEl.innerText = total;
-                maxEl.innerText = ' / 6 Points';
-                if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
-                }
-            }
-        };
-    </script>
-    <!-- Floating WhatsApp Button (Production Feature) -->
-    <a href="https://api.whatsapp.com/send?phone=919940352086&text=Hello%20Suvira%20Immigration,%20I%20want%20a%20free%20visa%20consultation" class="whatsapp-float-btn" target="_blank" title="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-</body>
-
-</html>
+<script>
+function submitCalcGate(){
+  var n=document.getElementById('g_name').value;
+  var p=document.getElementById('g_phone').value;
+  var e=document.getElementById('g_email').value;
+  if(!n||!p||!e){alert('Please fill in Name, WhatsApp Number and Email.');return;}
+  document.getElementById('calcStep1').style.display='none';
+  document.getElementById('calcStep2').style.display='block';
+  document.getElementById('calcResults').style.display='block';
+  updateCalcBadge();
+}
+function updateCalcBadge(){
+  var badge=document.getElementById('calcBadge');
+  if(!badge)return;
+  badge.textContent='Your score is ready. Book a Consultation to confirm your pathway.';
+}
+</script>
+</body></html>

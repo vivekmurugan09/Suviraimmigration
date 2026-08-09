@@ -683,3 +683,576 @@ function toggleFaqAccordion(headerEl) {
 
 
 
+
+
+                        function switchHomeScore(country, evt) {
+                            if (evt) {
+                                evt.preventDefault();
+                                evt.stopPropagation();
+                            }
+                            const label = document.getElementById('homeScoreLabel');
+                            const val = document.getElementById('homeScoreVal');
+                            const unit = document.getElementById('homeScoreUnit');
+                            const badge = document.getElementById('homeScoreBadge');
+                            const link = document.getElementById('homeCalcLink');
+
+                            if (val) {
+                                val.classList.remove('score-pulse');
+                                void val.offsetWidth; // trigger reflow to reset animation
+                                val.classList.add('score-pulse');
+                            }
+
+                            const tabCa = document.getElementById('tabCanada');
+                            const tabAu = document.getElementById('tabAustralia');
+                            const tabDe = document.getElementById('tabGermany');
+
+                            [tabCa, tabAu, tabDe].forEach(t => {
+                                if (t) {
+                                    t.style.background = '#F8FAFC';
+                                    t.style.color = '#475569';
+                                    t.style.fontWeight = '600';
+                                    t.style.border = '1px solid #E2E8F0';
+                                    t.style.boxShadow = 'none';
+                                }
+                            });
+
+                            if (country === 'australia') {
+                                if (tabAu) { 
+                                    tabAu.style.background = '#0724A8'; 
+                                    tabAu.style.color = 'white'; 
+                                    tabAu.style.fontWeight = '700'; 
+                                    tabAu.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabAu.style.border = 'none'; 
+                                }
+                                if (label) label.innerText = 'ESTIMATED GSM POINTS';
+                                if (val) val.innerText = '75';
+                                if (unit) unit.innerText = 'Points';
+                                if (badge) badge.innerHTML = '🌏 65-Pt Skilled Independent (Subclass 189/190) Qualified';
+                                if (link) link.href = 'calculator/index.html?country=australia';
+                            } else if (country === 'germany') {
+                                if (tabDe) { 
+                                    tabDe.style.background = '#0724A8'; 
+                                    tabDe.style.color = 'white'; 
+                                    tabDe.style.fontWeight = '700'; 
+                                    tabDe.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabDe.style.border = 'none'; 
+                                }
+                                if (label) label.innerText = 'CHANCENKARTE SCORE';
+                                if (val) val.innerText = '6 / 6';
+                                if (unit) unit.innerText = 'Pts';
+                                if (badge) badge.innerHTML = '🇩🇪 6/6 Points Maximum — Opportunity Card Eligible';
+                                if (link) link.href = 'calculator/index.html?country=germany';
+                            } else {
+                                if (tabCa) { 
+                                    tabCa.style.background = '#0724A8'; 
+                                    tabCa.style.color = 'white'; 
+                                    tabCa.style.fontWeight = '700'; 
+                                    tabCa.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
+                                    tabCa.style.border = 'none'; 
+                                }
+                                if (label) label.innerText = 'ESTIMATED CRS SCORE';
+                                if (val) val.innerText = '433';
+                                if (unit) unit.innerText = 'Points';
+                                if (badge) badge.innerHTML = '🍁 67-Pt FSW Eligible — Express Entry Ready';
+                                if (link) link.href = 'calculator/index.html?country=canada';
+                            }
+                        }
+                    
+
+
+        function handleAboutFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value;
+            const country = document.getElementById('clientCountry').value;
+            const notes = document.getElementById('clientNotes').value || 'N/A';
+
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Target Country", country);
+                formData.append("Qualifications & Notes", notes);
+                formData.append("_subject", `New Profile Audit Request: ${name} (${country})`);
+                formData.append("_captcha", "false");
+
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            alert(`Thank you, ${name}! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.`);
+            document.getElementById('aboutAuditForm').reset();
+        }
+    
+
+
+        window.activeTab = 'canada';
+
+        window.switchCalcTab = function(tab) {
+            window.activeTab = tab;
+            const btnCanada = document.getElementById('tabBtnCanada');
+            const btnAustralia = document.getElementById('tabBtnAustralia');
+            const btnGermany = document.getElementById('tabBtnGermany');
+            
+            const panelCanada = document.getElementById('calcPanelCanada');
+            const panelAustralia = document.getElementById('calcPanelAustralia');
+            const panelGermany = document.getElementById('calcPanelGermany');
+
+            if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
+            if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
+            if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
+
+            if (panelCanada) panelCanada.style.display = 'none';
+            if (panelAustralia) panelAustralia.style.display = 'none';
+            if (panelGermany) panelGermany.style.display = 'none';
+
+            if (tab === 'canada') {
+                if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
+                if (panelCanada) panelCanada.style.display = 'block';
+            } else if (tab === 'australia') {
+                if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
+                if (panelAustralia) panelAustralia.style.display = 'block';
+            } else if (tab === 'germany') {
+                if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
+                if (panelGermany) panelGermany.style.display = 'block';
+            }
+            window.calculateLiveScore();
+        };
+
+        window.calculateLiveScore = function() {
+            const numEl = document.getElementById('liveScoreNum');
+            const maxEl = document.getElementById('liveScoreMax');
+            const verdictEl = document.getElementById('liveScoreVerdict');
+            const descEl = document.getElementById('liveScoreDesc');
+            if (!numEl || !maxEl || !verdictEl || !descEl) return;
+
+            if (window.activeTab === 'canada') {
+                const age = parseInt(document.getElementById('cAge')?.value) || 110;
+                const edu = parseInt(document.getElementById('cEdu')?.value) || 135;
+                const lang = parseInt(document.getElementById('cLang')?.value) || 124;
+                const exp = parseInt(document.getElementById('cExp')?.value) || 50;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 1200 Pts';
+                if (total >= 460) {
+                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
+                }
+            } else if (window.activeTab === 'australia') {
+                const age = parseInt(document.getElementById('aAge')?.value) || 30;
+                const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
+                const lang = parseInt(document.getElementById('aLang')?.value) || 20;
+                const exp = parseInt(document.getElementById('aExp')?.value) || 15;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 100 Pts';
+                if (total >= 65) {
+                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
+                } else {
+                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
+                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
+                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
+                }
+            } else if (window.activeTab === 'germany') {
+                const qual = parseInt(document.getElementById('gQual')?.value) || 4;
+                const exp = parseInt(document.getElementById('gExp')?.value) || 3;
+                const lang = parseInt(document.getElementById('gLang')?.value) || 2;
+                const age = parseInt(document.getElementById('gAge')?.value) || 1;
+                const total = qual + exp + lang + age;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 6 Points';
+                if (total >= 6) {
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const btnCa = document.getElementById('tabBtnCanada');
+            const btnAu = document.getElementById('tabBtnAustralia');
+            const btnDe = document.getElementById('tabBtnGermany');
+            if (btnCa) btnCa.addEventListener('click', function() { window.switchCalcTab('canada'); });
+            if (btnAu) btnAu.addEventListener('click', function() { window.switchCalcTab('australia'); });
+            if (btnDe) btnDe.addEventListener('click', function() { window.switchCalcTab('germany'); });
+            window.calculateLiveScore();
+        });
+    
+
+
+        function handleEligibilitySubmit(e) {
+            e.preventDefault();
+            const n = document.getElementById('eName').value;
+            const d = document.getElementById('eDob').value;
+            const p = document.getElementById('ePhone').value;
+            const em = document.getElementById('eEmail').value;
+            const ed = document.getElementById('eEdu').value;
+            const ie = document.getElementById('eIelts').value;
+            const ex = document.getElementById('eExp').value;
+            const oc = document.getElementById('eOcc').value || 'N/A';
+            const ma = document.getElementById('eMarital').value;
+            const co = document.getElementById('eCountry').value;
+            const vi = document.getElementById('eVisa').value;
+            const no = document.getElementById('eNotes').value || 'None';
+
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: n,
+                        dob: d,
+                        phone: p,
+                        email: em,
+                        education: ed,
+                        language_test: ie,
+                        experience: ex,
+                        occupation: oc,
+                        marital_status: ma,
+                        target_country: co,
+                        visa_category: vi,
+                        notes: no,
+                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
+                        _captcha: "false"
+                    })
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            const msg = document.getElementById('successMsg');
+            msg.style.display = 'flex';
+            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
+        }
+
+        // Live Interactive Tab Switcher & Calculator Logic
+        window.activeTab = 'canada';
+
+        window.switchCalcTab = function(tab) {
+            window.activeTab = tab;
+            const btnCanada = document.getElementById('tabBtnCanada');
+            const btnAustralia = document.getElementById('tabBtnAustralia');
+            const btnGermany = document.getElementById('tabBtnGermany');
+            
+            const panelCanada = document.getElementById('calcPanelCanada');
+            const panelAustralia = document.getElementById('calcPanelAustralia');
+            const panelGermany = document.getElementById('calcPanelGermany');
+
+            if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
+            if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
+            if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
+
+            if (panelCanada) panelCanada.style.display = 'none';
+            if (panelAustralia) panelAustralia.style.display = 'none';
+            if (panelGermany) panelGermany.style.display = 'none';
+
+            if (tab === 'canada') {
+                if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
+                if (panelCanada) panelCanada.style.display = 'block';
+            } else if (tab === 'australia') {
+                if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
+                if (panelAustralia) panelAustralia.style.display = 'block';
+            } else if (tab === 'germany') {
+                if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
+                if (panelGermany) panelGermany.style.display = 'block';
+            }
+            window.calculateLiveScore();
+        };
+
+        window.calculateLiveScore = function() {
+            const numEl = document.getElementById('liveScoreNum');
+            const maxEl = document.getElementById('liveScoreMax');
+            const verdictEl = document.getElementById('liveScoreVerdict');
+            const descEl = document.getElementById('liveScoreDesc');
+            if (!numEl || !maxEl || !verdictEl || !descEl) return;
+
+            if (window.activeTab === 'canada') {
+                const age = parseInt(document.getElementById('cAge')?.value) || 110;
+                const edu = parseInt(document.getElementById('cEdu')?.value) || 135;
+                const lang = parseInt(document.getElementById('cLang')?.value) || 124;
+                const exp = parseInt(document.getElementById('cExp')?.value) || 50;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 1200 Pts';
+                if (total >= 460) {
+                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
+                }
+            } else if (window.activeTab === 'australia') {
+                const age = parseInt(document.getElementById('aAge')?.value) || 30;
+                const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
+                const lang = parseInt(document.getElementById('aLang')?.value) || 20;
+                const exp = parseInt(document.getElementById('aExp')?.value) || 15;
+                const total = age + edu + lang + exp;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 100 Pts';
+                if (total >= 65) {
+                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
+                } else {
+                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
+                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
+                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
+                }
+            } else if (window.activeTab === 'germany') {
+                const qual = parseInt(document.getElementById('gQual')?.value) || 4;
+                const exp = parseInt(document.getElementById('gExp')?.value) || 3;
+                const lang = parseInt(document.getElementById('gLang')?.value) || 2;
+                const age = parseInt(document.getElementById('gAge')?.value) || 1;
+                const total = qual + exp + lang + age;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 6 Points';
+                if (total >= 6) {
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
+                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
+                } else {
+                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
+                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
+                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
+                }
+            }
+        };
+    
+
+
+        // Auto-select dropdown option if redirected from Services page with ?service=...
+        window.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const serviceParam = params.get('service');
+            if (serviceParam) {
+                const select = document.getElementById('cService');
+                const map = {
+                    'pr': 'Canada PR / Express Entry',
+                    'germany': 'Germany Opportunity Card 2026',
+                    'study': 'Overseas Study Visa',
+                    'visitor': 'Visitor / Tourist Visa',
+                    'family': 'Dependent & Family Reunification',
+                    'business': 'Business & Investor Visas',
+                    'sop': 'SOP & Resume Writing',
+                    'resume': 'SOP & Resume Writing',
+                    'pcc': 'PCC & Apostille Attestation'
+                };
+                const val = map[serviceParam.toLowerCase()];
+                if (val) {
+                    for (let i = 0; i < select.options.length; i++) {
+                        if (select.options[i].text.includes(val) || select.options[i].value.includes(val) || val.includes(select.options[i].value)) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
+        function handleContactPageSubmit(e) {
+            e.preventDefault();
+            const name    = document.getElementById('cName').value;
+            const phone   = document.getElementById('cPhone').value;
+            const email   = document.getElementById('cEmail').value;
+            const service = document.getElementById('cService').value;
+            const msg     = document.getElementById('cMsg').value;
+
+            // Direct background submit via FormSubmit API to reachus@suviraimmigration.com (No Gmail redirect!)
+            try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Service / Country", service);
+                formData.append("Message", msg);
+                formData.append("_subject", `New Inquiry from Contact Page: ${name} (${service})`);
+                formData.append("_captcha", "false");
+
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            // Show on-screen success banner cleanly without page redirect
+            const box = document.getElementById('cntSuccessMsg');
+            box.style.display = 'flex';
+            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => document.getElementById('contactPageForm').reset(), 1500);
+        }
+    
+
+
+        let currentCategory = 'all';
+
+        function setFilterCategory(cat, btn) {
+            currentCategory = cat;
+            
+            // Highlight active button
+            const pills = document.querySelectorAll('.country-filter-pill');
+            pills.forEach(p => {
+                p.style.background = 'rgba(255,255,255,0.12)';
+                p.style.color = 'white';
+                p.style.borderColor = 'rgba(255,255,255,0.3)';
+                p.classList.remove('active-pill');
+            });
+
+            btn.style.background = '#FF9F1C';
+            btn.style.color = '#0F172A';
+            btn.style.borderColor = '#FF9F1C';
+            btn.classList.add('active-pill');
+
+            filterCountries();
+        }
+
+        function filterCountries() {
+            const query = (document.getElementById('countrySearchInput').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.country-card-pro');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const categories = (card.getAttribute('data-category') || '').toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                const matchesCat = (currentCategory === 'all') || categories.includes(currentCategory);
+                const matchesSearch = !query || cardText.includes(query) || categories.includes(query);
+
+                if (matchesCat && matchesSearch) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noRes = document.getElementById('noResultsMsg');
+            if (noRes) {
+                noRes.style.display = (visibleCount === 0) ? 'block' : 'none';
+            }
+        }
+    
+
+
+        function handleTouchSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('tName').value;
+            const phone = document.getElementById('tPhone').value;
+            const email = document.getElementById('tEmail').value;
+            const service = document.getElementById('tService').value;
+            const msg = document.getElementById('tMsg').value;
+
+            try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Service Required", service);
+                formData.append("Message", msg);
+                formData.append("_subject", `New Inquiry from Process Page: ${name} (${service})`);
+                formData.append("_captcha", "false");
+
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            const box = document.getElementById('touchSuccess');
+            if (box) {
+                box.style.display = 'flex';
+                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(() => document.getElementById('processTouchForm').reset(), 1500);
+            }
+        }
+    
+
+
+        function filterServices(category, btn) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const cards = document.querySelectorAll('.service-card-pro');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    
+
+
+// Accessibility UI/UX enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const closeBtn = document.querySelector('.close-menu') || document.querySelector('.mobile-menu-close');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.mobile-menu-overlay');
+
+    if (menuBtn && mobileMenu) {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.setAttribute('aria-controls', 'mobile-menu');
+        menuBtn.setAttribute('role', 'button');
+        menuBtn.tabIndex = 0;
+        
+        const toggleMenu = () => {
+            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
+            menuBtn.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('active');
+            if(overlay) overlay.classList.toggle('active');
+        };
+
+        menuBtn.addEventListener('click', toggleMenu);
+        menuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') toggleMenu();
+        });
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', toggleMenu);
+            closeBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') toggleMenu();
+            });
+        }
+        if (overlay) overlay.addEventListener('click', toggleMenu);
+    }
+});
