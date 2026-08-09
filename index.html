@@ -107,26 +107,6 @@
                         <button onclick="document.getElementById('leadModal').style.display='flex'" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:#c9a227;color:#0a1628;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">Get eligibility check &rarr;</button>
                         <a href="https://wa.me/919940352086" style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1.5px solid rgba(255,255,255,.35);border-radius:8px;color:#fff;text-decoration:none;font-size:13px;font-weight:600">WhatsApp us</a>
                     </div>
-                    <div style="background:#fff;border-radius:14px;overflow:hidden;max-width:320px;box-shadow:0 8px 32px rgba(0,0,0,.18);margin-top:20px">
-                      <div style="background:#f8f5ee;border-bottom:1px solid #e2e8f0;padding:11px 15px">
-                        <div style="font-size:11px;font-weight:700;color:#0a1628">Profile Evaluation</div>
-                        <div style="font-size:11px;color:#64748b;margin-top:2px">Response within 3 hours</div>
-                      </div>
-                      <div style="padding:13px 15px">
-                        <input type="text" placeholder="Your full name" style="width:100%;padding:8px 11px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:9px;outline:none;display:block">
-                        <input type="tel" placeholder="WhatsApp number" style="width:100%;padding:8px 11px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:9px;outline:none;display:block">
-                        <input type="email" placeholder="Email address" style="width:100%;padding:8px 11px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:9px;outline:none;display:block">
-                        <select style="width:100%;padding:8px 11px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:12px;outline:none;background:#fff;display:block">
-                          <option value="">I am interested in...</option>
-                          <option>Canada PR</option>
-                          <option>Germany Chancenkarte</option>
-                          <option>Australia PR</option>
-                          <option>Study Abroad</option>
-                          <option>Other</option>
-                        </select>
-                        <button onclick="document.getElementById('leadModal').style.display='flex'" style="width:100%;padding:10px;background:#0a1628;color:#fff;font-size:12px;font-weight:700;border:none;border-radius:8px;cursor:pointer">Get My Evaluation</button>
-                        <p style="text-align:center;font-size:10px;color:#94a3b8;margin-top:7px">No spam. 3-hour response.</p>
-                      </div>
                     </div>
                 </div>
 
@@ -289,51 +269,28 @@
 
                     <!-- Right: Interactive Instant Score Preview Card -->
                     <div style="position: relative;">
-                        <div class="premium-glass-card">
-                            <!-- Mini preview header -->
-                            <div style="text-align: center; margin-bottom: 20px;">
-                                <div style="width: 56px; height: 56px; background: rgba(7,36,168,0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; color: #0724A8; font-size: 1.5rem; border: 1px solid rgba(7, 36, 168, 0.15);">
-                                    <i class="fas fa-calculator"></i>
-                                </div>
-                                <h4 style="font-size: 1.15rem; font-weight: 800; color: #0F172A; margin-bottom: 4px; letter-spacing: 0.5px;">
-                                    Instant Score Preview
-                                </h4>
-                                <p style="color: #64748B; font-size: 0.88rem; font-weight: 500;">Select a track to preview estimated points</p>
+                        <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.15); width: 100%; max-width: 420px; margin: 0 auto; border: 1px solid rgba(0,0,0,.05);">
+                          <div style="background:#f8f5ee;border-bottom:1px solid #e2e8f0;padding:22px 28px">
+                            <div style="font-size:18px;font-weight:800;color:#0a1628; display:flex; align-items:center; gap:8px;">
+                                <i class="fas fa-file-signature" style="color: #c9a227;"></i> Free Profile Evaluation
                             </div>
-
-                            <!-- Dynamic Score Display Card -->
-                            <div id="homeScoreCard" style="background: linear-gradient(135deg, #0724A8, #1B4FBB, #031169); border-radius: 6px; border-top: 4px solid #F87034; padding: 22px 26px; color: white; margin-bottom: 20px; transition: all 0.3s ease; box-shadow: 0 15px 35px rgba(7, 36, 168, 0.35); text-align: center;">
-                                <div id="homeScoreLabel" style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.5px; color: #FF9F1C; font-weight: 700; margin-bottom: 8px;">
-                                    ESTIMATED CRS SCORE
-                                </div>
-                                <div style="font-size: 3.2rem; font-weight: 900; line-height: 1; margin-bottom: 4px;">
-                                    <span id="homeScoreVal" style="display: inline-block; text-shadow: 0 0 15px rgba(255, 255, 255, 0.25);">433</span>
-                                    <span id="homeScoreUnit" style="font-size: 1.1rem; font-weight: 500; opacity: 0.85; margin-left: 2px;">Points</span>
-                                </div>
-                                <div style="margin-top: 10px;">
-                                    <span id="homeScoreBadge" style="font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; background: rgba(255, 255, 255, 0.15); padding: 6px 14px; border-radius: 30px; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1);">
-                                        🍁 67-Pt FSW Eligible — Express Entry Ready
-                                    </span>
-                                </div>
-                            </div>
-
-                            <!-- Interactive Country Switcher Tabs -->
-                            <div style="display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; flex-wrap: wrap;">
-                                <button type="button" id="tabCanada" onclick="switchHomeScore('canada', event)" style="background: #0724A8; color: white; border: none; font-size: 0.82rem; font-weight: 700; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease; box-shadow: 0 4px 12px rgba(7, 36, 168, 0.25);">
-                                    🍁 Canada CRS
-                                </button>
-                                <button type="button" id="tabAustralia" onclick="switchHomeScore('australia', event)" style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0; font-size: 0.82rem; font-weight: 600; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease;">
-                                    🌏 Australia
-                                </button>
-                                <button type="button" id="tabGermany" onclick="switchHomeScore('germany', event)" style="background: #F8FAFC; color: #475569; border: 1px solid #E2E8F0; font-size: 0.82rem; font-weight: 600; padding: 10px 18px; border-radius: 20px; cursor: pointer; transition: all 0.25s ease;">
-                                    🇩🇪 Germany
-                                </button>
-                            </div>
-
-                            <!-- Open Full Calculator Button -->
-                            <a id="homeCalcLink" href="/calculator/" class="btn-gradient" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; text-decoration: none; background: linear-gradient(135deg, #F87034, #E8501A) !important; color: white !important; box-shadow: 0 6px 20px rgba(248, 112, 52, 0.3) !important; border: none !important; transition: all 0.3s ease;">
-                                Open Full Calculator <i class="fas fa-arrow-right"></i>
-                            </a>
+                            <div style="font-size:13px;color:#64748b;margin-top:6px; font-weight:500;">Fill the form below and get a response within 3 hours</div>
+                          </div>
+                          <div style="padding:28px">
+                            <input type="text" placeholder="Your full name" style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1B4FBB'" onblur="this.style.borderColor='#e2e8f0'">
+                            <input type="tel" placeholder="WhatsApp number" style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1B4FBB'" onblur="this.style.borderColor='#e2e8f0'">
+                            <input type="email" placeholder="Email address" style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1B4FBB'" onblur="this.style.borderColor='#e2e8f0'">
+                            <select style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:20px;outline:none;background:#f8fafc;display:block;cursor:pointer;transition:border-color 0.2s;" onfocus="this.style.borderColor='#1B4FBB'" onblur="this.style.borderColor='#e2e8f0'">
+                              <option value="">I am interested in...</option>
+                              <option>Canada PR</option>
+                              <option>Germany Chancenkarte</option>
+                              <option>Australia PR</option>
+                              <option>Study Abroad</option>
+                              <option>Other</option>
+                            </select>
+                            <button onclick="document.getElementById('leadModal').style.display='flex'" style="width:100%;padding:16px;background:#0a1628;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 20px rgba(10,22,40,0.25);" onmouseover="this.style.background='#1B4FBB';this.style.transform='translateY(-2px)';" onmouseout="this.style.background='#0a1628';this.style.transform='translateY(0)';">Submit For Evaluation</button>
+                            <p style="text-align:center;font-size:12px;color:#94a3b8;margin-top:16px;font-weight:500;">No spam. 3-hour response guaranteed.</p>
+                          </div>
                         </div>
                     </div>
 
