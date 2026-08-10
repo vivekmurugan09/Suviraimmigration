@@ -298,7 +298,7 @@
 
         .fgroup label {
             display: block;
-            font-size: 0.77rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -310,12 +310,12 @@
         .fgroup select,
         .fgroup textarea {
             width: 100%;
-            padding: 11px 14px;
+            padding: 13px 16px;
             border-radius: 10px;
             border: 1.5px solid #E2E8F0;
             background: #F8FAFC;
             color: #0F172A;
-            font-size: 0.93rem;
+            font-size: 1.05rem;
             font-family: var(--font-body);
             outline: none;
             transition: border-color 0.25s, box-shadow 0.25s;
@@ -344,9 +344,9 @@
             background: linear-gradient(135deg, #F87034, #E8501A);
             color: white;
             border: none;
-            padding: 15px 44px;
+            padding: 18px 54px;
             border-radius: 14px;
-            font-size: 1.05rem;
+            font-size: 1.25rem;
             font-weight: 700;
             cursor: pointer;
             display: inline-flex;
@@ -513,14 +513,17 @@
         }
 
         .call-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background: #F87034;
             color: white;
             text-decoration: none;
-            padding: 11px 20px;
+            padding: 14px 20px;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             transition: background 0.2s;
             margin-bottom: 8px;
         }
@@ -530,14 +533,17 @@
         }
 
         .wa-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             background: #25D366;
             color: white;
             text-decoration: none;
-            padding: 11px 20px;
+            padding: 14px 20px;
             border-radius: 10px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             transition: background 0.2s;
         }
 
@@ -575,15 +581,15 @@
             position: fixed;
             bottom: 28px;
             right: 28px;
-            width: 56px;
-            height: 56px;
+            width: 64px;
+            height: 64px;
             background: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.6rem;
+            font-size: 2.2rem;
             text-decoration: none;
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
             z-index: 9999;
@@ -1168,10 +1174,10 @@
                                 <div>
                                     <strong style="font-size: 1.15rem; color: #111111;">Want Suvira to Review Your Full Profile?</strong><br>
                                     <p style="font-size: 0.9rem; color: #666666; margin: 4px 0 14px;">Enter your email below to get a detailed points summary PDF and consultant evaluation within 3 business hours.</p>
-                                    
-                                        <input type="email" placeholder="Enter your email address" required="" style="width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.9rem; outline: none;">
-                                        <button type="submit" style="background: #1B4FBB; color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 700; font-size: 0.88rem; cursor: pointer; flex-shrink: 0;">Get Assessment →</button>
-                                    
+                                    <div style="display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap;">
+                                        <input type="email" placeholder="Enter your email address" required="" style="flex: 1; min-width: 250px; padding: 14px 18px; border-radius: 10px; border: 1.5px solid #CBD5E1; font-size: 1rem; outline: none; font-family: var(--font-body);">
+                                        <button type="submit" style="background: linear-gradient(135deg, #F87034, #E8501A); color: white; border: none; padding: 14px 28px; border-radius: 10px; font-weight: 700; font-size: 1.05rem; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(248, 112, 52, 0.3);">Get Assessment <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div></form>

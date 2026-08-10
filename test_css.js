@@ -3,7 +3,7 @@ const fs = require('fs');
 function runTest() {
     console.log('Running test: Check country page CSS existence');
     const css = fs.readFileSync('style-v3.css', 'utf8');
-    
+
     const requiredClasses = [
         '.country-hero-title-flex',
         '.country-hero-facts',
@@ -11,7 +11,7 @@ function runTest() {
         '.programs-grid',
         '.program-card-pro'
     ];
-    
+
     let passed = true;
     for (const cls of requiredClasses) {
         if (!css.includes(cls)) {
@@ -21,7 +21,7 @@ function runTest() {
             console.log(`PASS: Found class ${cls}`);
         }
     }
-    
+
     if (passed) {
         console.log('ALL TESTS PASSED: Country page CSS is successfully integrated.');
         process.exit(0);
