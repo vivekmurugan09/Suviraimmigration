@@ -4427,3 +4427,12 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(-5px);
     box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
 }
+
+/* Global card hover micro-animations */
+.premium-glass-card, .showcase-card-inner, .cnt-card {
+    transition: all 0.3s ease !important;
+}
+.premium-glass-card:hover, .showcase-card-inner:hover, .cnt-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
