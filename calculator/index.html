@@ -969,13 +969,19 @@
                             <span id="liveScoreMax" style="font-size: 1.3rem; opacity: 0.75;"> / 1200 Pts</span>
                         </div>
 
-                        <div id="liveScoreVerdict" style="background: rgba(37, 211, 102, 0.2); border: 1px solid #25D366; color: #25D366; font-weight: 700; padding: 10px 18px; border-radius: 12px; font-size: 0.92rem; margin-bottom: 20px;">
-                            🟢 Your estimated score. Book a consultation to confirm your pathway.
+                                                <div id="dynamic-score-display" style="background: rgba(37, 211, 102, 0.1); border: 1px solid #25D366; color: white; padding: 15px; border-radius: 12px; margin-bottom: 20px;">
+                            <h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4>
+                            <p style="margin:0; font-size: 0.95rem;">Your CRS Score is <strong id="user-final-score" style="color: #25D366;">419</strong>. The Latest Canada Cutoff is <strong id="cutoff-score">Fetching...</strong></p>
                         </div>
-
-                        <p id="liveScoreDesc" style="font-size: 0.88rem; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 25px;">
-                            Your profile exceeds standard requirements. You are eligible for Express Entry ITA &amp; Provincial Nomination routing.
-                        </p>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px;">
+                            <a id="wa-cta" href="https://wa.me/919940352086?text=Hi, my score is 419 but the cutoff is higher. How can I boost my points?" target="_blank" class="btn-primary" style="background: #25D366; color: white; border: none; text-align: center;">
+                                <i class="fab fa-whatsapp"></i> Chat with an Expert to Boost Your Score
+                            </a>
+                            <a href="tel:+919940352086" class="btn-primary" style="background: #c9a227; color: #0a1628; border: none; text-align: center;">
+                                <i class="fas fa-phone-alt"></i> Call a Counselor Now
+                            </a>
+                        </div>
 
                         <a href="#eligibilityForm" style="display: block; width: 100%; background: #25D366; color: white; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
                             Submit Profile to Lock In Score →
@@ -1463,5 +1469,13 @@ function updateCalcBadge(){
   if(!badge)return;
   badge.textContent='Your score is ready. Book a Consultation to confirm your pathway.';
 }
+</script>
+<script>
+    fetch('/draw_data.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('cutoff-score').innerText = data.canada_crs_cutoff;
+        })
+        .catch(err => console.error('Error fetching draw data:', err));
 </script>
 </body></html>
