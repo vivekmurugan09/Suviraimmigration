@@ -71,7 +71,7 @@
             <div class="nav-links">
                 <a href="#home" class="nav-home active"><i class="fas fa-home"></i> Home</a>
                 <a href="about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-                <a href="javascript:void(0)" onclick="document.getElementById('leadModal').style.display='flex'" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
+                <a href="calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
                 <a href="services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
                 <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
                 <a href="process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
@@ -99,7 +99,7 @@
         <div class="mobile-nav">
             <a href="#home" class="nav-home active"><i class="fas fa-home"></i> Home</a>
             <a href="about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="javascript:void(0)" onclick="document.getElementById('leadModal').style.display='flex'" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
+            <a href="calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
             <a href="services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
             <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
             <a href="process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
@@ -1267,7 +1267,10 @@
                                 (Mon–Sat, 9am–6pm IST).</p>
                         </div>
 
-                        <form id="homeTouchForm" onsubmit="handleHomeTouchSubmit(event)">
+                        <form id="homeTouchForm" action="https://formsubmit.co/reachus@suviraimmigration.com" method="POST">
+                            <input type="hidden" name="_subject" value="New Inquiry from Homepage">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://www.suviraimmigration.com/thank-you.html">
                             <div
                                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 24px;">
                                 <!-- Left Column -->
@@ -1276,21 +1279,21 @@
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Your
                                             Name *</label>
-                                        <input type="text" id="htName" required="" placeholder="Enter full name"
+                                        <input type="text" id="htName" name="Full Name" required="" placeholder="Enter full name"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
                                     <div>
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Phone
                                             / WhatsApp *</label>
-                                        <input type="tel" id="htPhone" required="" placeholder="+91 99403 52086"
+                                        <input type="tel" id="htPhone" name="Phone / WhatsApp" required="" placeholder="+91 99403 52086"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
                                     <div>
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Email
                                             Address *</label>
-                                        <input type="email" id="htEmail" required=""
+                                        <input type="email" id="htEmail" name="Email Address" required=""
                                             placeholder="your.email@example.com"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
@@ -1302,7 +1305,7 @@
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Service
                                             / Destination Required</label>
-                                        <select id="htService"
+                                        <select id="htService" name="Service Required"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;height:44px;">
                                             <option value="Canada PR / Express Entry">🇨🇦 Canada PR / Express Entry
                                             </option>
@@ -1328,7 +1331,7 @@
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Your
                                             Message *</label>
-                                        <textarea id="htMsg" required=""
+                                        <textarea id="htMsg" name="Message" required=""
                                             placeholder="Tell us about your visa requirements..."
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;resize:none;box-sizing:border-box;flex-grow:1;min-height:116px;"></textarea>
                                     </div>
@@ -1519,13 +1522,7 @@
 
 
     <script>
-        // Auto-show popup after 4 seconds
-        setTimeout(function () {
-            if (!sessionStorage.getItem('popupShown')) {
-                document.getElementById('leadModal').style.display='flex';
-                sessionStorage.setItem('popupShown', 'true');
-            }
-        }, 4000);
+        
     </script>
 
     <div id="leadModal"
