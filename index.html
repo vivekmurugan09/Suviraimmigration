@@ -1522,7 +1522,7 @@
         // Auto-show popup after 4 seconds
         setTimeout(function () {
             if (!sessionStorage.getItem('popupShown')) {
-                document.getElementById('leadModal').classList.add('active');
+                document.getElementById('leadModal').style.display='flex';
                 sessionStorage.setItem('popupShown', 'true');
             }
         }, 4000);
@@ -1544,11 +1544,7 @@
                 <button onclick="document.getElementById('leadModal').style.display='none'"
                     style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;padding:0;line-height:1">&times;</button>
             </div>
-            <form id="leadModalForm" action="https://formsubmit.co/reachus@suviraimmigration.com" method="POST" onsubmit="this.elements['Page_URL'].value = window.location.href;" style="padding:16px 20px">
-                <input type="hidden" name="_subject" value="New Lead from Suvira Eligibility Check">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://www.suviraimmigration.com/thank-you.html">
-                <input type="hidden" name="Page_URL" value="">
+            <form id="leadModalForm" onsubmit="handleModalSubmit(event)" style="padding:16px 20px">
                 <input type="text" name="name" required placeholder="Your full name"
                     style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
                 <input type="tel" name="phone" required placeholder="WhatsApp number"

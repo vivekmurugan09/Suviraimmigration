@@ -1,4 +1,4 @@
-// Wait for DOM to be fully loaded
+﻿// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -581,6 +581,7 @@ if (document.readyState === 'loading') {
 
 // Homepage Direct Contact Form Handler
 function handleHomeTouchSubmit(e) {
+    sessionStorage.setItem('popupShown', 'true');
     e.preventDefault();
     const name    = document.getElementById('htName').value;
     const phone   = document.getElementById('htPhone').value;
@@ -1256,3 +1257,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (overlay) overlay.addEventListener('click', toggleMenu);
     }
 });
+
+// Global Modal Form Handler
+function handleModalSubmit(e) {
+    sessionStorage.setItem('popupShown', 'true');
+    e.preventDefault();
+    const form = e.target;
+    const name = form.elements['name'].value;
+    const phone = form.elements['phone'].value;
+    const email = form.elements['email'].value;
+    const service = form.elements['service'].value;
+
+    const formData = new FormData();
+    formData.append("Full Name", name);
+    formData.append("Phone / WhatsApp", phone);
+    formData.append("Email Address", email);
+    formData.append("Service Required", service);
+    formData.append("Page URL", window.location.href);
+    formData.append("_subject", "New Lead from Eligibility Modal");
+    formData.append("_captcha", "false");
+
+    fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+        method: "POST",
+        headers: { 'Accept': 'application/json' },
+        body: formData
+    }).then(res => {
+        alert("Thanks! We will call you within 3 business hours.");
+        form.reset();
+        document.getElementById('leadModal').style.display = 'none';
+    }).catch(err => {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+    });
+}
