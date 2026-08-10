@@ -4381,3 +4381,49 @@ input:focus, select:focus, textarea:focus {
 
 .country-card-footer .btn { white-space: nowrap !important; }
 
+
+/* === UI/UX Standardization === */
+.btn-primary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: #c9a227;
+    color: #0a1628;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-primary:hover {
+    background: #FF9F1C;
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: transparent;
+    color: #0a1628;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #0a1628;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+    background: #0a1628;
+    color: #fff;
+    transform: translateY(-2px);
+}
+.card-hover {
+    transition: all 0.3s ease;
+}
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+}
