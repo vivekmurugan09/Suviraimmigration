@@ -1,4 +1,4 @@
-﻿// Wait for DOM to be fully loaded
+// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -8,24 +8,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
 
     if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function () {
-            mobileMenu.classList.add('active');
-            mobileMenuOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+        mobileMenuBtn.setAttribute('aria-controls', 'mobile-menu');
+        mobileMenuBtn.setAttribute('role', 'button');
+        mobileMenuBtn.tabIndex = 0;
+
+        function toggleMobileMenu() {
+            const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            if (!isExpanded) {
+                mobileMenu.classList.add('active');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.remove('active');
+                if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileMenuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMobileMenu();
+            }
         });
 
-        closeMenuBtn.addEventListener('click', closeMobileMenu);
-        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', toggleMobileMenu);
+            closeMenuBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                }
+            });
+        }
+
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.addEventListener('click', toggleMobileMenu);
+        }
 
         mobileNavLinks.forEach(link => {
-            link.addEventListener('click', closeMobileMenu);
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) toggleMobileMenu();
+            });
         });
-    }
-
-    function closeMobileMenu() {
-        mobileMenu.classList.remove('active');
-        mobileMenuOverlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
     }
 
     // FAQ Functionality
@@ -1223,40 +1252,6 @@ function toggleFaqAccordion(headerEl) {
     
 
 
-// Accessibility UI/UX enhancements
-document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    const closeBtn = document.querySelector('.close-menu') || document.querySelector('.mobile-menu-close');
-    const mobileMenu = document.querySelector('.mobile-menu');
-    const overlay = document.querySelector('.mobile-menu-overlay');
-
-    if (menuBtn && mobileMenu) {
-        menuBtn.setAttribute('aria-expanded', 'false');
-        menuBtn.setAttribute('aria-controls', 'mobile-menu');
-        menuBtn.setAttribute('role', 'button');
-        menuBtn.tabIndex = 0;
-        
-        const toggleMenu = () => {
-            const isExpanded = menuBtn.getAttribute('aria-expanded') === 'true';
-            menuBtn.setAttribute('aria-expanded', !isExpanded);
-            mobileMenu.classList.toggle('active');
-            if(overlay) overlay.classList.toggle('active');
-        };
-
-        menuBtn.addEventListener('click', toggleMenu);
-        menuBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') toggleMenu();
-        });
-        
-        if (closeBtn) {
-            closeBtn.addEventListener('click', toggleMenu);
-            closeBtn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') toggleMenu();
-            });
-        }
-        if (overlay) overlay.addEventListener('click', toggleMenu);
-    }
-});
 
 // Global Modal Form Handler
 function handleModalSubmit(e) {
