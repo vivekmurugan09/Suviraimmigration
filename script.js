@@ -1,4 +1,4 @@
-// Wait for DOM to be fully loaded
+﻿// Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function () {
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -487,7 +487,7 @@ function calculatePoints() {
             scoreAdvice.textContent = "Score below 65 pts. Profile boosting via Partner points, NAATI CCL, or Regional State sponsorship recommended.";
         }
     } else if (targetCountry === 'germany-card') {
-        // Germany Opportunity Card (Chancenkarte 2026) 6-Point System
+        // Germany Opportunity Card (Germany Opportunity Visa 2026) 6-Point System
         score += (edu === 'master' || edu === 'phd' || edu === 'bachelor' ? 4 : 2);
         score += (exp === '5+' ? 3 : exp === '3+' ? 2 : 1);
         score += (age === '20-29' ? 2 : age === '30-34' ? 1 : 0);
@@ -581,6 +581,7 @@ if (document.readyState === 'loading') {
 
 // Homepage Direct Contact Form Handler
 function handleHomeTouchSubmit(e) {
+    sessionStorage.setItem('popupShown', 'true');
     e.preventDefault();
     const name    = document.getElementById('htName').value;
     const phone   = document.getElementById('htPhone').value;
@@ -654,7 +655,7 @@ function switchHomeScoreTab(e, country) {
         if (desc)  desc.innerText  = '✅ Subclass 189/190 Eligible — EOI Ready';
     } else if (country === 'germany') {
         if (btnDe) { btnDe.style.background = '#0724A8'; btnDe.style.color = 'white'; }
-        if (label) label.innerText = 'GERMANY CHANCENKARTE SCORE';
+        if (label) label.innerText = 'GERMANY GERMANY OPPORTUNITY VISA SCORE';
         if (val)   val.innerText   = '6 / 6';
         if (unit)  unit.innerText  = 'Points';
         if (desc)  desc.innerText  = '✅ 100% Eligible — Opportunity Card Ready';
@@ -737,7 +738,7 @@ function toggleFaqAccordion(headerEl) {
                                     tabDe.style.boxShadow = '0 4px 12px rgba(7, 36, 168, 0.25)'; 
                                     tabDe.style.border = 'none'; 
                                 }
-                                if (label) label.innerText = 'CHANCENKARTE SCORE';
+                                if (label) label.innerText = 'GERMANY OPPORTUNITY VISA SCORE';
                                 if (val) val.innerText = '6 / 6';
                                 if (unit) unit.innerText = 'Pts';
                                 if (badge) badge.innerHTML = '🇩🇪 6/6 Points Maximum — Opportunity Card Eligible';
@@ -880,7 +881,7 @@ function toggleFaqAccordion(headerEl) {
                 numEl.innerText = total;
                 maxEl.innerText = ' / 6 Points';
                 if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Germany Opportunity Visa Score';
                     verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
                     descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
                 } else {
@@ -1040,7 +1041,7 @@ function toggleFaqAccordion(headerEl) {
                 numEl.innerText = total;
                 maxEl.innerText = ' / 6 Points';
                 if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Chancenkarte Score';
+                    verdictEl.innerHTML = '🟢 6/6 Maximum Germany Opportunity Visa Score';
                     verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
                     descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
                 } else {
@@ -1256,3 +1257,36 @@ document.addEventListener('DOMContentLoaded', () => {
         if (overlay) overlay.addEventListener('click', toggleMenu);
     }
 });
+
+// Global Modal Form Handler
+function handleModalSubmit(e) {
+    sessionStorage.setItem('popupShown', 'true');
+    e.preventDefault();
+    const form = e.target;
+    const name = form.elements['name'].value;
+    const phone = form.elements['phone'].value;
+    const email = form.elements['email'].value;
+    const service = form.elements['service'].value;
+
+    const formData = new FormData();
+    formData.append("Full Name", name);
+    formData.append("Phone / WhatsApp", phone);
+    formData.append("Email Address", email);
+    formData.append("Service Required", service);
+    formData.append("Page URL", window.location.href);
+    formData.append("_subject", "New Lead from Eligibility Modal");
+    formData.append("_captcha", "false");
+
+    fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+        method: "POST",
+        headers: { 'Accept': 'application/json' },
+        body: formData
+    }).then(res => {
+        alert("Thanks! We will call you within 3 business hours.");
+        form.reset();
+        document.getElementById('leadModal').style.display = 'none';
+    }).catch(err => {
+        console.error(err);
+        alert("An error occurred. Please try again.");
+    });
+}

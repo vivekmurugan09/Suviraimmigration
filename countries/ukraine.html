@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
 
 
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
             <div class="nav-links">
                 <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
                 <a href="../about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-                <a href="/calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
+                <a href="../calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
                 <a href="../services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
                 <a href="./" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
                 <a href="../process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
@@ -75,7 +75,7 @@
         <div class="mobile-nav">
             <a href="../" class="nav-link"><i class="fas fa-home"></i> Home</a>
             <a href="../about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="/calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
+            <a href="../calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
             <a href="../services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
             <a href="./" class="nav-link active"><i class="fas fa-flag"></i> Countries</a>
             <a href="../process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
@@ -276,11 +276,7 @@
                               rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
                           <a href="#"><i class="fab fa-youtube"></i></a>
                       </div>
-                      <div class="footer-badges" style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                          <img src="/images/iso-badge.svg" alt="ISO 9001 Certified Immigration Consultants in Chennai" style="height: 32px; width: auto;" loading="lazy">
-                          <img src="/images/iccrc-badge.svg" alt="Registered RCIC Canada PR Consultants Chennai" style="height: 32px; width: auto;" loading="lazy">
-                          <img src="/images/mara-badge.svg" alt="Registered MARA Australia Visa Agents Chennai" style="height: 32px; width: auto;" loading="lazy">
-                      </div>
+                      
                 </div>
 
                 <div class="footer-links">
@@ -368,14 +364,14 @@
       </div>
       <button onclick="document.getElementById('leadModal').style.display='none'" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;padding:0;line-height:1">&times;</button>
     </div>
-    <form id="leadModalForm" style="padding:16px 20px">
+    <form id="leadModalForm" onsubmit="handleModalSubmit(event)" style="padding:16px 20px">
       <input type="text" name="name" required placeholder="Your full name" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
       <input type="tel" name="phone" required placeholder="WhatsApp number" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
       <input type="email" name="email" required placeholder="Email address" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
       <select name="service" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:14px;outline:none;background:#fff;display:block">
         <option value="">Service required...</option>
         <option>Canada PR / Express Entry</option>
-        <option>Germany Chancenkarte 2026</option>
+        <option>Germany Opportunity Visa 2026</option>
         <option>Australia Subclass 189 / 190</option>
         <option>Overseas Study Visa</option>
         <option>Visitor / Tourist Visa</option>
