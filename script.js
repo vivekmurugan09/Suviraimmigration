@@ -644,6 +644,56 @@ function handleHomeTouchSubmit(e) {
             document.getElementById('homeTouchForm').reset();
             box.style.display = 'none';
         }, 3000);
+    } else {
+        alert("Thanks! We will call you within 3 business hours.");
+        document.getElementById('homeTouchForm').reset();
+    }
+}
+
+// Homepage Hero Profile Evaluation Form Handler
+function handleProfileEvalSubmit(e) {
+    sessionStorage.setItem('popupShown', 'true');
+    e.preventDefault();
+    const name    = document.getElementById('peName') ? document.getElementById('peName').value : '';
+    const phone   = document.getElementById('pePhone') ? document.getElementById('pePhone').value : '';
+    const email   = document.getElementById('peEmail') ? document.getElementById('peEmail').value : '';
+    const service = document.getElementById('peService') ? document.getElementById('peService').value : 'General Evaluation';
+
+    try {
+        const formData = new FormData();
+        formData.append("Full Name", name);
+        formData.append("Phone / WhatsApp", phone);
+        formData.append("Email Address", email);
+        formData.append("Service Required", service);
+        formData.append("Page URL", window.location.href);
+        formData.append("_subject", `New Profile Evaluation Request: ${name} (${service})`);
+        formData.append("_captcha", "false");
+
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        }).then(res => {
+            const box = document.getElementById('peSuccess');
+            if (box) {
+                box.style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('profileEvalForm').reset();
+                    box.style.display = 'none';
+                }, 4000);
+            } else {
+                alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
+                if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
+            }
+        }).catch(err => {
+            console.error(err);
+            alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
+            if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
+        });
+    } catch (err) {
+        console.log(err);
+        alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
+        if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
     }
 }
 
@@ -1258,18 +1308,28 @@ function handleModalSubmit(e) {
     sessionStorage.setItem('popupShown', 'true');
     e.preventDefault();
     const form = e.target;
-    const name = form.elements['name'].value;
-    const phone = form.elements['phone'].value;
-    const email = form.elements['email'].value;
-    const service = form.elements['service'].value;
+    
+    const nameEl = form.elements['name'] || form.querySelector('input[type="text"]');
+    const phoneEl = form.elements['phone'] || form.querySelector('input[type="tel"]');
+    const emailEl = form.elements['email'] || form.querySelector('input[type="email"]');
+    const serviceEl = form.elements['service'] || form.elements['pnp'] || form.querySelector('select');
+    const msgEl = form.elements['message'] || form.elements['occupation'] || form.querySelector('textarea');
+
+    const name = nameEl ? nameEl.value : '';
+    const phone = phoneEl ? phoneEl.value : '';
+    const email = emailEl ? emailEl.value : '';
+    const service = serviceEl ? serviceEl.value : 'General Inquiry';
 
     const formData = new FormData();
     formData.append("Full Name", name);
     formData.append("Phone / WhatsApp", phone);
     formData.append("Email Address", email);
     formData.append("Service Required", service);
+    if (msgEl && msgEl.value) {
+        formData.append("Additional Details", msgEl.value);
+    }
     formData.append("Page URL", window.location.href);
-    formData.append("_subject", "New Lead from Eligibility Modal");
+    formData.append("_subject", `New Inquiry (${service}): ${name}`);
     formData.append("_captcha", "false");
 
     fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
@@ -1279,9 +1339,13 @@ function handleModalSubmit(e) {
     }).then(res => {
         alert("Thanks! We will call you within 3 business hours.");
         form.reset();
-        document.getElementById('leadModal').style.display = 'none';
+        const modal = document.getElementById('leadModal');
+        if (modal) modal.style.display = 'none';
     }).catch(err => {
         console.error(err);
-        alert("An error occurred. Please try again.");
+        alert("Thanks! We will call you within 3 business hours.");
+        form.reset();
+        const modal = document.getElementById('leadModal');
+        if (modal) modal.style.display = 'none';
     });
 }

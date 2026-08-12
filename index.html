@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en"><!-- Dev deployment release 2026-08-09-v2 -->
 
 <head>
@@ -394,39 +394,42 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                 <div style="font-size:13px;color:#64748b;margin-top:6px; font-weight:500;">Fill the form
                                     below and get a response within 3 hours</div>
                             </div>
-                            <div style="padding:28px">
-                                <input type="text" placeholder="Your full name"
+                            <form id="profileEvalForm" onsubmit="handleProfileEvalSubmit(event)" style="padding:28px">
+                                <input type="text" id="peName" name="name" required placeholder="Your full name"
                                     style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
-                                <input type="tel" placeholder="WhatsApp number"
+                                <input type="tel" id="pePhone" name="phone" required placeholder="WhatsApp number"
                                     style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
-                                <input type="email" placeholder="Email address"
+                                <input type="email" id="peEmail" name="email" required placeholder="Email address"
                                     style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:14px;outline:none;display:block;background:#f8fafc;transition:border-color 0.2s;"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
-                                <select
+                                <select id="peService" name="service" required
                                     style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:20px;outline:none;background:#f8fafc;display:block;cursor:pointer;transition:border-color 0.2s;"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
                                     <option value="">I am interested in...</option>
-                                    <option>Canada PR</option>
-                                    <option>Germany Opportunity Visa</option>
-                                    <option>Australia PR</option>
-                                    <option>Study Abroad</option>
-                                    <option>Other</option>
+                                    <option value="Canada PR">Canada PR</option>
+                                    <option value="Germany Opportunity Visa">Germany Opportunity Visa</option>
+                                    <option value="Australia PR">Australia PR</option>
+                                    <option value="Study Abroad">Study Abroad</option>
+                                    <option value="Other">Other</option>
                                 </select>
-                                <button onclick="document.getElementById('leadModal').style.display='flex'"
+                                <button type="submit"
                                     style="width:100%;padding:16px;background:#0a1628;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 8px 20px rgba(10,22,40,0.25);"
                                     onmouseover="this.style.background='#1B4FBB';this.style.transform='translateY(-2px)';"
                                     onmouseout="this.style.background='#0a1628';this.style.transform='translateY(0)';">Submit
                                     For Evaluation</button>
+                                <div id="peSuccess" style="display:none;margin-top:14px;padding:12px;background:#d1fae5;color:#065f46;border-radius:8px;font-size:13px;text-align:center;font-weight:600;">
+                                    ✓ Thank you! Evaluation request submitted. We'll contact you within 3 hours.
+                                </div>
                                 <p
                                     style="text-align:center;font-size:12px;color:#94a3b8;margin-top:16px;font-weight:500;">
                                     No spam. 3-hour response guaranteed.</p>
-                            </div>
+                            </form>
                         </div>
                     </div>
 
@@ -598,7 +601,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <div class="showcase-card-inner" style="background: #F8FAFC; padding: 28px;">
                         <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
                             <span
-                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;">🌍</span>
+                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,0.15)">🇨🇦</span>
                             <div>
                                 <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A; margin: 0;">Canada
                                 </h3>
@@ -620,7 +623,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <div class="showcase-card-inner" style="background: #F8FAFC; padding: 28px;">
                         <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
                             <span
-                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;">🌍</span>
+                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,0.15)">🇩🇪</span>
                             <div>
                                 <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A; margin: 0;">Germany
                                 </h3>
@@ -642,7 +645,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <div class="showcase-card-inner" style="background: #F8FAFC; padding: 28px;">
                         <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 16px;">
                             <span
-                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;">🌍</span>
+                                style="font-size:32px;line-height:32px;display:inline-block;width:48px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,0.15)">🇦🇺</span>
                             <div>
                                 <h3 style="font-size: 1.25rem; font-weight: 800; color: #0F172A; margin: 0;">
                                     Australia</h3>
@@ -1284,7 +1287,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                 (Mon–Sat, 9am–6pm IST).</p>
                         </div>
 
-                        <form id="homeTouchForm" action="https://formsubmit.co/reachus@suviraimmigration.com" method="POST">
+                        <form id="homeTouchForm" onsubmit="handleHomeTouchSubmit(event)">
                             <input type="hidden" name="_subject" value="New Inquiry from Homepage">
                             <input type="hidden" name="_captcha" value="false">
                             <input type="hidden" name="_next" value="https://www.suviraimmigration.com/thank-you.html">
@@ -1296,21 +1299,21 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Your
                                             Name *</label>
-                                        <input type="text" id="htName" name="Full Name" required="" placeholder="Enter full name"
+                                        <input type="text" id="htName" name="name" required="" placeholder="Enter full name"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
                                     <div>
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Phone
                                             / WhatsApp *</label>
-                                        <input type="tel" id="htPhone" name="Phone / WhatsApp" required="" placeholder="+91 99403 52086"
+                                        <input type="tel" id="htPhone" name="phone" required="" placeholder="+91 99403 52086"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
                                     <div>
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Email
                                             Address *</label>
-                                        <input type="email" id="htEmail" name="Email Address" required=""
+                                        <input type="email" id="htEmail" name="email" required=""
                                             placeholder="your.email@example.com"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;">
                                     </div>
@@ -1322,7 +1325,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Service
                                             / Destination Required</label>
-                                        <select id="htService" name="Service Required"
+                                        <select id="htService" name="service"
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;height:44px;">
                                             <option value="Canada PR / Express Entry">🇨🇦 Canada PR / Express Entry
                                             </option>
@@ -1348,7 +1351,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                         <label
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Your
                                             Message *</label>
-                                        <textarea id="htMsg" name="Message" required=""
+                                        <textarea id="htMsg" name="message" required=""
                                             placeholder="Tell us about your visa requirements..."
                                             style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;resize:none;box-sizing:border-box;flex-grow:1;min-height:116px;"></textarea>
                                     </div>
@@ -1558,7 +1561,10 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 <button onclick="document.getElementById('leadModal').style.display='none'"
                     style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;padding:0;line-height:1">&times;</button>
             </div>
-            <form id="leadModalForm" onsubmit="handleModalSubmit(event)" style="padding:16px 20px">
+            <form id="leadModalForm" action="https://formsubmit.co/reachus@suviraimmigration.com" method="POST" style="padding:16px 20px">
+                <input type="hidden" name="_subject" value="New Lead from Suvira Eligibility Check">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://www.suviraimmigration.com/thank-you.html">
                 <input type="text" name="name" required placeholder="Your full name"
                     style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
                 <input type="tel" name="phone" required placeholder="WhatsApp number"
