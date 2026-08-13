@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Framer Motion Demo</title>
+    <link rel="stylesheet" href="style-v3.css">
+    <style>
+        body { margin: 0; padding: 50px; background: #f8fafc; font-family: sans-serif; }
+        .demo-card { 
+            background: white; padding: 40px; border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            max-width: 600px; margin: 0 auto 50px auto; 
+            /* Hidden initially to prevent layout shift before JS loads */
+            opacity: 0; 
+        }
+        h1 { margin-top: 0; color: #1e293b; }
+        p { color: #64748b; line-height: 1.6; }
+        .btn { 
+            display: inline-block; padding: 12px 24px; 
+            background: #2563eb; color: white; 
+            border-radius: 8px; text-decoration: none; font-weight: bold;
+        }
+        .spacer { height: 100vh; text-align: center; color: #94a3b8; padding-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <!-- Load Animation Demo -->
+    <div class="demo-card hero-section">
+        <h1 class="stagger-item">Smooth Page Load</h1>
+        <p class="stagger-item">Elements cascade in beautifully when the page opens. This adds a premium feel instantly.</p>
+        <a href="#" class="btn stagger-item">View Services</a>
+    </div>
+
+    <div class="spacer">Scroll down ↓</div>
+
+    <!-- Scroll Animation Demo -->
+    <div class="demo-card scroll-section">
+        <h1 class="scroll-title">Scroll Reveal</h1>
+        <p class="scroll-text">This box waits until you scroll to it, then gracefully slides up and fades in.</p>
+    </div>
+
+    <script type="module">
+        import { animate, inView, stagger } from "https://esm.sh/framer-motion/dom";
+
+        // 1. Reveal container instantly
+        animate(".demo-card", { opacity: 1 }, { duration: 0 });
+
+        // 2. Page Load Animation (Staggered)
+        animate(
+            ".stagger-item", 
+            { opacity: [0, 1], y: [30, 0] }, 
+            { duration: 0.8, delay: stagger(0.15) } // Each item delayed by 0.15s
+        );
+
+        // 3. Scroll Animation
+        inView(".scroll-section", (info) => {
+            animate(
+                info.target, 
+                { opacity: [0, 1], y: [50, 0] }, 
+                { duration: 0.8 }
+            );
+        });
+    </script>
+</body>
+</html>
