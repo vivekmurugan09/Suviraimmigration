@@ -71,7 +71,22 @@ h1, h2, h3, h4 {
   background: var(--primary-navy);
   color: var(--text-on-dark);
   padding: calc(var(--spacing-xl) * 2) 0;
-  text-align: center;
+  text-align: left;
+}
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+@media (min-width: 992px) {
+  .hero-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .hero-content, .hero-graphic {
+    flex: 1;
+  }
 }
 .hero-v4 h1 {
   color: var(--surface-white);
