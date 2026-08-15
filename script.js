@@ -881,18 +881,22 @@ function toggleFaqAccordion(headerEl) {
             const btnCanada = document.getElementById('tabBtnCanada');
             const btnAustralia = document.getElementById('tabBtnAustralia');
             const btnGermany = document.getElementById('tabBtnGermany');
+            const btnUk = document.getElementById('tabBtnUk');
             
             const panelCanada = document.getElementById('calcPanelCanada');
             const panelAustralia = document.getElementById('calcPanelAustralia');
             const panelGermany = document.getElementById('calcPanelGermany');
+            const panelUk = document.getElementById('calcPanelUk');
 
             if (btnCanada) { btnCanada.style.background = '#F8F7F4'; btnCanada.style.color = '#111111'; btnCanada.style.boxShadow = 'none'; btnCanada.style.border = '1px solid #E2E0D9'; }
             if (btnAustralia) { btnAustralia.style.background = '#F8F7F4'; btnAustralia.style.color = '#111111'; btnAustralia.style.boxShadow = 'none'; btnAustralia.style.border = '1px solid #E2E0D9'; }
             if (btnGermany) { btnGermany.style.background = '#F8F7F4'; btnGermany.style.color = '#111111'; btnGermany.style.boxShadow = 'none'; btnGermany.style.border = '1px solid #E2E0D9'; }
+            if (btnUk) { btnUk.style.background = '#F8F7F4'; btnUk.style.color = '#111111'; btnUk.style.boxShadow = 'none'; btnUk.style.border = '1px solid #E2E0D9'; }
 
             if (panelCanada) panelCanada.style.display = 'none';
             if (panelAustralia) panelAustralia.style.display = 'none';
             if (panelGermany) panelGermany.style.display = 'none';
+            if (panelUk) panelUk.style.display = 'none';
 
             if (tab === 'canada') {
                 if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
@@ -943,6 +947,16 @@ function toggleFaqAccordion(headerEl) {
                 numEl.innerText = total;
                 maxEl.innerText = ' / 6 Points';
                 if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your Opportunity Card points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 6 points.</p>`;
+            } else if (window.activeTab === 'uk') {
+                const offer = parseInt(document.getElementById('ukOffer')?.value) || 20;
+                const skill = parseInt(document.getElementById('ukSkill')?.value) || 20;
+                const lang = parseInt(document.getElementById('ukLang')?.value) || 10;
+                const salary = parseInt(document.getElementById('ukSalary')?.value) || 20;
+                const total = offer + skill + lang + salary;
+
+                numEl.innerText = total;
+                maxEl.innerText = ' / 70 Pts';
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your UK Skilled Worker points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 70 points.</p>`;
             }
         };
 
@@ -953,6 +967,8 @@ function toggleFaqAccordion(headerEl) {
             if (btnCa) btnCa.addEventListener('click', function() { window.switchCalcTab('canada'); });
             if (btnAu) btnAu.addEventListener('click', function() { window.switchCalcTab('australia'); });
             if (btnDe) btnDe.addEventListener('click', function() { window.switchCalcTab('germany'); });
+            const btnUkListener = document.getElementById('tabBtnUk');
+            if (btnUkListener) btnUkListener.addEventListener('click', function() { window.switchCalcTab('uk'); });
             window.calculateLiveScore();
         });
     

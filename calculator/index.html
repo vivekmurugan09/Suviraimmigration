@@ -12,7 +12,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
-    <link rel="stylesheet" href="../style-v3.css?v=20260810-v4">
+    <link rel="stylesheet" href="../style-v3.css?v=20260815-v5">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
@@ -768,7 +768,11 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <div class="flag-chip"><img src="https://flagcdn.com/w40/ie.png" alt="Ireland" loading="lazy"> Ireland EU</div>
                     <div class="flag-chip"><img src="https://flagcdn.com/w40/sg.png" alt="Singapore" loading="lazy"> Singapore EP</div>
                     <div class="flag-chip"><img src="https://flagcdn.com/w40/ru.png" alt="Russia" loading="lazy"> MBBS Russia</div>
-                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" loading="lazy"> MBBS Ukraine</div>
+                    <div class="flag-chip"><img src="https://flagcdn.com/w40/ua.png" alt="Ukraine" loading="lazy"> MBBS Ukraine
+                    <div style="background: #F8F7F4; padding: 20px; border-radius: 14px; border: 1px solid #E2E0D9;">
+                        <h4 style="font-size: 1.05rem; font-weight: 700; color: #111111; margin-bottom: 8px;">🇬🇧 UK Skilled Worker</h4>
+                        <p style="font-size: 0.88rem; color: #666666; line-height: 1.5; margin: 0;">You need 70 points to apply. 50 points are mandatory (job offer, skill level, English), and 20 are tradeable (salary, shortage occupation, or PhD).</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -969,6 +973,41 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                     <select id="gAge" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
                                         <option value="1" selected="">Under 35 years of age (+1 pt)</option>
                                         <option value="0">35 – 40 years of age (0 pts)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <!-- UK TAB CONTENT -->
+                        <div id="calcPanelUk" style="display: none;">
+                            <div style="display: grid; gap: 18px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Job Offer from Approved Sponsor</label>
+                                    <select id="ukOffer" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Yes (+20 pts)</option>
+                                        <option value="0">No (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Job at Appropriate Skill Level</label>
+                                    <select id="ukSkill" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Yes, RQF 3 or above (+20 pts)</option>
+                                        <option value="0">No / Unsure (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. English Language (B1 Level)</label>
+                                    <select id="ukLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="10" selected>Yes (+10 pts)</option>
+                                        <option value="0">No (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Salary / Tradeable Points</label>
+                                    <select id="ukSalary" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Salary £25,600+ or Shortage Occupation (+20 pts)</option>
+                                        <option value="10">Salary £23,040 - £25,599 or relevant PhD (+10 pts)</option>
+                                        <option value="0">Salary under £23,040 (0 pts)</option>
                                     </select>
                                 </div>
                             </div>
@@ -1410,7 +1449,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <script src="../script.js?v=20260810-v4"></script>
+    <script src="../script.js?v=20260815-v5"></script>
 
 
 
@@ -1474,7 +1513,7 @@ function submitCalcGate(){
   document.getElementById('calcStep2').style.display='block';
   document.getElementById('calcResults').style.display='block';
   if(c && window.switchCalcTab) {
-      if(c === 'canada' || c === 'australia' || c === 'germany') window.switchCalcTab(c);
+      if(c === 'canada' || c === 'australia' || c === 'germany' || c === 'uk') window.switchCalcTab(c);
   }
   updateCalcBadge();
 }
