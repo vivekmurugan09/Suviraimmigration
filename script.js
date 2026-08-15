@@ -910,9 +910,8 @@ function toggleFaqAccordion(headerEl) {
         window.calculateLiveScore = function() {
             const numEl = document.getElementById('liveScoreNum');
             const maxEl = document.getElementById('liveScoreMax');
-            const verdictEl = document.getElementById('liveScoreVerdict');
-            const descEl = document.getElementById('liveScoreDesc');
-            if (!numEl || !maxEl || !verdictEl || !descEl) return;
+            const dynDisplay = document.getElementById('dynamic-score-display');
+            if (!numEl || !maxEl) return;
 
             if (window.activeTab === 'canada') {
                 const age = parseInt(document.getElementById('cAge')?.value) || 110;
@@ -923,15 +922,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 1200 Pts';
-                if (total >= 460) {
-                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your CRS Score is <strong style="color: #25D366;">${total}</strong>. The Latest Canada Cutoff is <strong id="cutoff-score">524</strong></p>`;
             } else if (window.activeTab === 'australia') {
                 const age = parseInt(document.getElementById('aAge')?.value) || 30;
                 const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
@@ -941,15 +932,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 100 Pts';
-                if (total >= 65) {
-                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
-                } else {
-                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
-                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
-                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your Australia points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 65 points.</p>`;
             } else if (window.activeTab === 'germany') {
                 const qual = parseInt(document.getElementById('gQual')?.value) || 4;
                 const exp = parseInt(document.getElementById('gExp')?.value) || 3;
@@ -959,15 +942,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 6 Points';
-                if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Germany Opportunity Visa Score';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your Opportunity Card points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 6 points.</p>`;
             }
         };
 
@@ -1083,15 +1058,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 1200 Pts';
-                if (total >= 460) {
-                    verdictEl.innerHTML = '🟢 High Chance of PR Direct Invitation';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Your score exceeds cutoff averages. Direct Express Entry ITA is highly achievable.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Eligible for PNP Nomination (+600 Pts)';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'Suvira can route your profile through OINP or AAIP stream to add 600 points to your score.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your CRS Score is <strong style="color: #25D366;">${total}</strong>. The Latest Canada Cutoff is <strong id="cutoff-score">524</strong></p>`;
             } else if (window.activeTab === 'australia') {
                 const age = parseInt(document.getElementById('aAge')?.value) || 30;
                 const edu = parseInt(document.getElementById('aEdu')?.value) || 15;
@@ -1101,15 +1068,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 100 Pts';
-                if (total >= 65) {
-                    verdictEl.innerHTML = '🟢 Meets 65-Point Skill Threshold';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'You meet Australia Subclass 189/190/491 EOI invitation requirements.';
-                } else {
-                    verdictEl.innerHTML = '🟡 Needs State Nomination (+5 to +15 Pts)';
-                    verdictEl.style.background = 'rgba(245, 158, 11, 0.2)'; verdictEl.style.color = '#FBBF24'; verdictEl.style.border = '1px solid #FBBF24';
-                    descEl.innerText = 'State sponsorship or partner points will bring you above the 65-point benchmark.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your Australia points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 65 points.</p>`;
             } else if (window.activeTab === 'germany') {
                 const qual = parseInt(document.getElementById('gQual')?.value) || 4;
                 const exp = parseInt(document.getElementById('gExp')?.value) || 3;
@@ -1119,15 +1078,7 @@ function toggleFaqAccordion(headerEl) {
 
                 numEl.innerText = total;
                 maxEl.innerText = ' / 6 Points';
-                if (total >= 6) {
-                    verdictEl.innerHTML = '🟢 6/6 Maximum Germany Opportunity Visa Score';
-                    verdictEl.style.background = 'rgba(37, 211, 102, 0.2)'; verdictEl.style.color = '#25D366'; verdictEl.style.border = '1px solid #25D366';
-                    descEl.innerText = 'Full eligibility for Germany Opportunity Card 2026 job seeker visa.';
-                } else {
-                    verdictEl.innerHTML = '🔵 Qualified for Opportunity Visa';
-                    verdictEl.style.background = 'rgba(59, 130, 246, 0.2)'; verdictEl.style.color = '#60A5FA'; verdictEl.style.border = '1px solid #60A5FA';
-                    descEl.innerText = 'You have sufficient points for embassy filing and blocked account verification.';
-                }
+                if(dynDisplay) dynDisplay.innerHTML = `<h4 style="margin:0 0 10px 0; font-size: 1.1rem; color: #25D366;">Result Breakdown</h4><p style="margin:0; font-size: 0.95rem;">Your Opportunity Card points are <strong style="color: #25D366;">${total}</strong>. The minimum required is 6 points.</p>`;
             }
         };
     
