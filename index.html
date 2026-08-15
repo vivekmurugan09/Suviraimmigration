@@ -17,6 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v3.css?v=20260810-v4">
+    <link rel="stylesheet" href="style-v4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -130,8 +131,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
     <!-- Main Content -->
     <div class="main-content">
         <!-- 1. HOME SECTION -->
-        <section class="hero hero-gradient" id="home"
-            style="padding-top: 100px !important; padding-bottom: 80px !important;">
+        <section class="hero-v4" id="home">
             <!-- Animated Map Dots -->
             <div class="map-dots-container">
                 <div class="pulse-dot canada" title="Canada"></div>
@@ -139,18 +139,14 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 <div class="pulse-dot india" title="Global HQ"></div>
                 <div class="pulse-dot australia" title="Australia"></div>
             </div>
-            <div class="container hero-container" style="align-items: flex-start !important; padding-top: 20px;">
+            <div class="container hero-container">
                 <div class="hero-content">
                     <div class="hero-pill"><i class="fas fa-shield-alt"></i> 5,000+ profiles guided · Trusted by professionals</div>
 
-                    <h1 class="hero-title"
-                        style="font-size: 2.5rem; font-weight: 600; margin-bottom: 5px; color: white; line-height: 1.15;">
-                        2,000+ Indian families settled abroad</h1>
-                    <div
-                        style="font-size: 1.4rem; color: #c9a227; font-weight: 700; margin-bottom: 20px; font-style: italic;">
+                    <h1 class="hero-title">2,000+ Indian families settled abroad</h1>
+                    <div style="font-size: 1.4rem; color: var(--primary-gold); font-weight: 700; margin-bottom: 20px; font-style: italic;">
                         Will yours be next?</div>
-                    <p class="hero-subtitle"
-                        style="font-size: 1.15rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 35px; font-weight: 400; line-height: 1.6;">
+                    <p class="hero-subtitle">
                         Immigration solutions tailored for Canada, Australia, Germany, New Zealand, and beyond.
                     </p>
 
@@ -169,13 +165,11 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                         </div>
                     </div>
 
-                    <div class="hero-btns" style="justify-content: flex-start; gap: 15px; flex-wrap: wrap;">
+                    <div class="hero-btns" style="display: flex; gap: 15px; flex-wrap: wrap;">
                         <button onclick="document.getElementById('leadModal').style.display='flex'"
-                            style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;background:#c9a227;color:#0a1628;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer">Get
-                            eligibility check &rarr;</button>
+                            class="btn-primary">Get eligibility check &rarr;</button>
                         <a href="https://wa.me/919940352086"
-                            style="display:inline-flex;align-items:center;gap:8px;padding:11px 22px;border:1.5px solid rgba(255,255,255,.35);border-radius:8px;color:#fff;text-decoration:none;font-size:13px;font-weight:600">WhatsApp
-                            us</a>
+                            style="display:inline-flex;align-items:center;padding:14px 28px;border:2px solid var(--text-light);border-radius:12px;color:var(--surface-white);text-decoration:none;font-weight:600">WhatsApp us</a>
                     </div>
                 </div>
 
@@ -408,7 +402,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
                                 <select id="peService" name="service" required
-                                    style="width:100%;padding:14px 18px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:20px;outline:none;background:#f8fafc;display:block;cursor:pointer;transition:border-color 0.2s;"
+                                    style="width:100%;padding:10px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;margin-bottom:20px;outline:none;background:#f8fafc;display:block;cursor:pointer;transition:border-color 0.2s;box-sizing:border-box;min-height:44px;line-height:1.4;"
                                     onfocus="this.style.borderColor='#1B4FBB'"
                                     onblur="this.style.borderColor='#e2e8f0'">
                                     <option value="">I am interested in...</option>
@@ -1326,25 +1320,16 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                             style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Service
                                             / Destination Required</label>
                                         <select id="htService" name="service"
-                                            style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;height:44px;">
-                                            <option value="Canada PR / Express Entry">🇨🇦 Canada PR / Express Entry
-                                            </option>
-                                            <option value="Germany Opportunity Card 2026">🇩🇪 Germany Opportunity Card
-                                                2026
-                                            </option>
-                                            <option value="Australia PR Points">🇦🇺 Australia Subclass 189 / 190
-                                            </option>
-                                            <option value="Overseas Study Visa">🎓 Overseas Study Visa</option>
-                                            <option value="Visitor / Tourist Visa">✈️ Visitor / Tourist Visa</option>
-                                            <option value="Dependent &amp; Family Visa">👨‍👩‍👧 Dependent &amp; Family
-                                                Visa
-                                            </option>
-                                            <option value="Business &amp; Investor Visa">💼 Business &amp; Investor Visa
-                                            </option>
-                                            <option value="SOP &amp; Resume Service">📄 SOP &amp; Resume Service
-                                            </option>
-                                            <option value="Apostille &amp; PCC Attestation">stamp Apostille &amp; PCC
-                                            </option>
+                                            style="width:100%;padding:10px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;box-sizing:border-box;min-height:44px;line-height:1.4;">
+                                            <option value="Canada PR / Express Entry">Canada PR / Express Entry</option>
+                                            <option value="Germany Opportunity Card 2026">Germany Opportunity Card 2026</option>
+                                            <option value="Australia PR Points">Australia Subclass 189 / 190</option>
+                                            <option value="Overseas Study Visa">Overseas Study Visa</option>
+                                            <option value="Visitor / Tourist Visa">Visitor / Tourist Visa</option>
+                                            <option value="Dependent &amp; Family Visa">Dependent &amp; Family Visa</option>
+                                            <option value="Business &amp; Investor Visa">Business &amp; Investor Visa</option>
+                                            <option value="SOP &amp; Resume Service">SOP &amp; Resume Service</option>
+                                            <option value="Apostille &amp; PCC Attestation">Apostille &amp; PCC Attestation</option>
                                         </select>
                                     </div>
                                     <div style="flex-grow: 1; display: flex; flex-direction: column;">
@@ -1604,6 +1589,8 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             style="flex:1;padding:9px 6px;background:#c9a227;border:none;border-radius:8px;color:#0a1628;font-size:11px;font-weight:700;cursor:pointer">Check</button>
     </div>
 
+
+
     <style>
         @media(max-width:768px) {
             #mbar {
@@ -1619,6 +1606,30 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             }
         }
     </style>
+
+    <!-- Framer Motion -->
+    <script type="module">
+        import { animate, inView, stagger } from "https://esm.sh/framer-motion/dom";
+
+        // Hero
+        animate(".hero-pill", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6 });
+        animate(".hero-title", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2 });
+        animate(".hero-subtitle", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.4 });
+        animate(".hero-btns", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.6 });
+
+        // Scroll sections
+        const sections = [
+            ".about-content", ".about-img-wrapper", 
+            ".service-card", ".country-card", 
+            ".process-step", ".stats-container",
+            ".testimonial-card"
+        ];
+        sections.forEach(selector => {
+            inView(selector, (info) => {
+                animate(info.target, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8 });
+            });
+        });
+    </script>
 </body>
 
 </html>
