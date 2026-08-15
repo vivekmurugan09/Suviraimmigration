@@ -21,7 +21,7 @@
     --gradient-vibrant: linear-gradient(135deg, #0A1128 0%, #1A2754 100%);
     --gradient-orange: linear-gradient(135deg, #EA580C 0%, var(--secondary) 100%);
 
-    --font-heading: 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-heading: 'EB Garamond', Georgia, 'Times New Roman', serif;
     --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
     --border-radius: 4px;
@@ -459,10 +459,7 @@ ul {
 .hero-title {
     font-size: 1.5rem;
     color: white;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     margin-bottom: 10px;
-    animation: fadeInLeft 1s ease 0.2s both;
 }
 
 .hero-main-title {
@@ -2673,15 +2670,6 @@ section {
     }
 }
 
-.hero-graphic::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(248, 112, 52, 0.3) 0%, transparent 70%);
-    z-index: 1;
-    filter: blur(30px);
-}
 
 .floating-img {
     max-width: 100%;
@@ -3722,44 +3710,6 @@ input:focus, select:focus, textarea:focus {
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
-}
-
-/* Production Top Header Bar */
-.top-header-bar {
-    background: var(--primary);
-    color: rgba(255, 255, 255, 0.9);
-    padding: 8px 0;
-    font-size: 0.85rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.top-header-bar a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.top-header-bar a:hover {
-    color: #FF9F1C;
-}
-
-/* Unified Hero Page Title Font Size & Font Weight */
-.hero-title, 
-.page-hero-title, 
-.country-hero-pro h1 {
-    font-size: clamp(2.0rem, 5vw, 3.0rem) !important;
-    font-weight: 600 !important;
-}
-
-/* Custom Score Preview Animation */
-@keyframes scorePulse {
-    0% { transform: scale(0.95); opacity: 0.6; }
-    50% { transform: scale(1.05); opacity: 1; }
-    100% { transform: scale(1); }
-}
-
-.score-pulse {
-    animation: scorePulse 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
 /* Animated Pulse Dots for Map Background */
