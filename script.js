@@ -907,6 +907,9 @@ function toggleFaqAccordion(headerEl) {
             } else if (tab === 'germany') {
                 if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
                 if (panelGermany) panelGermany.style.display = 'block';
+            } else if (tab === 'uk') {
+                if (btnUk) { btnUk.style.background = '#1B4FBB'; btnUk.style.color = 'white'; btnUk.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnUk.style.border = 'none'; }
+                if (panelUk) panelUk.style.display = 'block';
             }
             window.calculateLiveScore();
         };
@@ -1054,6 +1057,9 @@ function toggleFaqAccordion(headerEl) {
             } else if (tab === 'germany') {
                 if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
                 if (panelGermany) panelGermany.style.display = 'block';
+            } else if (tab === 'uk') {
+                if (btnUk) { btnUk.style.background = '#1B4FBB'; btnUk.style.color = 'white'; btnUk.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnUk.style.border = 'none'; }
+                if (panelUk) panelUk.style.display = 'block';
             }
             window.calculateLiveScore();
         };
