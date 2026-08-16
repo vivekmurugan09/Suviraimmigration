@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
 
 
     <meta charset="UTF-8">
@@ -871,6 +871,9 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <button type="button" onclick="switchCalcTab('germany')" id="tabBtnGermany" style="padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; background: #F8F7F4; color: #111111; border: 1px solid #E2E0D9;">
                         🇩🇪 Germany Opportunity Visa (Opportunity Card)
                     </button>
+                    <button type="button" onclick="switchCalcTab('uk')" id="tabBtnUk" style="padding: 12px 24px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; background: #F8F7F4; color: #111111; border: 1px solid #E2E0D9;">
+                        🇬🇧 UK Skilled Worker
+                    </button>
                 </div>
 
                 <!-- Calculator Container Grid (Controls Left, Score Meter Right) -->
@@ -973,6 +976,41 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                 </div>
                             </div>
                         </div>
+
+                        <!-- UK TAB CONTENT -->
+                        <div id="calcPanelUk" style="display: none;">
+                            <div style="display: grid; gap: 18px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">1. Job Offer from Approved Sponsor</label>
+                                    <select id="ukOffer" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Yes (+20 pts)</option>
+                                        <option value="0">No (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">2. Job at Appropriate Skill Level</label>
+                                    <select id="ukSkill" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Yes, RQF 3 or above (+20 pts)</option>
+                                        <option value="0">No / Unsure (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">3. English Language (B1 Level)</label>
+                                    <select id="ukLang" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="10" selected>Yes (+10 pts)</option>
+                                        <option value="0">No (0 pts)</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.88rem; font-weight: 700; color: #111111; margin-bottom: 6px;">4. Salary / Tradeable Points</label>
+                                    <select id="ukSalary" onchange="calculateLiveScore()" style="width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid #CBD5E1; font-size: 0.92rem;">
+                                        <option value="20" selected>Salary £25,600+ or Shortage Occupation (+20 pts)</option>
+                                        <option value="10">Salary £23,040 - £25,599 or relevant PhD (+10 pts)</option>
+                                        <option value="0">Salary under £23,040 (0 pts)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- RIGHT: LIVE SCORE DISPLAY & VERDICT METER -->
@@ -999,17 +1037,12 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                 <i class="fas fa-phone-alt"></i> Call a Counselor Now
                             </a>
                         </div>
-
-                        <a href="#eligibilityForm" style="display: block; width: 100%; background: #25D366; color: white; text-decoration: none; padding: 14px 20px; border-radius: 12px; font-weight: 800; font-size: 0.95rem; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
-                            Submit Profile to Lock In Score →
-                        </a>
                     </div>
                 </div>
 
 <div id="calcResults" style="display:none;margin-top:16px;padding:14px;background:#f0fdf4;border:1px solid #86efac;border-radius:12px;text-align:center">
   <div id="calcBadge" style="font-size:14px;font-weight:700;color:#15803d;margin-bottom:6px"></div>
-  <p style="font-size:12px;color:#166534;margin-bottom:14px">Our consultant will confirm your pathway and fastest route to PR.</p>
-  <button onclick="document.getElementById('leadModal').style.display='flex'" style="background:#c9a227;color:#0a1628;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer;margin-right:8px">Book Consultation</button>
+  <button onclick="document.getElementById('eligibilityForm').scrollIntoView({behavior: 'smooth'})" style="background:#c9a227;color:#0a1628;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;border:none;cursor:pointer;margin-right:8px">Submit Profile Below</button>
   <a href="https://wa.me/919940352086" style="display:inline-block;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;color:#0d7c66;border:1px solid #0d7c66;text-decoration:none">WhatsApp now</a>
 </div>
 </div><!-- end calcStep2 -->
@@ -1039,6 +1072,11 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     <div style="background: #F8F7F4; padding: 20px; border-radius: 14px; border: 1px solid #E2E0D9;">
                         <h4 style="font-size: 1.05rem; font-weight: 700; color: #111111; margin-bottom: 8px;">🇩🇪 Germany Opportunity Visa 2026</h4>
                         <p style="font-size: 0.88rem; color: #666666; line-height: 1.5; margin: 0;">Requires 6 out of 6 points. Points awarded for recognized qualifications (4 pts), 5+ years experience (3 pts), B1/A2 German (2 pts), and age under 35 (1 pt).</p>
+                    </div>
+
+                    <div style="background: #F8F7F4; padding: 20px; border-radius: 14px; border: 1px solid #E2E0D9;">
+                        <h4 style="font-size: 1.05rem; font-weight: 700; color: #111111; margin-bottom: 8px;">🇬🇧 UK Skilled Worker</h4>
+                        <p style="font-size: 0.88rem; color: #666666; line-height: 1.5; margin: 0;">You need 70 points to apply. 50 points are mandatory (job offer, skill level, English), and 20 are tradeable (salary, shortage occupation, or PhD).</p>
                     </div>
                 </div>
             </div>
@@ -1415,7 +1453,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
         <i class="fas fa-chevron-up"></i>
     </div>
 
-    <script src="../script.js?v=20260810-v4"></script>
+    <script src="../app.js?v=20260815-v8"></script>
 
 
 
@@ -1431,6 +1469,8 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
       <button onclick="document.getElementById('leadModal').style.display='none'" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;padding:0;line-height:1">&times;</button>
     </div>
     <form id="leadModalForm" onsubmit="handleModalSubmit(event)" style="padding:16px 20px">
+      <input type="hidden" name="_subject" value="New Lead from Suvira Eligibility Check">
+      <input type="hidden" name="_captcha" value="false">
       <input type="text" name="name" required placeholder="Your full name" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
       <input type="tel" name="phone" required placeholder="WhatsApp number" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
       <input type="email" name="email" required placeholder="Email address" style="width:100%;padding:9px 13px;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;margin-bottom:10px;outline:none;display:block">
@@ -1471,10 +1511,14 @@ function submitCalcGate(){
   var n=document.getElementById('g_name').value;
   var p=document.getElementById('g_phone').value;
   var e=document.getElementById('g_email').value;
+  var c=document.getElementById('g_country').value;
   if(!n||!p||!e){alert('Please fill in Name, WhatsApp Number and Email.');return;}
   document.getElementById('calcStep1').style.display='none';
   document.getElementById('calcStep2').style.display='block';
   document.getElementById('calcResults').style.display='block';
+  if(c && window.switchCalcTab) {
+      if(c === 'canada' || c === 'australia' || c === 'germany' || c === 'uk') window.switchCalcTab(c);
+  }
   updateCalcBadge();
 }
 function updateCalcBadge(){
