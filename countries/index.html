@@ -800,6 +800,17 @@ Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
   #waBubble{bottom:78px!important}
 }
 </style>
+<!-- GSAP Animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script>
+    const tl = gsap.timeline();
+    tl.from(".page-hero-title", { opacity: 0, y: 30, duration: 0.8, ease: "power2.out" })
+      .from(".page-hero-subtitle", { opacity: 0, y: 30, duration: 0.8, ease: "power2.out" }, "-=0.6");
+
+    gsap.utils.toArray(".country-card").forEach(el => {
+        gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: "power2.out", delay: 0.2 });
+    });
+</script>
 </body></html>
 
 
