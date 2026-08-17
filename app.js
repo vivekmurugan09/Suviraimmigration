@@ -900,16 +900,16 @@ function toggleFaqAccordion(headerEl) {
 
             if (tab === 'canada') {
                 if (btnCanada) { btnCanada.style.background = '#1B4FBB'; btnCanada.style.color = 'white'; btnCanada.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnCanada.style.border = 'none'; }
-                if (panelCanada) panelCanada.style.display = 'block';
+                if (panelCanada) { panelCanada.style.display = 'block'; if (window.gsap) gsap.from(panelCanada, { opacity: 0, y: 10, duration: 0.3 }); }
             } else if (tab === 'australia') {
                 if (btnAustralia) { btnAustralia.style.background = '#1B4FBB'; btnAustralia.style.color = 'white'; btnAustralia.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnAustralia.style.border = 'none'; }
-                if (panelAustralia) panelAustralia.style.display = 'block';
+                if (panelAustralia) { panelAustralia.style.display = 'block'; if (window.gsap) gsap.from(panelAustralia, { opacity: 0, y: 10, duration: 0.3 }); }
             } else if (tab === 'germany') {
                 if (btnGermany) { btnGermany.style.background = '#1B4FBB'; btnGermany.style.color = 'white'; btnGermany.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnGermany.style.border = 'none'; }
-                if (panelGermany) panelGermany.style.display = 'block';
+                if (panelGermany) { panelGermany.style.display = 'block'; if (window.gsap) gsap.from(panelGermany, { opacity: 0, y: 10, duration: 0.3 }); }
             } else if (tab === 'uk') {
                 if (btnUk) { btnUk.style.background = '#1B4FBB'; btnUk.style.color = 'white'; btnUk.style.boxShadow = '0 4px 14px rgba(27,79,187,0.25)'; btnUk.style.border = 'none'; }
-                if (panelUk) panelUk.style.display = 'block';
+                if (panelUk) { panelUk.style.display = 'block'; if (window.gsap) gsap.from(panelUk, { opacity: 0, y: 10, duration: 0.3 }); }
             }
             window.calculateLiveScore();
         };
