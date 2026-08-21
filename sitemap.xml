@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.suviraimmigration.com/</loc>
@@ -25,7 +26,7 @@
     <loc>https://www.suviraimmigration.com/blog/crs-score-meaning-2026/</loc>
   </url>
   <url>
-    <loc>https://www.suviraimmigration.com/blog/germany-opportunity-visa-guide-2026/</loc>
+    <loc>https://www.suviraimmigration.com/blog/germany-chancenkarte-guide-2026/</loc>
   </url>
   <url>
     <loc>https://www.suviraimmigration.com/calculator/</loc>
@@ -94,7 +95,7 @@
     <loc>https://www.suviraimmigration.com/services/canada-pr/</loc>
   </url>
   <url>
-    <loc>https://www.suviraimmigration.com/services/germany-opportunity-visa/</loc>
+    <loc>https://www.suviraimmigration.com/services/germany-chancenkarte/</loc>
   </url>
   <url>
     <loc>https://www.suviraimmigration.com/services/pr-visas/</loc>
