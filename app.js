@@ -429,7 +429,7 @@ const heroGalleryData = [
     {
         src: 'images/hero-immigration-3.png',
         title: 'Tech & Student Pathways',
-        sub: 'Qualified Work Permits & University Admissions'
+        sub: 'Skilled PR Pathways & University Admissions'
     }
 ];
 
