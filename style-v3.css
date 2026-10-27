@@ -4531,3 +4531,248 @@ input:focus, select:focus, textarea:focus {
     transform: translateY(-5px) !important;
     box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
 }
+
+/* ==========================================================================
+   3D OFFICIAL CORPORATE PARTNERS SHOWCASE
+   ========================================================================== */
+.partners-3d-section {
+    position: relative;
+    background: radial-gradient(circle at 50% 20%, #ffffff 0%, #F4F7FB 100%);
+    padding: 60px 0 70px;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+    overflow: hidden;
+}
+
+.partners-3d-section::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(27, 79, 187, 0.07) 0%, rgba(255, 255, 255, 0) 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.partners-3d-header {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 35px;
+}
+
+.partners-3d-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #FFFFFF;
+    color: #1B4FBB;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 7px 18px;
+    border-radius: 50px;
+    border: 1px solid #DBEAFE;
+    box-shadow: 0 4px 12px rgba(27, 79, 187, 0.08), inset 0 1px 1px #FFFFFF;
+    margin-bottom: 14px;
+}
+
+.partners-3d-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.5px;
+    margin: 0 0 10px 0;
+}
+
+.partners-3d-subtitle {
+    font-size: 1rem;
+    color: #64748B;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.55;
+}
+
+.partners-3d-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 480px));
+    justify-content: center;
+    gap: 28px;
+    position: relative;
+    z-index: 2;
+    perspective: 1200px;
+}
+
+.partner-card-3d {
+    background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFC 100%);
+    border-radius: 22px;
+    padding: 30px 32px;
+    position: relative;
+    border: 1.5px solid rgba(226, 232, 240, 0.95);
+    box-shadow: 
+        0 20px 45px -15px rgba(15, 23, 42, 0.08),
+        0 4px 12px rgba(15, 23, 42, 0.03),
+        inset 0 1px 2px rgba(255, 255, 255, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.partner-card-3d::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+    transition: 0.75s ease;
+    pointer-events: none;
+}
+
+.partner-card-3d:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 
+        0 30px 65px -15px rgba(27, 79, 187, 0.22),
+        0 10px 25px -5px rgba(15, 23, 42, 0.08),
+        0 0 0 2px #3B82F6,
+        inset 0 1px 2px rgba(255, 255, 255, 1);
+    border-color: #93C5FD;
+}
+
+.partner-card-3d:hover::after {
+    left: 120%;
+}
+
+.partner-card-3d-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.partner-logo-box-3d {
+    height: 60px;
+    min-width: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    transition: transform 0.35s ease;
+}
+
+.partner-card-3d:hover .partner-logo-box-3d {
+    transform: scale(1.08) rotate(2deg);
+}
+
+.partner-logo-box-3d.alos-box {
+    width: 60px;
+    background: linear-gradient(135deg, #1B4FBB 0%, #0c2472 100%);
+    color: #FFFFFF;
+    box-shadow: 0 10px 20px -3px rgba(27, 79, 187, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.partner-logo-box-3d.goodfellas-box {
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.08), inset 0 2px 2px #FFFFFF;
+}
+
+.partner-logo-box-3d.goodfellas-box img {
+    height: 34px;
+    width: auto;
+    max-width: 140px;
+    object-fit: contain;
+}
+
+.partner-badge-3d {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+    border: 1px solid #93C5FD;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.14), inset 0 1px 1px #FFFFFF;
+    color: #1D4ED8;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    letter-spacing: 0.2px;
+}
+
+.partner-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 8px #10B981;
+    display: inline-block;
+    animation: livePulse 2s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+.partner-card-3d-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.3px;
+}
+
+.partner-card-3d-desc {
+    font-size: 0.92rem;
+    color: #64748B;
+    line-height: 1.55;
+    margin: 0 0 22px 0;
+}
+
+.partner-card-3d-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.partner-pill-3d {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FFFFFF;
+    padding: 5px 12px;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #334155;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+@media (max-width: 640px) {
+    .partners-3d-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+    .partner-card-3d {
+        padding: 24px;
+    }
+}
+
