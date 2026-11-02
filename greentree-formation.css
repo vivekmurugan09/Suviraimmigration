@@ -1309,68 +1309,6 @@ nav .nav-portal-btn:hover,
 }
 
 
-/* === 8. SEO Directory: Visas People Are Talking About === */
-.seo-directory-section {
-    padding: 65px 0;
-    background: #F8FAFC;
-    border-top: 1px solid #E2E8F0;
-}
-
-.seo-directory-container {
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.seo-directory-title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 24px;
-    font-weight: 800;
-    color: #0A1628;
-    margin-bottom: 24px;
-}
-
-.seo-directory-item {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #475569;
-    margin-bottom: 16px;
-    text-align: justify;
-}
-
-.seo-directory-item strong {
-    color: #0A1628;
-    font-weight: 700;
-}
-
-.seo-directory-item a {
-    color: #475569;
-    text-decoration: none;
-    transition: color 0.2s;
-    margin: 0 4px;
-}
-
-.seo-directory-item a:hover {
-    color: #0724A8;
-    text-decoration: underline;
-}
-
-
-/* === 9. Disclaimer Banner === */
-.disclaimer-banner {
-    background: #0F172A;
-    color: #94A3B8;
-    padding: 15px 20px;
-    font-size: 13px;
-    text-align: center;
-    line-height: 1.6;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.disclaimer-banner strong {
-    color: #F87034;
-}
-
 
 /* Free calculators: horizontal slider view */
 .free-calc-slider { position: relative; max-width: 1240px; margin: 0 auto; }
@@ -1389,3 +1327,4 @@ nav .nav-portal-btn:hover,
 .free-calc-arrow:hover { background: #10B981; color: #fff; }
 .free-calc-arrow.prev { left: -6px; }
 .free-calc-arrow.next { right: -6px; }
+
