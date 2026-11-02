@@ -1020,13 +1020,13 @@
     border-radius: 16px;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     overflow: hidden;
 }
 
 @media (max-width: 991px) {
     .suvira-category-bar {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
