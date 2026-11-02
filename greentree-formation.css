@@ -1,6 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
 /* ==========================================================================
+   GreenTree Top Navbar Button Styling
+   ========================================================================== */
+nav .nav-portal-btn,
+.nav-links a.nav-portal-btn {
+    background: #198768 !important;
+    background-color: #198768 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 9px 18px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    transition: all 0.25s ease !important;
+}
+
+nav .nav-portal-btn i,
+nav .nav-portal-btn span {
+    color: #FFFFFF !important;
+}
+
+.nav-links .btn-primary,
+.mobile-nav .btn-primary {
+    background-color: #198768 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 9px 20px !important;
+    font-weight: 700 !important;
+    font-size: 14px !important;
+    box-shadow: none !important;
+    transition: all 0.25s ease !important;
+}
+
+nav .nav-portal-btn:hover,
+.nav-links a.nav-portal-btn:hover,
+.nav-links .btn-primary:hover {
+    background: #136951 !important;
+    background-color: #136951 !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+}
+
+/* ==========================================================================
    Suvira Immigration - Advanced High-Premium GreenTree Formation Styling
    Theme: Royal Navy (#0A1628, #0724A8) & Vibrant Gold/Orange (#F87034, #D99B00)
    ========================================================================== */
@@ -8,23 +55,22 @@
 /* ==========================================================================
    Advanced High-Premium GreenTree Hero Formation
    ========================================================================== */
+/* ==========================================================================
+   Exact GreenTree Hero Formation (Pixel-Perfect Matching Reference Screenshot)
+   ========================================================================== */
 .gt-hero-section {
     position: relative;
-    padding-top: 125px;
-    padding-bottom: 45px;
-    background: linear-gradient(175deg, #F8FAFC 0%, #EEF4FF 45%, #F0F9FF 80%, #FFFFFF 100%);
+    background-image: url('images/greentree-bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    min-height: 640px;
+    padding-top: 110px;
+    padding-bottom: 0;
     overflow: hidden;
-}
-
-/* Subtle map contour watermark in background */
-.gt-hero-bg-overlay {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(7, 36, 168, 0.04) 1px, transparent 1px),
-                      radial-gradient(circle at 85% 20%, rgba(248, 112, 52, 0.08) 0%, transparent 45%);
-    background-size: 32px 32px, 100% 100%;
-    pointer-events: none;
-    z-index: 1;
+    display: flex;
+    align-items: center;
 }
 
 .gt-hero-container {
@@ -32,22 +78,25 @@
     z-index: 2;
     display: grid;
     grid-template-columns: 1.15fr 1fr;
-    gap: 40px;
-    align-items: center;
-    max-width: 1280px;
+    gap: 30px;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 30px;
 }
 
 @media (max-width: 991px) {
     .gt-hero-container {
         grid-template-columns: 1fr;
-        gap: 40px;
+        padding-top: 30px;
         text-align: center;
     }
 }
 
 .gt-hero-left {
+    padding-top: 40px;
+    padding-bottom: 50px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -56,236 +105,249 @@
 @media (max-width: 991px) {
     .gt-hero-left {
         align-items: center;
+        padding-bottom: 20px;
     }
 }
 
-.gt-hero-pill-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #FFFFFF;
-    border: 1.5px solid rgba(7, 36, 168, 0.2);
-    color: #0724A8;
-    padding: 7px 18px;
-    border-radius: 50px;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 12px rgba(7, 36, 168, 0.08);
+.gt-hero-head {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1A8768;
+    font-size: clamp(36px, 4.2vw, 56px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
 }
 
-.gt-hero-headline {
+.gt-typewriter-line {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(34px, 4vw, 54px);
+    font-size: clamp(44px, 5.5vw, 76px);
     font-weight: 900;
-    color: #0A1628;
-    line-height: 1.15;
-    margin-bottom: 18px;
-    letter-spacing: -0.6px;
+    color: #000000;
+    line-height: 1.1;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    min-height: 1.15em;
+    display: flex;
+    align-items: center;
 }
 
-.gt-hero-typed-wrap {
-    display: block;
-    color: #0724A8;
-    margin-top: 6px;
-}
-
-.gt-hero-typewriter {
-    color: #F87034;
-    border-right: 3px solid #F87034;
+.gt-typing-word {
+    color: #000000;
     white-space: nowrap;
+}
+
+.gt-cursor {
+    color: #1A8768;
+    font-weight: 300;
+    margin-left: 4px;
     animation: blinkCursor 0.8s infinite;
 }
 
 @keyframes blinkCursor {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: #F87034; }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
 }
 
-.gt-hero-confidence-line {
+.gt-protocol-text {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(19px, 2.2vw, 25px);
-    font-weight: 700;
-    color: #0A1628;
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 991px) {
-    .gt-hero-confidence-line {
-        justify-content: center;
-    }
-}
-
-.gt-confidence-script {
-    font-family: 'Caveat', cursive, sans-serif;
-    font-size: 1.35em;
-    color: #0284C7;
-    font-weight: 700;
-    line-height: 1;
-    position: relative;
-    padding-bottom: 4px;
-}
-
-.gt-confidence-script::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(90deg, #F87034, #FAB915);
-    border-radius: 2px;
-}
-
-.gt-hero-lead {
-    font-size: 16.5px;
-    line-height: 1.75;
-    color: #475569;
-    margin-bottom: 24px;
+    font-size: clamp(16px, 1.8vw, 21px);
+    font-weight: 600;
+    color: #1E293B;
+    margin: 0 0 32px 0;
+    line-height: 1.5;
     max-width: 580px;
 }
 
-/* Trust check chips */
-.gt-hero-highlights {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 30px;
+.gt-cta-wrap {
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
-@media (max-width: 991px) {
-    .gt-hero-highlights {
-        justify-content: center;
-    }
-}
-
-.gt-highlight-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: #FFFFFF;
-    border: 1px solid #CBD5E1;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 13.5px;
-    font-weight: 700;
-    color: #1E293B;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.gt-highlight-chip i {
-    color: #10B981;
-    font-size: 15px;
-}
-
-/* Hero CTA group */
-.gt-hero-cta-group {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-}
-
-@media (max-width: 991px) {
-    .gt-hero-cta-group {
-        justify-content: center;
-    }
-}
-
-.gt-hero-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: linear-gradient(135deg, #FAB915 0%, #F59E0B 100%);
-    color: #0A1628;
-    border: none;
-    padding: 15px 36px;
-    border-radius: 50px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.gt-hero-btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 32px rgba(245, 158, 11, 0.55);
-}
-
-.gt-hero-btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #FFFFFF;
-    border: 2px solid #25D366;
-    color: #15803D;
-    padding: 13px 26px;
-    border-radius: 12px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 15.5px;
-    font-weight: 800;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.gt-hero-btn-whatsapp:hover {
-    background: #25D366;
+.gt-calc-btn {
+    background-color: #198768;
     color: #FFFFFF;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
+    border: none;
+    padding: 13px 30px;
+    font-size: 16.5px;
+    font-weight: 700;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 15px rgba(25, 135, 104, 0.3);
+    transition: all 0.25s ease;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
 }
 
-/* Right Stage */
+.gt-calc-btn:hover {
+    background-color: #136951;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(25, 135, 104, 0.4);
+    color: #FFFFFF;
+}
+
+/* Right side - 3 Consultants vector cutout & chat bubble */
 .gt-hero-right {
     position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
-.gt-visual-stage {
+@media (max-width: 991px) {
+    .gt-hero-right {
+        justify-content: center;
+    }
+}
+
+.gt-vector-wrapper {
     position: relative;
     width: 100%;
-    max-width: 540px;
+    max-width: 620px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
-.gt-stage-glow {
+.gt-index-vector {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 580px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08));
+}
+
+@media (max-width: 767px) {
+    .gt-index-vector {
+        max-height: 420px;
+    }
+}
+
+/* Floating "Hey! Click here to Talk to us" card */
+.gt-talk-bubble {
     position: absolute;
-    width: 380px;
-    height: 380px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(7, 36, 168, 0.15) 0%, rgba(248, 112, 52, 0.12) 60%, transparent 80%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(40px);
-    z-index: 1;
+    bottom: 25px;
+    right: 15px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    padding: 12px 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    z-index: 5;
+    border: 1px solid #E2E8F0;
+    transition: all 0.25s ease;
 }
 
-.gt-main-art-frame {
-    position: relative;
-    z-index: 2;
-    border-radius: 28px;
+.gt-talk-bubble:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.gt-talk-bubble span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0A1628;
+    white-space: nowrap;
+}
+
+.gt-bubble-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F1F5F9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    box-shadow: 0 24px 60px rgba(7, 36, 168, 0.15);
-    border: 3px solid #FFFFFF;
+}
+
+.gt-bubble-avatar img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+@media (max-width: 580px) {
+    .gt-talk-bubble {
+        bottom: 10px;
+        right: 10px;
+        padding: 8px 12px;
+    }
+    .gt-talk-bubble span {
+        font-size: 12px;
+    }
+}
+
+/* ==========================================================================
+   Sub-hero bar with floating WhatsApp pill & "Which visa are you planning to apply for?"
+   ========================================================================== */
+.gt-subhero-bar {
+    position: relative;
+    padding: 30px 0 15px 0;
     background: #FFFFFF;
 }
 
-.gt-main-art-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
+.gt-subhero-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gt-whatsapp-pill {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #25D366;
+    color: #FFFFFF;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    transition: all 0.25s ease;
+    z-index: 4;
+}
+
+.gt-whatsapp-pill:hover {
+    background: #20BD5A;
+    transform: translateY(-50%) scale(1.04);
+    color: #FFFFFF;
+}
+
+@media (max-width: 850px) {
+    .gt-whatsapp-pill {
+        position: static;
+        transform: none;
+        margin-bottom: 15px;
+    }
+    .gt-subhero-container {
+        flex-direction: column;
+    }
+}
+
+.gt-which-visa-heading {
+    font-family: 'Outfit', sans-serif;
+    color: #1A8768;
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 800;
+    text-align: center;
+    margin: 0;
+    letter-spacing: -0.5px;
 }
 
 /* Floating Glassmorphic Badges */
