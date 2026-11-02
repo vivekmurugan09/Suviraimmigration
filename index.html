@@ -1585,12 +1585,12 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
 
 
-    <!-- 4-Scroll Consultation Modal Trigger & Logic -->
+    <!-- 5-Scroll Consultation Modal Trigger & Logic -->
     <script>
     (function() {
         let scrollCount = 0;
         let modalShown = false;
-        let lastWheelTime = 0;
+        let lastActionTime = 0;
 
         function openModal() {
             if (modalShown) return;
@@ -1617,21 +1617,21 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             if (modal) modal.style.display = 'flex';
         };
 
-        // 1. Mouse wheel: count distinct downward scroll gestures
+        // 1. Mouse wheel: count 5 distinct downward mouse scroll gestures
         window.addEventListener('wheel', function(e) {
             if (e.deltaY > 0) {
                 const now = Date.now();
-                if (now - lastWheelTime > 180) { // count each distinct scroll impulse
+                if (now - lastActionTime > 150) { // count each distinct mouse scroll gesture
                     scrollCount++;
-                    lastWheelTime = now;
-                    if (scrollCount >= 4) {
+                    lastActionTime = now;
+                    if (scrollCount >= 5) {
                         openModal();
                     }
                 }
             }
         }, { passive: true });
 
-        // 2. Touch: count mobile swipe-down gestures
+        // 2. Touch: count mobile swipe-down gestures (5 times)
         let touchStartY = 0;
         window.addEventListener('touchstart', function(e) {
             if (e.touches && e.touches.length > 0) {
@@ -1643,19 +1643,31 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             if (e.changedTouches && e.changedTouches.length > 0) {
                 const touchEndY = e.changedTouches[0].clientY;
                 if (touchStartY - touchEndY > 35) { // swiped down
-                    scrollCount++;
-                    if (scrollCount >= 4) {
-                        openModal();
+                    const now = Date.now();
+                    if (now - lastActionTime > 150) {
+                        scrollCount++;
+                        lastActionTime = now;
+                        if (scrollCount >= 5) {
+                            openModal();
+                        }
                     }
                 }
             }
         }, { passive: true });
 
-        // 3. Scroll position: trigger after scrolling past ~4 sections (1100px)
+        // 3. Fallback for scroll steps if wheel event is synthetic
+        let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
         window.addEventListener('scroll', function() {
-            if (window.scrollY >= 1100) {
-                openModal();
+            const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
+            const now = Date.now();
+            if (currentScrollTop > lastScrollTop + 60 && (now - lastActionTime > 250)) {
+                scrollCount++;
+                lastActionTime = now;
+                if (scrollCount >= 5) {
+                    openModal();
+                }
             }
+            lastScrollTop = currentScrollTop;
         }, { passive: true });
 
         // Close on backdrop click
