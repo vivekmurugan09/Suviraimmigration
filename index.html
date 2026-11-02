@@ -17,7 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v3.css?v=20261021-v7">
-    <link rel="stylesheet" href="greentree-formation.css?v=20261102-visa-v3">
+    <link rel="stylesheet" href="greentree-formation.css?v=20261102-calc-v5">
     <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102-hero-v6">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -723,81 +723,269 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
 
         <!-- =================================================================
-             2. CHECK YOUR ELIGIBILITY FOR FREE (Ribbon Calculator Cards)
+             2. CHECK YOUR ELIGIBILITY FOR FREE (Premier Interactive Showcase)
              ================================================================= -->
         <section class="free-calc-section" id="calculator">
             <div class="container">
-                <h2 class="free-calc-title">Check Your Eligibility For Free</h2>
+                <div class="free-calc-eyebrow">
+                    <span class="free-calc-eyebrow-dot"></span>
+                    100% Free Assessment Suite &bull; Official 2026 Score Grids
+                </div>
+                <h2 class="free-calc-title">Check Your Eligibility <span>For Free</span></h2>
                 <p class="free-calc-subtitle">
-                    Instant, transparent point evaluations and cost estimators for Canada, Australia, Germany, and New Zealand.
+                    Instant, transparent point evaluations and government fee estimators calibrated to 2026 rules for Canada, Australia, Germany, and New Zealand.
                 </p>
 
-                <div class="free-calc-grid">
+                <!-- Interactive Filter Tabs -->
+                <div class="free-calc-filters" role="tablist" aria-label="Filter eligibility calculators">
+                    <button type="button" class="free-calc-filter-btn active" onclick="filterFreeCalcs('all', this)">
+                        <i class="fas fa-th-large"></i> All Tools <span class="free-calc-filter-count">8</span>
+                    </button>
+                    <button type="button" class="free-calc-filter-btn" onclick="filterFreeCalcs('points', this)">
+                        <i class="fas fa-chart-line"></i> Points &amp; Eligibility <span class="free-calc-filter-count">6</span>
+                    </button>
+                    <button type="button" class="free-calc-filter-btn" onclick="filterFreeCalcs('cost', this)">
+                        <i class="fas fa-coins"></i> PR Cost Estimators <span class="free-calc-filter-count">2</span>
+                    </button>
+                    <button type="button" class="free-calc-filter-btn" onclick="filterFreeCalcs('canada', this)">
+                        <img src="https://flagcdn.com/w40/ca.png" alt="Canada"> Canada <span class="free-calc-filter-count">3</span>
+                    </button>
+                    <button type="button" class="free-calc-filter-btn" onclick="filterFreeCalcs('australia', this)">
+                        <img src="https://flagcdn.com/w40/au.png" alt="Australia"> Australia <span class="free-calc-filter-count">2</span>
+                    </button>
+                    <button type="button" class="free-calc-filter-btn" onclick="filterFreeCalcs('europe-nz', this)">
+                        <img src="https://flagcdn.com/w40/de.png" alt="Germany"> Germany &amp; NZ <span class="free-calc-filter-count">3</span>
+                    </button>
+                </div>
+
+                <div class="free-calc-grid" id="freeCalcGrid">
                     <!-- Card 1: Canada PR Eligibility Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-canada.webp" alt="Canada PR Eligibility Calculator" class="free-calc-icon" loading="lazy">
+                    <a href="calculator/canada-pr-eligibility/" class="free-calc-card" data-country="canada" data-filter="points canada">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/ca.png" alt="Canada Flag"> Canada
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; 67-PT GRID</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-canada.webp" alt="Canada PR Eligibility Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">FSWP Pass Mark</span>
+                                <span class="free-calc-metric-value">67 / 100 Pts</span>
+                                <span class="free-calc-metric-sub">IRCC 6-Factor Grid</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Canada PR Eligibility Calculator</h4>
-                        <a href="calculator/canada-pr-eligibility/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Verify your Federal Skilled Worker qualification across age, ECA education, CLB &amp; work history.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> 60-Sec Result</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
                     <!-- Card 2: Australia PR Points Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-australia.webp" alt="Australia PR Points Calculator" class="free-calc-icon" loading="lazy">
+                    <a href="calculator/australia-pr-points/" class="free-calc-card" data-country="australia" data-filter="points australia">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag"> Australia
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; GSM 65+</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-australia.webp" alt="Australia PR Points Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">SkillSelect EOI</span>
+                                <span class="free-calc-metric-value">65+ Points</span>
+                                <span class="free-calc-metric-sub">Subclass 189 / 190 / 491</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Australia PR Points Calculator</h4>
-                        <a href="calculator/australia-pr-points/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Compute your General Skilled Migration points including Superior English &amp; State Nomination bonuses.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> 60-Sec Result</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
                     <!-- Card 3: Canada PR Cost Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-canadacost.webp" alt="Canada PR Cost Calculator" class="free-calc-icon" loading="lazy">
+                    <a href="calculator/canada-pr-cost/" class="free-calc-card" data-country="canada" data-filter="cost canada">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/ca.png" alt="Canada Flag"> Canada
+                            </span>
+                            <span class="free-calc-badge is-cost">FREE &bull; CAD &amp; INR</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-canadacost.webp" alt="Canada PR Cost Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">2026 Fee Table</span>
+                                <span class="free-calc-metric-value">CAD &harr; INR</span>
+                                <span class="free-calc-metric-sub">IRCC + ECA + Funds</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Canada PR Cost Calculator</h4>
-                        <a href="calculator/canada-pr-cost/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Itemized government filing fees, RPRF, biometrics, IELTS, WES ECA &amp; family settlement funds in INR.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-receipt"></i> Zero Hidden Fees</span>
+                            <span class="free-calc-btn">Estimate Cost <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
-                    <!-- Card 4: CRS Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-crs.webp" alt="Comprehensive CRS Calculator" class="free-calc-icon" loading="lazy">
+                    <!-- Card 4: CRS Express Entry Calculator -->
+                    <a href="calculator/crs-express-entry/" class="free-calc-card" data-country="canada" data-filter="points canada">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/ca.png" alt="Canada Flag"> Canada
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; CRS 1200</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-crs.webp" alt="Comprehensive CRS Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">Ranking Scale</span>
+                                <span class="free-calc-metric-value">1,200 Max</span>
+                                <span class="free-calc-metric-sub">Core + PNP + French</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">CRS Express Entry Calculator</h4>
-                        <a href="calculator/crs-express-entry/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Benchmark your exact Comprehensive Ranking System score against live 2026 Express Entry draw cutoffs.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> Live Draw Match</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
                     <!-- Card 5: Germany Opportunity Card Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-germany.webp" alt="Germany Opportunity Card Calculator" class="free-calc-icon" loading="lazy">
+                    <a href="calculator/germany-opportunity-card/" class="free-calc-card" data-country="germany" data-filter="points europe-nz">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/de.png" alt="Germany Flag"> Germany
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; 6-PT VISA</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-germany.webp" alt="Germany Opportunity Card Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">Minimum Threshold</span>
+                                <span class="free-calc-metric-value">6+ Points</span>
+                                <span class="free-calc-metric-sub">No Job Offer Needed</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Germany Opportunity Card Calculator</h4>
-                        <a href="calculator/germany-opportunity-card/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Evaluate your 1-year German work-search visa eligibility via direct degree recognition or points route.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> 60-Sec Result</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
                     <!-- Card 6: Australia PR Cost Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-australia.webp" alt="Australia PR Visa Fees Calculator" class="free-calc-icon" loading="lazy">
+                    <a href="calculator/australia-pr-cost/" class="free-calc-card" data-country="australia" data-filter="cost australia">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag"> Australia
+                            </span>
+                            <span class="free-calc-badge is-cost">FREE &bull; AUD &amp; INR</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-australia.webp" alt="Australia PR Visa Fees Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">DHA 2026 VAC</span>
+                                <span class="free-calc-metric-value">AUD &harr; INR</span>
+                                <span class="free-calc-metric-sub">ACS / Engineers / VETASSESS</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Australia PR Cost Calculator</h4>
-                        <a href="calculator/australia-pr-cost/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Calculate Subclass 189/190/491 base VAC, partner/child charges, skills assessment &amp; PTE/IELTS costs.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-receipt"></i> Full Breakdown</span>
+                            <span class="free-calc-btn">Estimate Cost <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
-                    <!-- Card 7: New Zealand PR Eligibility Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-nz.webp" alt="New Zealand PR Eligibility Calculator" class="free-calc-icon" loading="lazy">
+                    <!-- Card 7: New Zealand PR Calculator -->
+                    <a href="calculator/new-zealand-pr/" class="free-calc-card" data-country="nz" data-filter="points europe-nz">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/nz.png" alt="New Zealand Flag"> New Zealand
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; SMC 6-PT</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-nz.webp" alt="New Zealand PR Eligibility Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">INZ Skilled Target</span>
+                                <span class="free-calc-metric-value">6 Points</span>
+                                <span class="free-calc-metric-sub">Degree + NZ Experience</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">New Zealand PR Calculator</h4>
-                        <a href="calculator/new-zealand-pr/" class="free-calc-btn">Check Score &rarr;</a>
-                    </div>
+                        <p class="free-calc-desc">Check your points under Immigration New Zealand's streamlined 6-point Skilled Migrant Category.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> Green List Ready</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
 
-                    <!-- Card 8: Germany Chancenkarte Points Calculator -->
-                    <div class="free-calc-card">
-                        <div class="calc-ribbon">Free</div>
-                        <img src="images/calc-germany.webp" alt="Germany Opportunity Card Points Calculator" class="free-calc-icon" loading="lazy">
+                    <!-- Card 8: Germany Chancenkarte Calculator -->
+                    <a href="calculator/germany-chancenkarte/" class="free-calc-card" data-country="germany" data-filter="points europe-nz">
+                        <div class="free-calc-card-top">
+                            <span class="free-calc-country-chip">
+                                <img src="https://flagcdn.com/w40/de.png" alt="Germany Flag"> Germany
+                            </span>
+                            <span class="free-calc-badge">FREE &bull; ZAB / PTS</span>
+                        </div>
+                        <div class="free-calc-visual-box">
+                            <img src="images/calc-germany.webp" alt="Germany Chancenkarte Points Calculator" class="free-calc-icon" loading="lazy">
+                            <div class="free-calc-metric">
+                                <span class="free-calc-metric-label">Section 20a / 20b</span>
+                                <span class="free-calc-metric-value">Anabin H+</span>
+                                <span class="free-calc-metric-sub">Language + Shortage Bonus</span>
+                            </div>
+                        </div>
                         <h4 class="free-calc-name">Germany Chancenkarte Calculator</h4>
-                        <a href="calculator/germany-chancenkarte/" class="free-calc-btn">Check Score &rarr;</a>
+                        <p class="free-calc-desc">Deep-dive Chancenkarte scoring for ZAB degree equivalence, German A1–B2, English C1 &amp; spouse bonus.</p>
+                        <div class="free-calc-footer">
+                            <span class="free-calc-time"><i class="fas fa-bolt"></i> EU Blue Card Path</span>
+                            <span class="free-calc-btn">Check Score <span class="free-calc-btn-arrow"><i class="fas fa-arrow-right"></i></span></span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Bottom Multi-Country Comparison Launchpad -->
+                <div class="free-calc-bottom-strip">
+                    <div class="free-calc-bottom-info">
+                        <div class="free-calc-bottom-icon">
+                            <i class="fas fa-compass"></i>
+                        </div>
+                        <div class="free-calc-bottom-text">
+                            <h4>Not sure which country gives your profile the highest PR approval odds?</h4>
+                            <p>Compare Canada CRS, Australia GSM &amp; Germany Opportunity Card side-by-side in one unified check.</p>
+                        </div>
                     </div>
+                    <a href="calculator/" class="free-calc-master-cta">
+                        Compare All Countries Free <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
+            <script>
+                function filterFreeCalcs(category, btnEl) {
+                    var btns = document.querySelectorAll('.free-calc-filter-btn');
+                    for (var i = 0; i < btns.length; i++) {
+                        btns[i].classList.remove('active');
+                    }
+                    if (btnEl) btnEl.classList.add('active');
+                    var cards = document.querySelectorAll('#freeCalcGrid .free-calc-card');
+                    for (var j = 0; j < cards.length; j++) {
+                        var tags = (cards[j].getAttribute('data-filter') || '').split(' ');
+                        if (category === 'all' || tags.indexOf(category) !== -1) {
+                            cards[j].classList.remove('is-hidden');
+                        } else {
+                            cards[j].classList.add('is-hidden');
+                        }
+                    }
+                }
+            </script>
         </section>
 
 
