@@ -334,7 +334,7 @@
     background-repeat: no-repeat;
     min-height: 660px;
     padding-top: 55px;
-    padding-bottom: 45px;
+    padding-bottom: 0;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -364,7 +364,7 @@
 /* Left Column */
 .suvira-hero-left {
     padding-top: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 35px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -621,17 +621,122 @@
     color: #FFFFFF;
 }
 
-/* Right Column: 3 Consultants */
+/* Animated Sky & Flying Airplane Graphic Animation */
+.suvira-animated-sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.animated-plane-flight {
+    position: absolute;
+    top: 55px;
+    left: -120px;
+    display: flex;
+    align-items: center;
+    animation: flightCruise 24s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.plane-icon {
+    color: #FBBF24;
+    font-size: 22px;
+    transform: rotate(18deg);
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.85));
+}
+
+.plane-vapor-trail {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.6) 70%, rgba(255, 255, 255, 0.9) 100%);
+    margin-right: -4px;
+    border-radius: 9999px;
+    transform: rotate(18deg);
+    filter: blur(0.5px);
+}
+
+@keyframes flightCruise {
+    0% {
+        transform: translate(-120px, 80px) scale(0.7);
+        opacity: 0;
+    }
+    8% {
+        opacity: 0.95;
+    }
+    50% {
+        transform: translate(60vw, -20px) scale(1);
+        opacity: 1;
+    }
+    92% {
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate(110vw, -70px) scale(0.85);
+        opacity: 0;
+    }
+}
+
+/* Dynamic Running Letters / Typewriter in Subtitle */
+.suvira-running-typed {
+    background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FCD34D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+}
+
+.suvira-cursor {
+    color: #F59E0B;
+    -webkit-text-fill-color: #F59E0B;
+    animation: blinkCursor 0.8s infinite;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* CTA Button Shimmer Effect */
+.suvira-cta-btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.suvira-cta-btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(25deg);
+    animation: buttonShimmer 4.5s infinite;
+}
+
+@keyframes buttonShimmer {
+    0%, 70% { transform: translateX(0) rotate(25deg); }
+    100% { transform: translateX(380%) rotate(25deg); }
+}
+
+/* Right Column: 3 Consultants with Bottom Fade, Aura & Floating Badges */
 .suvira-hero-right {
     position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+    margin-bottom: 0;
 }
 
 @media (max-width: 991px) {
     .suvira-hero-right {
         justify-content: center;
+        margin-top: 15px;
     }
 }
 
@@ -644,13 +749,135 @@
     align-items: flex-end;
 }
 
+/* Ambient Backlight Aura */
+.suvira-consultants-aura {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(30, 64, 175, 0.35) 48%, transparent 72%);
+    filter: blur(45px);
+    pointer-events: none;
+    z-index: 1;
+    animation: auraBreathe 7s ease-in-out infinite alternate;
+}
+
+@keyframes auraBreathe {
+    0% { transform: scale(0.92) translate(0, 0); opacity: 0.7; }
+    50% { transform: scale(1.08) translate(-10px, -15px); opacity: 1; }
+    100% { transform: scale(0.96) translate(10px, 10px); opacity: 0.85; }
+}
+
+/* Floating Glass Badges */
+.suvira-floating-badge {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(10, 24, 66, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+
+.badge-top-left {
+    top: 18%;
+    left: -20px;
+    border-left: 3px solid #F59E0B;
+    animation: floatBadge1 4.5s ease-in-out infinite;
+}
+
+.badge-bottom-right {
+    bottom: 18%;
+    right: -10px;
+    border-left: 3px solid #10B981;
+    animation: floatBadge2 5.2s ease-in-out infinite reverse;
+}
+
+@media (max-width: 991px) {
+    .suvira-floating-badge {
+        display: none;
+    }
+}
+
+@keyframes floatBadge1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+
+@keyframes floatBadge2 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(8px) rotate(0.5deg); }
+}
+
+.badge-icon-gold {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    flex-shrink: 0;
+}
+
+.badge-icon-emerald {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    flex-shrink: 0;
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.badge-content strong {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+}
+
+.badge-content span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #CBD5E1;
+    line-height: 1.2;
+}
+
 .suvira-consultants-img {
     display: block;
     width: 100%;
     height: auto;
-    max-height: 570px;
+    max-height: 590px;
     object-fit: contain;
-    filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.5) 86%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.5) 86%, rgba(0,0,0,0) 100%);
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 767px) {
@@ -658,6 +885,118 @@
         max-height: 380px;
     }
 }
+
+/* ==========================================================================
+   LIVE CLIENT & USER ACTIVITY RUNNING MARQUEE TICKER TAPE
+   ========================================================================== */
+.suvira-client-marquee-container {
+    background: rgba(6, 15, 45, 0.95);
+    border-top: 1px solid rgba(245, 158, 11, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 44px;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.marquee-title-badge {
+    background: linear-gradient(90deg, #1E3A8A 0%, #0F172A 100%);
+    border-right: 1px solid rgba(245, 158, 11, 0.4);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    flex-shrink: 0;
+    z-index: 2;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.pulse-radar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
+    animation: dotPulse 1.8s infinite;
+}
+
+@keyframes dotPulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.marquee-title-badge i {
+    color: #F59E0B;
+    font-size: 12px;
+}
+
+.marquee-title-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #FBBF24;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.marquee-scroll-wrap {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+    animation: marqueeScroll 45s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-item {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    color: #CBD5E1;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.marquee-item strong {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.marquee-bullet {
+    color: #F59E0B;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.text-emerald { color: #10B981; }
+.text-gold { color: #F59E0B; }
+.text-blue { color: #38BDF8; }
+.text-purple { color: #A855F7; }
+.text-cyan { color: #06B6D4; }
 
 /* ==========================================================================
    3. FLOATING CATEGORY BAR (DARK GLASSMORPHIC VISA TABS)

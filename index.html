@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v3.css?v=20261021-v7">
     <link rel="stylesheet" href="greentree-formation.css?v=20261102-visa-v3">
-    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102-visa-v3">
+    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102-hero-v4">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -233,6 +233,14 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
              PREMIER SUVIRA IMMIGRATION HERO FORMATION (MATCHING DESIGN SPEC)
              ================================================================= -->
         <section class="suvira-hero-section" id="home">
+            <!-- Animated Sky & Flying Airplane Graphic Animation -->
+            <div class="suvira-animated-sky">
+                <div class="animated-plane-flight">
+                    <div class="plane-vapor-trail"></div>
+                    <i class="fas fa-plane plane-icon"></i>
+                </div>
+            </div>
+
             <div class="suvira-hero-container container">
                 
                 <!-- Left Column: Copy, Badges, CTA -->
@@ -250,9 +258,12 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                         <span class="suvira-gold-gradient">Visa Consultant</span>
                     </h1>
 
-                    <!-- 3. Subtitle with Curved Underline -->
+                    <!-- 3. Subtitle with Running Letters (Dynamic Typewriter) -->
                     <div class="suvira-tagline-wrap">
-                        <div class="suvira-hero-sub">Your Trusted Partner for Global Opportunities</div>
+                        <div class="suvira-hero-sub">
+                            <span>Your Trusted Partner for </span>
+                            <span class="suvira-running-typed" id="suviraRunningWords">Canada PR</span><span class="suvira-cursor">|</span>
+                        </div>
                         <svg class="suvira-curve-svg" viewBox="0 0 240 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M2 9C55 1.5 185 1.5 238 9" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
                         </svg>
@@ -311,10 +322,73 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     </div>
                 </div>
 
-                <!-- Right Column: 3 Consultants Cutout -->
+                <!-- Right Column: 3 Consultants Cutout with Aura & Floating Badges -->
                 <div class="suvira-hero-right">
                     <div class="suvira-consultants-wrapper">
+                        <!-- Ambient Backlight Aura -->
+                        <div class="suvira-consultants-aura"></div>
+
+                        <!-- Floating Badge 1: Top Left -->
+                        <div class="suvira-floating-badge badge-top-left">
+                            <div class="badge-icon-gold"><i class="fas fa-star"></i></div>
+                            <div class="badge-content">
+                                <strong>4.9 / 5.0 Rating</strong>
+                                <span>3,500+ Visas Approved</span>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2: Bottom Right -->
+                        <div class="suvira-floating-badge badge-bottom-right">
+                            <div class="badge-icon-emerald"><i class="fas fa-shield-alt"></i></div>
+                            <div class="badge-content">
+                                <strong>100% Error-Free Filing</strong>
+                                <span>Certified Experts</span>
+                            </div>
+                        </div>
+
                         <img src="images/suvira-team-women.webp" alt="Best Immigration and Visa Consultants" class="suvira-consultants-img" fetchpriority="high">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Client & User Activity Running Marquee Ticker Tape -->
+            <div class="suvira-client-marquee-container">
+                <div class="marquee-title-badge">
+                    <span class="pulse-radar-dot"></span>
+                    <i class="fas fa-satellite-dish"></i>
+                    <span>LIVE CLIENT UPDATES</span>
+                </div>
+                <div class="marquee-scroll-wrap">
+                    <div class="marquee-track">
+                        <span class="marquee-item"><i class="fas fa-check-circle text-emerald"></i> <strong>Client Priya S. (Bangalore):</strong> Canada Express Entry PR Issued • CRS 498</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-certificate text-gold"></i> <strong>Client Rahul M. (Chennai):</strong> Germany Opportunity Card (Chancenkarte) Approved</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-user-check text-blue"></i> <strong>Client Sneha &amp; Rohan (Hyderabad):</strong> Australia Subclass 190 PR Granted</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-briefcase text-purple"></i> <strong>Client Vikram J. (Mumbai):</strong> UK Skilled Worker Visa Endorsed</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-award text-cyan"></i> <strong>Client Ananya P. (Pune):</strong> Ireland Critical Skills Employment Permit Issued</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-users text-emerald"></i> <strong>10,500+ Active Users:</strong> Tracking Real-Time Applications on Suvira Portal</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-star text-gold"></i> <strong>4.9 / 5.0 Star Rating:</strong> Verified on Google Reviews (2,800+ Clients)</span>
+                        <span class="marquee-bullet">•</span>
+                        <!-- Duplicate for continuous infinite loop -->
+                        <span class="marquee-item"><i class="fas fa-check-circle text-emerald"></i> <strong>Client Priya S. (Bangalore):</strong> Canada Express Entry PR Issued • CRS 498</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-certificate text-gold"></i> <strong>Client Rahul M. (Chennai):</strong> Germany Opportunity Card (Chancenkarte) Approved</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-user-check text-blue"></i> <strong>Client Sneha &amp; Rohan (Hyderabad):</strong> Australia Subclass 190 PR Granted</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-briefcase text-purple"></i> <strong>Client Vikram J. (Mumbai):</strong> UK Skilled Worker Visa Endorsed</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-award text-cyan"></i> <strong>Client Ananya P. (Pune):</strong> Ireland Critical Skills Employment Permit Issued</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-users text-emerald"></i> <strong>10,500+ Active Users:</strong> Tracking Real-Time Applications on Suvira Portal</span>
+                        <span class="marquee-bullet">•</span>
+                        <span class="marquee-item"><i class="fas fa-star text-gold"></i> <strong>4.9 / 5.0 Star Rating:</strong> Verified on Google Reviews (2,800+ Clients)</span>
+                        <span class="marquee-bullet">•</span>
                     </div>
                 </div>
             </div>
@@ -2168,22 +2242,23 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
     <!-- GreenTree Formation Interactive Logic -->
     <script>
-    // 1. Dynamic Destination Typewriter Effect in Hero
+    // 1. Dynamic Destination Running Letters Typewriter Effect in Hero
     (function initTypewriter() {
-        const typewriterEl = document.getElementById('typewriterDestination');
+        const typewriterEl = document.getElementById('suviraRunningWords') || document.getElementById('typewriterDestination');
         if (!typewriterEl) return;
         const words = [
-            "Canada",
-            "Australia",
-            "New Zealand",
-            "Germany",
-            "United Kingdom"
+            "Canada PR & Express Entry",
+            "Germany Opportunity Card",
+            "Australia 189 & 190 PR",
+            "UK Skilled Worker Visa",
+            "Global Study & Work Visas",
+            "Spousal Sponsorship"
         ];
         let wordIndex = 0;
         let charIndex = words[0].length;
         let isDeleting = true;
-        const typeSpeed = 90;
-        const deleteSpeed = 45;
+        const typeSpeed = 80;
+        const deleteSpeed = 40;
         const delayBetweenWords = 2200;
 
         function type() {
@@ -2209,7 +2284,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
             setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
         }
-        setTimeout(type, 2000);
+        setTimeout(type, 1800);
     })();
 
     // 2. Visa Intent Category Switcher
