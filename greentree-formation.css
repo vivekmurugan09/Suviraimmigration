@@ -1328,3 +1328,61 @@ nav .nav-portal-btn:hover,
 .free-calc-arrow.prev { left: -6px; }
 .free-calc-arrow.next { right: -6px; }
 
+
+
+/* Leadership section: dark premium redesign */
+.leadership-section {
+    background: radial-gradient(circle at 15% 20%, #1e3a8a 0%, #0A1628 55%, #050b17 100%);
+    border-top: none;
+    padding: 100px 0;
+}
+.leadership-layout { grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: start; }
+.leadership-eyebrow { color: #FDBA74; }
+.leadership-eyebrow::before { background: #FDBA74; }
+.leadership-title { color: #FFFFFF; }
+.leadership-quote {
+    background: rgba(255, 255, 255, 0.07);
+    border-left: 4px solid #F87034;
+    color: #FFFFFF;
+    font-style: italic;
+    backdrop-filter: blur(6px);
+}
+.leadership-body { color: #CBD5E1; }
+.leadership-feature-card {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: none;
+    transition: transform .25s ease, background .25s ease;
+}
+.leadership-feature-card:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.11); }
+.leadership-feature-card h4 { color: #FFFFFF; }
+.leadership-feature-card p { color: #94A3B8; }
+.leadership-feature-card > div { color: #FDBA74 !important; }
+
+.leadership-consult-box {
+    background: #FFFFFF;
+    border: none;
+    border-top: 5px solid #F87034;
+    border-radius: 24px;
+    padding: 34px 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+.leadership-consult-box h3 { font-size: 22px !important; }
+.leadership-consult-box img { width: 96px !important; height: 96px !important; border-color: #F87034 !important; }
+.leadership-plans { flex-direction: row; gap: 16px; }
+.leadership-plan-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #F1F5F9;
+    border: 1.5px solid transparent;
+}
+.leadership-plan-card p { flex: 1; }
+.leadership-plan-cta { align-self: flex-start; border-radius: 999px; background: #F87034; }
+.leadership-plan-cta:hover { background: #0724A8; }
+@media (max-width: 991px) {
+    .leadership-layout { grid-template-columns: 1fr; gap: 40px; }
+}
+@media (max-width: 560px) {
+    .leadership-plans { flex-direction: column; }
+}
