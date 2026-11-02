@@ -17,8 +17,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v3.css?v=20261021-v7">
-    <link rel="stylesheet" href="greentree-formation.css?v=20261102">
-    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102">
+    <link rel="stylesheet" href="greentree-formation.css?v=20261102-visa-v3">
+    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102-visa-v3">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -411,92 +411,284 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
         <!-- =================================================================
              1. VISA INTENT SECTION: Which visa are you planning to apply for?
              ================================================================= -->
-        <section class="visa-intent-section" id="visa-category" style="padding-top: 15px;">
+        <section class="visa-intent-section" id="visa-category">
             <div class="container">
-                <h2 class="visa-intent-heading" style="color: #1A8768; font-weight: 800; font-size: clamp(28px, 3.2vw, 42px); margin-bottom: 25px;">Which visa are you planning to apply for?</h2>
-                <div class="visa-tabs-container">
-                    <button class="visa-tab-btn active" data-category="pr" onclick="switchVisaTab(this, 'pr')">PR Visa</button>
-                    <button class="visa-tab-btn" data-category="study" onclick="switchVisaTab(this, 'study')">Study Visa</button>
-                    <button class="visa-tab-btn" data-category="spousal" onclick="switchVisaTab(this, 'spousal')">Spousal Visa</button>
-                    <button class="visa-tab-btn" data-category="visit" onclick="switchVisaTab(this, 'visit')">Visit Visa</button>
-                    <button class="visa-tab-btn" data-category="work" onclick="switchVisaTab(this, 'work')">Job Seeker / Work Visa</button>
-                </div>
+                <div class="visa-intent-header-wrap">
+                    <div class="visa-intent-badge">
+                        <i class="fas fa-passport"></i> Global Opportunities
+                    </div>
+                    <h2 class="visa-intent-heading">Which visa are you planning to <span class="highlight-text">apply for?</span></h2>
+                    
+                    <div class="visa-tabs-container">
+                        <button class="visa-tab-btn active" data-category="pr" onclick="switchVisaTab(this, 'pr')">
+                            <i class="fas fa-id-card"></i> <span>PR Visa</span>
+                        </button>
+                        <button class="visa-tab-btn" data-category="study" onclick="switchVisaTab(this, 'study')">
+                            <i class="fas fa-graduation-cap"></i> <span>Study Visa</span>
+                        </button>
+                        <button class="visa-tab-btn" data-category="spousal" onclick="switchVisaTab(this, 'spousal')">
+                            <i class="fas fa-heart"></i> <span>Spousal Visa</span>
+                        </button>
+                        <button class="visa-tab-btn" data-category="visit" onclick="switchVisaTab(this, 'visit')">
+                            <i class="fas fa-plane-departure"></i> <span>Visit Visa</span>
+                        </button>
+                        <button class="visa-tab-btn" data-category="work" onclick="switchVisaTab(this, 'work')">
+                            <i class="fas fa-briefcase"></i> <span>Job Seeker / Work Visa</span>
+                        </button>
+                    </div>
 
-                <div class="visa-intent-subheading" id="visaCategorySubheading">
-                    Supporting Your Move to a New Country — with Professional &amp; Dedicated Support
+                    <div class="visa-intent-subheading-wrap">
+                        <div class="visa-intent-subheading" id="visaCategorySubheading">
+                            <i class="fas fa-check-circle"></i> Supporting Your Move to a New Country — with Professional &amp; Dedicated Support
+                        </div>
+                    </div>
                 </div>
 
                 <div class="visa-cards-grid" id="visaCardsGrid">
                     <!-- Germany -->
-                    <div class="visa-country-card" data-category="pr work">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">Germany</h3>
+                    <div class="visa-country-card" data-category="pr work study visit">
+                        <div class="visa-card-media">
+                            <img src="images/germany_bg.jpg" alt="Germany Opportunity Card Chancenkarte" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/de.png" alt="Germany Flag">
+                                <span>Germany</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fas fa-certificate"></i> Opportunity Card
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">Germany</h3>
+                            </div>
+                            <span class="visa-country-subtitle">Chancenkarte &amp; Skilled Migration</span>
                             <p class="visa-country-desc">
                                 Are you looking to settle in Germany as a skilled professional? Apply for the Opportunity Card (Chancenkarte) now and check your points grid with our certified advisers.
                             </p>
-                            <a href="services/germany-chancenkarte/" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Points-Based Chancenkarte Assessment</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Work Part-Time During Job Search</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Direct Pathway to EU Blue Card &amp; PR</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="services/germany-chancenkarte/" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/germany_bg.jpg" alt="Germany Opportunity Visa" class="visa-country-img" loading="lazy">
                     </div>
 
                     <!-- Canada -->
-                    <div class="visa-country-card" data-category="pr spousal study">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">Canada</h3>
+                    <div class="visa-country-card" data-category="pr spousal study visit work">
+                        <div class="visa-card-media">
+                            <img src="images/canada_bg.jpg" alt="Canada Express Entry PR" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/ca.png" alt="Canada Flag">
+                                <span>Canada</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fab fa-canadian-maple-leaf"></i> Express Entry PR
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">Canada</h3>
+                            </div>
+                            <span class="visa-country-subtitle">Express Entry &amp; PNP Streams</span>
                             <p class="visa-country-desc">
                                 Are you looking to settle in Canada as a PR? Apply for Express Entry or PNP streams and optimize your Comprehensive Ranking System (CRS) score with our Canada visa consultants.
                             </p>
-                            <a href="services/canada-pr/" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>CRS Score Optimization &amp; Draw Alerts</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Provincial Nominee Program (PNP) Filing</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Family &amp; Spousal Permanent Residence</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="services/canada-pr/" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/canada_bg.jpg" alt="Canada Express Entry PR" class="visa-country-img" loading="lazy">
                     </div>
 
                     <!-- Australia -->
-                    <div class="visa-country-card" data-category="pr work study">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">Australia</h3>
+                    <div class="visa-country-card" data-category="pr spousal study visit work">
+                        <div class="visa-card-media">
+                            <img src="images/australia_bg.jpg" alt="Australia PR Visa Subclass 189 190" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/au.png" alt="Australia Flag">
+                                <span>Australia</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fas fa-award"></i> Subclass 189 / 190
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">Australia</h3>
+                            </div>
+                            <span class="visa-country-subtitle">General Skilled Migration (GSM)</span>
                             <p class="visa-country-desc">
                                 Are you looking to settle in Australia as a permanent resident? Check your personalized score for Subclass 189, 190, and 491 points-tested skilled migrant visas.
                             </p>
-                            <a href="services/australia-pr/" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Skills Assessment &amp; EOI Expression</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>State Nominations &amp; Regional Pathways</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Full Medicare &amp; PR Entitlements</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="services/australia-pr/" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/australia_bg.jpg" alt="Australia PR Visa" class="visa-country-img" loading="lazy">
                     </div>
 
                     <!-- New Zealand -->
-                    <div class="visa-country-card" data-category="pr work study">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">New Zealand</h3>
+                    <div class="visa-country-card" data-category="pr work study visit">
+                        <div class="visa-card-media">
+                            <img src="images/newzealand_bg.jpg" alt="New Zealand Skilled Migrant Category" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/nz.png" alt="New Zealand Flag">
+                                <span>New Zealand</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fas fa-mountain"></i> Skilled Migrant (SMC)
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">New Zealand</h3>
+                            </div>
+                            <span class="visa-country-subtitle">SMC Points &amp; Accredited Work</span>
                             <p class="visa-country-desc">
                                 Are you looking to settle in New Zealand as a PR? Apply for the New Zealand Skilled Migrant Category visa now and check your personalized points grid score.
                             </p>
-                            <a href="/countries/newzealand.html" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>6-Point SMC Assessment Evaluation</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Accredited Employer Work Visa (AEWV)</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Direct-to-Residence Green List Roles</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="countries/newzealand.html" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/newzealand_bg.jpg" alt="New Zealand PR" class="visa-country-img" loading="lazy">
                     </div>
 
                     <!-- United Kingdom -->
-                    <div class="visa-country-card" data-category="pr work study visit">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">United Kingdom</h3>
+                    <div class="visa-country-card" data-category="pr work study visit spousal">
+                        <div class="visa-card-media">
+                            <img src="images/uk_bg.jpg" alt="UK Skilled Worker Visa" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom Flag">
+                                <span>United Kingdom</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fas fa-briefcase"></i> Skilled Worker &amp; ILR
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">United Kingdom</h3>
+                            </div>
+                            <span class="visa-country-subtitle">Work, Health &amp; Global Talent</span>
                             <p class="visa-country-desc">
                                 Are you seeking UK Skilled Worker, Health &amp; Care Worker, or Global Talent visas? Get comprehensive sponsor matching and end-to-end documentation assistance.
                             </p>
-                            <a href="/countries/uk.html" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Approved UK Sponsor License Match</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Health &amp; Care Worker Fast-Track</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>5-Year Pathway to Indefinite Leave (ILR)</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="countries/uk.html" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/uk_bg.jpg" alt="UK Skilled Worker Visa" class="visa-country-img" loading="lazy">
                     </div>
 
                     <!-- Ireland & Europe -->
-                    <div class="visa-country-card" data-category="pr work study">
-                        <div class="visa-country-info">
-                            <h3 class="visa-country-title">Ireland &amp; EU</h3>
+                    <div class="visa-country-card" data-category="pr work study visit">
+                        <div class="visa-card-media">
+                            <img src="images/ireland_bg.jpg" alt="Ireland Critical Skills Visa and EU Blue Card" class="visa-card-media-img" loading="lazy">
+                            <div class="visa-card-media-overlay"></div>
+                            <div class="visa-flag-chip">
+                                <img src="https://flagcdn.com/w40/ie.png" alt="Ireland Flag">
+                                <span>Ireland &amp; EU</span>
+                            </div>
+                            <span class="visa-media-tag">
+                                <i class="fas fa-star"></i> Critical Skills &amp; Blue Card
+                            </span>
+                        </div>
+                        <div class="visa-card-body">
+                            <div class="visa-country-title-row">
+                                <h3 class="visa-country-title">Ireland &amp; EU</h3>
+                            </div>
+                            <span class="visa-country-subtitle">EU Blue Card &amp; Employment Permits</span>
                             <p class="visa-country-desc">
                                 Explore the European Union with Ireland Critical Skills Employment Permits and EU Blue Cards. Fast-track pathways to EU residency and global career opportunities.
                             </p>
-                            <a href="/countries/ireland.html" class="visa-country-btn">Apply Now &rarr;</a>
+                            <div class="visa-card-perks">
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Critical Skills Employment Permit (CSEP)</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>EU Blue Card Across Schengen Zone</span>
+                                </div>
+                                <div class="visa-perk-item">
+                                    <i class="fas fa-check-circle"></i> <span>Fast 2-Year Irish PR &amp; EU Mobility</span>
+                                </div>
+                            </div>
+                            <div class="visa-card-footer">
+                                <a href="countries/ireland.html" class="visa-country-btn">
+                                    <span>Apply Now</span>
+                                    <span class="btn-arrow-circle"><i class="fas fa-arrow-right"></i></span>
+                                </a>
+                            </div>
                         </div>
-                        <img src="images/ireland_bg.jpg" alt="Ireland Critical Skills Visa" class="visa-country-img" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -2034,16 +2226,19 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             work: "Work permits, Opportunity Cards (Chancenkarte), Critical Skills, and employer sponsorship filing."
         };
         if (subheading && descriptions[category]) {
-            subheading.textContent = descriptions[category];
+            subheading.innerHTML = `<i class="fas fa-check-circle" style="color: #F87034; margin-right: 4px;"></i> ` + descriptions[category];
         }
 
         const cards = document.querySelectorAll('.visa-country-card');
         cards.forEach(card => {
             const categories = (card.getAttribute('data-category') || '').split(' ');
-            if (category === 'all' || categories.includes(category)) {
+            const isMatch = (category === 'all' || categories.includes(category));
+            if (isMatch) {
+                card.classList.remove('is-hidden');
                 card.style.display = 'flex';
-                card.style.animation = 'fadeInUp 0.4s ease';
+                card.style.animation = 'visaCardFadeIn 0.35s ease';
             } else {
+                card.classList.add('is-hidden');
                 card.style.display = 'none';
             }
         });
