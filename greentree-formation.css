@@ -3,6 +3,116 @@
    Theme: Royal Navy (#0A1628, #0724A8) & Vibrant Gold/Orange (#F87034, #D99B00)
    ========================================================================== */
 
+/* === Suvira Confidence Hero Banner (Exact Match for Image 2) === */
+.suvira-confidence-hero {
+    padding-top: 105px !important;
+    padding-bottom: 35px !important;
+    background: linear-gradient(180deg, #F0F6FE 0%, #FFFFFF 100%) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.suvira-banner-wrapper {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.suvira-banner-card {
+    position: relative;
+    width: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 16px 50px rgba(7, 36, 168, 0.12), 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1.5px solid rgba(7, 36, 168, 0.1);
+    background: #FFFFFF;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.suvira-banner-card:hover {
+    box-shadow: 0 22px 60px rgba(7, 36, 168, 0.18);
+}
+
+.suvira-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Precise Hotspot for the "Free Consultation ->" button inside the banner */
+.suvira-banner-cta-hotspot {
+    position: absolute;
+    left: 7.2%;
+    bottom: 15.6%;
+    width: 25%;
+    height: 12.2%;
+    border-radius: 50px;
+    background: rgba(255, 184, 0, 0.02);
+    border: 2px solid transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+
+.suvira-banner-cta-hotspot:hover {
+    background: rgba(255, 184, 0, 0.15);
+    border-color: #FFB800;
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.5);
+    transform: scale(1.02);
+}
+
+.hero-mobile-cta-bar {
+    display: none;
+    margin-top: 16px;
+    gap: 12px;
+}
+
+.hero-mobile-btn {
+    flex: 1;
+    padding: 13px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.hero-mobile-btn.primary {
+    background: #F87034;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(248, 112, 52, 0.35);
+}
+
+.hero-mobile-btn.whatsapp {
+    background: #25D366;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+}
+
+@media (max-width: 768px) {
+    .suvira-confidence-hero {
+        padding-top: 85px !important;
+        padding-bottom: 25px !important;
+    }
+
+    .suvira-banner-card {
+        border-radius: 16px;
+    }
+
+    .hero-mobile-cta-bar {
+        display: flex;
+    }
+}
+
 /* === Top Hero Enhancement === */
 .greentree-hero-badge {
     display: inline-flex;
