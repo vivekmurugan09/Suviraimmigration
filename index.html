@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="stylesheet" href="style-v3.css?v=20261021-v7">
     <link rel="stylesheet" href="greentree-formation.css?v=20261102">
+    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -86,107 +87,326 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="./" style="text-decoration: none; color: inherit; display: flex; align-items: center;">
-                    <img src="images/suvira-logo-transparent.png" alt="Suvira Immigration Logo"
-                        style="height: 68px; width: auto; object-fit: contain; filter: drop-shadow(0 2px 8px rgba(255, 255, 255, 0.9));"
-                        loading="lazy">
+    <!-- Navigation (Reference Design Spec) -->
+    <nav class="navbar suvira-navbar">
+        <div class="container suvira-nav-container">
+            <div class="logo suvira-logo-wrap">
+                <a href="./" class="suvira-brand-link">
+                    <img src="images/suvira-butterfly-icon.png" alt="Suvira Immigration" class="suvira-nav-butterfly">
+                    <div class="suvira-brand-text">
+                        <span class="brand-name-suvira">SUVIRA</span>
+                        <span class="brand-name-sub">IMMIGRATION</span>
+                        <span class="brand-tagline">Immigration | Study Abroad | Global Opportunities</span>
+                    </div>
                 </a>
             </div>
-            <div class="nav-links">
-                <a href="#home" class="nav-home active"><i class="fas fa-home"></i> Home</a>
-                <a href="about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-                <a href="calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
-                <a href="services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
-                <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
-                <a href="process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
-                <a href="contact/" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-                <a href="https://portal.suviraimmigration.com/login" class="nav-portal-btn" target="_blank" rel="noopener noreferrer"><span class="portal-pulse-dot"></span><i class="fas fa-user-lock"></i> Portal Access</a>
-                <button onclick="document.getElementById('leadModal').style.display='flex'" class="btn-primary"><i class="fas fa-check-circle"></i> Eligibility Check</button>
+
+            <div class="nav-links suvira-nav-menu">
+                <!-- Dropdown: Immigration -->
+                <div class="nav-item-dropdown">
+                    <span class="nav-dropdown-trigger">
+                        Immigration <i class="fas fa-chevron-down nav-caret"></i>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="services/canada-pr/"><i class="fab fa-canadian-maple-leaf"></i> Canada Express Entry PR</a>
+                        <a href="services/australia-pr/"><i class="fas fa-plane-arrival"></i> Australia PR Visa</a>
+                        <a href="services/germany-chancenkarte/"><i class="fas fa-id-card"></i> Germany Opportunity Card</a>
+                        <a href="calculator/"><i class="fas fa-calculator"></i> PR Points Calculator</a>
+                        <a href="services/pr-visas/"><i class="fas fa-globe"></i> All Permanent Residency Visas</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Study Visa -->
+                <div class="nav-item-dropdown">
+                    <span class="nav-dropdown-trigger">
+                        Study Visa <i class="fas fa-chevron-down nav-caret"></i>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="countries/australia.html"><i class="fas fa-graduation-cap"></i> Study in Australia</a>
+                        <a href="countries/canada.html"><i class="fas fa-university"></i> Study in Canada</a>
+                        <a href="countries/uk.html"><i class="fas fa-book-reader"></i> Study in United Kingdom</a>
+                        <a href="countries/germany.html"><i class="fas fa-landmark"></i> Study in Germany</a>
+                        <a href="services/study-visas/"><i class="fas fa-globe-europe"></i> Overseas Study Visa Services</a>
+                        <a href="services/sop-writing/"><i class="fas fa-file-alt"></i> SOP &amp; Resume Writing</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Spousal Sponsorship -->
+                <div class="nav-item-dropdown">
+                    <span class="nav-dropdown-trigger">
+                        Spousal Sponsorship <i class="fas fa-chevron-down nav-caret"></i>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="services/canada-pr/"><i class="fas fa-heart"></i> Canada Spouse &amp; Family Visa</a>
+                        <a href="services/australia-pr/"><i class="fas fa-user-friends"></i> Australia Partner Visa</a>
+                        <a href="countries/uk.html"><i class="fas fa-home"></i> UK Family &amp; Dependent Visa</a>
+                        <a href="services/"><i class="fas fa-users"></i> All Family Sponsorships</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Visitor Visa -->
+                <div class="nav-item-dropdown">
+                    <span class="nav-dropdown-trigger">
+                        Visitor Visa <i class="fas fa-chevron-down nav-caret"></i>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="countries/canada.html"><i class="fas fa-passport"></i> Canada Visitor &amp; Tourist Visa</a>
+                        <a href="countries/australia.html"><i class="fas fa-map-marked-alt"></i> Australia Subclass 600 Tourist</a>
+                        <a href="countries/uk.html"><i class="fas fa-plane"></i> UK Standard Visitor Visa</a>
+                        <a href="countries/usa.html"><i class="fas fa-flag-usa"></i> USA B1/B2 Visitor Visa</a>
+                        <a href="countries/germany.html"><i class="fas fa-route"></i> Schengen Tourist Visa</a>
+                    </div>
+                </div>
+
+                <!-- Dropdown: Updates -->
+                <div class="nav-item-dropdown">
+                    <span class="nav-dropdown-trigger">
+                        Updates <i class="fas fa-chevron-down nav-caret"></i>
+                    </span>
+                    <div class="nav-dropdown-menu">
+                        <a href="draw-alerts/"><i class="fas fa-bell"></i> Express Entry Latest Draw Alerts</a>
+                        <a href="blog/"><i class="fas fa-newspaper"></i> Immigration News &amp; Articles</a>
+                        <a href="blog/crs-score-meaning-2026/"><i class="fas fa-chart-line"></i> CRS Score Analysis &amp; Tips</a>
+                        <a href="Free Eligibility Check/"><i class="fas fa-check-double"></i> Free Assessment Checklist</a>
+                    </div>
+                </div>
+
+                <a href="about/" class="nav-link-item">About Us</a>
+                <a href="contact/" class="nav-link-item">Contact Us</a>
+
+                <!-- Right Action Buttons -->
+                <div class="suvira-nav-actions">
+                    <a href="https://portal.suviraimmigration.com/login" target="_blank" rel="noopener noreferrer" class="suvira-btn-portal">
+                        <span class="portal-pulse-dot"></span>
+                        <i class="fas fa-user-lock"></i> Portal Access
+                    </a>
+                    <button onclick="document.getElementById('leadModal').style.display='flex'" class="suvira-btn-eligibility">
+                        <i class="fas fa-shield-alt"></i> Eligibility Check
+                    </button>
+                </div>
             </div>
-            <div class="mobile-menu-btn">
+
+            <div class="mobile-menu-btn suvira-mobile-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
+    <!-- Mobile Menu Drawer -->
     <div class="mobile-menu-overlay"></div>
-    <div class="mobile-menu">
+    <div class="mobile-menu suvira-mobile-drawer">
         <div class="mobile-menu-header">
-            <div class="mobile-logo">
-                <img src="images/suvira-logo.png" alt="Suvira Immigration Logo"
-                    style="height: 60px; width: auto; object-fit: contain;" loading="lazy">
+            <div class="suvira-brand-link">
+                <img src="images/suvira-butterfly-icon.png" alt="Suvira Immigration" class="suvira-nav-butterfly" style="height: 40px;">
+                <div class="suvira-brand-text">
+                    <span class="brand-name-suvira" style="font-size: 16px;">SUVIRA</span>
+                    <span class="brand-name-sub" style="font-size: 11px;">IMMIGRATION</span>
+                </div>
             </div>
             <button class="close-menu"><i class="fas fa-times"></i></button>
         </div>
         <div class="mobile-nav">
             <a href="#home" class="nav-home active"><i class="fas fa-home"></i> Home</a>
-            <a href="about/" class="nav-link"><i class="fas fa-info-circle"></i> About Us</a>
-            <a href="calculator/" class="nav-link"><i class="fas fa-calculator"></i> Eligibility Check</a>
-            <a href="services/" class="nav-link"><i class="fas fa-briefcase"></i> Services</a>
-            <a href="/countries/" class="nav-link"><i class="fas fa-flag"></i> Countries</a>
-            <a href="process/" class="nav-link"><i class="fas fa-list-ol"></i> Process</a>
-            <a href="#faq" class="nav-link"><i class="fas fa-question-circle"></i> FAQ</a>
-            <a href="contact/" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="https://portal.suviraimmigration.com/login" class="mobile-portal-link" target="_blank" rel="noopener noreferrer"><span class="portal-pulse-dot"></span><i class="fas fa-user-lock"></i> Portal Access</a>
-            <button onclick="document.getElementById('leadModal').style.display='flex'" class="btn-primary"><i class="fas fa-check-circle"></i> Eligibility Check</button>
+            <a href="services/pr-visas/"><i class="fas fa-globe-americas"></i> Immigration (PR)</a>
+            <a href="services/study-visas/"><i class="fas fa-graduation-cap"></i> Study Visa</a>
+            <a href="services/"><i class="fas fa-heart"></i> Spousal Sponsorship</a>
+            <a href="services/"><i class="fas fa-passport"></i> Visitor Visa</a>
+            <a href="draw-alerts/"><i class="fas fa-bell"></i> Updates &amp; Draw Alerts</a>
+            <a href="about/"><i class="fas fa-info-circle"></i> About Us</a>
+            <a href="contact/"><i class="fas fa-envelope"></i> Contact Us</a>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding: 0 10px;">
+                <a href="https://portal.suviraimmigration.com/login" target="_blank" rel="noopener noreferrer" class="suvira-btn-portal" style="justify-content: center; width: 100%;">
+                    <span class="portal-pulse-dot"></span>
+                    <i class="fas fa-user-lock"></i> Portal Access
+                </a>
+                <button onclick="document.getElementById('leadModal').style.display='flex'" class="suvira-btn-eligibility" style="justify-content: center; width: 100%;">
+                    <i class="fas fa-shield-alt"></i> Eligibility Check
+                </button>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- 1. EXACT GREENTREE HERO FORMATION (MATCHING REFERENCE SCREENSHOT) -->
-        <section class="gt-hero-section" id="home">
-            <div class="gt-hero-container container">
-                <!-- Left Column: Copy & Actions -->
-                <div class="gt-hero-left">
-                    <h1 class="gt-hero-head">
-                        Best Immigration and Visa<br>
-                        Consultant
-                    </h1>
-
-                    <div class="gt-typewriter-line">
-                        <span id="typewriterDestination" class="gt-typing-word">Canada</span><span class="gt-cursor">|</span>
+        <!-- =================================================================
+             PREMIER SUVIRA IMMIGRATION HERO FORMATION (MATCHING DESIGN SPEC)
+             ================================================================= -->
+        <section class="suvira-hero-section" id="home">
+            <div class="suvira-hero-container container">
+                
+                <!-- Left Column: Copy, Badges, CTA -->
+                <div class="suvira-hero-left">
+                    
+                    <!-- 1. Gold Award Pill Badge -->
+                    <div class="suvira-hero-badge">
+                        <i class="fas fa-award"></i>
+                        <span>PREMIER IMMIGRATION &amp; VISA CONSULTANTS</span>
                     </div>
 
-                    <h5 class="gt-protocol-text">
-                        Our 100% Error-Free Protocol ensures an Error-free process for your Immigration journey!
-                    </h5>
+                    <!-- 2. Main Title -->
+                    <h1 class="suvira-hero-title">
+                        Best Immigration and<br>
+                        <span class="suvira-gold-gradient">Visa Consultant</span>
+                    </h1>
 
-                    <div class="gt-cta-wrap">
-                        <button onclick="document.getElementById('leadModal').style.display='flex'" class="gt-calc-btn">
-                            <span>Book free Consultation</span>
-                            <i class="fas fa-paper-plane" style="transform: rotate(45deg);"></i>
+                    <!-- 3. Subtitle with Curved Underline -->
+                    <div class="suvira-tagline-wrap">
+                        <div class="suvira-hero-sub">Your Trusted Partner for Global Opportunities</div>
+                        <svg class="suvira-curve-svg" viewBox="0 0 240 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 9C55 1.5 185 1.5 238 9" stroke="#F59E0B" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+
+                    <!-- 4. Description -->
+                    <p class="suvira-hero-desc">
+                        Our 100% Error-Free Protocol ensures a smooth, complete, and transparent process for your immigration journey!
+                    </p>
+
+                    <!-- 5. Four Feature Value Badges -->
+                    <div class="suvira-feature-badges">
+                        <div class="feature-badge-item">
+                            <div class="badge-icon"><i class="fas fa-shield-alt"></i></div>
+                            <div class="badge-text">
+                                <span>Free Eligibility</span>
+                                <strong>Assessment</strong>
+                            </div>
+                        </div>
+
+                        <div class="feature-badge-item">
+                            <div class="badge-icon"><i class="fas fa-user-friends"></i></div>
+                            <div class="badge-text">
+                                <span>Licensed RCIC</span>
+                                <strong>&amp; MARA Liaison</strong>
+                            </div>
+                        </div>
+
+                        <div class="feature-badge-item">
+                            <div class="badge-icon"><i class="fas fa-layer-group"></i></div>
+                            <div class="badge-text">
+                                <span>Zero</span>
+                                <strong>Hidden Costs</strong>
+                            </div>
+                        </div>
+
+                        <div class="feature-badge-item">
+                            <div class="badge-icon"><i class="fas fa-headset"></i></div>
+                            <div class="badge-text">
+                                <span>End-to-End</span>
+                                <strong>Visa Support</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Call To Action Row -->
+                    <div class="suvira-hero-cta-row">
+                        <button onclick="document.getElementById('leadModal').style.display='flex'" class="suvira-cta-btn-primary">
+                            <span>Book Free Consultation</span>
+                            <i class="fas fa-arrow-right"></i>
                         </button>
+                        <a href="https://wa.me/919940352086" target="_blank" rel="noopener noreferrer" class="suvira-cta-btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            <span>WhatsApp Us</span>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Right Column: 3 Consultants Vector Cutout & Chat Bubble -->
-                <div class="gt-hero-right">
-                    <div class="gt-vector-wrapper">
-                        <img src="images/greentree-ic.webp" alt="Best Immigration and Visa Consultants" class="gt-index-vector" fetchpriority="high">
-                        <div class="gt-talk-bubble" onclick="document.getElementById('leadModal').style.display='flex'">
-                            <span>Hey! Click here to Talk to us</span>
-                            <div class="gt-bubble-avatar">
-                                <img src="images/suvira-logo-transparent.png" alt="Suvira Avatar">
-                            </div>
+                <!-- Right Column: 3 Consultants Cutout -->
+                <div class="suvira-hero-right">
+                    <div class="suvira-consultants-wrapper">
+                        <img src="images/greentree-ic.webp" alt="Best Immigration and Visa Consultants" class="suvira-consultants-img" fetchpriority="high">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating Category / Visa Intent Bar (Glassmorphic) -->
+            <div class="suvira-category-bar-wrapper">
+                <div class="suvira-category-bar">
+                    <div class="category-item-tab" onclick="jumpToVisaCategory('pr')">
+                        <div class="cat-icon"><i class="fas fa-plane-departure"></i></div>
+                        <div class="cat-info">
+                            <span class="cat-title">Immigration</span>
+                            <span class="cat-desc">(PR &amp; Permanent Residency)</span>
+                        </div>
+                    </div>
+
+                    <div class="category-item-tab" onclick="jumpToVisaCategory('study')">
+                        <div class="cat-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="cat-info">
+                            <span class="cat-title">Study Visa</span>
+                            <span class="cat-desc">(Australia, UK, Canada &amp; More)</span>
+                        </div>
+                    </div>
+
+                    <div class="category-item-tab" onclick="jumpToVisaCategory('spousal')">
+                        <div class="cat-icon"><i class="fas fa-user-friends"></i></div>
+                        <div class="cat-info">
+                            <span class="cat-title">Spousal Sponsorship</span>
+                            <span class="cat-desc">(Reunite Your Family)</span>
+                        </div>
+                    </div>
+
+                    <div class="category-item-tab" onclick="jumpToVisaCategory('visit')">
+                        <div class="cat-icon"><i class="fas fa-id-card"></i></div>
+                        <div class="cat-info">
+                            <span class="cat-title">Visitor Visa</span>
+                            <span class="cat-desc">(Short &amp; Long Stay)</span>
+                        </div>
+                    </div>
+
+                    <div class="category-item-tab" onclick="jumpToVisaCategory('work')">
+                        <div class="cat-icon"><i class="fas fa-file-invoice"></i></div>
+                        <div class="cat-info">
+                            <span class="cat-title">Other Visa Services</span>
+                            <span class="cat-desc">(Work, Business &amp; More)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Floating White Stat / Trust Metrics Bar -->
+            <div class="suvira-stat-bar-wrapper">
+                <div class="suvira-stat-bar">
+                    <div class="stat-pill-item">
+                        <div class="stat-icon-wrap"><i class="fas fa-user-friends"></i></div>
+                        <div class="stat-content">
+                            <span class="stat-number">5,000+</span>
+                            <span class="stat-label">Happy Applicants</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-pill-divider"></div>
+
+                    <div class="stat-pill-item">
+                        <div class="stat-icon-wrap"><i class="fas fa-clipboard-check"></i></div>
+                        <div class="stat-content">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Success Rate</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-pill-divider"></div>
+
+                    <div class="stat-pill-item">
+                        <div class="stat-icon-wrap"><i class="fas fa-globe-americas"></i></div>
+                        <div class="stat-content">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Countries &amp; Destinations</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-pill-divider"></div>
+
+                    <div class="stat-pill-item">
+                        <div class="stat-icon-wrap"><i class="fas fa-handshake"></i></div>
+                        <div class="stat-content">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Transparent Process</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Subhero Bar: Floating WhatsApp Pill & Which Visa Heading -->
-        <div class="gt-subhero-bar">
-            <div class="container gt-subhero-container">
-                <a href="https://wa.me/919940352086" target="_blank" rel="noopener noreferrer" class="gt-whatsapp-pill">
-                    <i class="fab fa-whatsapp"></i> WhatsApp Us
-                </a>
-            </div>
-        </div>
 
         <!-- =================================================================
              1. VISA INTENT SECTION: Which visa are you planning to apply for?
@@ -1827,6 +2047,17 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 card.style.display = 'none';
             }
         });
+    }
+
+    function jumpToVisaCategory(category) {
+        const targetBtn = document.querySelector(`.visa-tab-btn[data-category="${category}"]`);
+        if (targetBtn) {
+            switchVisaTab(targetBtn, category);
+        }
+        const section = document.getElementById('visa-category');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     // 3. Consultation Pre-fill Modal Helper
