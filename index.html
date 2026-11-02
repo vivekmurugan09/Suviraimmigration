@@ -1585,7 +1585,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
 
 
-    <!-- 5-Scroll Consultation Modal Trigger & Logic -->
+    <!-- 9-Scroll Consultation Modal Trigger & Logic -->
     <script>
     (function() {
         let scrollCount = 0;
@@ -1617,21 +1617,21 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             if (modal) modal.style.display = 'flex';
         };
 
-        // 1. Mouse wheel: count 5 distinct downward mouse scroll gestures
+        // 1. Mouse wheel: count 9 distinct downward mouse scroll gestures
         window.addEventListener('wheel', function(e) {
             if (e.deltaY > 0) {
                 const now = Date.now();
                 if (now - lastActionTime > 150) { // count each distinct mouse scroll gesture
                     scrollCount++;
                     lastActionTime = now;
-                    if (scrollCount >= 5) {
+                    if (scrollCount >= 9) {
                         openModal();
                     }
                 }
             }
         }, { passive: true });
 
-        // 2. Touch: count mobile swipe-down gestures (5 times)
+        // 2. Touch: count mobile swipe-down gestures (9 times)
         let touchStartY = 0;
         window.addEventListener('touchstart', function(e) {
             if (e.touches && e.touches.length > 0) {
@@ -1647,7 +1647,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     if (now - lastActionTime > 150) {
                         scrollCount++;
                         lastActionTime = now;
-                        if (scrollCount >= 5) {
+                        if (scrollCount >= 9) {
                             openModal();
                         }
                     }
@@ -1655,7 +1655,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             }
         }, { passive: true });
 
-        // 3. Fallback for scroll steps if wheel event is synthetic
+        // 3. Fallback for scroll steps if wheel event is synthetic (9 times)
         let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
         window.addEventListener('scroll', function() {
             const currentScrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -1663,7 +1663,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             if (currentScrollTop > lastScrollTop + 60 && (now - lastActionTime > 250)) {
                 scrollCount++;
                 lastActionTime = now;
-                if (scrollCount >= 5) {
+                if (scrollCount >= 9) {
                     openModal();
                 }
             }
