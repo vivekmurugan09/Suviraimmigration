@@ -84,10 +84,10 @@
 
 .brand-tagline {
     font-family: 'Outfit', sans-serif;
-    font-size: 8.5px;
+    font-size: 8px;
     font-weight: 600;
-    color: #1E293B;
-    letter-spacing: 0.2px;
+    color: #475569;
+    letter-spacing: 0.35px;
     margin-top: 2px;
     white-space: nowrap;
 }
@@ -96,12 +96,50 @@
 .suvira-nav-menu {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
     .suvira-nav-menu {
-        gap: 14px;
+        gap: 12px;
+    }
+    .nav-dropdown-trigger,
+    .nav-link-item {
+        font-size: 14px !important;
+        gap: 4px !important;
+    }
+    .suvira-nav-actions {
+        gap: 8px;
+    }
+    .suvira-btn-portal {
+        padding: 9px 18px !important;
+        font-size: 13.5px !important;
+    }
+    .suvira-btn-eligibility {
+        padding: 8px 16px !important;
+        font-size: 13.5px !important;
+    }
+}
+
+@media (max-width: 1180px) {
+    .suvira-nav-menu {
+        gap: 8px;
+    }
+    .nav-dropdown-trigger,
+    .nav-link-item {
+        font-size: 13px !important;
+        gap: 3px !important;
+    }
+    .suvira-nav-actions {
+        gap: 6px;
+    }
+    .suvira-btn-portal {
+        padding: 7px 14px !important;
+        font-size: 12.5px !important;
+    }
+    .suvira-btn-eligibility {
+        padding: 7px 12px !important;
+        font-size: 12.5px !important;
     }
 }
 
@@ -311,7 +349,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1040px) {
     .suvira-nav-menu {
         display: none !important;
     }
