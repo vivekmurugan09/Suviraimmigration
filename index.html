@@ -16,8 +16,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style-v3.css?v=20261021-v7">
-    <link rel="stylesheet" href="greentree-formation.css?v=20261103-tb-v11">
+    <link rel="stylesheet" href="style-v3.css?v=20261103-v8">
+    <link rel="stylesheet" href="greentree-formation.css?v=20261103-v12">
     <link rel="stylesheet" href="suvira-premier-hero.css?v=20261102-hero-v6">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
@@ -966,7 +966,9 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     </div>
                 </div>
             </div>
-           <!-- 7. SPLIT WHY CHOOSE US & TALK WITH OUR EXPERTS LEAD FORM -->
+        </section>
+
+        <!-- 7. SPLIT WHY CHOOSE US & TALK WITH OUR EXPERTS LEAD FORM -->
         <section class="split-why-form-section" id="why-us">
             <div class="split-why-form-container">
                 <!-- Left Column: Why Choose Us & Gauges -->
@@ -1076,7 +1078,8 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     </form>
 
                     <div id="teSuccessMsg" style="display: none; background: #DCFCE7; color: #166534; padding: 14px; border-radius: 12px; margin-top: 16px; text-align: center; font-weight: 700; font-size: 14px;">
-                        ✓ Thank you! Your consultation request has been submitted. Our senior expert will call you within 3 business hours.
+                        ✓ Thank you! Your consultation request has been submitted. Redirecting...
+                    </div>
                     <div class="talk-social-proof">
                         <span class="talk-social-dot"></span>
                         <span>Over 25,000+ satisfied clients guided across India</span>
@@ -1431,13 +1434,11 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                         <!-- FAQ 6 -->
                         <div class="faq-item">
                             <div class="faq-question">
-                                <span>Do you help with spouse and dependent visas?</span>
+                                <span>How can I check my CRS or PR points eligibility for free?</span>
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                             <div class="faq-answer">
-                                <p>Yes - Spousal and dependent visa processing for Canada, Australia, and
-                                    Family Reunification Visas for Germany. We handle simultaneous dual-applicant
-                                    filings to keep families together.</p>
+                                <p>You can evaluate your profile instantly using our free online points calculators for Canada Express Entry (CRS &amp; 67-Point FSW), Australia General Skilled Migration (Subclass 189/190/491), Germany Opportunity Card (Chancenkarte), and New Zealand SMC, or book a free 1-on-1 profile audit with our senior specialists.</p>
                             </div>
                         </div>
                     </div>
@@ -1599,7 +1600,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <script src="app.js?v=20260810-v4"></script>
+    <script src="app.js?v=20261103-v5"></script>
 
 
 
@@ -1742,7 +1743,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             <form id="leadModalForm" action="https://formsubmit.co/reachus@suviraimmigration.com" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
                 <input type="hidden" name="_subject" value="New Lead from Suvira Eligibility Check">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://www.suviraimmigration.com/thank-you.html">
+                <input type="hidden" name="_next" value="https://dev.suviraimmigration.com/Thank-you/">
                 
                 <input type="text" name="name" required placeholder="Your full name"
                     style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;"
@@ -1951,6 +1952,30 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
     }
 
     // 4. Talk with our Experts Form Submission Handler
+    function getThankYouUrl() {
+        return window.location.origin + '/Thank-you/';
+    }
+
+    function submitViaStandardFormPost(payload) {
+        const tempForm = document.createElement('form');
+        tempForm.method = 'POST';
+        tempForm.action = 'https://formsubmit.co/reachus@suviraimmigration.com';
+        tempForm.style.display = 'none';
+        const fields = Object.assign({}, payload, {
+            _captcha: 'false',
+            _next: getThankYouUrl()
+        });
+        Object.keys(fields).forEach(function(key) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = fields[key];
+            tempForm.appendChild(input);
+        });
+        document.body.appendChild(tempForm);
+        tempForm.submit();
+    }
+
     function handleExpertFormSubmit(e) {
         e.preventDefault();
         const form = document.getElementById('talkExpertsForm');
@@ -1963,16 +1988,24 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
         }
 
         const formData = new FormData(form);
+        const payload = Object.fromEntries(formData);
+        payload.page_url = window.location.href;
+        payload._next = getThankYouUrl();
+
         fetch('https://formsubmit.co/ajax/reachus@suviraimmigration.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             },
-            body: JSON.stringify(Object.fromEntries(formData))
+            body: JSON.stringify(payload)
         })
         .then(response => response.json())
         .then(data => {
+            if (data && (data.success === 'false' || data.success === false)) {
+                submitViaStandardFormPost(payload);
+                return;
+            }
             if (form) form.reset();
             if (successMsg) successMsg.style.display = 'block';
             if (submitBtn) {
@@ -1980,18 +2013,11 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 submitBtn.textContent = 'Request Submitted ✓';
             }
             setTimeout(() => {
-                window.location.href = 'https://www.suviraimmigration.com/thank-you.html';
-            }, 1200);
+                window.location.href = getThankYouUrl();
+            }, 600);
         })
         .catch(err => {
-            if (successMsg) {
-                successMsg.style.display = 'block';
-                successMsg.textContent = "✓ Thank you! Consultation submitted. We will contact you within 3 hours.";
-            }
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Schedule Free Consultation ✈';
-            }
+            submitViaStandardFormPost(payload);
         });
     }
     </script>

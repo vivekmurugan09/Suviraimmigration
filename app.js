@@ -1024,7 +1024,10 @@ function toggleFaqAccordion(headerEl) {
             const msg = document.getElementById('successMsg');
             msg.style.display = 'flex';
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
+            setTimeout(() => {
+                document.getElementById('eligibilityForm').reset();
+                window.location.href = suviraThankYouUrl();
+            }, 900);
         }
 
         // Live Interactive Tab Switcher & Calculator Logic
@@ -1089,7 +1092,10 @@ function toggleFaqAccordion(headerEl) {
             const box = document.getElementById('cntSuccessMsg');
             box.style.display = 'flex';
             box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => document.getElementById('contactPageForm').reset(), 1500);
+            setTimeout(() => {
+                document.getElementById('contactPageForm').reset();
+                window.location.href = suviraThankYouUrl();
+            }, 900);
         }
     
 
@@ -1175,7 +1181,12 @@ function toggleFaqAccordion(headerEl) {
             if (box) {
                 box.style.display = 'flex';
                 box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => document.getElementById('processTouchForm').reset(), 1500);
+                setTimeout(() => {
+                    document.getElementById('processTouchForm').reset();
+                    window.location.href = suviraThankYouUrl();
+                }, 900);
+            } else {
+                window.location.href = suviraThankYouUrl();
             }
         }
     
@@ -1197,6 +1208,52 @@ function toggleFaqAccordion(headerEl) {
     
 
 
+
+// Global FormSubmit helper with automatic fallback & Thank-You redirect
+function suviraThankYouUrl() {
+    return window.location.origin + '/Thank-you/';
+}
+
+function suviraStandardPostFallback(formData) {
+    const tempForm = document.createElement('form');
+    tempForm.method = 'POST';
+    tempForm.action = 'https://formsubmit.co/reachus@suviraimmigration.com';
+    tempForm.style.display = 'none';
+    for (const [key, val] of formData.entries()) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = val;
+        tempForm.appendChild(input);
+    }
+    const nextInput = document.createElement('input');
+    nextInput.type = 'hidden';
+    nextInput.name = '_next';
+    nextInput.value = suviraThankYouUrl();
+    tempForm.appendChild(nextInput);
+    document.body.appendChild(tempForm);
+    tempForm.submit();
+}
+
+function suviraSendLeadForm(formData, onComplete) {
+    fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+        method: "POST",
+        headers: { 'Accept': 'application/json' },
+        body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data && (data.success === 'false' || data.success === false)) {
+            suviraStandardPostFallback(formData);
+            return;
+        }
+        if (onComplete) onComplete();
+        window.location.href = suviraThankYouUrl();
+    })
+    .catch(() => {
+        suviraStandardPostFallback(formData);
+    });
+}
 
 // Global Modal Form Handler
 function handleModalSubmit(e) {
@@ -1226,19 +1283,15 @@ function handleModalSubmit(e) {
     formData.append("Page URL", window.location.href);
     formData.append("_subject", `New Inquiry (${service}): ${name}`);
     formData.append("_captcha", "false");
+    formData.append("_next", suviraThankYouUrl());
 
-    fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
-        method: "POST",
-        headers: { 'Accept': 'application/json' },
-        body: formData
-    }).then(res => {
-        alert("Thanks! We will call you within 3 business hours.");
-        form.reset();
-        const modal = document.getElementById('leadModal');
-        if (modal) modal.style.display = 'none';
-    }).catch(err => {
-        console.error(err);
-        alert("Thanks! We will call you within 3 business hours.");
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+    }
+
+    suviraSendLeadForm(formData, function() {
         form.reset();
         const modal = document.getElementById('leadModal');
         if (modal) modal.style.display = 'none';

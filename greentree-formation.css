@@ -1259,11 +1259,18 @@ nav .nav-portal-btn:hover,
 .talk-phone-row {
     display: flex;
     gap: 10px;
+    width: 100%;
 }
 
+.talk-input-group select.talk-phone-prefix,
 .talk-phone-prefix {
-    width: 120px;
-    flex-shrink: 0;
+    width: 118px;
+    flex: 0 0 118px;
+}
+
+.talk-phone-row input {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .talk-submit-btn {
@@ -1509,4 +1516,44 @@ nav .nav-portal-btn:hover,
 }
 @media (max-width: 560px) {
     .trust-badges-wrap { grid-template-columns: 1fr; }
+}
+
+/* Fix footer bottom white gap & floating action buttons */
+.floating-actions-wrapper {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    overflow: visible;
+    z-index: 9999;
+}
+.contact-float {
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    width: 54px;
+    height: 54px;
+    background: linear-gradient(135deg, #F87034, #EA580C);
+    color: #FFFFFF !important;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    box-shadow: 0 8px 24px rgba(248, 112, 52, 0.4);
+    z-index: 9999;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 28px rgba(248, 112, 52, 0.6);
+    color: #FFFFFF !important;
+}
+.scroll-top {
+    bottom: 162px !important;
+}
+.footer .footer-bottom p:last-child {
+    margin-bottom: 0 !important;
 }
