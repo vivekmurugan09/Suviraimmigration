@@ -816,64 +816,47 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
              5. LEADERSHIP & EXECUTIVE SPOTLIGHT
              ================================================================= -->
         <section class="leadership-section" id="leadership">
-            <div class="leadership-layout">
-                <!-- Left: Content & Philosophy -->
-                <div>
+            <div class="ldr-wrap">
+                <!-- Left: Portrait showcase -->
+                <div class="ldr-portrait">
+                    <img src="images/ceo-portrait.webp" alt="Arun Kumar" loading="lazy">
+                    <div class="ldr-portrait-overlay">
+                        <h3>Arun Kumar</h3>
+                        <span>Chief Executive &amp; Legal Strategy</span>
+                        <p>Immigration Industry Leader &bull; Strategic Mentor</p>
+                    </div>
+                    <div class="ldr-badge ldr-badge-top"><i class="fas fa-shield-alt"></i> Zero-Defect Protocol</div>
+                    <div class="ldr-badge ldr-badge-side"><i class="fas fa-globe"></i> Global Ethics</div>
+                </div>
+
+                <!-- Right: Story + booking -->
+                <div class="ldr-content">
                     <span class="leadership-eyebrow">OUR LEADERSHIP</span>
                     <h2 class="leadership-title">Meet our Chief Executive Officer &amp; Leadership</h2>
-                    
-                    <div class="leadership-quote">
-                        &ldquo;We don't follow industry standards. We set them.&rdquo;
-                    </div>
-
+                    <div class="leadership-quote">&ldquo;We don't follow industry standards. We set them.&rdquo;</div>
                     <p class="leadership-body">
                         At Suvira Immigration, our philosophy is anchored in radical transparency and absolute accountability. Immigration is not merely paperwork — it is a life-defining family milestone. Through our proprietary Zero-Defect Protocol, we review every document, educational assessment, police clearance, and visa dossier with surgical precision.
                     </p>
+                    <div class="ldr-chips">
+                        <div class="ldr-chip"><i class="fas fa-bullseye"></i><div><b>Global Ethics</b><span>Accountability. Innovation. Uncompromising client success.</span></div></div>
+                        <div class="ldr-chip"><i class="fas fa-rocket"></i><div><b>World-Class Processes</b><span>A structured, error-free methodology for global migration.</span></div></div>
+                    </div>
 
-                    <div class="leadership-features-grid">
-                        <div class="leadership-feature-card">
-                            <div style="font-size: 24px; color: #0724A8;">◎</div>
-                            <h4>Global Ethics</h4>
-                            <p>Accountability. Innovation. Uncompromising client success.</p>
+                    <div class="ldr-plans">
+                        <div class="ldr-plan">
+                            <div class="ldr-plan-icon"><i class="fas fa-handshake"></i></div>
+                            <h3>Face to Face Consultation</h3>
+                            <p>Meet at our Chennai Executive Headquarters or regional branches for an in-depth, in-person consultation.</p>
+                            <button onclick="prefillConsultation('Face to Face')" class="ldr-cta">Connect with me ↗</button>
                         </div>
-                        <div class="leadership-feature-card">
-                            <div style="font-size: 24px; color: #F87034;">↗</div>
-                            <h4>World-Class Processes</h4>
-                            <p>A structured, error-free methodology for global migration.</p>
+                        <div class="ldr-plan">
+                            <div class="ldr-plan-icon"><i class="fas fa-video"></i></div>
+                            <h3>Virtual Consulting</h3>
+                            <p>A focused 1-on-1 strategic video session from wherever you are, worldwide.</p>
+                            <button onclick="prefillConsultation('Virtual')" class="ldr-cta">Connect with me ↗</button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Right: Consultation Booking Card -->
-                <div>
-                    <div class="leadership-consult-box">
-                        <div style="display: flex; align-items: center; gap: 18px; margin-bottom: 20px;">
-                            <img src="images/ceo-portrait.webp" alt="Arun Kumar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid #0724A8;" loading="lazy">
-                            <div>
-                                <h3 style="font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 800; color: #0A1628; margin: 0;">Arun Kumar</h3>
-                                <span style="font-size: 13px; color: #F87034; font-weight: 700;">Chief Executive &amp; Legal Strategy</span>
-                                <div style="font-size: 11.5px; color: #64748B; margin-top: 3px;">Immigration Industry Leader &bull; Strategic Mentor</div>
-                            </div>
-                        </div>
-
-                        <div class="leadership-plans">
-                            <div class="leadership-plan-card">
-                                <h3>Face to Face Consultation</h3>
-                                <p>Meet at our Chennai Executive Headquarters or regional branches for an in-depth, in-person consultation.</p>
-                                <button onclick="prefillConsultation('Face to Face')" class="leadership-plan-cta">Connect with me ↗</button>
-                            </div>
-
-                            <div class="leadership-plan-card">
-                                <h3>Virtual Consulting</h3>
-                                <p>A focused 1-on-1 strategic video session from wherever you are, worldwide.</p>
-                                <button onclick="prefillConsultation('Virtual')" class="leadership-plan-cta">Connect with me ↗</button>
-                            </div>
-                        </div>
-
-                        <div style="font-size: 12px; color: #94A3B8; text-align: center; margin-top: 15px;">
-                            ⓘ Focused 45-minute comprehensive eligibility &amp; strategy evaluation session.
-                        </div>
-                    </div>
+                    <div class="ldr-note">ⓘ Focused 45-minute comprehensive eligibility &amp; strategy evaluation session.</div>
                 </div>
             </div>
         </section>
