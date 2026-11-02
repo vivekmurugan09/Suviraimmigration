@@ -659,42 +659,20 @@ function handleProfileEvalSubmit(e) {
     const email   = document.getElementById('peEmail') ? document.getElementById('peEmail').value : '';
     const service = document.getElementById('peService') ? document.getElementById('peService').value : 'General Evaluation';
 
-    try {
-        const formData = new FormData();
-        formData.append("Full Name", name);
-        formData.append("Phone / WhatsApp", phone);
-        formData.append("Email Address", email);
-        formData.append("Service Required", service);
-        formData.append("Page URL", window.location.href);
-        formData.append("_subject", `New Profile Evaluation Request: ${name} (${service})`);
-        formData.append("_captcha", "false");
+    const formData = new FormData();
+    formData.append("Full Name", name);
+    formData.append("Phone / WhatsApp", phone);
+    formData.append("Email Address", email);
+    formData.append("Service Required", service);
+    formData.append("Page URL", window.location.href);
+    formData.append("_subject", `New Profile Evaluation Request: ${name} (${service})`);
+    formData.append("_captcha", "false");
+    formData.append("_next", suviraThankYouUrl());
 
-        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
-            method: "POST",
-            headers: { 'Accept': 'application/json' },
-            body: formData
-        }).then(res => {
-            const box = document.getElementById('peSuccess');
-            if (box) {
-                box.style.display = 'block';
-                setTimeout(() => {
-                    document.getElementById('profileEvalForm').reset();
-                    box.style.display = 'none';
-                }, 4000);
-            } else {
-                alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
-                if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
-            }
-        }).catch(err => {
-            console.error(err);
-            alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
-            if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
-        });
-    } catch (err) {
-        console.log(err);
-        alert("Thank you! Your profile evaluation request has been submitted. We will contact you within 3 business hours.");
-        if (document.getElementById('profileEvalForm')) document.getElementById('profileEvalForm').reset();
-    }
+    suviraSendLeadForm(formData, function() {
+        const f = document.getElementById('profileEvalForm');
+        if (f) f.reset();
+    });
 }
 
 // Homepage Instant Score Preview Tab Switcher
