@@ -4,13 +4,13 @@
    ========================================================================== */
 
 :root {
-    --visitor-teal: #0D9488;
-    --visitor-emerald: #10B981;
-    --visitor-emerald-glow: rgba(16, 185, 129, 0.4);
-    --visitor-sky: #0284C7;
+    --visitor-teal: #0724A8;
+    --visitor-emerald: #F87034;
+    --visitor-emerald-glow: rgba(248, 112, 52, 0.4);
+    --visitor-sky: #1D4ED8;
     --visitor-gold: #F59E0B;
-    --visitor-dark: #07132B;
-    --visitor-card-bg: rgba(15, 23, 42, 0.75);
+    --visitor-dark: #031169;
+    --visitor-card-bg: rgba(15, 23, 42, 0.82);
 }
 
 /* --------------------------------------------------------------------------
@@ -18,9 +18,9 @@
    -------------------------------------------------------------------------- */
 .visitor-hero-section {
     position: relative;
-    background-color: #06122C;
+    background-color: #031169;
     background-image: 
-        linear-gradient(180deg, rgba(6, 18, 44, 0.88) 0%, rgba(6, 18, 44, 0.80) 50%, rgba(6, 18, 44, 0.96) 100%),
+        linear-gradient(135deg, rgba(3, 17, 105, 0.90) 0%, rgba(7, 36, 168, 0.82) 50%, rgba(10, 22, 40, 0.94) 100%),
         url('../../images/about_hero_premium.jpg');
     background-size: cover;
     background-position: center;
@@ -48,8 +48,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(16, 185, 129, 0.16);
-    border: 1px solid rgba(16, 185, 129, 0.5);
+    background: rgba(248, 112, 52, 0.16);
+    border: 1px solid rgba(248, 112, 52, 0.55);
     border-radius: 9999px;
     padding: 6px 18px;
     margin-bottom: 18px;
@@ -58,7 +58,7 @@
 }
 
 .visitor-hero-badge i {
-    color: #34D399;
+    color: #FFB800;
     font-size: 14px;
 }
 
@@ -66,7 +66,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 11.5px;
     font-weight: 700;
-    color: #A7F3D0;
+    color: #FDE68A;
     letter-spacing: 1.2px;
     text-transform: uppercase;
 }
@@ -82,7 +82,7 @@
 }
 
 .visitor-emerald-gradient {
-    background: linear-gradient(90deg, #34D399 0%, #38BDF8 50%, #F59E0B 100%);
+    background: linear-gradient(90deg, #FFB800 0%, #F87034 55%, #F59E0B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -120,7 +120,7 @@
 }
 
 .visitor-check-item i {
-    color: #10B981;
+    color: #F87034;
     font-size: 14px;
 }
 
@@ -135,7 +135,7 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%);
     color: #FFFFFF !important;
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
@@ -143,15 +143,15 @@
     padding: 14px 28px;
     border-radius: 8px;
     text-decoration: none;
-    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 8px 24px rgba(248, 112, 52, 0.45);
     transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .visitor-btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.55);
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 12px 30px rgba(248, 112, 52, 0.6);
+    background: linear-gradient(135deg, #FB923C 0%, #F87034 100%);
 }
 
 .visitor-btn-whatsapp {
@@ -185,10 +185,10 @@
     background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(16, 185, 129, 0.35);
+    border: 1px solid rgba(248, 112, 52, 0.35);
     border-radius: 16px;
     padding: 30px 28px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(16, 185, 129, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(7, 36, 168, 0.25);
 }
 
 .visitor-form-header {
@@ -241,13 +241,13 @@
 
 .visitor-form-group input:focus,
 .visitor-form-group select:focus {
-    border-color: #10B981;
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+    border-color: #F87034;
+    box-shadow: 0 0 0 3px rgba(248, 112, 52, 0.25);
 }
 
 .visitor-form-submit {
     width: 100%;
-    background: linear-gradient(135deg, #059669 0%, #0284C7 100%);
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%);
     border: none;
     border-radius: 8px;
     color: #FFFFFF;
@@ -256,7 +256,7 @@
     font-size: 15px;
     padding: 13px;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+    box-shadow: 0 6px 20px rgba(248, 112, 52, 0.35);
     transition: all 0.3s ease;
     margin-top: 6px;
 }
@@ -264,7 +264,7 @@
 .visitor-form-submit:hover {
     opacity: 0.95;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.55);
+    box-shadow: 0 8px 25px rgba(248, 112, 52, 0.55);
 }
 
 .visitor-form-guarantee {
@@ -279,7 +279,7 @@
 }
 
 .visitor-form-guarantee i {
-    color: #10B981;
+    color: #F59E0B;
 }
 
 /* --------------------------------------------------------------------------
@@ -287,7 +287,7 @@
    -------------------------------------------------------------------------- */
 .visitor-stats-ribbon {
     background: #020617;
-    border-top: 1px solid rgba(16, 185, 129, 0.2);
+    border-top: 1px solid rgba(248, 112, 52, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 28px 0;
 }
@@ -314,7 +314,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: clamp(28px, 2.5vw, 36px);
     font-weight: 800;
-    color: #34D399;
+    color: #F87034;
     line-height: 1.1;
     margin-bottom: 4px;
 }
@@ -340,9 +340,9 @@
     font-family: 'Outfit', sans-serif;
     font-size: 11px;
     font-weight: 700;
-    color: #059669;
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #0724A8;
+    background: rgba(7, 36, 168, 0.08);
+    border: 1px solid rgba(7, 36, 168, 0.25);
     border-radius: 9999px;
     padding: 4px 14px;
     text-transform: uppercase;
@@ -405,8 +405,8 @@
 
 .visitor-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15);
-    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 20px 40px rgba(7, 36, 168, 0.14);
+    border-color: rgba(7, 36, 168, 0.35);
 }
 
 .visitor-card-media {
@@ -443,7 +443,7 @@
 }
 
 .visitor-card-pill i {
-    color: #34D399;
+    color: #F87034;
 }
 
 .visitor-card-flag {
@@ -477,8 +477,8 @@
 }
 
 .visitor-card-highlight {
-    background: #ECFDF5;
-    color: #047857;
+    background: #EFF6FF;
+    color: #0724A8;
     font-size: 12px;
     font-weight: 700;
     padding: 6px 12px;
@@ -505,7 +505,7 @@
 }
 
 .visitor-card-list li i {
-    color: #059669;
+    color: #F87034;
     margin-top: 4px;
     font-size: 12px;
 }
@@ -513,7 +513,7 @@
 .visitor-card-action {
     display: block;
     text-align: center;
-    background: #0F172A;
+    background: linear-gradient(135deg, #0724A8 0%, #1538C4 100%);
     color: #FFFFFF !important;
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
@@ -525,8 +525,8 @@
 }
 
 .visitor-card-action:hover {
-    background: #059669;
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%);
+    box-shadow: 0 6px 16px rgba(248, 112, 52, 0.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -566,7 +566,7 @@
 }
 
 .visitor-solution-card:hover {
-    border-color: #10B981;
+    border-color: #F87034;
     transform: translateY(-5px);
     background: rgba(30, 41, 59, 0.9);
 }
@@ -574,14 +574,14 @@
 .visitor-solution-icon {
     width: 50px;
     height: 50px;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(2, 132, 199, 0.2) 100%);
-    border: 1px solid rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, rgba(7, 36, 168, 0.25) 0%, rgba(248, 112, 52, 0.2) 100%);
+    border: 1px solid rgba(248, 112, 52, 0.4);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    color: #34D399;
+    color: #F87034;
     margin-bottom: 18px;
 }
 
@@ -642,14 +642,14 @@
 }
 
 .visitor-step-item:hover {
-    border-color: #059669;
-    box-shadow: 0 12px 28px rgba(16, 185, 129, 0.1);
+    border-color: #0724A8;
+    box-shadow: 0 12px 28px rgba(7, 36, 168, 0.12);
 }
 
 .visitor-step-num {
     width: 44px;
     height: 44px;
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #0724A8 0%, #F87034 100%);
     color: #FFFFFF;
     border-radius: 50%;
     display: flex;
@@ -659,7 +659,7 @@
     font-weight: 800;
     font-size: 16px;
     margin: 0 auto 16px auto;
-    box-shadow: 0 6px 14px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 6px 14px rgba(7, 36, 168, 0.3);
 }
 
 .visitor-step-title {
@@ -716,7 +716,7 @@
 }
 
 .visitor-doc-box h4 i {
-    color: #059669;
+    color: #F87034;
 }
 
 .visitor-doc-box ul {
@@ -740,7 +740,7 @@
 }
 
 .visitor-doc-box ul li i {
-    color: #10B981;
+    color: #0724A8;
     font-size: 13px;
 }
 
@@ -783,7 +783,7 @@
 }
 
 .visitor-faq-q i {
-    color: #059669;
+    color: #F87034;
     transition: transform 0.3s ease;
 }
 
@@ -811,12 +811,12 @@
    8. CLOSING CTA BANNER
    -------------------------------------------------------------------------- */
 .visitor-cta-banner {
-    background: linear-gradient(135deg, #061826 0%, #064E3B 60%, #065F46 100%);
+    background: linear-gradient(135deg, #031169 0%, #0724A8 55%, #0A1628 100%);
     padding: 70px 0;
     text-align: center;
     color: #FFFFFF;
     position: relative;
-    border-top: 1px solid rgba(16, 185, 129, 0.3);
+    border-top: 1px solid rgba(248, 112, 52, 0.3);
 }
 
 .visitor-cta-wrap {

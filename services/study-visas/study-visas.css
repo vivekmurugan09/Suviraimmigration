@@ -4,11 +4,11 @@
    ========================================================================== */
 
 :root {
-    --study-blue: #2563EB;
-    --study-blue-glow: rgba(37, 99, 235, 0.4);
+    --study-blue: #0724A8;
+    --study-blue-glow: rgba(248, 112, 52, 0.45);
     --gold-accent: #F59E0B;
     --gold-light: #FBBF24;
-    --navy-deep: #071338;
+    --navy-deep: #031169;
 }
 
 /* --------------------------------------------------------------------------
@@ -16,9 +16,9 @@
    -------------------------------------------------------------------------- */
 .study-hero-section {
     position: relative;
-    background-color: #06112C;
+    background-color: #031169;
     background-image: 
-        linear-gradient(180deg, rgba(6, 17, 44, 0.85) 0%, rgba(6, 17, 44, 0.75) 45%, rgba(6, 17, 44, 0.95) 100%),
+        linear-gradient(135deg, rgba(3, 17, 105, 0.90) 0%, rgba(7, 36, 168, 0.80) 45%, rgba(6, 17, 44, 0.95) 100%),
         url('../../images/global_map_bg.jpg');
     background-size: cover;
     background-position: center;
@@ -46,8 +46,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(37, 99, 235, 0.18);
-    border: 1px solid rgba(59, 130, 246, 0.5);
+    background: rgba(248, 112, 52, 0.18);
+    border: 1px solid rgba(248, 112, 52, 0.55);
     border-radius: 9999px;
     padding: 6px 18px;
     margin-bottom: 18px;
@@ -56,7 +56,7 @@
 }
 
 .study-hero-badge i {
-    color: #60A5FA;
+    color: #FFB800;
     font-size: 14px;
 }
 
@@ -64,7 +64,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 11.5px;
     font-weight: 700;
-    color: #93C5FD;
+    color: #FDE68A;
     letter-spacing: 1.2px;
     text-transform: uppercase;
 }
@@ -80,7 +80,7 @@
 }
 
 .study-cyan-gradient {
-    background: linear-gradient(90deg, #38BDF8 0%, #60A5FA 50%, #F59E0B 100%);
+    background: linear-gradient(90deg, #FFB800 0%, #F87034 50%, #F59E0B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -119,7 +119,7 @@
 }
 
 .study-check-item i {
-    color: #10B981;
+    color: #F87034;
     font-size: 15px;
     flex-shrink: 0;
 }
@@ -132,7 +132,7 @@
 }
 
 .btn-study-primary {
-    background: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
+    background: linear-gradient(90deg, #F87034 0%, #EA580C 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 9999px;
@@ -151,7 +151,7 @@
 
 .btn-study-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 12px 30px rgba(248, 112, 52, 0.6);
     color: #FFFFFF;
 }
 
