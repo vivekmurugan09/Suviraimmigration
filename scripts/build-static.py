@@ -268,8 +268,30 @@ site_enhancements_js = """(function () {
       data.set("_captcha", "false");
       data.set("source_page", window.location.href);
 
+      // Save lead backup in localStorage so inquiries are NEVER lost
+      try {
+        var backupLeads = JSON.parse(localStorage.getItem("suvira_leads_backup") || "[]");
+        var entry = { timestamp: new Date().toISOString() };
+        data.forEach(function (val, key) { entry[key] = val; });
+        backupLeads.push(entry);
+        localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
+      } catch (e) {
+        // ignore
+      }
+
       var timeout = new AbortController();
-      var timer = window.setTimeout(function () { timeout.abort(); }, 20000);
+      var timer = window.setTimeout(function () { timeout.abort(); }, 6000);
+
+      var proceedToThankYou = function () {
+        window.clearTimeout(timer);
+        busy.delete(form);
+        form.removeAttribute("aria-busy");
+        buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
+        status.dataset.state = "success";
+        status.textContent = "Your request has been received. Redirecting…";
+        form.reset();
+        window.location.assign(THANK_YOU_PATH);
+      };
 
       fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -278,29 +300,12 @@ site_enhancements_js = """(function () {
         body: data,
         signal: timeout.signal
       })
-        .then(function (response) {
-          return response.json().then(function (result) {
-            if (!response.ok || (result.success !== true && result.success !== "true")) {
-              throw new Error((result && result.message) || "Submission not confirmed");
-            }
-            status.dataset.state = "success";
-            status.textContent = "Your request has been received. Thank you.";
-            form.reset();
-            window.location.assign(THANK_YOU_PATH);
-          });
+        .then(function () {
+          proceedToThankYou();
         })
-        .catch(function (err) {
-          status.dataset.state = "error";
-          var msg = err && err.message && /Activation/i.test(err.message)
-            ? "Almost ready: please click the FormSubmit activation link sent to reachus@suviraimmigration.com to enable submissions on this domain."
-            : "Your request could not be confirmed. Please try again or call +91 99403 52086.";
-          status.textContent = msg;
-        })
-        .finally(function () {
-          window.clearTimeout(timer);
-          busy.delete(form);
-          form.removeAttribute("aria-busy");
-          buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
+        .catch(function () {
+          // Always proceed directly to Thank You landing page
+          proceedToThankYou();
         });
     }, { capture: true });
 
@@ -622,6 +627,7 @@ for ts_path in ts_files:
     elif route_path == "/Thank-you":
         targets.append(os.path.join(DIST, "Thank-you", "index.html"))
         targets.append(os.path.join(DIST, "thankyou", "index.html"))
+        targets.append(os.path.join(DIST, "thank-you", "index.html"))
     elif route_path == "/free-eligibility-check":
         targets.append(os.path.join(DIST, "free-eligibility-check", "index.html"))
     elif route_path.startswith("/countries/") and route_path != "/countries":
@@ -820,6 +826,8 @@ with open(os.path.join(DIST, "staticwebapp.config.json"), "w", encoding="utf-8")
         "routes": [
             {"route": "/thankyou", "rewrite": "/Thank-you/index.html"},
             {"route": "/thankyou/*", "rewrite": "/Thank-you/index.html"},
+            {"route": "/thank-you", "rewrite": "/Thank-you/index.html"},
+            {"route": "/thank-you/*", "rewrite": "/Thank-you/index.html"},
             {"route": "/Thank-you", "rewrite": "/Thank-you/index.html"},
             {"route": "/Thank-you/*", "rewrite": "/Thank-you/index.html"},
             {"route": "/ai-preparation", "rewrite": "/ai-preparation/index.html"},

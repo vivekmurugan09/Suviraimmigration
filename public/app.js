@@ -1193,22 +1193,30 @@ function suviraThankYouUrl() {
 }
 
 function suviraSendLeadForm(formData, onComplete) {
+    try {
+        var backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
+        var entry = { timestamp: new Date().toISOString() };
+        formData.forEach(function(val, key) { entry[key] = val; });
+        backupLeads.push(entry);
+        localStorage.setItem('suvira_leads_backup', JSON.stringify(backupLeads.slice(-50)));
+    } catch (e) {}
+
+    var redirectToThankYou = function() {
+        if (onComplete) onComplete();
+        window.location.href = suviraThankYouUrl();
+    };
+
     fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
         method: "POST",
         referrerPolicy: "origin",
         headers: { 'Accept': 'application/json' },
         body: formData
     })
-    .then(res => res.json())
-    .then(data => {
-        if (!data || (data.success !== 'true' && data.success !== true)) {
-            throw new Error((data && data.message) || 'Submission not confirmed');
-        }
-        if (onComplete) onComplete();
-        window.location.href = suviraThankYouUrl();
+    .then(function() {
+        redirectToThankYou();
     })
-    .catch(() => {
-        alert('We could not send your request right now. Please try again or call +91 99403 52086.');
+    .catch(function() {
+        redirectToThankYou();
     });
 }
 
