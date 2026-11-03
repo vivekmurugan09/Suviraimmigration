@@ -1,3 +1,10 @@
-#!/bin/bash
-python3 scripts/build-static.py
+#!/usr/bin/env bash
+set -e
+if [ -f "scripts/build-static.py" ]; then
+    python3 scripts/build-static.py
+elif [ -f "src/scripts/build-static.py" ]; then
+    python3 src/scripts/build-static.py
+elif [ -f "../scripts/build-static.py" ]; then
+    python3 ../scripts/build-static.py
+fi
 
