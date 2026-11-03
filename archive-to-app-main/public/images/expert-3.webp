@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Best Immigration & Visa Consultants in India | GreenTree</title>
+  <link rel="canonical" href="https://www.greentreeimmigration.com/" />
+  <meta name="robot" content="index,follow">
+	<meta name="description" content="Get the top-notch immigration and visa consultancy services in India from the Industry expert Green tree. Contact us and get free immigration assistance.">
+ 
+  <link 
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="working-header.css">
+  <!-- Favicon -->
+	<link rel="icon" type="image/webp" sizes="56x56" href="assets/images/fav-icon/g-logo-fav.webp">
+    <!-- <link rel="stylesheet" href="meanmenu.min.css">
+     <link rel="stylesheet" href="style.css"> -->
+      <!-- <link rel="stylesheet" href="style.css"> -->
+ 
+  <!-- animate CSS -->
+  <link rel="stylesheet" href="animate.css" type="text/css" media="all" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+  <!-- animated-text CSS -->
+  <link rel="stylesheet" href="animated-text.css" type="text/css" media="all" />
+<!-- animated-on-scroll  AOS-->
+  <!-- <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css"> -->
+
+    <!-- Chart.js CDN -->
+  
+  
+	<!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-T5SLV6N');</script>
+  <!-- End Google Tag Manager-->
+
+ <style>
+  body{
+    font-family: "Outfit", sans-serif !important;
+  }
+     .mobile-space{
+    padding-top:200px;
+   }
+ </style>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Flight Terminated</title>
+
+
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  
+	
+  <link href='https://fonts.googleapis.com/css?family=Outfit' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="working-header.css">
+  <!-- Favicon -->
+	<link rel="icon" type="image/webp" sizes="56x56" href="assets/images/fav-icon/g-logo-fav.webp">
+    <!-- <link rel="stylesheet" href="meanmenu.min.css">
+     <link rel="stylesheet" href="style.css"> -->
+      <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="./working-header.js"></script>
+  <!-- animate CSS -->
+  <link rel="stylesheet" href="animate.css" type="text/css" media="all" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"/>
+
+  <!-- animated-text CSS -->
+  <link rel="stylesheet" href="animated-text.css" type="text/css" media="all" />
+<!-- animated-on-scroll  AOS-->
+  <!-- <link rel="stylesheet" href="../../assets/vendor/aos/dist/aos.css"> -->
+
+
+
+
+
+    <style>
+        :root {
+            --primary: #147e52;
+            --accent: #3abb85;
+            --dark: #d8d1d1;
+            --glass: rgba(238, 229, 229, 0.93);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--dark);
+            color: #fff;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            /* Shaking effect on the whole screen for the "crash" */
+            animation: cameraShake 0.8s cubic-bezier(.36,.07,.19,.97) both;
+            animation-delay: 1.2s;
+        }
+
+        /* 3D Scene Layer */
+        .world {
+            position: relative;
+            text-align: center;
+            z-index: 5;
+            perspective: 1000px;
+        }
+
+        /* The 3D Flight Crash Visual */
+        .plane-box {
+            position: relative;
+            width: 300px;
+            margin: 0 auto -50px;
+            transform-style: preserve-3d;
+            z-index: 10;
+        }
+
+        .plane-box img {
+            width: 100%;
+            /* Animation: Plane nosedives and then stays shaking */
+            animation: nosedive 1.5s ease-out forwards, vibrate 0.2s infinite;
+        }
+
+        /* Ground Impact Shadow */
+        .impact-glow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotateX(75deg);
+            width: 250px;
+            height: 100px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            filter: blur(20px);
+            opacity: 0;
+            animation: reveal 0.5s forwards;
+            animation-delay: 1.2s;
+        }
+
+        /* Main Premium Card */
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(58, 187, 133, 0.2);
+            padding: 80px 40px 50px;
+            border-radius: 40px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.8), inset 0 0 20px rgba(20, 126, 82, 0.2);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .code {
+            font-size: 9rem;
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -8px;
+            background: linear-gradient(to bottom, #fff 30%, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(20, 126, 82, 0.3));
+        }
+
+        h1 { 
+            font-size: 1.4rem; 
+            text-transform: uppercase; 
+            letter-spacing: 5px; 
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        p { color: #888; line-height: 1.6; margin-bottom: 35px; }
+
+        /* The "Back to Home" Button */
+        .btn {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: #fff;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(20, 126, 82, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(179, 194, 188, 0.6);
+        }
+
+        /* ANIMATIONS */
+        @keyframes nosedive {
+            0% { transform: translateY(-500px) rotate(-45deg) scale(1.5); opacity: 0; }
+            80% { transform: translateY(0) rotate(-10deg) scale(1); opacity: 1; }
+            100% { transform: translateY(5px) rotate(2deg) scale(1); opacity: 1; }
+        }
+
+        @keyframes cameraShake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        @keyframes vibrate {
+            0% { transform: translate(0); }
+            25% { transform: translate(1px, 1px); }
+            50% { transform: translate(-1px, -1px); }
+            75% { transform: translate(1px, -1px); }
+            100% { transform: translate(0); }
+        }
+
+        @keyframes reveal { from { opacity: 0; } to { opacity: 0.6; } }
+
+    </style>
+</head>
+<body>
+  <!DOCTYPE html>
+
+<html lang="en">
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap -->
+
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">     -->
+
+  <!-- Font Awesome -->
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">  
+
+  <style>
+
+    /* === Base Navbar Styling === */
+
+    .navbar-custom {
+
+      background-color: #fff;
+
+      border-radius: 0 0 15px 15px;
+
+      padding: 10px 30px;
+
+    }
+
+    .navbar-brand img {
+
+      height: 50px;
+
+    }
+
+    .navbar-nav .nav-link {
+
+      color: #168366 !important;
+
+      font-weight: 600;
+
+      margin: 0 10px;
+
+      position: relative;
+
+      line-height: 1.6;
+
+    }
+
+    .navbar-nav .nav-link:hover {
+
+      color: #0d5d4d !important;
+
+    }
+
+    .navbar-nav .nav-link:focus {
+
+      outline: none;
+
+      box-shadow: none;
+
+    }
+
+    /* === Dropdown Styling === */
+
+    .dropdown-menu {
+
+      background-color: #fff;
+
+      border: 1px solid #d7d7d7;
+
+      border-top: 3px solid #168366;
+
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+      border-radius: 0;
+
+    }
+
+    .dropdown-item {
+
+      color: #000;
+
+      font-weight: 500;
+
+      font-size:18px;
+
+      line-height: 2.8;
+
+    }
+
+    a {
+
+  text-decoration: none;
+
+}
+
+    .dropdown-item:hover {
+
+      background-color: #168366;
+
+      color: #fff;
+
+       text-decoration: none;
+
+    }
+
+    /* === Submenu Styling === */
+
+    .dropdown-submenu {
+
+      position: relative;
+
+    }
+
+    .dropdown-submenu .dropdown-menu {
+
+      top: 0;
+
+      left: 100%;
+
+      margin-left: 0.5rem;
+
+      margin-top: -1px;
+
+      border-top: 3px solid #168366;
+
+    }
+
+    /* Reduce font size in laptop view (992px – 1600px) */
+
+@media (min-width: 992px) and (max-width: 1400px) {
+
+  .navbar-nav .nav-link {
+
+    font-size: 13px !important;
+
+    margin: 0 4px;  /* reduce spacing also */
+
+  }
+
+  .dropdown-item {
+
+    font-size: 15px !important;
+
+  }
+
+  .eligibility-btn {
+
+    font-size: 13px !important;
+
+    padding: 8px 14px !important;
+
+  }
+
+}
+
+    /* === Desktop Hover Dropdown === */
+
+    @media (min-width: 992px) {
+
+      .navbar .dropdown:hover>.dropdown-menu {
+
+        display: block;
+
+      }
+
+      .dropdown-submenu:hover>.dropdown-menu {
+
+        display: block;
+
+      }
+
+      .dropdown-toggle .fa-plus,
+
+      .dropdown-toggle .fa-minus {
+
+        display: none !important;
+
+      }
+
+    }
+
+       @media (min-width: 992px) {
+
+    .hide{
+
+      display: none;
+
+    }
+
+    }
+
+    /* === Mobile Accordion Styling === */
+
+    @media (max-width: 991px) {
+
+      .navbar-collapse {
+
+        background-color: #fff;
+
+        border-top: 1px solid #e0e0e0;
+
+      }
+
+      .dropdown-toggle::after {
+
+        display: none;
+
+      }
+
+      .navbar-nav .nav-link > img[alt="dropdown"] {
+
+        display: none !important;
+
+      }
+
+      .navbar-nav .nav-item {
+
+        border-bottom: 1px solid #e0e0e0;
+
+      }
+
+      .dropdown-toggle {
+
+        display: flex;
+
+        justify-content: flex-start;
+
+        align-items: center;
+
+        gap: 12px;
+
+        width: 100%;
+
+        min-width: 0;
+
+        /* padding: 12px 10px; */
+
+      }
+
+      .dropdown-toggle .fa-plus,
+
+      .dropdown-toggle .fa-minus {
+
+        font-size: 14px;
+
+        color: #168366;
+
+      }
+
+      .dropdown-toggle .mobile-icon {
+
+        flex: 0 0 20px;
+
+        width: 20px;
+
+        margin-left: auto;
+
+        margin-right: 8px;
+
+      }
+
+      .dropdown-menu {
+
+        border: none;
+
+        box-shadow: none;
+
+        padding: 0;
+
+        overflow: hidden;
+
+        max-height: 0;
+
+        transition: max-height 0.4s ease; /* ✅ smooth animation */
+
+      }
+
+      .dropdown-menu.show {
+
+        max-height: 5000px;
+
+        transition: max-height 0.5s ease;
+
+      }
+
+      /* .eligibility-check-menu.show {
+
+        max-height: calc(100vh - 180px);
+
+        overflow-y: auto;
+
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+      } */
+
+        /* =====================================
+
+   MOBILE ELIGIBILITY CHECK FULL HEIGHT FIX
+
+===================================== */
+
+@media (max-width: 991px) {
+
+    /* Main mobile navbar */
+
+    #navbarNav {
+
+        max-height: calc(100vh - 70px);
+
+        overflow-y: auto !important;
+
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+    /* Eligibility dropdown */
+
+    .eligibility-check-menu {
+
+        display: block !important;
+
+        position: static !important;
+
+        float: none !important;
+
+        width: 100%;
+
+        max-height: 0;
+
+        overflow: hidden;
+
+        transition: max-height 0.5s ease;
+
+        border: none !important;
+
+        box-shadow: none !important;
+
+    }
+
+    /* When Eligibility Check is opened */
+
+    .eligibility-check-menu.show {
+
+        max-height: none !important;
+
+        height: auto !important;
+
+        overflow: visible !important;
+
+    }
+
+    /* Eligibility menu items */
+
+    .eligibility-check-menu .dropdown-item {
+
+        white-space: normal !important;
+
+        line-height: 1.5 !important;
+
+        padding: 14px 25px !important;
+
+        height: auto !important;
+
+    }
+
+}
+
+      .dropdown-item {
+
+        padding: 12px 25px;
+
+        border-bottom: 1px solid #e0e0e0;
+
+        background-color: #f8f9fa;
+
+      }
+
+      .dropdown-item:last-child {
+
+        border-bottom: none;
+
+      }
+
+      .dropdown-submenu>.dropdown-toggle {
+
+        font-weight: 600;
+
+      }
+
+      .dropdown-submenu .dropdown-menu {
+
+        background: #fff;
+
+        padding-left: 15px;
+
+      }
+
+      /* Align text and spacing cleanly */
+
+      .navbar-nav .nav-item a {
+
+        font-size: 15px;
+
+      }
+
+    }
+
+    .navbar-nav .nav-link:not(.eligibility-btn) {
+
+  color: #168366 !important;
+
+}
+
+/* Force white text with high specificity  test   */
+
+.navbar .navbar-nav .nav-link.eligibility-btn,
+
+.navbar .navbar-nav .nav-link.eligibility-btn:focus,
+
+.navbar .navbar-nav .nav-link.eligibility-btn:active,
+
+.navbar .navbar-nav .show > .nav-link.eligibility-btn {
+
+  background-color: #168366 !important;
+
+  color: #ffffff !important;
+
+  font-weight: bold !important;
+
+  border-radius: 12px !important;
+
+  padding: 10px 20px !important;
+
+  white-space: nowrap !important;
+
+}
+
+/* Hover */
+
+.navbar .navbar-nav .nav-link.eligibility-btn:hover {
+
+  background-color: #0d5d4d !important;
+
+  color: #ffffff !important;
+
+}
+
+/* Dropdown arrow white */
+
+.navbar .navbar-nav .nav-link.eligibility-btn::after {
+
+  border-top-color: #ffffff !important;
+
+}
+
+    /* === Eligibility Button === */
+
+    .eligibility-btn {
+
+      background-color: #168366;
+
+      color: #fff !important;
+
+      font-weight: bold;
+
+      border-radius: 12px;
+
+      padding: 10px 20px;
+
+      white-space: nowrap;
+
+    }
+
+    .eligibility-btn:hover {
+
+      background-color: #0d5d4d;
+
+    }
+
+/* Eligibility Check – mobile dropdown */
+
+@media (max-width: 991px) {
+
+   .eligibility-mobile-btn {
+
+    width: 100%;
+
+    background: #fff;
+
+    border: none;
+
+    padding: 15px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #168366;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    border-bottom: 1px solid #e0e0e0;
+
+  } 
+
+  .eligibility-mobile-btn .icon {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #168366;
+
+  }
+
+  .eligibility-mobile-btn.dropdown-toggle {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    min-width: 0;
+
+  }
+
+  .eligibility-mobile-btn.dropdown-toggle .mobile-icon {
+
+    flex: 0 0 20px;
+
+    width: 20px;
+
+    margin-left: auto;
+
+  }
+
+  .eligibility-submenu {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height .4s ease;
+
+    background: #f1f1f1;
+
+    padding: 0;
+
+    border: none;
+
+  }
+
+  .eligibility-submenu.show {
+
+    max-height: 500px;
+
+  }
+
+  .eligibility-submenu .dropdown-item {
+
+    padding: 12px 25px;
+
+    font-size: 15px;
+
+    border-bottom: 1px solid #ddd;
+
+    background: #f8f9fa;
+
+  }
+
+}
+
+.eligibility-btn {
+
+  background-color: #168366 !important;
+
+  color: #fff !important;
+
+  font-weight: 600;
+
+  border-radius: 12px;
+
+  padding: 10px 20px;
+
+}
+
+/* Keep white on hover */
+
+.eligibility-btn:hover {
+
+  background-color: #0d5d4d !important;
+
+  color: #fff !important;
+
+}
+
+/* Also force dropdown arrow white */
+
+.eligibility-btn::after {
+
+  border-top-color: #fff !important;
+
+}
+
+  /* Laptop / desktop header alignment only. */
+
+@media (min-width: 992px) {
+
+  .navbar-custom > .container-fluid {
+
+    flex-wrap: nowrap;
+
+  }
+
+  .navbar-custom .navbar-brand {
+
+    flex-shrink: 0;
+
+  }
+
+  .navbar-custom #navbarNav {
+
+    min-width: 0;
+
+  }
+
+  .navbar-custom #navbarNav > .navbar-nav {
+
+    flex-wrap: nowrap;
+
+    align-items: center;
+
+  }
+
+  .navbar-custom #navbarNav > .navbar-nav > .nav-item {
+
+    flex-shrink: 0;
+
+  }
+
+  .navbar-custom #navbarNav > .navbar-nav > .nav-item > a {
+
+    white-space: nowrap;
+
+  }
+
+  /* Keep the rightmost calculator dropdown inside the viewport. */
+
+  .navbar-custom #navbarNav > .navbar-nav > .nav-item:last-child > .dropdown-menu {
+
+    left: auto;
+
+    right: 0;
+
+  }
+
+}
+
+@media (min-width: 992px) and (max-width: 1799.98px) {
+
+  .navbar-custom {
+
+    padding-left: clamp(10px, 1.5vw, 24px);
+
+    padding-right: clamp(10px, 1.5vw, 24px);
+
+  }
+
+  .navbar-custom .navbar-brand {
+
+    margin-right: clamp(8px, 1vw, 16px);
+
+  }
+
+  .navbar-custom .navbar-brand img {
+
+    width: auto;
+
+    height: auto;
+
+    max-width: clamp(110px, 11vw, 176px);
+
+    max-height: 50px;
+
+  }
+
+  .navbar-custom #navbarNav > .navbar-nav > .nav-item > .nav-link {
+
+    font-size: clamp(12px, 0.95vw, 15px) !important;
+
+    margin-left: clamp(1px, 0.25vw, 4px);
+
+    margin-right: clamp(1px, 0.25vw, 4px);
+
+    padding-left: clamp(3px, 0.4vw, 6px);
+
+    padding-right: clamp(3px, 0.4vw, 6px);
+
+  }
+
+  /* Includes Pay Now, which does not have the nav-link class. */
+
+  .navbar-custom #navbarNav > .navbar-nav > .nav-item > .eligibility-btn {
+
+    font-size: clamp(12px, 0.95vw, 15px) !important;
+
+    padding: 10px clamp(8px, 0.85vw, 14px) !important;
+
+    white-space: nowrap !important;
+
+  }
+
+}
+
+/* Keep logo, navigation and action buttons on the same vertical center. */
+
+@media (min-width: 992px) {
+
+  .navbar.navbar-custom > .container-fluid {
+
+    display: flex;
+
+    align-items: center !important;
+
+  }
+
+  .navbar.navbar-custom .navbar-brand {
+
+    display: flex;
+
+    align-items: center;
+
+    align-self: center;
+
+    margin-top: 0 !important;
+
+    margin-bottom: 0 !important;
+
+    padding-top: 0;
+
+    padding-bottom: 0;
+
+  }
+
+  .navbar.navbar-custom .navbar-brand img {
+
+    display: block;
+
+  }
+
+  .navbar.navbar-custom #navbarNav {
+
+    align-items: center !important;
+
+    align-self: center;
+
+    margin-top: 0 !important;
+
+    margin-bottom: 0 !important;
+
+    padding-top: 0 !important;
+
+    padding-bottom: 0 !important;
+
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav {
+
+    display: flex;
+
+    align-items: center !important;
+
+    margin-top: 0 !important;
+
+    margin-bottom: 0 !important;
+
+    padding-top: 0 !important;
+
+    padding-bottom: 0 !important;
+
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item {
+
+    display: flex;
+
+    align-items: center;
+
+    margin-top: 0 !important;
+
+    margin-bottom: 0 !important;
+
+    padding-top: 0 !important;
+
+    padding-bottom: 0 !important;
+
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item > .nav-link:not(.d-lg-none),
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item > .eligibility-btn {
+
+    display: flex !important;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 0 !important;
+
+    margin-bottom: 0 !important;
+
+    line-height: 1.6;
+
+  }
+
+}
+
+/* Compact spacing for small laptop viewports; keep labels on one line. */
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+
+  .navbar.navbar-custom { padding-left: 8px; padding-right: 8px; }
+
+  .navbar.navbar-custom > .container-fluid { padding-left: 8px; padding-right: 8px; }
+
+  .navbar.navbar-custom .navbar-brand { margin-right: 6px; }
+
+  .navbar.navbar-custom .navbar-brand img { max-width: 100px; }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item > .nav-link {
+
+    font-size: 11.5px !important;
+
+    margin-left: 0;
+
+    margin-right: 0;
+
+    padding-left: 1px;
+
+    padding-right: 1px;
+
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item > .eligibility-btn {
+
+    font-size: 11.5px !important;
+
+    padding-left: 6px !important;
+
+    padding-right: 6px !important;
+
+  }
+
+}
+
+
+/* Desktop dropdown positioning: anchor below the link, not its flex center. */
+@media (min-width: 992px) {
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item.dropdown {
+    position: relative;
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item.dropdown > .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    bottom: auto;
+    left: 0;
+    right: auto;
+    transform: none;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .navbar.navbar-custom #navbarNav > .navbar-nav > .nav-item:last-child > .dropdown-menu {
+    left: auto;
+    right: 0;
+  }
+
+  /* A continuous hover area between each parent row and its submenu. */
+  .navbar.navbar-custom #navbarNav .dropdown-submenu > .dropdown-menu {
+    position: absolute;
+    top: 0;
+    bottom: auto;
+    left: 100%;
+    right: auto;
+    transform: none;
+    margin: 0;
+  }
+}
+
+</style>  
+
+<!-- collect chat  -->
+
+  <script>
+
+  (function (w, d) {
+
+    if (w.__collectChatLoaded) return; // duplicate load avoid pannum
+
+    w.__collectChatLoaded = true;
+
+    w.CollectId = "6997431f57a3a20a1dd008e1";
+
+    var s = d.createElement("script");
+
+    s.type = "text/javascript";
+
+    s.async = true;
+
+    s.src = "https://collectcdn.com/launcher.js"; 
+
+    (d.head || d.getElementsByTagName("head")[0]).appendChild(s);
+
+  })(window, document);
+
+</script>
+
+<!-- collect chat  -->
+
+<!-- collect chat  --
+
+  <script>(function(w, d) { w.CollectId = "66beed21c7ec3e97bdf84f32"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script>
+
+**<!--** collect chat  -->
+
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="">
+
+        <img src="./new-home-img/logo-2026.webp" alt="Green Tree Logo">
+
+      </a>
+
+      <button class="navbar-toggler border-0 menu-toggle" type="button">
+
+        <i class="fa-solid fa-bars"></i>
+
+      </button>
+
+      <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarNav">
+
+        <ul class="navbar-nav mx-auto">
+
+          <!-- <li class="nav-item"><a class="nav-link" href="https://www.greentreeimmigration.com/">Home</a></li> -->
+
+          <!-- Immigration Menu -->
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Immigration <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+              <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="canada-immigration.php">Canada</a>
+
+                <ul class="dropdown-menu">
+
+                  <li><a class="dropdown-item" href="express-entry-canada.php">Canada Express Entry</a></li> 
+
+                  <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/proof-of-funds.php"> Proof of Funds</a></li>
+
+                  <li><a class="dropdown-item" href="ircc-registered-consultants.php">IRCC-Registered Immigration Consultant</a></li>
+
+                  <li class="dropdown-submenu">
+
+                    <a class="dropdown-item dropdown-toggle" href="provincial-nominee-program.php">Provincial Nominee Program (PNP)</a>
+
+                    <ul class="dropdown-menu">
+
+                        <li><a class="dropdown-item" href="ontario-immigration-nominee-program.php">Ontario Immigrant Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="manitoba-provincial-nominee-program.php">Manitoba Provincial Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="saskatchewan-immigrant-nominee-program.php">Saskatchewan Immigrant Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="nova-scotia-nominee-program.php">Nova Scotia Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="new-brunswick-nominee-program.php">New Brunswick Provincial Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="alberta-immigrant-nominee-program.php">Alberta Immigrant Nominee Program: </a></li>
+
+                        <li><a class="dropdown-item" href="prince-edward-island-provincial-nominee-program.php">Prince Edward Island Provincial Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="quebec-skilled-worker-program.php">Quebec Skilled Worker Program</a></li>
+
+                        <li><a class="dropdown-item" href="british-columbia-provincial-nominee-program.php">British Columbia Provincial Nominee Program</a></li>
+
+                        <li><a class="dropdown-item" href="newfoundland-labrador-provincial-nominee-program.php">Newfoundland & Labrador Provincial Nominee Program</a></li>
+
+                    </ul>
+
+                  </li>                                                           
+
+                  <li><a class="dropdown-item" href="canada-noc-system-teer.php">NOC Replaces TEER</a></li>
+
+                  <li><a class="dropdown-item" href="crs.php">Comprehensive Ranking System (CRS)</a></li>
+
+                  <li><a class="dropdown-item" href="language-requirements.php">Language Tests for Canada</a></li>
+
+                  <li><a class="dropdown-item" href="parents-visa.php">Parents & Grandparents Sponsorship</a></li>
+
+                  <li><a class="dropdown-item" href="self-employeed.php">Self Employed Visa Program</a></li>
+
+                </ul>
+
+              </li>
+
+                    <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="https://www.greentreeimmigration.com/australia-immigration.php">Australia</a>
+
+                <ul class="dropdown-menu">
+
+                   <li><a class="dropdown-item" href="skilled-independent-visa-189.php">Skilled Independent Visa (SUBCLASS 189)</a></li>
+
+                  <li><a class="dropdown-item" href="skilled-nominated-visa-190.php">Skilled Nominated Visa (SUBCLASS 190)</a></li>
+
+                  <li><a class="dropdown-item" href="skilled-sponsorship-visa.php">Skilled Sponsorship Visa (SUBCLASS 491)</a></li>
+
+                  <li><a class="dropdown-item" href="temporary-graduate-visa-subclass-485.php">Temporary Graduate Visa (SUBCLASS 485)</a></li>                                              
+
+                </ul>
+
+              </li>
+
+           <li><a class="dropdown-item" href="newzeland-immigration.php">New Zealand</a></li>
+
+              <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/germany-opportunity-card.php">Germany Opportunity-card </a></li>
+
+            </ul>
+
+          </li>                                                              
+
+           <!-- Study Menu -->
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Study Visa <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+              <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="https://www.greentreeimmigration.com/canada-study-visa.php">Canada</a>
+
+                <ul class="dropdown-menu">
+
+                    <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/canada-study-visa-consultant.php">Study Visa </a></li>
+
+                  <li><a class="dropdown-item" href="canada-study-visa-rejections.php">Canada study visa rejections</a></li>
+
+                  <li><a class="dropdown-item" href="post-graduate-work-permit.php">Post graduate work permit</a></li>
+
+                </ul>
+
+              </li>
+
+              <li><a class="dropdown-item" href="australia-study-visa.php">Australia</a></li>
+
+              <li><a class="dropdown-item" href="new-zealand-study-visa.php">New Zealand </a></li>
+
+              <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/uk-study-visa.php">UK </a></li>
+
+              <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/ireland-study-visa.php"> Ireland </a></li>
+
+            </ul>
+
+          </li>            
+
+           <!-- Spousal Sponsorship -->
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Spousal Sponsorship <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+              <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="#">Canada</a>
+
+                <ul class="dropdown-menu">
+
+                  <li><a class="dropdown-item" href="canada-dependent-visa.php">Canada Dependent Visa </a></li>
+
+                  <li><a class="dropdown-item" href="canada-spousal-visa.php">SOWP Visa</a></li>
+
+                </ul>
+
+              </li>
+
+                    <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="#">Australia</a>
+
+                <ul class="dropdown-menu">
+
+           <li><a class="dropdown-item" href="australia-dependent-visa.php">Sub class 309 & 100 visa </a></li>
+
+                </ul>
+
+              </li>
+
+           <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="https://www.greentreeimmigration.com/newzeland-immigration.php">New Zealand</a>
+
+                <ul class="dropdown-menu">
+
+                 <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/new-zealand-partner-visitor-visa.php">Partner of a New Zealander Visitor Visa</a></li>
+
+                  <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/new-zealand-partner-resident-visa.php">Partner of a New Zealander Resident Visa</a></li>
+
+                  <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/new-zealand-partner-worker-workvisa.php">New Zealand Partner of a Worker Work Visa</a></li>
+
+                  <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/new-zealand-partner-student-workvisa.php ">New Zealand Partner of a Student Work Visa</a></li>
+
+                </ul>
+
+              </li>
+
+            <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/uk-skilled-worker-dependent-visa.php">UK Dependent Visa</a></li>
+
+              <li><a class="dropdown-item" href="ush4visa.php">US H-4</a></li>
+
+            </ul>
+
+          </li>            
+
+                 <!-- Visitor Visa -->
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Visitor Visa <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+              <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="#">Canada</a>
+
+                <ul class="dropdown-menu">
+
+                  <li><a class="dropdown-item" href="canada-visitor-visa.php">Canada Visitor Visa </a></li>
+
+                  <li><a class="dropdown-item" href="canada-super-visa.php">Canada Super Visa</a></li>
+
+                  <li><a class="dropdown-item" href="canada-prtd-visa.php">PRTD Visa</a></li>
+
+                  <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/canada-digital-nomad-visa.php">Digital-nomad-visa</a></li>
+
+                </ul>
+
+              </li>
+
+                    <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="#">Australia</a>
+
+                <ul class="dropdown-menu">
+
+                  <li><a class="dropdown-item" href="australia-visitor-visa.php">Australia Visitor Visa </a></li>
+
+                    <li><a class="dropdown-item" href="resident-return-visa-subclasses-155-157.php"> Resident Return Visa </a></li>
+
+                    <li><a class="dropdown-item" href="sponsored-parent-temporary-visa-subclass-870.php"> Sponsored Parent Temporary visa </a></li>
+
+                </ul>
+
+              </li>
+
+                  <li class="dropdown-submenu">
+
+                <a class="dropdown-item dropdown-toggle" href="#">New Zealand</a>
+
+                <ul class="dropdown-menu">
+
+                       <li><a class="dropdown-item" href="new-zealand-marriage-visitor-visa.php">Culturally Arranged Marriage Visitor Visa</a></li>
+
+                  <li><a class="dropdown-item" href="new-zealand-general-visitor-visa.php"> General Visitor Visa</a></li>
+
+                </ul>
+
+              </li>
+
+       <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/uk-visitor-visa.php">UK</a></li>
+
+       <li><a class="dropdown-item" href="us-visitor-visa.php">USA</a></li>
+
+            </ul>
+
+          </li> 
+
+                 <!-- Update -->
+
+          <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Updates <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+    <li><a class="dropdown-item" href="express-entry-draw.php">Canada Draw Updates</a></li>
+
+      <li><a class="dropdown-item" href="https://www.greentreeimmigration.com/blog/">Blogs</a></li>
+
+            </ul>
+
+          </li> 
+
+                 <!-- Update -->
+
+          <!-- <li class="nav-item dropdown">
+
+            <a class="nav-link dropdown-toggle" href="#">Our Branches <img src="./new-home-img/dropdown.webp" alt="dropdown" width="10" height="6"></a>
+
+            <ul class="dropdown-menu">
+
+    <li><a class="dropdown-item" href="tel:+91-9884699919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Chennai Anna Salai</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-9962959919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Chennai Anna Nagar</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-9047799919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Coimbatore</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-8608399919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Trichy</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-9884809919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Bangalore</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-8142099919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Hydebrabad</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-9962729919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Kochi</a></li>
+
+    <li><a class="dropdown-item" href="tel:+91-8428499919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Trivandrum</a></li>
+
+       <li><a class="dropdown-item" href="tel:+91-8940899919"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Pune</a></li>
+
+          <li><a class="dropdown-item" href="tel:+1-4166699711"><i class="fa fa-phone" style="color: #168366; font-size: 18px;"></i> Canada</a></li>
+
+            </ul>
+
+          </li>  -->
+
+          <!-- <li class="nav-item"><a class="nav-link" href="https://www.greentreeimmigration.com/franchise.php">Franchise</a></li> -->
+
+          <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
+
+          <li class="nav-item"><a class="nav-link" href="contact.php">Contact Us</a></li>
+
+          <li class="nav-item dropdown eligibility-wrapper">
+
+  <!-- Desktop Button -->
+
+  <a href="https://rzp.io/rzp/greentreeimmigration" class="btn eligibility-btn d-none d-lg-block">
+
+    Pay Now 
+
+  </a>
+
+  <!-- Mobile Button Dropdown -->
+
+  <a href="https://rzp.io/rzp/greentreeimmigration"><button class=" eligibility-mobile-btn d-lg-none">
+
+    Pay Now
+
+  </button></a>
+
+  </li> &nbsp
+
+<!-- Eligibility Check Button (Desktop) + Dropdown (Mobile) -->
+
+<li class="nav-item dropdown">
+
+    <a class="nav-link dropdown-toggle eligibility-btn d-none d-lg-block" href="#">
+
+        Eligibility Check
+
+    </a>
+
+    <a class="nav-link dropdown-toggle eligibility-mobile-btn d-lg-none" href="#">
+
+        Eligibility Check
+
+    </a>
+
+    <ul class="dropdown-menu eligibility-check-menu">
+
+        <li>
+
+            <a class="dropdown-item" href="australia-pr-points-calculator.php">
+
+                Australia PR Eligibility Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="canada-pr-points-calculator.php">
+
+                Canada PR Eligibility Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="canada-crs-points-calculator.php">
+
+                Canada CRS Score Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="canada-pr-costs.php">
+
+                Canada PR Cost Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="germany-opportunity-card-points-calculator.php">
+
+                Germany Opportunity Card Points Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="newzeland-pr-points-calculator.php">
+
+                New Zealand PR Eligibility Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="australia-pr-visa-fees.php">
+
+                Australia PR Cost Calculator
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="pnp-finder.php">
+
+                Canada PNP Finder
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="dropdown-item" href="alberta-pnp-points-calculator.php">
+
+                Alberta PNP Points Calculator
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- Bootstrap JS -->
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+  <!-- <script>(function(w, d) { w.CollectId = "6997431f57a3a20a1dd008e1"; var h = d.head || d.getElementsByTagName("head")[0]; var s = d.createElement("script"); s.setAttribute("type", "text/javascript"); s.async=true; s.setAttribute("src", "https://collectcdn.com/launcher.js"); h.appendChild(s); })(window, document);</script> -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const menuToggle = document.querySelector(".menu-toggle");
+
+  const navbarNav = document.getElementById("navbarNav");
+
+  // Mobile main menu toggle
+
+  menuToggle.addEventListener("click", function () {
+
+    navbarNav.classList.toggle("show");
+
+    this.querySelector("i").classList.toggle("fa-bars");
+
+    this.querySelector("i").classList.toggle("fa-xmark");
+
+  });
+
+  // Mobile dropdown accordion
+
+  function setupMobileDropdowns() {
+
+    const isMobile = window.innerWidth < 992;
+
+    const dropdownToggles = document.querySelectorAll('.navbar-nav .dropdown-toggle');
+
+    dropdownToggles.forEach(toggle => {
+
+      if (toggle.mobileDropdownHandler) {
+
+        toggle.removeEventListener("click", toggle.mobileDropdownHandler);
+
+        toggle.mobileDropdownHandler = null;
+
+      }
+
+      // Remove old icons first (prevents duplicates on resize)
+
+      const oldIcon = toggle.querySelector(".mobile-icon");
+
+      if (oldIcon) oldIcon.remove();
+
+      if (isMobile) {
+
+        // Add + icon
+
+        const icon = document.createElement("i");
+
+        icon.className = "fa-solid fa-plus ms-auto mobile-icon";
+
+        toggle.appendChild(icon);
+
+        const mobileDropdownHandler = function (e) {
+
+          const submenu = this.nextElementSibling;
+
+          if (submenu && submenu.classList.contains("dropdown-menu")) {
+
+            e.preventDefault();
+
+            submenu.classList.toggle("show");
+
+            const currentIcon = this.querySelector(".mobile-icon");
+
+            currentIcon.classList.toggle("fa-plus");
+
+            currentIcon.classList.toggle("fa-minus");
+
+          }
+
+        };
+
+        toggle.mobileDropdownHandler = mobileDropdownHandler;
+
+        toggle.addEventListener("click", mobileDropdownHandler);
+
+      }
+
+    });
+
+  }
+
+  setupMobileDropdowns();
+
+  window.addEventListener("resize", setupMobileDropdowns);
+
+});
+
+</script>
+
+</html>
+
+    <div class="world">
+        <div class="plane-box">
+            <div class="impact-glow"></div>
+            <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZhcXk5bmZ1Ynd5ZjEwZzZ6OHZ1eHpxYmR6Znl0dHB5eXN5bmZ6ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/lo9Mq772o08aA/giphy.gif" alt="Crash Visual">
+        </div>
+
+        <div class="card">
+            <div class="code">404</div>
+            <h1>Crash Landing</h1>
+            <p>Our pilot lost the radar signal. The page you are looking for has been destroyed or moved to another coordinates.</p>
+            
+            <a href="/" class="btn">Return to Home Page</a>
+        </div>
+    </div>
+ 
+
+</body>
+</html>

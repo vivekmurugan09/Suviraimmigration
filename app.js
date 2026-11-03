@@ -1189,7 +1189,7 @@ function toggleFaqAccordion(headerEl) {
 
 // Global FormSubmit helper with automatic fallback & Thank-You redirect
 function suviraThankYouUrl() {
-    return window.location.origin + '/Thank-you/';
+    return window.location.origin + '/thankyou';
 }
 
 function suviraStandardPostFallback(formData) {

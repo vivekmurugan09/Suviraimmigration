@@ -1,0 +1,1127 @@
+/* ==========================================================================
+   SUVIRA IMMIGRATION — CANADA PR / EXPRESS ENTRY DEDICATED STYLESHEET
+   Design Spec: High-Converting, Luxury Cosmic & Maple Theme, Fully Responsive
+   ========================================================================== */
+
+:root {
+    --canada-red: #F87034;
+    --canada-red-glow: rgba(248, 112, 52, 0.45);
+    --gold-accent: #F59E0B;
+    --gold-light: #FBBF24;
+    --navy-deep: #031169;
+    --navy-card: rgba(10, 24, 66, 0.88);
+    --navy-border: rgba(255, 255, 255, 0.14);
+    --emerald: #F87034;
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION
+   -------------------------------------------------------------------------- */
+.canada-hero-section {
+    position: relative;
+    background-color: #031169;
+    background-image: 
+        linear-gradient(135deg, rgba(3, 17, 105, 0.90) 0%, rgba(7, 36, 168, 0.80) 45%, rgba(6, 17, 44, 0.95) 100%),
+        url('../../images/canada_bg.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    padding: 70px 0 60px 0;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+.canada-hero-container {
+    display: grid;
+    grid-template-columns: 1.25fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .canada-hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* Badge */
+.canada-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(248, 112, 52, 0.18);
+    border: 1px solid rgba(248, 112, 52, 0.6);
+    border-radius: 9999px;
+    padding: 6px 18px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.canada-hero-badge i {
+    color: #FFB800;
+    font-size: 14px;
+}
+
+.canada-hero-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #FDE68A;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* Title */
+.canada-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(32px, 3.8vw, 50px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+}
+
+.canada-red-gradient {
+    background: linear-gradient(90deg, #FFB800 0%, #F87034 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.canada-hero-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.65;
+    color: #CBD5E1;
+    margin-bottom: 24px;
+    max-width: 620px;
+}
+
+/* Value Checks */
+.canada-hero-checks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+@media (max-width: 576px) {
+    .canada-hero-checks {
+        grid-template-columns: 1fr;
+    }
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #E2E8F0;
+}
+
+.check-item i {
+    color: #F87034;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+/* CTA Row */
+.canada-hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-canada-primary {
+    background: linear-gradient(90deg, #F87034 0%, #EA580C 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 9999px;
+    padding: 14px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 24px var(--canada-red-glow);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.btn-canada-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(216, 35, 42, 0.6);
+    color: #FFFFFF;
+}
+
+.btn-canada-whatsapp {
+    background: rgba(37, 211, 102, 0.12);
+    border: 1.5px solid #25D366;
+    color: #25D366;
+    border-radius: 9999px;
+    padding: 13px 26px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    transition: all 0.25s ease;
+}
+
+.btn-canada-whatsapp:hover {
+    background: #25D366;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+}
+
+/* Lead Form Card (Right) */
+.canada-lead-card {
+    background: rgba(10, 24, 66, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.lead-card-header {
+    background: linear-gradient(90deg, rgba(216, 35, 42, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lead-header-flag {
+    width: 38px;
+    height: 26px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.lead-card-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.lead-card-header p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    color: #FCA5A5;
+    margin: 2px 0 0 0;
+}
+
+.canada-lead-form {
+    padding: 22px 24px;
+}
+
+.lead-field-group {
+    margin-bottom: 12px;
+}
+
+.lead-field-group input,
+.lead-field-group select,
+.lead-field-group textarea {
+    width: 100%;
+    padding: 11px 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    outline: none;
+    display: block;
+}
+
+.lead-field-group input:focus,
+.lead-field-group select:focus,
+.lead-field-group textarea:focus {
+    border-color: #EF4444;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.lead-field-group select option {
+    background: #0A1842;
+    color: #FFFFFF;
+}
+
+.btn-form-submit {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(90deg, #F97316 0%, #EA580C 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.55);
+}
+
+.form-privacy-note {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    color: #94A3B8;
+    text-align: center;
+    margin: 10px 0 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. KEY METRICS RIBBON
+   -------------------------------------------------------------------------- */
+.canada-metrics-section {
+    background: #091838;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 24px 0;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 991px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.metric-card {
+    background: rgba(14, 30, 78, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: center;
+    transition: all 0.25s ease;
+}
+
+.metric-card:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.metric-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 2.5vw, 34px);
+    font-weight: 800;
+    color: #FBBF24;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.metric-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #E2E8F0;
+    margin-bottom: 2px;
+}
+
+.metric-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   3. SECTION SHARED STYLING
+   -------------------------------------------------------------------------- */
+.section-header-center {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 45px auto;
+}
+
+.section-pill-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: rgba(216, 35, 42, 0.12);
+    border: 1px solid rgba(216, 35, 42, 0.35);
+    border-radius: 9999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #DC2626;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    color: #0A1842;
+    line-height: 1.25;
+    margin: 0 0 12px 0;
+}
+
+.section-title.light-text {
+    color: #FFFFFF;
+}
+
+.section-subtitle {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.section-subtitle.light-text {
+    color: #94A3B8;
+}
+
+/* --------------------------------------------------------------------------
+   4. FOUR PROGRAM PATHWAYS GRID
+   -------------------------------------------------------------------------- */
+.canada-programs-section {
+    padding: 80px 0;
+    background: #F8FAFC;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.program-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.program-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #D8232A, #F59E0B);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.09);
+    border-color: #CBD5E1;
+}
+
+.program-card:hover::before {
+    opacity: 1;
+}
+
+.program-icon-box {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: rgba(216, 35, 42, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #D8232A;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.program-badge {
+    align-self: flex-start;
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: #EFF6FF;
+    color: #2563EB;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.program-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 10px 0;
+}
+
+.program-card p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0 0 18px 0;
+    flex-grow: 1;
+}
+
+.program-perks {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    border-top: 1px solid #F1F5F9;
+    padding-top: 14px;
+}
+
+.program-perks li {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.program-perks li i {
+    color: #10B981;
+    font-size: 13px;
+}
+
+.btn-card-apply {
+    background: transparent;
+    border: 1.5px solid #E2E8F0;
+    color: #0F172A;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-card-apply:hover {
+    background: #0A1842;
+    border-color: #0A1842;
+    color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   5. CRS SCORE POINTS GRID & CALCULATOR
+   -------------------------------------------------------------------------- */
+.canada-crs-section {
+    padding: 85px 0;
+    background: #FFFFFF;
+}
+
+.crs-content-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    align-items: start;
+}
+
+@media (max-width: 991px) {
+    .crs-content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.crs-factors-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.crs-factors-table th {
+    background: #0A1842;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 14px 18px;
+    text-align: left;
+}
+
+.crs-factors-table td {
+    padding: 14px 18px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    color: #334155;
+    border-bottom: 1px solid #F1F5F9;
+    vertical-align: middle;
+}
+
+.crs-factors-table tr:last-child td {
+    border-bottom: none;
+}
+
+.crs-factors-table tr:nth-child(even) td {
+    background: #F8FAFC;
+}
+
+.crs-points-pill {
+    display: inline-block;
+    padding: 3px 9px;
+    background: #FEF3C7;
+    color: #B45309;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.crs-pnp-highlight {
+    background: #FEE2E2 !important;
+    color: #DC2626 !important;
+    font-weight: 800 !important;
+}
+
+/* Quick CRS Checker Interactive Card */
+.crs-estimator-card {
+    background: linear-gradient(145deg, #0A1842 0%, #0F2A66 100%);
+    border-radius: 20px;
+    padding: 32px 28px;
+    color: #FFFFFF;
+    box-shadow: 0 16px 40px rgba(10, 24, 66, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.crs-estimator-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 8px 0;
+}
+
+.crs-estimator-card p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    line-height: 1.5;
+    margin: 0 0 20px 0;
+}
+
+.estimator-row {
+    margin-bottom: 14px;
+}
+
+.estimator-row label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: #CBD5E1;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.estimator-row select {
+    width: 100%;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+.estimator-row select option {
+    background: #0A1842;
+    color: #FFFFFF;
+}
+
+.btn-crs-calc {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(90deg, #F59E0B 0%, #D97706 100%);
+    color: #0A1842;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.25s ease;
+}
+
+.btn-crs-calc:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   6. PROVINCIAL NOMINEE PROGRAM (PNP) SHOWCASE
+   -------------------------------------------------------------------------- */
+.canada-pnp-section {
+    padding: 85px 0;
+    background: #06112C;
+    color: #FFFFFF;
+}
+
+.pnp-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.pnp-card {
+    background: rgba(10, 24, 66, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 24px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+}
+
+.pnp-card:hover {
+    border-color: rgba(245, 158, 11, 0.5);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.pnp-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.pnp-prov-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(216, 35, 42, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #EF4444;
+}
+
+.pnp-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+}
+
+.pnp-header span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    color: #FBBF24;
+    font-weight: 600;
+}
+
+.pnp-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    color: #94A3B8;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+}
+
+.pnp-points-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: rgba(16, 185, 129, 0.16);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #34D399;
+}
+
+/* --------------------------------------------------------------------------
+   7. STEP-BY-STEP CANADA PR PROCESS
+   -------------------------------------------------------------------------- */
+.canada-process-section {
+    padding: 85px 0;
+    background: #F8FAFC;
+}
+
+.process-pipeline {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    position: relative;
+}
+
+.pipeline-step {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 24px 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    position: relative;
+    transition: all 0.25s ease;
+}
+
+.pipeline-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    border-color: #CBD5E1;
+}
+
+.step-num-bubble {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #0A1842;
+    color: #FBBF24;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px auto;
+    box-shadow: 0 4px 10px rgba(10, 24, 66, 0.25);
+}
+
+.pipeline-step h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 8px 0;
+}
+
+.pipeline-step p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. DOCUMENTS CHECKLIST GRID
+   -------------------------------------------------------------------------- */
+.canada-docs-section {
+    padding: 80px 0;
+    background: #FFFFFF;
+}
+
+.docs-checklist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.doc-check-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.doc-check-card:hover {
+    border-color: #94A3B8;
+    background: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.doc-check-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(216, 35, 42, 0.1);
+    color: #D8232A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.doc-check-content h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 4px 0;
+}
+
+.doc-check-content p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   9. TESTIMONIAL & PROOF
+   -------------------------------------------------------------------------- */
+.canada-story-section {
+    padding: 70px 0;
+    background: #F8FAFC;
+}
+
+.story-card-wrapper {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 20px;
+    padding: 36px 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.story-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.story-avatar {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.story-header h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 3px 0;
+}
+
+.story-header p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    color: #64748B;
+    margin: 0 0 6px 0;
+}
+
+.story-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag-red {
+    background: #FEF2F2;
+    color: #DC2626;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+}
+
+.tag-green {
+    background: #F0FDF4;
+    color: #16A34A;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 6px;
+}
+
+.story-quote {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: #334155;
+    line-height: 1.7;
+    font-style: italic;
+    margin: 0 0 16px 0;
+}
+
+.story-stars {
+    color: #F59E0B;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.story-stars span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    font-style: normal;
+    margin-left: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   10. INTERACTIVE FAQS
+   -------------------------------------------------------------------------- */
+.canada-faq-section {
+    padding: 85px 0;
+    background: #FFFFFF;
+}
+
+.faq-container-narrow {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.faq-accordion-item {
+    border-bottom: 1px solid #E2E8F0;
+    padding: 20px 0;
+}
+
+.faq-question-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0A1842;
+    cursor: pointer;
+    padding: 0;
+    gap: 16px;
+}
+
+.faq-question-btn i {
+    color: #D8232A;
+    font-size: 14px;
+    transition: transform 0.3s ease;
+}
+
+.faq-question-btn.active i {
+    transform: rotate(180deg);
+}
+
+.faq-answer-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+
+.faq-answer-panel.show {
+    max-height: 300px;
+}
+
+.faq-answer-panel p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    color: #64748B;
+    line-height: 1.7;
+    margin: 14px 0 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   11. BOTTOM CALL TO ACTION
+   -------------------------------------------------------------------------- */
+.canada-closing-cta {
+    background: linear-gradient(135deg, #0A1842 0%, #06112C 100%);
+    padding: 75px 0;
+    color: #FFFFFF;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.closing-cta-card {
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.closing-cta-card h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 3.2vw, 40px);
+    font-weight: 800;
+    color: #FFFFFF;
+    margin: 0 0 12px 0;
+}
+
+.closing-cta-card p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    color: #CBD5E1;
+    margin: 0 0 28px 0;
+}
+
+.closing-cta-btns {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}

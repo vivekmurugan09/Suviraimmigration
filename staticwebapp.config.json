@@ -1,0 +1,32 @@
+{
+  "routes": [
+    {
+      "route": "/thankyou",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/thankyou/*",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/Thank-you",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/Thank-you/*",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/ai-preparation",
+      "rewrite": "/ai-preparation/index.html"
+    },
+    {
+      "route": "/free-eligibility-check",
+      "rewrite": "/free-eligibility-check/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": ["/images/*", "/assets/*", "/*.css", "/*.js"]
+  }
+}
