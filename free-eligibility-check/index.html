@@ -1170,7 +1170,7 @@
 
             // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
             try {
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
+                fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -1249,7 +1249,7 @@ ${no}`
                 formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
+                fetch("https://api.web3forms.com/submit", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData

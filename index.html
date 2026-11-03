@@ -961,7 +961,7 @@
 <button aria-label="Close" onclick="window.closeLeadModal ? window.closeLeadModal() : document.getElementById('leadModal').style.display='none'" onmouseout="this.style.color='#94a3b8'" onmouseover="this.style.color='#fff'" style="background:none;border:none;color:#94a3b8;font-size:26px;cursor:pointer;padding:0;line-height:1;margin-top:-2px;transition:color 0.2s;">×</button>
 </div>
 <!-- Form Body -->
-<form action="https://formsubmit.io/send/reachus@suviraimmigration.com" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
+<form action="https://api.web3forms.com/submit" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
 <input name="_subject" type="hidden" value="New Lead from Suvira Eligibility Check"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="name" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Your full name" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="text"/>
@@ -1260,9 +1260,9 @@ fbq('track', 'PageView');
     function submitViaStandardFormPost(payload) {
         const tempForm = document.createElement('form');
         tempForm.method = 'POST';
-        tempForm.action = 'https://formsubmit.io/send/reachus@suviraimmigration.com';
+        tempForm.action = 'https://api.web3forms.com/submit';
         tempForm.style.display = 'none';
-        const fields = Object.assign({}, payload, {
+        const fields = Object.assign({}, payload, { access_key: "db7df984-770b-445d-8c2a-ad8a45278245", from_name: "Suvira Immigration Website",
             _captcha: 'false',
             _next: getThankYouUrl()
         });
@@ -1293,7 +1293,7 @@ fbq('track', 'PageView');
         payload.page_url = window.location.href;
         payload._next = getThankYouUrl();
 
-        fetch('https://formsubmit.io/send/reachus@suviraimmigration.com', {
+        fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -1,7 +1,9 @@
 (function () {
-  var FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+  var WEB3FORMS_KEY = "db7df984-770b-445d-8c2a-ad8a45278245";
+  var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+  var FORM_ENDPOINT = "https://api.web3forms.com/submit";
   var BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
-  var DIRECT_FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+  var FORMSUBMIT_IO_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
   var THANK_YOU_PATH = "/Thank-you/";
   var probe = null;
 
@@ -118,6 +120,20 @@
       form.removeAttribute("onsubmit");
       form.action = FORM_ENDPOINT;
       form.method = "post";
+      if (!form.querySelector('input[name="access_key"]')) {
+        var ak = document.createElement("input");
+        ak.type = "hidden";
+        ak.name = "access_key";
+        ak.value = WEB3FORMS_KEY;
+        form.appendChild(ak);
+      }
+      if (!form.querySelector('input[name="from_name"]')) {
+        var fn = document.createElement("input");
+        fn.type = "hidden";
+        fn.name = "from_name";
+        fn.value = "Suvira Immigration Website";
+        form.appendChild(fn);
+      }
       form.querySelectorAll("input,select,textarea").forEach(function (field) {
         if (!field.name && field.id) field.name = field.id;
         if (!field.getAttribute("aria-label") && (!field.id || !form.querySelector('label[for="' + field.id + '"]'))) {
@@ -173,16 +189,39 @@
       } catch (err) {}
 
       var data = new FormData(form);
-      data.set("_subject", String(data.get("_subject") || ("Suvira website enquiry — " + document.title)));
-      data.set("_captcha", "false");
-      data.set("_next", thankYouUrl);
-      data.set("source_page", window.location.href);
+      var nameVal = data.get("Full Name") || data.get("name") || data.get("full_name") || data.get("cName") || "";
+      var phoneVal = data.get("Phone / WhatsApp") || data.get("phone") || data.get("WhatsApp") || data.get("cPhone") || "";
+      var emailVal = data.get("Email Address") || data.get("email") || data.get("cEmail") || "";
+      var serviceVal = data.get("Service Required") || data.get("service") || data.get("visa_type") || "Consultation Request";
+      var modeVal = data.get("Consultation Mode") || data.get("consultation_mode") || "Virtual Video Consultation";
+      var pageUrl = window.location.href;
+      var dynamicSubject = "New Inquiry (" + serviceVal + "): " + (nameVal || "Website Lead");
+
+      // Standardized Web3Forms payload matching reachus@suviraimmigration.com exact inbox format
+      var w3Data = new FormData();
+      w3Data.set("access_key", WEB3FORMS_KEY);
+      w3Data.set("subject", dynamicSubject);
+      w3Data.set("from_name", "Suvira Immigration Website");
+      w3Data.set("Full Name", String(nameVal));
+      w3Data.set("Phone / WhatsApp", String(phoneVal));
+      w3Data.set("Email Address", String(emailVal));
+      w3Data.set("Service Required", String(serviceVal));
+      w3Data.set("Consultation Mode", String(modeVal));
+      w3Data.set("Page URL", pageUrl);
+      w3Data.set("redirect", thankYouUrl);
 
       // 2. Save lead backup in localStorage so inquiries are NEVER lost
       try {
         var backupLeads = JSON.parse(localStorage.getItem("suvira_leads_backup") || "[]");
-        var entry = { timestamp: new Date().toISOString() };
-        data.forEach(function (val, key) { entry[key] = val; });
+        var entry = {
+          timestamp: new Date().toISOString(),
+          "Full Name": nameVal,
+          "Phone / WhatsApp": phoneVal,
+          "Email Address": emailVal,
+          "Service Required": serviceVal,
+          "Consultation Mode": modeVal,
+          "Page URL": pageUrl
+        };
         backupLeads.push(entry);
         localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
       } catch (e) {}
@@ -206,8 +245,7 @@
         window.location.assign(THANK_YOU_PATH);
       }
 
-      // 5. Send to FormSubmit via multiple independent paths:
-      // A. Native Form POST targeted to hidden iframe (bypasses CORS, adblockers, & browser restrictions)
+      // 5. Send to Web3Forms via hidden iframe (guaranteed native form POST in browser)
       try {
         var iframeName = "suvira_form_sink";
         var sink = document.getElementById(iframeName);
@@ -221,10 +259,10 @@
         }
         var hiddenForm = document.createElement("form");
         hiddenForm.method = "POST";
-        hiddenForm.action = FORM_ENDPOINT;
+        hiddenForm.action = WEB3FORMS_ENDPOINT;
         hiddenForm.target = iframeName;
         hiddenForm.style.display = "none";
-        data.forEach(function (val, key) {
+        w3Data.forEach(function (val, key) {
           var input = document.createElement("input");
           input.type = "hidden";
           input.name = key;
@@ -238,23 +276,41 @@
         }, 5000);
       } catch (e) {}
 
-      // B. Direct fetch with FormData (no-cors mode)
+      // 6. Direct JSON AJAX to Web3Forms
       try {
-        fetch(FORM_ENDPOINT, {
+        fetch(WEB3FORMS_ENDPOINT, {
           method: "POST",
-          mode: "no-cors",
-          referrerPolicy: "origin",
-          body: data
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: dynamicSubject,
+            from_name: "Suvira Immigration Website",
+            "Full Name": String(nameVal),
+            "Phone / WhatsApp": String(phoneVal),
+            "Email Address": String(emailVal),
+            "Service Required": String(serviceVal),
+            "Consultation Mode": String(modeVal),
+            "Page URL": pageUrl
+          })
         }).catch(function () {});
       } catch (err) {}
 
-      // C. Backup endpoint in background
+      // 7. Backup background dispatches to FormSubmit
       try {
         fetch(BACKUP_FORM_ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           referrerPolicy: "origin",
-          body: data
+          body: w3Data
+        }).catch(function () {});
+      } catch (err) {}
+
+      try {
+        fetch(FORMSUBMIT_IO_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          referrerPolicy: "origin",
+          body: w3Data
         }).catch(function () {});
       } catch (err) {}
     }, { capture: true });

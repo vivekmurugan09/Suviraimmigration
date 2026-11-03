@@ -1187,12 +1187,19 @@ function toggleFaqAccordion(headerEl) {
 
 
 
-// Global FormSubmit helper with automatic fallback & Thank-You redirect in a separate tab
+// Global FormSubmit & Web3Forms helper with automatic fallback & Thank-You redirect in a separate tab
 function suviraThankYouUrl() {
     return window.location.origin + '/Thank-you/';
 }
 
 function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
+    formData.set("access_key", "db7df984-770b-445d-8c2a-ad8a45278245");
+    formData.set("from_name", "Suvira Immigration Website");
+    if (!formData.get("Page URL")) formData.set("Page URL", window.location.href);
+
+    var subject = formData.get("subject") || formData.get("_subject") || "New Inquiry from Suvira Website";
+    formData.set("subject", subject);
+
     try {
         var backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
         var entry = { timestamp: new Date().toISOString() };
@@ -1215,18 +1222,60 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         }
     };
 
-    fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
+    // 1. Submit to Web3Forms via native hidden iframe (bypasses CORS, guaranteed browser form POST)
+    try {
+        var iframeName = 'suvira_form_sink';
+        var sink = document.getElementById(iframeName);
+        if (!sink) {
+            sink = document.createElement('iframe');
+            sink.name = iframeName;
+            sink.id = iframeName;
+            sink.style.display = 'none';
+            document.body.appendChild(sink);
+        }
+        var hf = document.createElement('form');
+        hf.method = 'POST';
+        hf.action = 'https://api.web3forms.com/submit';
+        hf.target = iframeName;
+        hf.style.display = 'none';
+        formData.forEach(function(v, k) {
+            var inp = document.createElement('input');
+            inp.type = 'hidden';
+            inp.name = k;
+            inp.value = v;
+            hf.appendChild(inp);
+        });
+        document.body.appendChild(hf);
+        hf.submit();
+        setTimeout(function() { if (hf.parentNode) hf.parentNode.removeChild(hf); }, 5000);
+    } catch (e) {}
+
+    // 2. Fetch to Web3Forms
+    fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        referrerPolicy: "origin",
         headers: { 'Accept': 'application/json' },
         body: formData
     })
-    .then(function() {
-        redirectToThankYou();
-    })
-    .catch(function() {
-        redirectToThankYou();
-    });
+    .then(function() { redirectToThankYou(); })
+    .catch(function() { redirectToThankYou(); });
+
+    // 3. Backup to FormSubmit (when online)
+    try {
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+        }).catch(function() {});
+    } catch (e) {}
+
+    // 4. Backup to FormSubmit.io
+    try {
+        fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+        }).catch(function() {});
+    } catch (e) {}
 }
 
 // Global Modal & Hero Consultation Form Handler

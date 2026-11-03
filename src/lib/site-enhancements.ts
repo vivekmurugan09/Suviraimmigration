@@ -1,7 +1,9 @@
 export const THANK_YOU_PATH = "/Thank-you/";
-export const FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+export const WEB3FORMS_KEY = "db7df984-770b-445d-8c2a-ad8a45278245";
+export const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 export const BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
-export const DIRECT_FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+export const FORMSUBMIT_IO_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
 
 /** One submission path for all migrated enquiry and subscription forms. */
 export function installSiteEnhancements(root: HTMLElement, navigate = (path: string) => window.location.assign(path)) {
@@ -22,8 +24,22 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
 
   root.querySelectorAll<HTMLFormElement>('form').forEach(form => {
     form.removeAttribute('onsubmit');
-    form.action = FORM_ENDPOINT;
+    form.action = WEB3FORMS_ENDPOINT;
     form.method = 'post';
+    if (!form.querySelector('input[name="access_key"]')) {
+      const ak = document.createElement('input');
+      ak.type = 'hidden';
+      ak.name = 'access_key';
+      ak.value = WEB3FORMS_KEY;
+      form.appendChild(ak);
+    }
+    if (!form.querySelector('input[name="from_name"]')) {
+      const fn = document.createElement('input');
+      fn.type = 'hidden';
+      fn.name = 'from_name';
+      fn.value = 'Suvira Immigration Website';
+      form.appendChild(fn);
+    }
     form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input,select,textarea').forEach(field => {
       if (!field.name && field.id) field.name = field.id;
       if (!field.getAttribute('aria-label') && !form.querySelector(`label[for="${field.id}"]`)) {
@@ -69,16 +85,40 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
     } catch {}
 
     const data = new FormData(form);
-    data.set('_subject', String(data.get('_subject') || `Suvira website enquiry — ${document.title}`));
-    data.set('_captcha', 'false');
-    data.set('_next', thankYouUrl);
-    data.set('source_page', window.location.href);
+
+    const nameVal = data.get('Full Name') || data.get('name') || data.get('full_name') || data.get('cName') || '';
+    const phoneVal = data.get('Phone / WhatsApp') || data.get('phone') || data.get('WhatsApp') || data.get('cPhone') || '';
+    const emailVal = data.get('Email Address') || data.get('email') || data.get('cEmail') || '';
+    const serviceVal = data.get('Service Required') || data.get('service') || data.get('visa_type') || 'Consultation Request';
+    const modeVal = data.get('Consultation Mode') || data.get('consultation_mode') || 'Virtual Video Consultation';
+    const pageUrl = window.location.href;
+    const dynamicSubject = `New Inquiry (${serviceVal}): ${nameVal || 'Website Lead'}`;
+
+    // Standardized payload matching the exact email format received by reachus@suviraimmigration.com
+    const w3Data = new FormData();
+    w3Data.set('access_key', WEB3FORMS_KEY);
+    w3Data.set('subject', dynamicSubject);
+    w3Data.set('from_name', 'Suvira Immigration Website');
+    w3Data.set('Full Name', String(nameVal));
+    w3Data.set('Phone / WhatsApp', String(phoneVal));
+    w3Data.set('Email Address', String(emailVal));
+    w3Data.set('Service Required', String(serviceVal));
+    w3Data.set('Consultation Mode', String(modeVal));
+    w3Data.set('Page URL', pageUrl);
+    w3Data.set('redirect', thankYouUrl);
 
     // 2. Save lead backup in localStorage so inquiries are NEVER lost
     try {
       const backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
-      const entry: Record<string, any> = { timestamp: new Date().toISOString() };
-      data.forEach((val, key) => { entry[key] = val; });
+      const entry: Record<string, any> = {
+        timestamp: new Date().toISOString(),
+        'Full Name': nameVal,
+        'Phone / WhatsApp': phoneVal,
+        'Email Address': emailVal,
+        'Service Required': serviceVal,
+        'Consultation Mode': modeVal,
+        'Page URL': pageUrl,
+      };
       backupLeads.push(entry);
       localStorage.setItem('suvira_leads_backup', JSON.stringify(backupLeads.slice(-50)));
     } catch {
@@ -104,8 +144,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       navigate(THANK_YOU_PATH);
     }
 
-    // 5. Send to FormSubmit via multiple independent paths:
-    // A. Native Form POST targeted to hidden iframe (bypasses CORS, adblockers, & browser restrictions)
+    // 5. Send to Web3Forms via hidden iframe (guaranteed, browser-native POST)
     try {
       const iframeName = 'suvira_form_sink';
       let sink = document.getElementById(iframeName) as HTMLIFrameElement | null;
@@ -119,10 +158,10 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       }
       const hiddenForm = document.createElement('form');
       hiddenForm.method = 'POST';
-      hiddenForm.action = FORM_ENDPOINT;
+      hiddenForm.action = WEB3FORMS_ENDPOINT;
       hiddenForm.target = iframeName;
       hiddenForm.style.display = 'none';
-      data.forEach((val, key) => {
+      w3Data.forEach((val, key) => {
         const input = document.createElement('input');
         input.type = 'hidden';
         input.name = key;
@@ -133,26 +172,44 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       hiddenForm.submit();
       setTimeout(() => {
         hiddenForm.remove();
-      }, 4000);
+      }, 5000);
     } catch {}
 
-    // B. Direct fetch with FormData (no-cors mode)
+    // 6. Direct JSON AJAX to Web3Forms
     try {
-      fetch(FORM_ENDPOINT, {
+      fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
-        referrerPolicy: 'origin',
-        body: data,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: dynamicSubject,
+          from_name: 'Suvira Immigration Website',
+          'Full Name': String(nameVal),
+          'Phone / WhatsApp': String(phoneVal),
+          'Email Address': String(emailVal),
+          'Service Required': String(serviceVal),
+          'Consultation Mode': String(modeVal),
+          'Page URL': pageUrl,
+        }),
       }).catch(() => null);
     } catch {}
 
-    // C. Backup endpoint in background
+    // 7. Backup background dispatches to FormSubmit
     try {
       fetch(BACKUP_FORM_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
         referrerPolicy: 'origin',
-        body: data,
+        body: w3Data,
+      }).catch(() => null);
+    } catch {}
+
+    try {
+      fetch(FORMSUBMIT_IO_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        referrerPolicy: 'origin',
+        body: w3Data,
       }).catch(() => null);
     } catch {}
   };
