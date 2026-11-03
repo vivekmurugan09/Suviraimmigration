@@ -4,13 +4,13 @@
    ========================================================================== */
 
 :root {
-    --canada-red: #059669;
-    --canada-red-glow: rgba(16, 185, 129, 0.4);
+    --canada-red: #D8232A;
+    --canada-red-glow: rgba(216, 35, 42, 0.4);
     --gold-accent: #F59E0B;
     --gold-light: #FBBF24;
-    --navy-deep: #022C22;
-    --navy-card: rgba(2, 44, 34, 0.88);
-    --navy-border: rgba(167, 243, 208, 0.18);
+    --navy-deep: #071338;
+    --navy-card: rgba(10, 24, 66, 0.88);
+    --navy-border: rgba(255, 255, 255, 0.14);
     --emerald: #10B981;
 }
 
@@ -19,9 +19,9 @@
    -------------------------------------------------------------------------- */
 .canada-hero-section {
     position: relative;
-    background-color: #022C22;
+    background-color: #06112C;
     background-image: 
-        linear-gradient(135deg, rgba(2, 44, 34, 0.90) 0%, rgba(6, 78, 59, 0.78) 45%, rgba(4, 120, 87, 0.88) 100%),
+        linear-gradient(180deg, rgba(6, 17, 44, 0.82) 0%, rgba(6, 17, 44, 0.72) 45%, rgba(6, 17, 44, 0.95) 100%),
         url('../../images/canada_bg.jpg');
     background-size: cover;
     background-position: center 30%;
@@ -187,8 +187,8 @@
 
 /* Lead Form Card (Right) */
 .canada-lead-card {
-    background: rgba(2, 44, 34, 0.9);
-    border: 1px solid rgba(167, 243, 208, 0.2);
+    background: rgba(10, 24, 66, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.16);
     border-radius: 20px;
     overflow: hidden;
     backdrop-filter: blur(16px);
@@ -197,7 +197,7 @@
 }
 
 .lead-card-header {
-    background: linear-gradient(90deg, rgba(5, 150, 105, 0.45) 0%, rgba(2, 44, 34, 0.7) 100%);
+    background: linear-gradient(90deg, rgba(216, 35, 42, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 18px 24px;
     display: flex;
@@ -300,9 +300,9 @@
    2. KEY METRICS RIBBON
    -------------------------------------------------------------------------- */
 .canada-metrics-section {
-    background: #011812;
-    border-top: 1px solid rgba(167, 243, 208, 0.12);
-    border-bottom: 1px solid rgba(167, 243, 208, 0.12);
+    background: #091838;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 24px 0;
 }
 
@@ -326,8 +326,8 @@
 }
 
 .metric-card {
-    background: rgba(6, 78, 59, 0.55);
-    border: 1px solid rgba(167, 243, 208, 0.16);
+    background: rgba(14, 30, 78, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 14px;
     padding: 18px 20px;
     text-align: center;

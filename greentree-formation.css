@@ -611,7 +611,7 @@ nav .nav-portal-btn:hover,
 /* === 2. Check Your Eligibility For Free (Ribbon Calculator Cards) === */
 .free-calc-section {
     padding: 85px 0;
-    background: linear-gradient(180deg, #FFFFFF 0%, #F2FBF7 100%);
+    background: #FFFFFF;
     text-align: center;
 }
 
@@ -619,7 +619,7 @@ nav .nav-portal-btn:hover,
     font-family: 'Outfit', sans-serif;
     font-size: clamp(30px, 3.6vw, 46px);
     font-weight: 800;
-    color: #022C22;
+    color: #0A1628;
     margin-bottom: 12px;
     letter-spacing: -0.5px;
 }
@@ -654,7 +654,7 @@ nav .nav-portal-btn:hover,
 
 .free-calc-card {
     background: #FFFFFF;
-    border: 1.5px solid #D1FAE5;
+    border: 1.5px solid #E2E8F0;
     border-radius: 20px;
     padding: 38px 22px 25px;
     position: relative;
@@ -669,8 +669,8 @@ nav .nav-portal-btn:hover,
 
 .free-calc-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 16px 36px rgba(6, 78, 59, 0.14);
-    border-color: #059669;
+    box-shadow: 0 16px 36px rgba(7, 36, 168, 0.14);
+    border-color: #0724A8;
 }
 
 /* Diagonal Green Ribbon */
@@ -707,7 +707,7 @@ nav .nav-portal-btn:hover,
     font-family: 'Outfit', sans-serif;
     font-size: 17.5px;
     font-weight: 700;
-    color: #022C22;
+    color: #0F172A;
     line-height: 1.35;
     margin-bottom: 22px;
     min-height: 48px;
@@ -720,9 +720,9 @@ nav .nav-portal-btn:hover,
     margin-top: auto;
     width: 100%;
     padding: 11px 16px;
-    background: #F2FBF7;
-    color: #047857 !important;
-    border: 1.5px solid #A7F3D0;
+    background: #F8FAFC;
+    color: #0724A8 !important;
+    border: 1.5px solid #CBD5E1;
     border-radius: 12px;
     font-size: 14.5px;
     font-weight: 700;
@@ -736,10 +736,10 @@ nav .nav-portal-btn:hover,
 }
 
 .free-calc-card:hover .free-calc-btn {
-    background: linear-gradient(135deg, #064E3B 0%, #059669 100%);
+    background: #0724A8;
     color: #FFFFFF !important;
-    border-color: #064E3B;
-    box-shadow: 0 4px 14px rgba(6, 78, 59, 0.25);
+    border-color: #0724A8;
+    box-shadow: 0 4px 14px rgba(7, 36, 168, 0.25);
 }
 
 
@@ -1133,7 +1133,7 @@ nav .nav-portal-btn:hover,
 /* === 7. Split Why Choose Us & Talk With Our Experts Lead Section === */
 .split-why-form-section {
     padding: 95px 0 85px;
-    background: linear-gradient(135deg, #064E3B 0%, #022C22 50%, #047857 100%);
+    background: linear-gradient(135deg, #0724A8 0%, #031169 50%, #0A1628 100%);
     color: #FFFFFF;
     position: relative;
     overflow: hidden;
@@ -1252,8 +1252,8 @@ nav .nav-portal-btn:hover,
 
 .talk-input-group input:focus,
 .talk-input-group select:focus {
-    border-color: #059669;
-    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.14);
+    border-color: #0724A8;
+    box-shadow: 0 0 0 3px rgba(7, 36, 168, 0.12);
 }
 
 .talk-phone-row {
@@ -1337,10 +1337,10 @@ nav .nav-portal-btn:hover,
 
 
 
-/* Leadership section: forest emerald gradient + executive card redesign */
+/* Leadership section: blue gradient + executive card redesign */
 .leadership-section {
     position: relative; overflow: hidden; border-top: none; padding: 90px 0 130px;
-    background: linear-gradient(120deg, #022C22 0%, #065F46 52%, #047857 100%);
+    background: linear-gradient(120deg, #071F6B 0%, #1344C4 52%, #0C39AD 100%);
 }
 .ldr-bg-photo {
     position: absolute; left: 22%; bottom: 0; width: 38%; height: 100%;
@@ -1354,20 +1354,20 @@ nav .nav-portal-btn:hover,
     position: relative; z-index: 2; max-width: 1240px; margin: 0 auto; padding: 0 20px;
     display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
 }
-.leadership-eyebrow { color: #FBBF24; font-weight: 800; }
-.leadership-eyebrow::before { background: #F59E0B; }
+.leadership-eyebrow { color: #FF8A3D; font-weight: 800; }
+.leadership-eyebrow::before { background: #F87034; }
 .leadership-title { color: #fff; margin-bottom: 28px; }
-.ldr-accent { color: #FBBF24; position: relative; display: inline-block; }
+.ldr-accent { color: #FF8A3D; position: relative; display: inline-block; }
 .ldr-swoop { position: absolute; left: 0; bottom: -12px; width: 100%; height: 16px; pointer-events: none; }
 .leadership-quote {
     display: flex; gap: 14px; align-items: center;
     background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18);
-    border-left: 5px solid #F59E0B; border-radius: 14px; padding: 18px 22px;
+    border-left: 5px solid #F87034; border-radius: 14px; padding: 18px 22px;
     color: #fff; font-style: normal; font-size: 20px; font-weight: 600; backdrop-filter: blur(6px);
     max-width: 480px;
 }
-.leadership-quote b { color: #FBBF24; font-weight: 800; }
-.ldr-qmark { font-family: Georgia, serif; font-size: 56px; line-height: .8; color: #FBBF24; font-weight: 800; }
+.leadership-quote b { color: #FF8A3D; font-weight: 800; }
+.ldr-qmark { font-family: Georgia, serif; font-size: 56px; line-height: .8; color: #FF8A3D; font-weight: 800; }
 .leadership-body { color: #E2E8F0; font-size: 14.5px; }
 
 .ldr-chips { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
@@ -1380,10 +1380,10 @@ nav .nav-portal-btn:hover,
     content: ''; position: absolute; right: 0; bottom: 0; width: 38px; height: 22px;
     border-top-left-radius: 18px;
 }
-.ldr-chip-orange::after { background: linear-gradient(135deg, #FBBF24, #D97706); }
-.ldr-chip-blue::after { background: linear-gradient(135deg, #34D399, #059669); }
+.ldr-chip-orange::after { background: linear-gradient(135deg, #FF9A4D, #F25C1F); }
+.ldr-chip-blue::after { background: linear-gradient(135deg, #38BDF8, #0B5ED7); }
 .ldr-chip-icon { flex-shrink: 0; padding-right: 14px; border-right: 1.5px solid #E2E8F0; display: flex; align-items: center; }
-.ldr-chip b { display: block; color: #022C22; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; }
+.ldr-chip b { display: block; color: #0A1628; font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; }
 .ldr-chip span { display: block; color: #475569; font-size: 12.5px; line-height: 1.45; margin-top: 3px; }
 
 .ldr-card {
@@ -1396,10 +1396,10 @@ nav .nav-portal-btn:hover,
     flex-shrink: 0;
 }
 .ldr-card-meta { position: relative; z-index: 2; }
-.ldr-card-head h3 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; color: #022C22; margin: 0 0 6px; }
+.ldr-card-head h3 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; color: #0A1628; margin: 0 0 6px; }
 .ldr-card-head p { margin: 8px 0 0; font-size: 12.5px; color: #475569; font-weight: 500; }
 .ldr-pill {
-    display: inline-block; background: linear-gradient(90deg, #D97706, #F59E0B); color: #fff;
+    display: inline-block; background: linear-gradient(90deg, #F25C1F, #FF8A3D); color: #fff;
     font-size: 12.5px; font-weight: 700; padding: 5px 14px; border-radius: 999px;
 }
 .ldr-flight-svg { position: absolute; right: 0; top: -4px; width: 140px; height: 66px; opacity: .85; pointer-events: none; }
@@ -1408,11 +1408,11 @@ nav .nav-portal-btn:hover,
     display: flex; gap: 20px; align-items: center; border-radius: 18px; padding: 20px 22px; margin-bottom: 16px;
     transition: transform .25s ease, box-shadow .25s ease;
 }
-.ldr-plan:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(6,78,59,.15); }
-.ldr-plan-orange { background: linear-gradient(90deg, #FFFBEB, #FEF3C7); border: 1px solid #FDE68A; }
-.ldr-plan-blue { background: linear-gradient(90deg, #ECFDF5, #F0FDF4); border: 1px solid #A7F3D0; }
+.ldr-plan:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(7,36,168,.15); }
+.ldr-plan-orange { background: linear-gradient(90deg, #FFF3EB, #FFF9F5); border: 1px solid #FFE0C8; }
+.ldr-plan-blue { background: linear-gradient(90deg, #EAF1FF, #F4F8FF); border: 1px solid #D0E0FF; }
 .ldr-plan-icon { flex-shrink: 0; padding-right: 20px; border-right: 1.5px solid rgba(15,23,42,.1); display: flex; align-items: center; justify-content: center; }
-.ldr-plan h3 { font-family: 'Outfit', sans-serif; font-size: 18.5px; font-weight: 800; color: #022C22; margin: 0 0 5px; }
+.ldr-plan h3 { font-family: 'Outfit', sans-serif; font-size: 18.5px; font-weight: 800; color: #0A1628; margin: 0 0 5px; }
 .ldr-plan p { font-size: 13px; color: #475569; line-height: 1.5; margin: 0 0 12px; }
 .ldr-cta {
     border: none; cursor: pointer; color: #fff; font-family: 'Outfit', sans-serif; font-weight: 700;
@@ -1420,10 +1420,10 @@ nav .nav-portal-btn:hover,
     box-shadow: 0 6px 16px rgba(0,0,0,.15);
 }
 .ldr-cta:hover { transform: translateX(3px); filter: brightness(1.08); }
-.ldr-cta-orange { background: linear-gradient(90deg, #D97706, #F59E0B); }
-.ldr-cta-blue { background: linear-gradient(90deg, #065F46, #059669); }
+.ldr-cta-orange { background: linear-gradient(90deg, #EA580C, #F97316); }
+.ldr-cta-blue { background: linear-gradient(90deg, #0737C4, #1D63FF); }
 .ldr-note { border-top: 1px solid #E2E8F0; padding-top: 14px; text-align: center; font-size: 13px; color: #1E293B; }
-.ldr-note i { margin-right: 6px; color: #059669; }
+.ldr-note i { margin-right: 6px; color: #F87034; }
 .ldr-wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 70px; z-index: 1; }
 
 @media (max-width: 991px) {
@@ -1438,10 +1438,10 @@ nav .nav-portal-btn:hover,
 
 /* Trust Badges Section: Premium 4-Card Showcase */
 .trust-badges-section {
-    background: linear-gradient(180deg, #F2FBF7 0%, #DCFCE7 100%);
+    background: linear-gradient(180deg, #F8FAFC 0%, #EEF2FF 100%);
     padding: 56px 24px;
-    border-top: 1px solid #D1FAE5;
-    border-bottom: 1px solid #D1FAE5;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
 }
 .trust-badges-wrap {
     max-width: 1240px;
@@ -1457,8 +1457,8 @@ nav .nav-portal-btn:hover,
     display: flex;
     align-items: center;
     gap: 16px;
-    border: 1px solid #D1FAE5;
-    box-shadow: 0 10px 28px rgba(6, 78, 59, 0.06);
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
     position: relative;
     overflow: hidden;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -1473,7 +1473,7 @@ nav .nav-portal-btn:hover,
 }
 .trust-badge-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 38px rgba(6, 78, 59, 0.14);
+    box-shadow: 0 18px 38px rgba(7, 36, 168, 0.12);
 }
 .trust-badge-icon {
     width: 58px;
@@ -1485,8 +1485,8 @@ nav .nav-portal-btn:hover,
     font-size: 24px;
     flex-shrink: 0;
 }
-.tb-blue::before { background: linear-gradient(180deg, #064E3B, #059669); }
-.tb-blue .trust-badge-icon { background: #ECFDF5; color: #064E3B; box-shadow: 0 6px 16px rgba(6, 78, 59, 0.15); }
+.tb-blue::before { background: linear-gradient(180deg, #0724A8, #2F6BFF); }
+.tb-blue .trust-badge-icon { background: #EEF2FF; color: #0724A8; box-shadow: 0 6px 16px rgba(7, 36, 168, 0.15); }
 
 .tb-orange::before { background: linear-gradient(180deg, #F87034, #FF9A4D); }
 .tb-orange .trust-badge-icon { background: #FFF3EB; color: #F87034; box-shadow: 0 6px 16px rgba(248, 112, 52, 0.18); }

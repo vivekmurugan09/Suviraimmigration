@@ -18,9 +18,9 @@
    -------------------------------------------------------------------------- */
 .visitor-hero-section {
     position: relative;
-    background-color: #022C22;
+    background-color: #06122C;
     background-image: 
-        linear-gradient(135deg, rgba(2, 44, 34, 0.90) 0%, rgba(6, 78, 59, 0.80) 50%, rgba(4, 120, 87, 0.92) 100%),
+        linear-gradient(180deg, rgba(6, 18, 44, 0.88) 0%, rgba(6, 18, 44, 0.80) 50%, rgba(6, 18, 44, 0.96) 100%),
         url('../../images/about_hero_premium.jpg');
     background-size: cover;
     background-position: center;
@@ -182,7 +182,7 @@
    HERO ASSESSMENT CARD
    -------------------------------------------------------------------------- */
 .visitor-form-card {
-    background: rgba(2, 44, 34, 0.88);
+    background: rgba(15, 23, 42, 0.88);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(16, 185, 129, 0.35);
@@ -286,7 +286,7 @@
    2. METRICS STATS RIBBON
    -------------------------------------------------------------------------- */
 .visitor-stats-ribbon {
-    background: #011812;
+    background: #020617;
     border-top: 1px solid rgba(16, 185, 129, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 28px 0;
