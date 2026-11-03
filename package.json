@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "python3 scripts/build-static.py",
+    "buildpush": "python3 scripts/build-static.py",
     "build:vite": "vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
