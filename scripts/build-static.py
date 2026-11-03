@@ -11,7 +11,17 @@ import os
 import re
 import shutil
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Find the true project root by searching upward for public/ and src/content/
+probe = os.path.dirname(os.path.abspath(__file__))
+ROOT = None
+while probe and probe != os.path.dirname(probe):
+    if os.path.exists(os.path.join(probe, "public")) and os.path.exists(os.path.join(probe, "src", "content")):
+        ROOT = probe
+        break
+    probe = os.path.dirname(probe)
+if not ROOT:
+    ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 DIST = os.path.join(ROOT, "dist")
 
 if os.path.exists(DIST):
@@ -894,4 +904,15 @@ for item in os.listdir(DIST):
     else:
         shutil.copy2(src_item, dst_item)
 
-print("Built static dist/ and mirrored to repository root successfully.")
+# 10. Mirror scripts to src/scripts for platforms like Render configured with Root Directory = src
+src_scripts = os.path.join(ROOT, "src", "scripts")
+os.makedirs(src_scripts, exist_ok=True)
+shutil.copy2(os.path.join(ROOT, "scripts", "build-static.py"), os.path.join(src_scripts, "build-static.py"))
+
+# 11. Mirror dist to src/dist if Render has Root Directory = src
+src_dist = os.path.join(ROOT, "src", "dist")
+if os.path.exists(src_dist):
+    shutil.rmtree(src_dist)
+shutil.copytree(DIST, src_dist)
+
+print("Built static dist/ and mirrored to repository root and src/ successfully.")
