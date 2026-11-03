@@ -43,42 +43,42 @@ for fn in os.listdir(assets_src):
 # 3. Prepend :root design tokens and .suvira-ai-prep-fab rules from src/styles.css into dist/site-polish.css
 root_tokens_css = """/* Root design tokens and AI Preparation FAB from src/styles.css */
 :root {
-  --site-ink: #07172C;
-  --site-muted: #64748B;
+  --site-ink: #0b2e23;
+  --site-muted: #4e6559;
   --site-soft: #F8FAFC;
   --site-surface: #FFFFFF;
-  --site-action: #EA580C;
+  --site-action: #059669;
   --site-gold: #F59E0B;
-  --site-rose: #C2410C;
+  --site-rose: #0f5a43;
   --site-line: #E2E8F0;
-  --site-shadow: 0 22px 48px -28px rgba(7, 23, 44, 0.28);
+  --site-shadow: 0 22px 48px -28px rgba(11, 46, 35, 0.28);
   --site-success: #16A34A;
   --site-error: #DC2626;
   --site-hero-wash: linear-gradient(96deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.9) 55%, rgba(241, 245, 249, 0.72) 100%);
   --site-photo-ink: #FFFFFF;
   --site-photo-muted: #E2E8F0;
-  --site-photo-scrim: rgba(7, 23, 44, 0.62);
-  --site-photo-chip: rgba(7, 23, 44, 0.56);
+  --site-photo-scrim: rgba(11, 46, 35, 0.62);
+  --site-photo-chip: rgba(11, 46, 35, 0.56);
   --site-photo-chip-border: rgba(255, 255, 255, 0.26);
-  --site-photo-shadow: 0 2px 22px rgba(7, 23, 44, 0.52);
+  --site-photo-shadow: 0 2px 22px rgba(11, 46, 35, 0.52);
   --background: #FFFFFF;
-  --foreground: #07172C;
+  --foreground: #0b2e23;
   --card: #FFFFFF;
-  --card-foreground: #07172C;
+  --card-foreground: #0b2e23;
   --popover: #FFFFFF;
-  --popover-foreground: #07172C;
-  --primary: #07172C;
+  --popover-foreground: #0b2e23;
+  --primary: #0f5a43;
   --primary-foreground: #FFFFFF;
   --secondary: #F8FAFC;
-  --secondary-foreground: #07172C;
+  --secondary-foreground: #0b2e23;
   --muted: #F8FAFC;
-  --muted-foreground: #64748B;
+  --muted-foreground: #4e6559;
   --accent: #F59E0B;
-  --accent-foreground: #07172C;
+  --accent-foreground: #0b2e23;
   --destructive: #DC2626;
   --border: #E2E8F0;
   --input: #E2E8F0;
-  --ring: #F59E0B;
+  --ring: #10b981;
   --radius: 0.375rem;
 }
 .prep-page { font-family: 'DM Sans', sans-serif; }

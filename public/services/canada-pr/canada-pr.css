@@ -4,14 +4,14 @@
    ========================================================================== */
 
 :root {
-    --canada-red: #F87034;
-    --canada-red-glow: rgba(248, 112, 52, 0.45);
+    --canada-red: #D8232A;
+    --canada-red-glow: rgba(216, 35, 42, 0.4);
     --gold-accent: #F59E0B;
     --gold-light: #FBBF24;
-    --navy-deep: #031169;
+    --navy-deep: #071338;
     --navy-card: rgba(10, 24, 66, 0.88);
     --navy-border: rgba(255, 255, 255, 0.14);
-    --emerald: #F87034;
+    --emerald: #10B981;
 }
 
 /* --------------------------------------------------------------------------
@@ -19,9 +19,9 @@
    -------------------------------------------------------------------------- */
 .canada-hero-section {
     position: relative;
-    background-color: #031169;
+    background-color: #06112C;
     background-image: 
-        linear-gradient(135deg, rgba(3, 17, 105, 0.90) 0%, rgba(7, 36, 168, 0.80) 45%, rgba(6, 17, 44, 0.95) 100%),
+        linear-gradient(180deg, rgba(6, 17, 44, 0.82) 0%, rgba(6, 17, 44, 0.72) 45%, rgba(6, 17, 44, 0.95) 100%),
         url('../../images/canada_bg.jpg');
     background-size: cover;
     background-position: center 30%;
@@ -50,8 +50,8 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(248, 112, 52, 0.18);
-    border: 1px solid rgba(248, 112, 52, 0.6);
+    background: rgba(216, 35, 42, 0.18);
+    border: 1px solid rgba(216, 35, 42, 0.6);
     border-radius: 9999px;
     padding: 6px 18px;
     margin-bottom: 18px;
@@ -60,7 +60,7 @@
 }
 
 .canada-hero-badge i {
-    color: #FFB800;
+    color: #EF4444;
     font-size: 14px;
 }
 
@@ -68,7 +68,7 @@
     font-family: 'Outfit', sans-serif;
     font-size: 11.5px;
     font-weight: 700;
-    color: #FDE68A;
+    color: #FCA5A5;
     letter-spacing: 1.2px;
     text-transform: uppercase;
 }
@@ -85,7 +85,7 @@
 }
 
 .canada-red-gradient {
-    background: linear-gradient(90deg, #FFB800 0%, #F87034 50%, #F59E0B 100%);
+    background: linear-gradient(90deg, #F87171 0%, #EF4444 50%, #F59E0B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -125,7 +125,7 @@
 }
 
 .check-item i {
-    color: #F87034;
+    color: #10B981;
     font-size: 15px;
     flex-shrink: 0;
 }
@@ -139,7 +139,7 @@
 }
 
 .btn-canada-primary {
-    background: linear-gradient(90deg, #F87034 0%, #EA580C 100%);
+    background: linear-gradient(90deg, #D8232A 0%, #B91C1C 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 9999px;
