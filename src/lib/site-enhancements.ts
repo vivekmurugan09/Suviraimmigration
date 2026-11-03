@@ -103,12 +103,30 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       navigate(THANK_YOU_PATH);
     }
 
-    // 5. Send to FormSubmit in background (fire-and-forget). Never navigate user to FormSubmit to prevent 522 host errors.
+    // 5. Send to FormSubmit via both JSON AJAX and standard POST in background
+    const payload: Record<string, any> = {};
+    data.forEach((val, key) => { payload[key] = val; });
+    payload['_subject'] = payload['_subject'] || `New Consultation Request: ${payload['name'] || payload['Full Name'] || 'Website Lead'}`;
+    payload['_captcha'] = 'false';
+    payload['_template'] = 'table';
+
     try {
       fetch(FORM_ENDPOINT, {
         method: 'POST',
         referrerPolicy: 'origin',
-        headers: { Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+    } catch {}
+
+    try {
+      fetch(DIRECT_FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        referrerPolicy: 'origin',
         body: data,
       }).catch(() => null);
     } catch {}
