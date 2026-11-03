@@ -9,10 +9,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="../../../style-v3.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../../../greentree-formation.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../../../suvira-premier-hero.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../study-visas.css?v=20261103-navy-v1">
+    <link rel="stylesheet" href="../../../style-v3.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../../../greentree-formation.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../../../suvira-premier-hero.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../study-visas.css?v=20261103-navy-v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -36,7 +36,7 @@
     <!-- =================================================================
          MASTER NAVIGATION BAR (UNIFIED SUVIRA NAVBAR)
          ================================================================= -->
-        <nav class="navbar suvira-navbar">
+                        <nav class="navbar suvira-navbar">
         <div class="container suvira-nav-container">
             <div class="logo suvira-logo-wrap">
                 <a href="../../../" class="suvira-brand-link">
@@ -122,7 +122,6 @@
                     </div>
                 </div>
 
-                <a href="../../../about/" target="_blank" rel="noopener noreferrer" class="nav-link-item">About Us</a>
                 <a href="../../../contact/" target="_blank" rel="noopener noreferrer" class="nav-link-item">Contact Us</a>
 
                 <!-- Right Action Buttons -->
@@ -143,8 +142,8 @@
         </div>
     </nav>
 
-    <!-- Master Mobile Menu Drawer -->
-        <div class="mobile-menu-overlay"></div>
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu suvira-mobile-drawer">
         <div class="mobile-menu-header">
             <div class="suvira-brand-link">
@@ -166,7 +165,6 @@
             <a href="../../../services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-heart"></i> Spousal Sponsorship</a>
             <a href="../../../services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-passport"></i> Visitor Visa</a>
             <a href="../../../draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bell"></i> Updates &amp; Draw Alerts</a>
-            <a href="../../../about/" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="../../../contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Contact Us</a>
             
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding: 0 10px;">
@@ -180,6 +178,14 @@
             </div>
         </div>
     </div>
+    
+    
+    
+
+    <!-- Master Mobile Menu Drawer -->
+    
+    
+    
 
     <!-- =================================================================
          1. HERO SECTION: DEDICATED STUDY IN GERMANY
@@ -234,55 +240,68 @@
             </div>
 
             <!-- Right: Germany Student Visa Lead Card -->
-            <div class="study-lead-card">
-                <div class="study-card-header">
-                    <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center; font-size: 16px; color: #60A5FA;">
-                        <i class="fas fa-landmark"></i>
-                    </div>
-                    <div>
-                        <h3>Germany Study Assessment</h3>
-                        <p>Zero tuition eligibility check within 3 hours</p>
+            <div class="talk-experts-card">
+                    <h3>Talk with our Experts</h3>
+                    <p class="talk-card-sub">
+                        Get personalized migration advice tailored to your career and education goals.
+                    </p>
+                    <form onsubmit="handleModalSubmit(event)">
+                        <input type="hidden" name="_subject" value="New Consultation Request - Study in Germany (Public Universities)">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="talk-input-group">
+                            <input type="text" name="name" required placeholder="Your full name">
+                        </div>
+
+                        <div class="talk-input-group">
+                            <div class="talk-phone-row">
+                                <select class="talk-phone-prefix" name="country_code" style="width: 118px; flex: 0 0 118px;">
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+971">🇦🇪 +971</option>
+                                    <option value="+65">🇸🇬 +65</option>
+                                    <option value="+1">🇺🇸/🇨🇦 +1</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+61">🇦🇺 +61</option>
+                                </select>
+                                <input type="tel" name="phone" required placeholder="Phone / WhatsApp number" style="flex: 1 1 auto; width: auto; min-width: 0;">
+                            </div>
+                        </div>
+
+                        <div class="talk-input-group">
+                            <input type="email" name="email" required placeholder="Email address">
+                        </div>
+
+                        <div class="talk-input-group">
+                            <select name="visa_type" required>
+                                <option value="Study in Germany (Public Universities)" selected>Study in Germany (Public Universities)</option>
+                                <option value="Canada Express Entry PR">Canada Express Entry PR</option>
+                                <option value="Australia PR Visa (Subclass 189/190)">Australia PR Visa (Subclass 189/190)</option>
+                                <option value="UK Permanent Residency (ILR)">UK Permanent Residency (ILR)</option>
+                                <option value="Germany Opportunity Card & PR">Germany Opportunity Card &amp; PR</option>
+                                <option value="Overseas Study Visa">Study Visa (Australia / Canada / UK / Germany)</option>
+                                <option value="Spousal & Family Sponsorship">Spousal &amp; Family Sponsorship</option>
+                                <option value="Visitor / Tourist Visa">Visitor / Tourist Visa</option>
+                                <option value="SOP & Resume Writing">SOP &amp; Resume Writing</option>
+                            </select>
+                        </div>
+
+                        <div class="talk-input-group">
+                            <select name="consultation_mode" required>
+                                <option value="Virtual Consultation (Google Meet / Zoom)">Virtual Video Consultation (Zoom / Meet)</option>
+                                <option value="In-Person Office Visit (Chennai HQ)">In-Person Office Visit (Chennai Ekkatuthangal HQ)</option>
+                                <option value="Telephone Discussion">Phone Call Discussion</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="talk-submit-btn">
+                            Schedule Free Consultation ✈
+                        </button>
+                    </form>
+                    <div class="talk-social-proof">
+                        <span class="talk-social-dot"></span>
+                        <span>Over 25,000+ satisfied clients guided across India</span>
                     </div>
                 </div>
-
-                <form class="study-lead-form" onsubmit="handleStudySubmit(event)">
-                    <input type="hidden" name="destination" value="Germany Student Visa (Zero Tuition)">
-                    
-                    <div class="form-group-study">
-                        <label>Full Name *</label>
-                        <input type="text" name="name" placeholder="Enter your full name" required>
-                    </div>
-
-                    <div class="form-group-study">
-                        <label>Phone Number (WhatsApp) *</label>
-                        <input type="tel" name="phone" placeholder="+91 98765 43210" required>
-                    </div>
-
-                    <div class="form-group-study">
-                        <label>Email Address *</label>
-                        <input type="email" name="email" placeholder="you@example.com" required>
-                    </div>
-
-                    <div class="form-group-study">
-                        <label>Current CGPA / Percentage *</label>
-                        <input type="text" name="cgpa" placeholder="e.g. 7.8 CGPA or 78%" required>
-                    </div>
-
-                    <div class="form-group-study">
-                        <label>Target Academic Intake *</label>
-                        <select name="intake" required>
-                            <option value="Winter Semester 2026 (Sept/Oct)">Winter Semester 2026 (Sept/Oct) - Main</option>
-                            <option value="Summer Semester 2027 (Mar/Apr)">Summer Semester 2027 (Mar/Apr)</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="study-form-btn">
-                        <span>Get Free Germany Study Plan</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                    <p style="font-size: 11px; text-align: center; color: #94A3B8; margin: 0;">100% Confidential · APS &amp; TU9 Specialists</p>
-                </form>
-            </div>
 
         </div>
     </section>
@@ -611,66 +630,77 @@
     <!-- =================================================================
          MASTER FOOTER (UNIFIED SUVIRA FOOTER)
          ================================================================= -->
-    <footer class="footer suvira-master-footer">
-        <div class="container footer-content">
-            <div class="footer-col brand-col">
-                <div class="suvira-brand-link footer-brand">
-                    <img src="../../../images/suvira-butterfly-icon.png" alt="Suvira Immigration" class="suvira-nav-butterfly">
-                    <div class="suvira-brand-text">
-                        <span class="brand-name-suvira">SUVIRA</span>
-                        <span class="brand-name-sub">IMMIGRATION</span>
+                    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-with-icon">
+                        <img src="../../../images/suvira-logo.png" alt="Suvira Immigration Logo"
+                            style="height: 90px; width: auto; object-fit: contain; background: white; border-radius: 12px; padding: 6px 12px;"
+                            loading="lazy">
+                    </div>
+                    <p>India's trusted immigration &amp; global visa partner</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/suviraimmigration/" target="_blank" rel="noopener noreferrer"
+                            title="Follow Suvira Immigration on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/suvira-immigration-36b25a41a" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
-                <p class="brand-desc">
-                    Suvira Immigration is India's trusted overseas consultancy, delivering ethical, transparent, and result-oriented visa and immigration services across Canada, Australia, the UK, Germany, and Europe.
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../../../"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="../../../services/pr-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Immigration &amp; PR Visas</a>
+                    <a href="../../../services/study-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Study Visa</a>
+                    <a href="../../../services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Spousal Sponsorship</a>
+                    <a href="../../../services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                    <a href="../../../calculator/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> PR Points Calculator</a>
+                    <a href="../../../draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Express Entry Draw Alerts</a>
+                    <a href="../../../contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Contact Us</a>
+                </div>
+
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <a href="../../../services/canada-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Canada Express Entry PR</a>
+                    <a href="../../../services/australia-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Australia PR Visa</a>
+                    <a href="../../../services/uk-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> UK Permanent Residency (ILR)</a>
+                    <a href="../../../services/germany-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Germany Opportunity Card &amp; PR</a>
+                    <a href="../../../services/sop-writing/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> SOP &amp; Resume Writing</a>
+                    <a href="../../../Free Eligibility Check/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Free Assessment Checklist</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Head Office</h3>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                        <i class="fas fa-map-marker-alt" style="color: #F87034; font-size: 1rem; margin-top: 3px;"></i>
+                        <span>Ground Floor, No: 28, Sai Supreme, near Puthiya thalaimurai office, Thiru Vi Ka Industrial Estate, SIDCO Industrial Estate, Ekkatuthangal, Chennai - 600032</span>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-phone-alt" style="color: #F87034; font-size: 0.95rem;"></i>
+                        <a href="tel:+919940352086" style="color: #F87034; font-weight: 700; text-decoration: none;">+91 99403 52086</a>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-envelope" style="color: #F87034; font-size: 0.95rem;"></i>
+                        <a href="mailto:reachus@suviraimmigration.com" style="color: #F87034; font-weight: 600; text-decoration: none;">reachus@suviraimmigration.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px;">
+                <p>© <span class="current-year">2026</span> Suvira Immigration Consultants. All Rights Reserved.</p>
+                <p style="margin: 10px 0;">
+                    <a href="../../../privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
+                    <a href="../../../terms/" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a> |
+                    <a href="../../../disclaimer/" target="_blank" rel="noopener noreferrer">Disclaimer</a>
                 </p>
-                <div class="footer-social-links">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://wa.me/919940352086" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Study Abroad</h4>
-                <ul>
-                    <li><a href="../australia/"><i class="fas fa-chevron-right footer-arrow"></i> Study in Australia</a></li>
-                    <li><a href="../canada/"><i class="fas fa-chevron-right footer-arrow"></i> Study in Canada</a></li>
-                    <li><a href="../uk/"><i class="fas fa-chevron-right footer-arrow"></i> Study in United Kingdom</a></li>
-                    <li><a href="./"><i class="fas fa-chevron-right footer-arrow"></i> Study in Germany</a></li>
-                    <li><a href="../../sop-writing/"><i class="fas fa-chevron-right footer-arrow"></i> SOP Writing Services</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Immigration &amp; PR</h4>
-                <ul>
-                    <li><a href="../../canada-pr/"><i class="fas fa-chevron-right footer-arrow"></i> Canada Express Entry PR</a></li>
-                    <li><a href="../../australia-pr/"><i class="fas fa-chevron-right footer-arrow"></i> Australia PR Visa</a></li>
-                    <li><a href="../../germany-chancenkarte/"><i class="fas fa-chevron-right footer-arrow"></i> Germany Opportunity Card</a></li>
-                    <li><a href="../../spousal-sponsorship/"><i class="fas fa-chevron-right footer-arrow"></i> Spousal Sponsorship</a></li>
-                    <li><a href="../../../calculator/"><i class="fas fa-chevron-right footer-arrow"></i> PR Points Calculator</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col contact-col">
-                <h4>Chennai Office</h4>
-                <p><i class="fas fa-map-marker-alt" style="color: #F97316;"></i> #24, Ground Floor, Sri Krishna Suites, Bazullah Road, T. Nagar, Chennai - 600017, Tamil Nadu, India</p>
-                <p><i class="fas fa-phone-alt" style="color: #F97316;"></i> +91 99403 52086 / +91 44 4352 2086</p>
-                <p><i class="fas fa-envelope" style="color: #F97316;"></i> info@suviraimmigration.com</p>
-                <p><i class="fas fa-clock" style="color: #F97316;"></i> Mon - Sat: 9:30 AM – 6:30 PM</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container footer-bottom-wrap">
-                <p>&copy; 2026 Suvira Immigration. All rights reserved. Registered Overseas Education &amp; Visa Advisory.</p>
-                <div class="footer-bottom-links">
-                    <a href="../../../privacy-policy/">Privacy Policy</a>
-                    <a href="../../../terms-and-conditions/">Terms of Service</a>
-                    <a href="../../../disclaimer/">Disclaimer</a>
-                </div>
+                <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <p class="disclaimer-note" style="font-size: 0.8rem; opacity: 0.7; max-width: 900px; margin: 12px auto 0; line-height: 1.5; color: #CBD5E1;">
+                    <strong>Regulatory Disclaimer</strong>: Visa approvals are granted solely by the relevant government authorities (such as IRCC Canada, Australian Department of Home Affairs, German Federal Foreign Office). Suvira Immigration provides professional consultancy, profile assessment, SOP/documentation preparation, and filing support. We strictly adhere to ethical immigration practices and do not make false guarantee claims.
+                </p>
             </div>
         </div>
     </footer>
@@ -755,23 +785,131 @@
         });
 
         // Lead Form Handler
-        function handleStudySubmit(e) {
-            e.preventDefault();
-            const form = e.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+                        function handleModalSubmit(e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn ? submitBtn.innerHTML : 'Submit';
+        if (submitBtn) {
             submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        }
+        const formData = new FormData(form);
+        const cc = formData.get('country_code') || '';
+        const rawPhone = formData.get('phone') || '';
+        if (cc && rawPhone && !rawPhone.startsWith('+')) {
+            formData.set('phone', cc + ' ' + rawPhone);
+        }
+        formData.append('_captcha', 'false');
+        formData.append('Page_URL', window.location.href);
+        const thankYouUrl = window.location.origin + '/Thank-you/';
+        formData.append('_next', thankYouUrl);
 
-            setTimeout(() => {
-                alert('Thank you! Your Germany Study assessment request has been received. Our senior Germany education counselor will contact you within 3 hours.');
-                form.reset();
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-                const modal = document.getElementById('leadModal');
-                if (modal) modal.style.display = 'none';
-            }, 1200);
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset();
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.style.display = 'none';
+            window.location.href = thankYouUrl;
+        })
+        .catch(err => {
+            window.location.href = thankYouUrl;
+        });
+    }
+    function handleStudySubmit(e) { return handleModalSubmit(e); }
+    function handleExpertFormSubmit(e) { return handleModalSubmit(e); }
+        const formData = new FormData(form);
+        const cc = formData.get('country_code') || '';
+        const rawPhone = formData.get('phone') || '';
+        if (cc && rawPhone && !rawPhone.startsWith('+')) {
+            formData.set('phone', cc + ' ' + rawPhone);
+        }
+        formData.append('_captcha', 'false');
+        formData.append('Page_URL', window.location.href);
+        const thankYouUrl = window.location.origin + '/Thank-you/';
+        formData.append('_next', thankYouUrl);
+
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset();
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.style.display = 'none';
+            window.location.href = thankYouUrl;
+        })
+        .catch(err => {
+            window.location.href = thankYouUrl;
+        });
+    }
+    function handleStudySubmit(e) { return handleModalSubmit(e); }
+    function handleExpertFormSubmit(e) { return handleModalSubmit(e); }
+        const formData = new FormData(form);
+        const cc = formData.get('country_code') || '';
+        const rawPhone = formData.get('phone') || '';
+        if (cc && rawPhone && !rawPhone.startsWith('+')) {
+            formData.set('phone', cc + ' ' + rawPhone);
+        }
+        formData.append('_captcha', 'false');
+        formData.append('Page_URL', window.location.href);
+        const thankYouUrl = window.location.origin + '/Thank-you/';
+        formData.append('_next', thankYouUrl);
+
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset();
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.style.display = 'none';
+            window.location.href = thankYouUrl;
+        })
+        .catch(err => {
+            window.location.href = thankYouUrl;
+        });
+    }
+    function handleStudySubmit(e) { return handleModalSubmit(e); }
+    function handleExpertFormSubmit(e) { return handleModalSubmit(e); }
+        const formData = new FormData(form);
+        const cc = formData.get('country_code') || '';
+        const rawPhone = formData.get('phone') || '';
+        if (cc && rawPhone && !rawPhone.startsWith('+')) {
+            formData.set('phone', cc + ' ' + rawPhone);
+        }
+        formData.append('_captcha', 'false');
+        formData.append('Page_URL', window.location.href);
+        const thankYouUrl = window.location.origin + '/Thank-you/';
+        formData.append('_next', thankYouUrl);
+
+        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+            method: "POST",
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            form.reset();
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.style.display = 'none';
+            window.location.href = thankYouUrl;
+        })
+        .catch(err => {
+            window.location.href = thankYouUrl;
+        });
+    }
+    function handleStudySubmit(e) { return handleModalSubmit(e); }
+    function handleExpertFormSubmit(e) { return handleModalSubmit(e); }, 1200);
         }
     </script>
 </body>

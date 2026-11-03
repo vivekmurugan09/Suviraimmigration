@@ -1637,3 +1637,129 @@
     }
 }
 
+/* =================================================================
+   UNIFIED "TALK WITH OUR EXPERTS" CONSULTATION FORM CARD (ALL PAGES)
+   ================================================================= */
+.talk-experts-card {
+    background: #FFFFFF !important;
+    border-radius: 24px !important;
+    padding: 34px 30px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28) !important;
+    color: #1E293B !important;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.talk-experts-card h3 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    color: #0A1628 !important;
+    margin: 0 0 8px 0 !important;
+    text-align: center !important;
+    letter-spacing: -0.3px !important;
+}
+
+.talk-experts-card .talk-card-sub {
+    text-align: center !important;
+    color: #64748B !important;
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.talk-input-group {
+    margin-bottom: 14px !important;
+}
+
+.talk-input-group input,
+.talk-input-group select {
+    width: 100%;
+    padding: 12.5px 15px !important;
+    border: 1.5px solid #CBD5E1 !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-family: 'Outfit', sans-serif !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+    background: #FFFFFF !important;
+    color: #1E293B !important;
+    box-sizing: border-box !important;
+}
+
+.talk-input-group input:focus,
+.talk-input-group select:focus {
+    border-color: #0724A8 !important;
+    box-shadow: 0 0 0 3px rgba(7, 36, 168, 0.12) !important;
+}
+
+.talk-phone-row {
+    display: flex !important;
+    gap: 10px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+}
+
+.talk-input-group select.talk-phone-prefix,
+.talk-phone-prefix {
+    width: 118px !important;
+    flex: 0 0 118px !important;
+    padding: 12.5px 10px !important;
+}
+
+.talk-phone-row input {
+    width: auto !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+.talk-submit-btn {
+    width: 100% !important;
+    padding: 14.5px 18px !important;
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 15.5px !important;
+    font-weight: 800 !important;
+    font-family: 'Outfit', sans-serif !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 18px rgba(248, 112, 52, 0.35) !important;
+    transition: all 0.25s ease !important;
+    margin-top: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.talk-submit-btn:hover {
+    background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(248, 112, 52, 0.45) !important;
+}
+
+.talk-social-proof {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #64748B !important;
+}
+
+.talk-social-dot {
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 50% !important;
+    background: #10B981 !important;
+    display: inline-block !important;
+    box-shadow: 0 0 10px #10B981 !important;
+    flex-shrink: 0 !important;
+}
+
+

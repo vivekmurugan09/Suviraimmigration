@@ -7,15 +7,15 @@
     <meta name="description" content="Sponsor your spouse, partner, or dependent child to Canada. Expert Inland SOWP Open Work Permit & Outland Family Class PR filing with 99.4% approval rate.">
     <link rel="icon" type="image/x-icon" href="../../../favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
-    <link rel="stylesheet" href="../../../style-v3.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../../../greentree-formation.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../../../suvira-premier-hero.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="../spousal-sponsorship.css?v=20261103-navy-v1">
+    <link rel="stylesheet" href="../../../style-v3.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../../../greentree-formation.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../../../suvira-premier-hero.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="../spousal-sponsorship.css?v=20261103-navy-v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-        <nav class="navbar suvira-navbar">
+                        <nav class="navbar suvira-navbar">
         <div class="container suvira-nav-container">
             <div class="logo suvira-logo-wrap">
                 <a href="../../../" class="suvira-brand-link">
@@ -101,7 +101,6 @@
                     </div>
                 </div>
 
-                <a href="../../../about/" target="_blank" rel="noopener noreferrer" class="nav-link-item">About Us</a>
                 <a href="../../../contact/" target="_blank" rel="noopener noreferrer" class="nav-link-item">Contact Us</a>
 
                 <!-- Right Action Buttons -->
@@ -121,7 +120,9 @@
             </div>
         </div>
     </nav>
-        <div class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu Drawer -->
+    <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu suvira-mobile-drawer">
         <div class="mobile-menu-header">
             <div class="suvira-brand-link">
@@ -143,7 +144,6 @@
             <a href="../../../services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-heart"></i> Spousal Sponsorship</a>
             <a href="../../../services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-passport"></i> Visitor Visa</a>
             <a href="../../../draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bell"></i> Updates &amp; Draw Alerts</a>
-            <a href="../../../about/" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="../../../contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Contact Us</a>
             
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding: 0 10px;">
@@ -157,6 +157,12 @@
             </div>
         </div>
     </div>
+    
+    
+    
+    
+    
+    
 
     <section class="spousal-hero-section">
         <div class="container spousal-hero-container">
@@ -187,41 +193,67 @@
             </div>
 
             <div class="spousal-hero-right" id="assessment-card">
-                <div class="spousal-form-card">
-                    <div class="spousal-form-header">
-                        <h3>🇨🇦 Canada Spousal Assessment</h3>
-                        <p>Confidential legal review within 3 business hours</p>
-                    </div>
+                <div class="talk-experts-card">
+                    <h3>Talk with our Experts</h3>
+                    <p class="talk-card-sub">
+                        Get personalized migration advice tailored to your career and education goals.
+                    </p>
                     <form onsubmit="handleModalSubmit(event)">
-                        <input type="hidden" name="service" value="Canada Spousal Sponsorship">
-                        <div class="spousal-form-group">
-                            <label>Sponsor's Current Status in Canada</label>
-                            <select name="message" required>
-                                <option value="Canada Citizen / PR Sponsor">Canada Citizen / Permanent Resident</option>
-                                <option value="Canada Work Visa Holder">Valid Work Permit / Skilled Worker Holder</option>
-                                <option value="Canada Student Visa Holder">Student Visa / Post-Study Work Holder</option>
+                        <input type="hidden" name="_subject" value="New Consultation Request - Canada Spouse & Family Sponsorship">
+                        <input type="hidden" name="_captcha" value="false">
+                        
+                        <div class="talk-input-group">
+                            <input type="text" name="name" required placeholder="Your full name">
+                        </div>
+
+                        <div class="talk-input-group">
+                            <div class="talk-phone-row">
+                                <select class="talk-phone-prefix" name="country_code" style="width: 118px; flex: 0 0 118px;">
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+971">🇦🇪 +971</option>
+                                    <option value="+65">🇸🇬 +65</option>
+                                    <option value="+1">🇺🇸/🇨🇦 +1</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                    <option value="+61">🇦🇺 +61</option>
+                                </select>
+                                <input type="tel" name="phone" required placeholder="Phone / WhatsApp number" style="flex: 1 1 auto; width: auto; min-width: 0;">
+                            </div>
+                        </div>
+
+                        <div class="talk-input-group">
+                            <input type="email" name="email" required placeholder="Email address">
+                        </div>
+
+                        <div class="talk-input-group">
+                            <select name="visa_type" required>
+                                <option value="Canada Spouse & Family Sponsorship" selected>Canada Spouse & Family Sponsorship</option>
+                                <option value="Canada Express Entry PR">Canada Express Entry PR</option>
+                                <option value="Australia PR Visa (Subclass 189/190)">Australia PR Visa (Subclass 189/190)</option>
+                                <option value="UK Permanent Residency (ILR)">UK Permanent Residency (ILR)</option>
+                                <option value="Germany Opportunity Card & PR">Germany Opportunity Card &amp; PR</option>
+                                <option value="Overseas Study Visa">Study Visa (Australia / Canada / UK / Germany)</option>
+                                <option value="Spousal & Family Sponsorship">Spousal &amp; Family Sponsorship</option>
+                                <option value="Visitor / Tourist Visa">Visitor / Tourist Visa</option>
+                                <option value="SOP & Resume Writing">SOP &amp; Resume Writing</option>
                             </select>
                         </div>
-                        <div class="spousal-form-group">
-                            <label>Full Name</label>
-                            <input type="text" name="name" placeholder="Enter your full name" required>
+
+                        <div class="talk-input-group">
+                            <select name="consultation_mode" required>
+                                <option value="Virtual Consultation (Google Meet / Zoom)">Virtual Video Consultation (Zoom / Meet)</option>
+                                <option value="In-Person Office Visit (Chennai HQ)">In-Person Office Visit (Chennai Ekkatuthangal HQ)</option>
+                                <option value="Telephone Discussion">Phone Call Discussion</option>
+                            </select>
                         </div>
-                        <div class="spousal-form-group">
-                            <label>WhatsApp / Phone Number</label>
-                            <input type="tel" name="phone" placeholder="+91 98765 43210" required>
-                        </div>
-                        <div class="spousal-form-group">
-                            <label>Email Address</label>
-                            <input type="email" name="email" placeholder="you@example.com" required>
-                        </div>
-                        <button type="submit" class="spousal-form-submit">
-                            <i class="fas fa-lock"></i> Get Free Canada Spousal Evaluation &rarr;
+
+                        <button type="submit" class="talk-submit-btn">
+                            Schedule Free Consultation ✈
                         </button>
-                        <div class="spousal-form-guarantee">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>100% Data Privacy · GST Registered Official Legal Support</span>
-                        </div>
                     </form>
+                    <div class="talk-social-proof">
+                        <span class="talk-social-dot"></span>
+                        <span>Over 25,000+ satisfied clients guided across India</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,6 +344,81 @@
             </div>
         </div>
     </section>
+
+                    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo-with-icon">
+                        <img src="../../../images/suvira-logo.png" alt="Suvira Immigration Logo"
+                            style="height: 90px; width: auto; object-fit: contain; background: white; border-radius: 12px; padding: 6px 12px;"
+                            loading="lazy">
+                    </div>
+                    <p>India's trusted immigration &amp; global visa partner</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/suviraimmigration/" target="_blank" rel="noopener noreferrer"
+                            title="Follow Suvira Immigration on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/suvira-immigration-36b25a41a" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <a href="../../../"><i class="fas fa-chevron-right"></i> Home</a>
+                    <a href="../../../services/pr-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Immigration &amp; PR Visas</a>
+                    <a href="../../../services/study-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Study Visa</a>
+                    <a href="../../../services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Spousal Sponsorship</a>
+                    <a href="../../../services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                    <a href="../../../calculator/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> PR Points Calculator</a>
+                    <a href="../../../draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Express Entry Draw Alerts</a>
+                    <a href="../../../contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Contact Us</a>
+                </div>
+
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <a href="../../../services/canada-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Canada Express Entry PR</a>
+                    <a href="../../../services/australia-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Australia PR Visa</a>
+                    <a href="../../../services/uk-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> UK Permanent Residency (ILR)</a>
+                    <a href="../../../services/germany-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Germany Opportunity Card &amp; PR</a>
+                    <a href="../../../services/sop-writing/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> SOP &amp; Resume Writing</a>
+                    <a href="../../../Free Eligibility Check/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Free Assessment Checklist</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h3>Head Office</h3>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+                        <i class="fas fa-map-marker-alt" style="color: #F87034; font-size: 1rem; margin-top: 3px;"></i>
+                        <span>Ground Floor, No: 28, Sai Supreme, near Puthiya thalaimurai office, Thiru Vi Ka Industrial Estate, SIDCO Industrial Estate, Ekkatuthangal, Chennai - 600032</span>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-phone-alt" style="color: #F87034; font-size: 0.95rem;"></i>
+                        <a href="tel:+919940352086" style="color: #F87034; font-weight: 700; text-decoration: none;">+91 99403 52086</a>
+                    </p>
+                    <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-envelope" style="color: #F87034; font-size: 0.95rem;"></i>
+                        <a href="mailto:reachus@suviraimmigration.com" style="color: #F87034; font-weight: 600; text-decoration: none;">reachus@suviraimmigration.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 25px; margin-top: 30px;">
+                <p>© <span class="current-year">2026</span> Suvira Immigration Consultants. All Rights Reserved.</p>
+                <p style="margin: 10px 0;">
+                    <a href="../../../privacy-policy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a> |
+                    <a href="../../../terms/" target="_blank" rel="noopener noreferrer">Terms &amp; Conditions</a> |
+                    <a href="../../../disclaimer/" target="_blank" rel="noopener noreferrer">Disclaimer</a>
+                </p>
+                <p class="compliance" style="font-size: 0.85rem; opacity: 0.8; margin-top: 8px;">Registered with Ministry of Corporate Affairs • GST Registered • ISO 9001:2015 Certified</p>
+                <p class="disclaimer-note" style="font-size: 0.8rem; opacity: 0.7; max-width: 900px; margin: 12px auto 0; line-height: 1.5; color: #CBD5E1;">
+                    <strong>Regulatory Disclaimer</strong>: Visa approvals are granted solely by the relevant government authorities (such as IRCC Canada, Australian Department of Home Affairs, German Federal Foreign Office). Suvira Immigration provides professional consultancy, profile assessment, SOP/documentation preparation, and filing support. We strictly adhere to ethical immigration practices and do not make false guarantee claims.
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <div id="leadModal" class="lead-modal-overlay" style="display: none;" onclick="if(event.target===this)this.style.display='none'">
         <div class="lead-modal-card">

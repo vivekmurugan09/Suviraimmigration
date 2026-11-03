@@ -1233,40 +1233,47 @@ function suviraSendLeadForm(formData, onComplete) {
     });
 }
 
-// Global Modal Form Handler
+// Global Modal & Hero Consultation Form Handler
 function handleModalSubmit(e) {
     sessionStorage.setItem('popupShown', 'true');
     e.preventDefault();
     const form = e.target;
     
     const nameEl = form.elements['name'] || form.querySelector('input[type="text"]');
+    const ccEl = form.elements['country_code'];
     const phoneEl = form.elements['phone'] || form.querySelector('input[type="tel"]');
     const emailEl = form.elements['email'] || form.querySelector('input[type="email"]');
-    const serviceEl = form.elements['service'] || form.elements['pnp'] || form.querySelector('select');
+    const serviceEl = form.elements['visa_type'] || form.elements['service'] || form.elements['stream'] || form.elements['destination'] || form.elements['pnp'] || form.querySelector('select:not(.talk-phone-prefix)');
+    const modeEl = form.elements['consultation_mode'];
     const msgEl = form.elements['message'] || form.elements['occupation'] || form.querySelector('textarea');
 
     const name = nameEl ? nameEl.value : '';
-    const phone = phoneEl ? phoneEl.value : '';
+    const cc = ccEl ? ccEl.value + ' ' : '';
+    const phone = (phoneEl ? phoneEl.value : '');
+    const fullPhone = phone.startsWith('+') ? phone : (cc + phone).trim();
     const email = emailEl ? emailEl.value : '';
     const service = serviceEl ? serviceEl.value : 'General Inquiry';
 
     const formData = new FormData();
     formData.append("Full Name", name);
-    formData.append("Phone / WhatsApp", phone);
-    formData.append("Email Address", email);
-    formData.append("Service Required", service);
+    formData.append("Phone / WhatsApp", fullPhone);
+    if (email) formData.append("Email Address", email);
+    formData.append("Interested Visa / Pathway", service);
+    if (modeEl && modeEl.value) {
+        formData.append("Consultation Mode", modeEl.value);
+    }
     if (msgEl && msgEl.value) {
         formData.append("Additional Details", msgEl.value);
     }
     formData.append("Page URL", window.location.href);
-    formData.append("_subject", `New Inquiry (${service}): ${name}`);
+    formData.append("_subject", `New Consultation Request (${service}): ${name}`);
     formData.append("_captcha", "false");
     formData.append("_next", suviraThankYouUrl());
 
     const submitBtn = form.querySelector('button[type="submit"]');
     if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
+        submitBtn.textContent = 'Submitting Consultation Request...';
     }
 
     suviraSendLeadForm(formData, function() {
@@ -1274,4 +1281,12 @@ function handleModalSubmit(e) {
         const modal = document.getElementById('leadModal');
         if (modal) modal.style.display = 'none';
     });
+}
+
+function handleExpertFormSubmit(e) {
+    return handleModalSubmit(e);
+}
+
+function handleStudySubmit(e) {
+    return handleModalSubmit(e);
 }

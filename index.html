@@ -16,9 +16,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="stylesheet" href="style-v3.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="greentree-formation.css?v=20261103-navy-v1">
-    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261103-navy-v1">
+    <link rel="stylesheet" href="style-v3.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="greentree-formation.css?v=20261103-navy-v2">
+    <link rel="stylesheet" href="suvira-premier-hero.css?v=20261103-navy-v2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
@@ -174,7 +174,6 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                     </div>
                 </div>
 
-                <a href="about/" target="_blank" rel="noopener noreferrer" class="nav-link-item">About Us</a>
                 <a href="contact/" target="_blank" rel="noopener noreferrer" class="nav-link-item">Contact Us</a>
 
                 <!-- Right Action Buttons -->
@@ -196,7 +195,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
     </nav>
 
     <!-- Mobile Menu Drawer -->
-        <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu-overlay"></div>
     <div class="mobile-menu suvira-mobile-drawer">
         <div class="mobile-menu-header">
             <div class="suvira-brand-link">
@@ -218,7 +217,6 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
             <a href="services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-heart"></i> Spousal Sponsorship</a>
             <a href="services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-passport"></i> Visitor Visa</a>
             <a href="draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-bell"></i> Updates &amp; Draw Alerts</a>
-            <a href="about/" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> About Us</a>
             <a href="contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i> Contact Us</a>
             
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding: 0 10px;">
@@ -1021,7 +1019,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 <!-- Right Column: High-Converting Talk With Our Experts Lead Form -->
                 <div class="talk-experts-card">
                     <h3>Talk with our Experts</h3>
-                    <p style="text-align: center; color: #64748B; font-size: 14px; margin-top: -14px; margin-bottom: 22px;">
+                    <p class="talk-card-sub" style="text-align: center; color: #64748B; font-size: 14px; margin-top: -14px; margin-bottom: 22px;">
                         Get personalized migration advice tailored to your career and education goals.
                     </p>
                     <form id="talkExpertsForm" onsubmit="handleExpertFormSubmit(event)">
@@ -1034,7 +1032,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
 
                         <div class="talk-input-group">
                             <div class="talk-phone-row">
-                                <select class="talk-phone-prefix" id="teCountryCode" name="country_code">
+                                <select class="talk-phone-prefix" id="teCountryCode" name="country_code" style="width: 118px; flex: 0 0 118px;">
                                     <option value="+91">🇮🇳 +91</option>
                                     <option value="+971">🇦🇪 +971</option>
                                     <option value="+65">🇸🇬 +65</option>
@@ -1042,7 +1040,7 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                                     <option value="+44">🇬🇧 +44</option>
                                     <option value="+61">🇦🇺 +61</option>
                                 </select>
-                                <input type="tel" id="tePhone" name="phone" required placeholder="Phone / WhatsApp number" style="flex: 1;">
+                                <input type="tel" id="tePhone" name="phone" required placeholder="Phone / WhatsApp number" style="flex: 1 1 auto; width: auto; min-width: 0;">
                             </div>
                         </div>
 
@@ -1054,13 +1052,13 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                             <select id="teVisa" name="visa_type" required>
                                 <option value="">Select Interested Visa / Destination</option>
                                 <option value="Canada Express Entry PR">Canada Express Entry PR</option>
-                                <option value="Canada Provincial Nominee (PNP)">Canada Provincial Nominee (PNP)</option>
-                                <option value="Germany Opportunity Card (Chancenkarte)">Germany Opportunity Card (Chancenkarte)</option>
-                                <option value="Australia Skilled PR (Subclass 189/190)">Australia Skilled PR (Subclass 189/190)</option>
-                                <option value="New Zealand Skilled Migrant PR">New Zealand Skilled Migrant PR</option>
-                                <option value="Overseas Study Abroad">Overseas Study Abroad</option>
-                                <option value="Spouse & Dependent Visa">Spouse &amp; Dependent Visa</option>
+                                <option value="Australia Skilled PR (Subclass 189/190)">Australia PR Visa (Subclass 189/190)</option>
+                                <option value="UK Permanent Residency (ILR)">UK Permanent Residency (ILR)</option>
+                                <option value="Germany Opportunity Card & PR">Germany Opportunity Card &amp; PR</option>
+                                <option value="Overseas Study Visa">Study Visa (Australia / Canada / UK / Germany)</option>
+                                <option value="Spousal & Family Sponsorship">Spousal &amp; Family Sponsorship</option>
                                 <option value="Visitor / Tourist Visa">Visitor / Tourist Visa</option>
+                                <option value="SOP & Resume Writing">SOP &amp; Resume Writing</option>
                             </select>
                         </div>
 
@@ -1519,23 +1517,23 @@ src="https://www.facebook.com/tr?id=1627324715484709&ev=PageView&noscript=1"
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <a href="./"><i class="fas fa-chevron-right"></i> Home</a>
-                    <a href="about/"><i class="fas fa-chevron-right"></i> About Us</a>
-                    <a href="/calculator/"><i class="fas fa-chevron-right"></i> Eligibility Check</a>
-                    <a href="services/"><i class="fas fa-chevron-right"></i> Services</a>
-                    <a href="/countries/"><i class="fas fa-chevron-right"></i> Countries</a>
-                    <a href="process/"><i class="fas fa-chevron-right"></i> Process</a>
-                    <a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a>
-                    <a href="contact/"><i class="fas fa-chevron-right"></i> Contact</a>
+                    <a href="services/pr-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Immigration &amp; PR Visas</a>
+                    <a href="services/study-visas/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Study Visa</a>
+                    <a href="services/spousal-sponsorship/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Spousal Sponsorship</a>
+                    <a href="services/visitor-visa/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                    <a href="calculator/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> PR Points Calculator</a>
+                    <a href="draw-alerts/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Express Entry Draw Alerts</a>
+                    <a href="contact/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Contact Us</a>
                 </div>
 
                 <div class="footer-services">
                     <h3>Our Services</h3>
-                    <a href="/contact/?service=study"><i class="fas fa-chevron-right"></i> Study Abroad</a>
-                    <a href="/contact/?service=pr"><i class="fas fa-chevron-right"></i> PR Services</a>
-                    <a href="/contact/?service=family"><i class="fas fa-chevron-right"></i> Family
-                        Immigration</a>
-                    <a href="/contact/?service=business"><i class="fas fa-chevron-right"></i> Business Visa</a>
-                    <a href="/contact/?service=visitor"><i class="fas fa-chevron-right"></i> Visitor Visa</a>
+                    <a href="services/canada-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Canada Express Entry PR</a>
+                    <a href="services/australia-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Australia PR Visa</a>
+                    <a href="services/uk-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> UK Permanent Residency (ILR)</a>
+                    <a href="services/germany-pr/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Germany Opportunity Card &amp; PR</a>
+                    <a href="services/sop-writing/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> SOP &amp; Resume Writing</a>
+                    <a href="Free Eligibility Check/" target="_blank" rel="noopener noreferrer"><i class="fas fa-chevron-right"></i> Free Assessment Checklist</a>
                 </div>
 
                 <div class="footer-contact">
