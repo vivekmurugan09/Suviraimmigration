@@ -110,7 +110,7 @@ if "--site-ink:" not in existing_polish:
 
 # 4. Write dist/site-enhancements.js (exact browser JS translation of src/lib/site-enhancements.ts)
 site_enhancements_js = """(function () {
-  var WEB3FORMS_KEY = "db7df984-770b-445d-8c2a-ad8a45278245";
+  var WEB3FORMS_KEY = "f8093545-1c7c-4ef0-8ada-52543d5c98c6";
   var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
   var FORM_ENDPOINT = "https://api.web3forms.com/submit";
   var BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
@@ -721,7 +721,7 @@ def render_static_html(page):
             code = code.replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
-            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "db7df984-770b-445d-8c2a-ad8a45278245", from_name: "Suvira Immigration Website",')
+            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "f8093545-1c7c-4ef0-8ada-52543d5c98c6", from_name: "Suvira Immigration Website",')
             script_parts.append(f'  <script>{code}</script>')
 
     return (
