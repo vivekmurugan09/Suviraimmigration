@@ -501,6 +501,63 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculateNzPoints() {
+        const primary = parseInt(document.getElementById('nzPrimary').value) || 0;
+        const exp = parseInt(document.getElementById('nzExp').value) || 0;
+        const job = document.getElementById('nzJob').value;
+        const prereq = document.getElementById('nzPrereq').value;
+
+        const total = primary + exp;
+
+        document.getElementById('nzTotalScore').textContent = total;
+        document.getElementById('bdNzPrimary').textContent = primary + " / 6 Pts";
+        document.getElementById('bdNzExp').textContent = exp + " / 3 Pts";
+        document.getElementById('bdNzTotal').textContent = total + " / 6 Pts";
+
+        const badge = document.getElementById('nzStatusBadge');
+        const feedback = document.getElementById('nzFeedback');
+
+        if (prereq === 'fail_age') {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (Age Over 55)';
+            feedback.innerHTML = '⚠️ <strong>Age Ineligibility:</strong> The Skilled Migrant Category requires all applicants to be 55 years of age or younger at the time of application.';
+        } else if (prereq === 'fail_lang') {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (English Below IELTS 6.5)';
+            feedback.innerHTML = '⚠️ <strong>Language Prerequisite:</strong> You must meet the minimum English proficiency standard (IELTS overall 6.5, PTE 58, or TOEFL iBT 79).';
+        } else if (job === 'no') {
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Job Offer Required to Lodge (' + total + ' Pts)';
+            feedback.innerHTML = '⚠️ <strong>NZ Job Offer Needed:</strong> While you hold ' + total + ' points, you must secure an employment offer from an Accredited Employer in New Zealand paying at least $31.61/hr to lodge your SMC expression of interest.';
+        } else if (total >= 6) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Eligible for NZ Resident Visa (' + total + '/6 Pts)';
+            feedback.innerHTML = '🎯 <strong>Full Eligibility Confirmed!</strong> You have achieved ' + total + ' points, meeting or exceeding the 6-point statutory benchmark. You can lodge an Expression of Interest (EOI) for the Skilled Migrant Category Resident Visa.';
+        } else {
+            const gap = 6 - total;
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + gap + ' Point' + (gap > 1 ? 's' : '') + ' Below Benchmark (' + total + '/6 Pts)';
+            feedback.innerHTML = '⚠️ <strong>Currently at ' + total + ' points (Need 6).</strong> You need ' + gap + ' more point' + (gap > 1 ? 's' : '') + '. You can gain this by completing 1–2 more years of skilled work experience in New Zealand or securing a higher income threshold.';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateNzPoints();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

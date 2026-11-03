@@ -595,6 +595,68 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculateAuPoints() {
+        const age = parseInt(document.getElementById('auAge').value) || 0;
+        const eng = parseInt(document.getElementById('auEng').value) || 0;
+        const expOverseas = parseInt(document.getElementById('auExpOverseas').value) || 0;
+        const expAus = parseInt(document.getElementById('auExpAus').value) || 0;
+        const edu = parseInt(document.getElementById('auEdu').value) || 0;
+        const partner = parseInt(document.getElementById('auPartner').value) || 0;
+        const subclass = parseInt(document.getElementById('auSubclass').value) || 0;
+        const bonus = parseInt(document.getElementById('auBonus').value) || 0;
+
+        const workTotal = Math.min(20, expOverseas + expAus);
+        const total = age + eng + workTotal + edu + partner + subclass + bonus;
+
+        document.getElementById('auTotalScore').textContent = total;
+        document.getElementById('bdAuAge').textContent = age + " / 30";
+        document.getElementById('bdAuEng').textContent = eng + " / 20";
+        document.getElementById('bdAuExp').textContent = workTotal + " / 20";
+        document.getElementById('bdAuEdu').textContent = edu + " / 20";
+        document.getElementById('bdAuPartner').textContent = partner + " / 10";
+        document.getElementById('bdAuSubclass').textContent = "+" + subclass + " Pts";
+        document.getElementById('bdAuBonus').textContent = "+" + bonus + " Pts";
+
+        const badge = document.getElementById('auStatusBadge');
+        const feedback = document.getElementById('auFeedback');
+
+        if (age === 0) {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (Age 45 or Older)';
+            feedback.innerHTML = '⚠️ <strong>Age Ineligibility:</strong> General Skilled Migration visas (Subclasses 189, 190, 491) require applicants to be under 45 years of age at the time of invitation. You may explore Employer Sponsored or Global Talent pathways.';
+        } else if (total >= 85) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Highly Competitive (' + total + ' Pts)';
+            feedback.innerHTML = '🎯 <strong>Top-Tier Score!</strong> With ' + total + ' points, you are in the top priority band for direct Subclass 189 Independent PR and Subclass 190 state invitations.';
+        } else if (total >= 65) {
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Benchmark Met (' + total + ' Pts)';
+            feedback.innerHTML = '✅ <strong>Pass Mark Achieved!</strong> You meet the 65-point legal threshold. To maximize invitation speed, target Subclass 190 State Nomination (+5 pts) or Subclass 491 Regional (+15 pts).';
+        } else {
+            const gap = 65 - total;
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + gap + ' Points Below 65 Benchmark (' + total + '/65)';
+            feedback.innerHTML = '⚠️ <strong>Currently at ' + total + ' points (Need 65).</strong> You can reach the 65-point benchmark by scoring Superior English (+10 pts extra), taking the NAATI CCL language test (+5 pts), or opting for Subclass 491 regional sponsorship (+15 pts).';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateAuPoints();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

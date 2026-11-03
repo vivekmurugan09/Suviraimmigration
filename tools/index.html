@@ -373,6 +373,60 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1627324715484709');
+fbq('track', 'PageView');
+</script>
+  <script>
+function generateChecklist() {
+  const dest = document.getElementById('ch1').value;
+  const visa = document.getElementById('ch2').value;
+  const status = document.getElementById('ch3').value;
+  const dep = document.getElementById('ch4').value;
+  const resultDiv = document.getElementById('checklistResult');
+  
+  if (!dest || !visa || !status || !dep) {
+    alert("Please select all options to generate your checklist.");
+    return;
+  }
+  
+  let list = '<ul style="margin:0;padding-left:20px;line-height:1.8">';
+  list += '<li>Valid Passport (min 6 months validity)</li>';
+  list += '<li>Language Test Results (IELTS/PTE)</li>';
+  list += '<li>Educational Credential Assessment (ECA)</li>';
+  list += '<li>Original Degrees and Transcripts</li>';
+  
+  if(visa === 'pr' || visa === 'work') {
+    list += '<li>Detailed Employment Reference Letters</li>';
+    list += '<li>Pay slips (last 3-6 months)</li>';
+    list += '<li>Proof of Settlement Funds (Bank Statements)</li>';
+  }
+  
+  if(status === 'married') {
+    list += '<li>Marriage Certificate</li>';
+    list += '<li>Spouse Passport & Educational Docs</li>';
+  }
+  
+  if(dep === 'yes') {
+    list += '<li>Birth Certificates of Dependent Children</li>';
+  }
+  
+  list += '<li>Police Clearance Certificate (PCC)</li>';
+  list += '<li>Upfront Medical Exam Report</li>';
+  list += '</ul>';
+  
+  resultDiv.innerHTML = '<h4 style="font-size:15px;color:#0a1628;margin-bottom:12px;font-weight:700">Your Personalised Document Checklist</h4>' + list;
+  resultDiv.style.display = 'block';
+}
+</script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>

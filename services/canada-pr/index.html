@@ -835,6 +835,30 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    // FAQ Toggle
+    function toggleFaq(btn) {
+        const panel = btn.nextElementSibling;
+        const isActive = btn.classList.contains('active');
+        document.querySelectorAll('.faq-question-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isActive) {
+            btn.classList.add('active');
+            panel.classList.add('show');
+        }
+    }
+
+    else if (total >= 420) {
+            feedback.innerHTML = "🍁 <strong style='color:#FBBF24;'>Optimal Category-Based &amp; PNP Range!</strong> High chances via Ontario Tech (OINP), Alberta (AAIP), and Saskatchewan (SINP).";
+        } else {
+            feedback.innerHTML = "⚡ <strong style='color:#EF4444;'>Target Provincial Nomination (+600 Pts)!</strong> Securing a provincial nomination will elevate your score to 1,000+ points.";
+        }
+    }
+
+    // Form submission helper
+                    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

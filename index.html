@@ -1000,7 +1000,327 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1627324715484709');
+fbq('track', 'PageView');
+</script>
+  <script>(function(){var t=document.getElementById("freeCalcTrack");if(!t)return;var w=function(){return t.querySelector(".free-calc-card").offsetWidth+25};document.querySelector(".free-calc-arrow.prev").onclick=function(){t.scrollBy({left:-w(),behavior:"smooth"})};document.querySelector(".free-calc-arrow.next").onclick=function(){t.scrollBy({left:w(),behavior:"smooth"})};})();</script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
   <script src="/app.js?v=20261103-v6"></script>
+  <script>
+    (function() {
+        let modalShown = false;
+
+        function openModal() {
+            if (modalShown) return;
+            if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
+            
+            const modal = document.getElementById("leadModal");
+            if (!modal) return;
+            
+            modalShown = true;
+            modal.classList.remove("is-closing");
+            modal.classList.add("is-visible");
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("leadModal");
+            if (!modal) return;
+            modal.classList.add("is-closing");
+            setTimeout(function() {
+                modal.classList.remove("is-visible", "is-closing");
+                modal.style.display = "none";
+            }, 250);
+            sessionStorage.setItem("suvira_consultation_dismissed", "true");
+            sessionStorage.setItem("popupShown", "true");
+        }
+
+        window.closeLeadModal = closeModal;
+        window.openLeadModal = function() {
+            modalShown = false;
+            const modal = document.getElementById("leadModal");
+            if (modal) {
+                modal.classList.remove("is-closing");
+                modal.classList.add("is-visible");
+                modal.style.display = "flex";
+            }
+        };
+
+        // Scroll trigger: pop up when scrolling down towards the end of the page
+        let triggered = false;
+        function checkScrollEnd() {
+            if (triggered || modalShown) return;
+            if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
+            
+            const scrollPos = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop) + window.innerHeight;
+            const totalHeight = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.offsetHeight
+            );
+            
+            // Trigger when user scrolls near the bottom of the page (within 700px or past 78% depth)
+            if (totalHeight > 900 && (scrollPos >= totalHeight - 700 || scrollPos / totalHeight >= 0.78)) {
+                triggered = true;
+                openModal();
+            }
+        }
+
+        window.addEventListener("scroll", checkScrollEnd, { passive: true });
+
+        // Close on backdrop click
+        document.addEventListener("DOMContentLoaded", function() {
+            const modal = document.getElementById("leadModal");
+            if (modal) {
+                modal.addEventListener("click", function(e) {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape" || e.keyCode === 27) {
+                const modal = document.getElementById("leadModal");
+                if (modal && (modal.classList.contains("is-visible") || modal.style.display === "flex")) {
+                    closeModal();
+                }
+            }
+        });
+    })();
+</script>
+  <script>
+        import { animate, inView, stagger } from "https://esm.sh/framer-motion/dom";
+
+        // Hero
+        animate(".hero-pill", { opacity: [0, 1], y: [-20, 0] }, { duration: 0.6 });
+        animate(".hero-title", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.2 });
+        animate(".hero-subtitle", { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, delay: 0.4 });
+        animate(".hero-btns", { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, delay: 0.6 });
+
+        // Scroll sections
+        const sections = [
+            ".about-content", ".about-img-wrapper", 
+            ".service-card", ".country-card", 
+            ".process-step", ".stats-container",
+            ".testimonial-card"
+        ];
+        sections.forEach(selector => {
+            inView(selector, (info) => {
+                animate(info.target, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8 });
+            });
+        });
+    </script>
+  <script>
+    // 1. Dynamic Destination Running Letters Typewriter Effect in Hero
+    (function initTypewriter() {
+        const typewriterEl = document.getElementById('suviraRunningWords') || document.getElementById('typewriterDestination');
+        if (!typewriterEl) return;
+        const words = [
+            "Canada PR & Express Entry",
+            "Germany Opportunity Card",
+            "Australia 189 & 190 PR",
+            "Overseas Study Visas",
+            "Spousal Sponsorship",
+            "Visitor & Tourist Visas"
+        ];
+        let wordIndex = 0;
+        let charIndex = words[0].length;
+        let isDeleting = true;
+        const typeSpeed = 80;
+        const deleteSpeed = 40;
+        const delayBetweenWords = 2200;
+
+        function type() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, delayBetweenWords);
+                return;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(type, 350);
+                return;
+            }
+
+            setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
+        }
+        setTimeout(type, 1800);
+    })();
+
+    // 2. Visa Intent Category Switcher
+    function switchVisaTab(btn, category) {
+        document.querySelectorAll('.visa-tab-btn').forEach(b => b.classList.remove('active'));
+        if (btn) btn.classList.add('active');
+
+        const subheading = document.getElementById('visaCategorySubheading');
+        const descriptions = {
+            pr: "Direct Permanent Residency pathways with points optimization & legal assistance for Canada, Australia & Europe.",
+            study: "Explore study destinations, university admissions and student visa preparation.",
+            spousal: "Reunite with your loved ones with fast-track Dependent, Spouse Sponsorship & Super Visas.",
+            visit: "Seamless Tourist, Family Visitor, and Business B1/B2 Visa stamping with complete documentation support."
+        };
+        if (subheading && descriptions[category]) {
+            subheading.innerHTML = `<i class="fas fa-check-circle" style="color: #F87034; margin-right: 4px;"></i> ` + descriptions[category];
+        }
+
+        const cards = document.querySelectorAll('.visa-country-card');
+        cards.forEach(card => {
+            const categories = (card.getAttribute('data-category') || '').split(' ');
+            const isMatch = (category === 'all' || categories.includes(category));
+            if (isMatch) {
+                card.classList.remove('is-hidden');
+                card.style.display = 'flex';
+                card.style.animation = 'visaCardFadeIn 0.35s ease';
+                const actionBtn = card.querySelector('.visa-country-btn');
+                if (actionBtn) {
+                    const catHref = actionBtn.getAttribute('data-href-' + category);
+                    if (catHref) actionBtn.setAttribute('href', '/' + catHref.replace(/^\/+/, ''));
+                    const title = card.querySelector('.visa-country-title');
+                    const country = title ? title.textContent.trim().replace('Ireland & EU', 'Ireland') : '';
+                    ['.visa-country-subtitle', '.visa-country-desc', '.visa-card-perks', '.visa-media-tag'].forEach(selector => {
+                        const el = card.querySelector(selector);
+                        if (!el) return;
+                        if (!el.dataset.originalHtml) el.dataset.originalHtml = el.innerHTML;
+                        if (category !== 'study') { el.innerHTML = el.dataset.originalHtml; return; }
+                        if (selector === '.visa-country-subtitle') el.textContent = 'Study in ' + country;
+                        if (selector === '.visa-country-desc') el.textContent = 'Explore university admissions, course selection and student visa preparation for ' + country + ' with Suvira Immigration.';
+                        if (selector === '.visa-media-tag') el.textContent = 'Student visa';
+                        if (selector === '.visa-card-perks') el.innerHTML = '<div class="visa-perk-item"><i class="fas fa-check-circle"></i><span>Course & university selection</span></div><div class="visa-perk-item"><i class="fas fa-check-circle"></i><span>Admission & application guidance</span></div><div class="visa-perk-item"><i class="fas fa-check-circle"></i><span>Student visa preparation</span></div>';
+                    });
+                    const label = actionBtn.querySelector('span');
+                    if (label) label.textContent = category === 'study' ? 'Explore study visa' : 'Apply Now';
+                }
+            } else {
+                card.classList.add('is-hidden');
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    function jumpToVisaCategory(category) {
+        const targetBtn = document.querySelector(`.visa-tab-btn[data-category="${category}"]`);
+        if (targetBtn) {
+            switchVisaTab(targetBtn, category);
+        }
+        const section = document.getElementById('visa-category');
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // 3. Consultation Pre-fill Modal Helper
+    function prefillConsultation(serviceName) {
+        const modal = document.getElementById('leadModal');
+        if (!modal) return;
+        const serviceSelect = modal.querySelector('select[name="service"]');
+        if (serviceSelect && serviceName) {
+            let found = false;
+            for (let i = 0; i < serviceSelect.options.length; i++) {
+                if (serviceSelect.options[i].text.toLowerCase().includes(serviceName.toLowerCase()) ||
+                    serviceSelect.options[i].value.toLowerCase().includes(serviceName.toLowerCase())) {
+                    serviceSelect.selectedIndex = i;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                serviceSelect.value = serviceName;
+            }
+        }
+        modal.style.display = 'flex';
+    }
+
+    // 4. Talk with our Experts Form Submission Handler
+    function getThankYouUrl() {
+        return window.location.origin + '/Thank-you/';
+    }
+
+    function submitViaStandardFormPost(payload) {
+        const tempForm = document.createElement('form');
+        tempForm.method = 'POST';
+        tempForm.action = 'https://formsubmit.co/reachus@suviraimmigration.com';
+        tempForm.style.display = 'none';
+        const fields = Object.assign({}, payload, {
+            _captcha: 'false',
+            _next: getThankYouUrl()
+        });
+        Object.keys(fields).forEach(function(key) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = fields[key];
+            tempForm.appendChild(input);
+        });
+        document.body.appendChild(tempForm);
+        tempForm.submit();
+    }
+
+    function handleExpertFormSubmit(e) {
+        e.preventDefault();
+        const form = document.getElementById('talkExpertsForm');
+        const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+        const successMsg = document.getElementById('teSuccessMsg');
+
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting Consultation Request...';
+        }
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData);
+        payload.page_url = window.location.href;
+        payload._next = getThankYouUrl();
+
+        fetch('https://formsubmit.co/ajax/reachus@suviraimmigration.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data && (data.success === 'false' || data.success === false)) {
+                submitViaStandardFormPost(payload);
+                return;
+            }
+            if (form) form.reset();
+            if (successMsg) successMsg.style.display = 'block';
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Request Submitted ✓';
+            }
+            setTimeout(() => {
+                window.location.href = getThankYouUrl();
+            }, 600);
+        })
+        .catch(err => {
+            submitViaStandardFormPost(payload);
+        });
+    }
+    </script>
 </body>
 </html>

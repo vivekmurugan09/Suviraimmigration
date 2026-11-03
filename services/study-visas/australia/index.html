@@ -619,6 +619,28 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function toggleFaq(btn) {
+        const panel = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        const isOpen = panel.style.display === 'block';
+        
+        document.querySelectorAll('.study-overview-section [style*="display: block"]').forEach(p => p.style.display = 'none');
+        document.querySelectorAll('.study-overview-section i.fa-chevron-up').forEach(ic => {
+            ic.classList.remove('fa-chevron-up');
+            ic.classList.add('fa-chevron-down');
+        });
+
+        if (!isOpen) {
+            panel.style.display = 'block';
+            if (icon) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+    }
+
+                    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

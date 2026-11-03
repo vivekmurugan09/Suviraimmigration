@@ -579,6 +579,115 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculateCrsScore() {
+        const marital = document.getElementById('crsMarital').value;
+        const ageKey = document.getElementById('crsAge').value;
+        const eduKey = document.getElementById('crsEdu').value;
+        const langKey = document.getElementById('crsLang').value;
+        const foreignExpKey = document.getElementById('crsForeignExp').value;
+        const canExpKey = document.getElementById('crsCanExp').value;
+        const bonus = parseInt(document.getElementById('crsBonus').value) || 0;
+
+        const isSingle = (marital === 'single');
+
+        // Age points (Max 110 single / 100 married)
+        let agePts = 0;
+        const ageMapSingle = {
+            '20-29': 110, '30': 105, '31': 99, '32': 94, '33': 88, '34': 83, '35': 77,
+            '36': 72, '37': 66, '38': 61, '39': 55, '40': 50, '41': 39, '42': 28, '43': 17, '44': 6, '45+': 0
+        };
+        const ageMapMarried = {
+            '20-29': 100, '30': 95, '31': 90, '32': 85, '33': 80, '34': 75, '35': 70,
+            '36': 65, '37': 60, '38': 55, '39': 50, '40': 45, '41': 35, '42': 25, '43': 15, '44': 5, '45+': 0
+        };
+        agePts = isSingle ? (ageMapSingle[ageKey] || 0) : (ageMapMarried[ageKey] || 0);
+
+        // Education points (Max 150 single / 140 married)
+        let eduPts = 0;
+        if (eduKey === 'master') eduPts = isSingle ? 135 : 126;
+        else if (eduKey === 'two') eduPts = isSingle ? 128 : 119;
+        else if (eduKey === 'bachelor') eduPts = isSingle ? 120 : 112;
+        else if (eduKey === 'phd') eduPts = isSingle ? 150 : 140;
+        else if (eduKey === 'diploma2') eduPts = isSingle ? 98 : 91;
+        else if (eduKey === 'certificate1') eduPts = isSingle ? 90 : 84;
+
+        // Language points (Max 136 single / 128 married)
+        let langPts = 0;
+        if (langKey === 'clb10') langPts = isSingle ? 136 : 128;
+        else if (langKey === 'clb9') langPts = isSingle ? 124 : 116;
+        else if (langKey === 'clb8') langPts = isSingle ? 92 : 88;
+        else if (langKey === 'clb7') langPts = isSingle ? 68 : 64;
+
+        // Canadian work experience (Max 70)
+        let canExpPts = 0;
+        if (canExpKey === '1') canExpPts = isSingle ? 40 : 35;
+        else if (canExpKey === '2') canExpPts = isSingle ? 53 : 46;
+        else if (canExpKey === '3+') canExpPts = isSingle ? 64 : 56;
+
+        // Core human capital
+        const humanCapital = agePts + eduPts + langPts + canExpPts;
+
+        // Skill Transferability Factors (Max 100)
+        // Factor A: Education + Language
+        let transEduLang = 0;
+        if (eduKey === 'master' || eduKey === 'two' || eduKey === 'phd') {
+            transEduLang = (langKey === 'clb9' || langKey === 'clb10') ? 50 : 25;
+        } else if (eduKey === 'bachelor') {
+            transEduLang = (langKey === 'clb9' || langKey === 'clb10') ? 25 : 13;
+        }
+
+        // Factor B: Foreign Work Experience + Language
+        let transWorkLang = 0;
+        if (foreignExpKey === '3+') {
+            transWorkLang = (langKey === 'clb9' || langKey === 'clb10') ? 50 : 25;
+        } else if (foreignExpKey === '2' || foreignExpKey === '1') {
+            transWorkLang = (langKey === 'clb9' || langKey === 'clb10') ? 25 : 13;
+        }
+
+        const transferability = Math.min(100, transEduLang + transWorkLang);
+
+        const totalCrs = humanCapital + transferability + bonus;
+
+        document.getElementById('crsTotalScore').textContent = totalCrs;
+        document.getElementById('bdHuman').textContent = humanCapital + " Pts";
+        document.getElementById('bdTrans').textContent = transferability + " Pts (Max 100)";
+        document.getElementById('bdBonus').textContent = "+" + bonus + " Pts";
+
+        const badge = document.getElementById('crsStatusBadge');
+        const feedback = document.getElementById('crsFeedback');
+
+        if (totalCrs >= 500) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Exceptional Score (' + totalCrs + ' Pts)';
+            feedback.innerHTML = '🎯 <strong>Top Tier:</strong> At ' + totalCrs + ' points, your profile is in range for direct General (All-Program) and STEM category invitations.';
+        } else if (totalCrs >= 440) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Competitive for Category Draws (' + totalCrs + ' Pts)';
+            feedback.innerHTML = '🎯 <strong>Category Ready:</strong> At ' + totalCrs + ' points, you are highly competitive for Healthcare, Trades, and French category rounds, and well positioned for Ontario/BC PNP draws.';
+        } else {
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Strategic PNP Pathway Recommended (' + totalCrs + ' Pts)';
+            feedback.innerHTML = '⚠️ <strong>Strategic Action Needed:</strong> At ' + totalCrs + ' points, target a Provincial Nominee Program (adding +600 points) or achieve French NCLC 7 (+50 points) to secure immediate ITA eligibility.';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateCrsScore();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

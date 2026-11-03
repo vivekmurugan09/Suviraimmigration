@@ -686,6 +686,35 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const wasActive = item.classList.contains('active');
+            document.querySelectorAll('.visitor-faq-item').forEach(i => i.classList.remove('active'));
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // Mobile drawer toggle
+        const toggleBtn = document.querySelector('.suvira-mobile-toggle');
+        const drawer = document.querySelector('.suvira-mobile-drawer');
+        const overlay = document.querySelector('.mobile-menu-overlay');
+        const closeBtn = document.querySelector('.close-menu');
+
+        if (toggleBtn && drawer && overlay) {
+            toggleBtn.addEventListener('click', () => {
+                drawer.classList.add('active');
+                overlay.classList.add('active');
+            });
+            const closeMenu = () => {
+                drawer.classList.remove('active');
+                overlay.classList.remove('active');
+            };
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            overlay.addEventListener('click', closeMenu);
+        }
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

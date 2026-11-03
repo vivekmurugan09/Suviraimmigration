@@ -680,6 +680,21 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function toggleFaq(btn) {
+        const panel = btn.nextElementSibling;
+        const isActive = btn.classList.contains('active');
+        document.querySelectorAll('.faq-question-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isActive) {
+            btn.classList.add('active');
+            panel.classList.add('show');
+        }
+    }
+
+                    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

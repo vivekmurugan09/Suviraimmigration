@@ -1152,6 +1152,118 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+        function handleEligibilitySubmit(e) {
+            e.preventDefault();
+            const n = document.getElementById('eName').value;
+            const d = document.getElementById('eDob').value;
+            const p = document.getElementById('ePhone').value;
+            const em = document.getElementById('eEmail').value;
+            const ed = document.getElementById('eEdu').value;
+            const ie = document.getElementById('eIelts').value;
+            const ex = document.getElementById('eExp').value;
+            const oc = document.getElementById('eOcc').value || 'N/A';
+            const ma = document.getElementById('eMarital').value;
+            const co = document.getElementById('eCountry').value;
+            const vi = document.getElementById('eVisa').value;
+            const no = document.getElementById('eNotes').value || 'None';
+
+            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
+            try {
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: n,
+                        dob: d,
+                        phone: p,
+                        email: em,
+                        education: ed,
+                        language_test: ie,
+                        experience: ex,
+                        occupation: oc,
+                        marital_status: ma,
+                        target_country: co,
+                        visa_category: vi,
+                        notes: no,
+                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
+                        _captcha: "false"
+                    })
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            // 2. Mailto fallback
+            const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
+            const body = encodeURIComponent(
+                `SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PERSONAL INFORMATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Full Name       : ${n}
+Date of Birth   : ${d}
+Phone/WhatsApp  : ${p}
+Email           : ${em}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EDUCATION & LANGUAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Highest Education : ${ed}
+Language Test     : ${ie}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+WORK EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Experience      : ${ex}
+Occupation      : ${oc}
+Marital Status  : ${ma}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TARGET DESTINATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Country         : ${co}
+Visa Category   : ${vi}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ADDITIONAL NOTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${no}`
+            );
+
+            try {
+                const formData = new FormData();
+                formData.append("Full Name", name);
+                formData.append("Phone / WhatsApp", phone);
+                formData.append("Email Address", email);
+                formData.append("Age", age);
+                formData.append("Education Level", edu);
+                formData.append("English Proficiency", eng);
+                formData.append("Work Experience", ex);
+                formData.append("Target Country", co);
+                formData.append("Visa Category", vi);
+                formData.append("Notes", no);
+                formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
+                formData.append("_captcha", "false");
+
+                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                    method: "POST",
+                    headers: { 'Accept': 'application/json' },
+                    body: formData
+                });
+            } catch (err) {
+                console.log(err);
+            }
+
+            const msg = document.getElementById('successMsg');
+            msg.style.display = 'flex';
+            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
+        }
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

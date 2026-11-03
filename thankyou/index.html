@@ -312,6 +312,33 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1627324715484709');
+    fbq('track', 'PageView');
+    fbq('track', 'Lead');
+    </script>
+  <script>
+try {
+  var leads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
+  if (leads.length > 0) {
+    var l = leads[leads.length - 1];
+    var name = l['Full Name'] || l['name'] || '';
+    var phone = l['Phone / WhatsApp'] || l['phone'] || '';
+    var service = l['Interested Visa / Pathway'] || l['service'] || l['visa_type'] || 'Immigration Consultation';
+    var msg = 'Hello Suvira Immigration, I just submitted my consultation request.\nName: ' + name + '\nPhone: ' + phone + '\nService: ' + service;
+    var waBtn = document.querySelector('.ty-btn-wa');
+    if (waBtn) waBtn.href = 'https://wa.me/919940352086?text=' + encodeURIComponent(msg);
+  }
+} catch(e) {}
+</script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

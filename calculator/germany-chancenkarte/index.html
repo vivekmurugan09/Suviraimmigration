@@ -525,6 +525,60 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculateChancenkarte() {
+        const edu = parseInt(document.getElementById('ckEdu').value) || 0;
+        const exp = parseInt(document.getElementById('ckExp').value) || 0;
+        const lang = parseInt(document.getElementById('ckLang').value) || 0;
+        const age = parseInt(document.getElementById('ckAge').value) || 0;
+        const shortage = parseInt(document.getElementById('ckShortage').value) || 0;
+        const bonus = parseInt(document.getElementById('ckBonus').value) || 0;
+
+        const total = edu + exp + lang + age + shortage + bonus;
+
+        document.getElementById('ckTotalScore').textContent = total;
+        document.getElementById('bdCkEdu').textContent = edu + " / 4 Pts";
+        document.getElementById('bdCkExp').textContent = exp + " / 3 Pts";
+        document.getElementById('bdCkLang').textContent = lang + " / 3 Pts";
+        document.getElementById('bdCkAge').textContent = age + " / 2 Pts";
+        document.getElementById('bdCkShortage').textContent = shortage + " / 1 Pt";
+        document.getElementById('bdCkBonus').textContent = bonus + " / 1 Pt";
+
+        const badge = document.getElementById('ckStatusBadge');
+        const feedback = document.getElementById('ckFeedback');
+
+        if (edu === 0) {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (Degree Missing)';
+            feedback.innerHTML = '⚠️ <strong>Baseline Incomplete:</strong> Chancenkarte requires a minimum 2-year post-secondary degree or vocational qualification recognized by ZAB / Anabin.';
+        } else if (total >= 6) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Qualified for Chancenkarte (' + total + '/6 Pts)';
+            feedback.innerHTML = '🎯 <strong>Congratulations!</strong> You have achieved ' + total + ' points (minimum 6 required). You meet all statutory criteria to apply for the Germany Opportunity Card visa.';
+        } else {
+            const gap = 6 - total;
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + gap + ' Points Below Benchmark (' + total + '/6 Pts)';
+            feedback.innerHTML = '⚠️ <strong>Currently at ' + total + ' points (Need 6).</strong> You need ' + gap + ' more point' + (gap > 1 ? 's' : '') + '. Bridge this gap by achieving German A2 (+1 pt) or B1 (+2 pts), or targeting shortage roles.';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateChancenkarte();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

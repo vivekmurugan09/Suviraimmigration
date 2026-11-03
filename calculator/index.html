@@ -1522,7 +1522,87 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1627324715484709');
+fbq('track', 'PageView');
+</script>
   <script src="/app.js?v=20260815-v8"></script>
+  <script>
+function submitCalcGate(){
+  var n=document.getElementById('g_name').value;
+  var p=document.getElementById('g_phone').value;
+  var e=document.getElementById('g_email').value;
+  var c=document.getElementById('g_country').value;
+  if(!n||!p||!e){alert('Please fill in Name, WhatsApp Number and Email.');return;}
+  document.getElementById('calcStep1').style.display='none';
+  document.getElementById('calcStep2').style.display='block';
+  document.getElementById('calcResults').style.display='block';
+  if(c && window.switchCalcTab) {
+      if(c === 'canada' || c === 'australia' || c === 'germany' || c === 'uk') window.switchCalcTab(c);
+  }
+  updateCalcBadge();
+}
+function updateCalcBadge(){
+  var badge=document.getElementById('calcBadge');
+  if(!badge)return;
+  badge.textContent='Your score is ready. Book a Consultation to confirm your pathway.';
+}
+</script>
+  <script>
+    fetch('/draw_data.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('cutoff-score').innerText = data.canada_crs_cutoff;
+        })
+        .catch(err => console.error('Error fetching draw data:', err));
+</script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script>
+    const tl = gsap.timeline();
+    tl.from(".page-hero-badge", { opacity: 0, y: -20, duration: 0.6, ease: "power2.out" })
+      .from(".page-hero-title", { opacity: 0, y: 30, duration: 0.8, ease: "power2.out" }, "-=0.2")
+      .from(".page-hero-subtitle", { opacity: 0, y: 30, duration: 0.8, ease: "power2.out" }, "-=0.6")
+      .from(".flag-chip", { opacity: 0, scale: 0.8, duration: 0.5, stagger: 0.05, ease: "back.out(1.5)" }, "-=0.4");
+
+    const revealSelectors = [".stat-chip", "#calcStep1", "#calcStep2", "#eligibilityForm"];
+    revealSelectors.forEach(selector => {
+        gsap.utils.toArray(selector).forEach(el => {
+            gsap.from(el, { opacity: 0, y: 30, duration: 0.8, ease: "power2.out", delay: 0.2 });
+        });
+    });
+
+    // Mobile Drawer Toggle
+    const mobileBtn = document.querySelector('.suvira-mobile-toggle');
+    const mobileDrawer = document.querySelector('.suvira-mobile-drawer');
+    const mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    const closeBtn = document.querySelector('.close-menu');
+
+    if (mobileBtn && mobileDrawer) {
+        mobileBtn.addEventListener('click', () => {
+            mobileDrawer.classList.add('active');
+            if (mobileOverlay) mobileOverlay.classList.add('active');
+        });
+    }
+    if (closeBtn && mobileDrawer) {
+        closeBtn.addEventListener('click', () => {
+            mobileDrawer.classList.remove('active');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+        });
+    }
+    if (mobileOverlay && mobileDrawer) {
+        mobileOverlay.addEventListener('click', () => {
+            mobileDrawer.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+        });
+    }
+</script>
 </body>
 </html>

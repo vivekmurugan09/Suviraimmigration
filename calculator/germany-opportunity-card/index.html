@@ -550,6 +550,60 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculateDeCard() {
+        const edu = parseInt(document.getElementById('deEdu').value) || 0;
+        const exp = parseInt(document.getElementById('deExp').value) || 0;
+        const lang = parseInt(document.getElementById('deLang').value) || 0;
+        const age = parseInt(document.getElementById('deAge').value) || 0;
+        const shortage = parseInt(document.getElementById('deShortage').value) || 0;
+        const bonus = parseInt(document.getElementById('deBonus').value) || 0;
+
+        const total = edu + exp + lang + age + shortage + bonus;
+
+        document.getElementById('deTotalScore').textContent = total;
+        document.getElementById('bdDeEdu').textContent = edu + " / 4 Pts";
+        document.getElementById('bdDeExp').textContent = exp + " / 3 Pts";
+        document.getElementById('bdDeLang').textContent = lang + " / 3 Pts";
+        document.getElementById('bdDeAge').textContent = age + " / 2 Pts";
+        document.getElementById('bdDeShortage').textContent = shortage + " / 1 Pt";
+        document.getElementById('bdDeBonus').textContent = bonus + " / 1 Pt";
+
+        const badge = document.getElementById('deStatusBadge');
+        const feedback = document.getElementById('deFeedback');
+
+        if (edu === 0) {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (Degree Recognition Missing)';
+            feedback.innerHTML = '⚠️ <strong>Mandatory Criterion Missing:</strong> You must hold a minimum 2-year post-secondary degree or state-recognized vocational qualification with a ZAB Statement of Comparability.';
+        } else if (total >= 6) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Eligible for Opportunity Card (' + total + '/6 Pts)';
+            feedback.innerHTML = '🎯 <strong>Congratulations!</strong> You have scored ' + total + ' points, surpassing the statutory 6-point benchmark. You can lodge your Chancenkarte visa at the German Consulate in Chennai and enter Germany with legal part-time work rights.';
+        } else {
+            const gap = 6 - total;
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + gap + ' Points Below Benchmark (' + total + '/6 Pts)';
+            feedback.innerHTML = '⚠️ <strong>Currently at ' + total + ' points (Need 6).</strong> You are ' + gap + ' point' + (gap > 1 ? 's' : '') + ' short. You can bridge this gap by learning German at A2 (+1 pt) or B1 (+2 pts), or targeting shortage occupation profiles.';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateDeCard();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

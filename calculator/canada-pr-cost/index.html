@@ -541,6 +541,100 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    const CAD_TO_INR = 62.0;
+
+    function calculateCanadaCost() {
+        const family = document.getElementById('costFamily').value;
+        const pathway = document.getElementById('costPathway').value;
+        const ecaType = document.getElementById('costEca').value;
+        const langAttempts = parseInt(document.getElementById('costLang').value) || 1;
+
+        let numAdults = 1;
+        let numKids = 0;
+        let pofCad = 14690;
+
+        if (family === 'couple') {
+            numAdults = 2;
+            pofCad = 18288;
+        } else if (family === 'family3') {
+            numAdults = 2;
+            numKids = 1;
+            pofCad = 22483;
+        } else if (family === 'family4') {
+            numAdults = 2;
+            numKids = 2;
+            pofCad = 27297;
+        }
+
+        // IRCC Fees ($950 processing + $575 RPRF = $1525 per adult, $230 per kid)
+        const irccCad = (numAdults * 1525) + (numKids * 230);
+
+        // ECA ($320 WES / $350 ICAS per adult)
+        let ecaPerAdultCad = 320;
+        if (ecaType === 'icas') ecaPerAdultCad = 350;
+        if (ecaType === 'iqas') ecaPerAdultCad = 300;
+        const ecaCad = numAdults * ecaPerAdultCad;
+
+        // Language exam ($282 CAD / ₹17,500 per attempt per adult)
+        const langCad = numAdults * langAttempts * 282;
+
+        // Biometrics ($85 single, $170 family)
+        const bioCad = (numAdults + numKids > 1) ? 170 : 85;
+
+        // Medicals (~₹8,500 = $137 CAD per person) + PCC (₹500 per adult)
+        const medCad = ((numAdults + numKids) * 137) + (numAdults * 8);
+
+        // PNP Fee
+        let pnpCad = 0;
+        if (pathway === 'oinp') pnpCad = 1500;
+        if (pathway === 'bcpnp') pnpCad = 1475;
+        if (pathway === 'alberta') pnpCad = 840;
+        if (pathway === 'sinp') pnpCad = 350;
+
+        const totalCad = irccCad + ecaCad + langCad + bioCad + medCad + pnpCad;
+        const totalInr = Math.round(totalCad * CAD_TO_INR);
+        const pofInr = Math.round(pofCad * CAD_TO_INR);
+
+        // Format helper
+        const fmtInr = num => '₹' + num.toLocaleString('en-IN');
+        const fmtCad = num => '$' + num.toLocaleString('en-US');
+
+        document.getElementById('costTotalInr').textContent = fmtInr(totalInr);
+        document.getElementById('costTotalCad').textContent = fmtCad(totalCad);
+
+        document.getElementById('bdIrcc').textContent = fmtInr(Math.round(irccCad * CAD_TO_INR)) + ' (' + fmtCad(irccCad) + ' CAD)';
+        document.getElementById('bdEca').textContent = fmtInr(Math.round(ecaCad * CAD_TO_INR)) + ' (' + fmtCad(ecaCad) + ' CAD)';
+        document.getElementById('bdLang').textContent = fmtInr(Math.round(langCad * CAD_TO_INR)) + ' (' + fmtCad(langCad) + ' CAD)';
+        document.getElementById('bdBio').textContent = fmtInr(Math.round(bioCad * CAD_TO_INR)) + ' (' + fmtCad(bioCad) + ' CAD)';
+        document.getElementById('bdMed').textContent = fmtInr(Math.round(medCad * CAD_TO_INR)) + ' (' + fmtCad(medCad) + ' CAD)';
+        document.getElementById('bdFunds').textContent = fmtInr(pofInr) + ' (' + fmtCad(pofCad) + ' CAD)';
+
+        const pnpRow = document.getElementById('rowPnp');
+        if (pnpCad > 0) {
+            pnpRow.style.display = 'flex';
+            document.getElementById('bdPnp').textContent = fmtInr(Math.round(pnpCad * CAD_TO_INR)) + ' (' + fmtCad(pnpCad) + ' CAD)';
+        } else {
+            pnpRow.style.display = 'none';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateCanadaCost();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

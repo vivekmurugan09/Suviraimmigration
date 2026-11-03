@@ -605,6 +605,62 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    function calculate67Points() {
+        const age = parseInt(document.getElementById('caAge').value) || 0;
+        const edu = parseInt(document.getElementById('caEdu').value) || 0;
+        const exp = parseInt(document.getElementById('caExp').value) || 0;
+        const langFirst = parseInt(document.getElementById('caLangFirst').value) || 0;
+        const langSecond = parseInt(document.getElementById('caLangSecond').value) || 0;
+        const job = parseInt(document.getElementById('caJob').value) || 0;
+        const adapt = parseInt(document.getElementById('caAdapt').value) || 0;
+
+        const langTotal = Math.min(28, langFirst + langSecond);
+        const total = age + edu + exp + langTotal + job + adapt;
+
+        document.getElementById('fswTotalScore').textContent = total;
+        document.getElementById('bdAge').textContent = age + " / 12";
+        document.getElementById('bdEdu').textContent = edu + " / 25";
+        document.getElementById('bdExp').textContent = exp + " / 15";
+        document.getElementById('bdLang').textContent = langTotal + " / 28";
+        document.getElementById('bdJob').textContent = job + " / 10";
+        document.getElementById('bdAdapt').textContent = adapt + " / 10";
+
+        const badge = document.getElementById('fswStatusBadge');
+        const feedback = document.getElementById('fswFeedback');
+
+        if (langFirst === 0 || exp === 0) {
+            badge.className = "calc-badge-status fail";
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Ineligible (Mandatory Criteria Missing)';
+            feedback.innerHTML = '⚠️ <strong>Mandatory Requirement Unmet:</strong> FSW requires a minimum of CLB 7 in all four language abilities and at least 1 continuous year of skilled work experience in NOC TEER 0, 1, 2, or 3.';
+        } else if (total >= 67) {
+            badge.className = "calc-badge-status pass";
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Eligible for Express Entry (' + total + '/100)';
+            feedback.innerHTML = '🎯 <strong>Congratulations!</strong> You have achieved ' + total + ' points, surpassing the 67-point FSW baseline. You are eligible to lodge an Express Entry profile and target category-based rounds or Provincial Nominations (PNP).';
+        } else {
+            const gap = 67 - total;
+            badge.className = "calc-badge-status warn";
+            badge.innerHTML = '<i class="fas fa-exclamation-triangle"></i> ' + gap + ' Points Below Benchmark (' + total + '/100)';
+            feedback.innerHTML = '⚠️ <strong>Currently at ' + total + '/100 points (Need 67).</strong> You are ' + gap + ' point' + (gap > 1 ? 's' : '') + ' short. You can bridge this gap by scoring CLB 9+ in language, having your spouse take an English exam (+5 pts), or targeting Canadian employer connections.';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculate67Points();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

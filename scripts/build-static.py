@@ -266,13 +266,19 @@ site_enhancements_js = """(function () {
 
       var thankYouUrl = window.location.origin + THANK_YOU_PATH;
 
+      // 1. Open Thank-You landing page in a separate tab within the synchronous user gesture
+      var thankYouTab = null;
+      try {
+        thankYouTab = window.open(thankYouUrl, "_blank");
+      } catch (err) {}
+
       var data = new FormData(form);
       data.set("_subject", String(data.get("_subject") || ("Suvira website enquiry — " + document.title)));
       data.set("_captcha", "false");
       data.set("_next", thankYouUrl);
       data.set("source_page", window.location.href);
 
-      // Save lead backup in localStorage so inquiries are NEVER lost
+      // 2. Save lead backup in localStorage so inquiries are NEVER lost
       try {
         var backupLeads = JSON.parse(localStorage.getItem("suvira_leads_backup") || "[]");
         var entry = { timestamp: new Date().toISOString() };
@@ -281,71 +287,34 @@ site_enhancements_js = """(function () {
         localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
       } catch (e) {}
 
-      var resetAndCloseModal = function () {
-        busy.delete(form);
-        form.removeAttribute("aria-busy");
-        buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
-        status.dataset.state = "success";
-        status.textContent = "Your request has been received. Thank you!";
-        form.reset();
-        var modal = document.getElementById("leadModal");
-        if (modal && typeof window.closeLeadModal === "function") {
-          window.closeLeadModal();
-        } else if (modal) {
-          modal.style.display = "none";
-        }
-      };
+      // 3. Reset form, close modal, and re-enable buttons on main page
+      busy.delete(form);
+      form.removeAttribute("aria-busy");
+      buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
+      status.dataset.state = "success";
+      status.textContent = "Your request has been received. Thank you!";
+      form.reset();
+      var modal = document.getElementById("leadModal");
+      if (modal && typeof window.closeLeadModal === "function") {
+        window.closeLeadModal();
+      } else if (modal) {
+        modal.style.display = "none";
+      }
 
-      var submitViaHiddenForm = function () {
-        var tempForm = document.createElement("form");
-        tempForm.method = "POST";
-        tempForm.action = DIRECT_FORM_ENDPOINT;
-        tempForm.target = "_blank";
-        tempForm.style.display = "none";
-        data.forEach(function (val, key) {
-          var input = document.createElement("input");
-          input.type = "hidden";
-          input.name = key;
-          input.value = String(val);
-          tempForm.appendChild(input);
-        });
-        document.body.appendChild(tempForm);
-        tempForm.submit();
-        window.setTimeout(function () {
-          if (tempForm.parentNode) tempForm.parentNode.removeChild(tempForm);
-        }, 2000);
-        resetAndCloseModal();
-      };
+      // 4. If separate tab was blocked by popup blocker, navigate current tab to Thank-You
+      if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === "undefined") {
+        window.location.assign(THANK_YOU_PATH);
+      }
 
-      var timeout = new AbortController();
-      var timer = window.setTimeout(function () { timeout.abort(); }, 3000);
-
-      fetch(FORM_ENDPOINT, {
-        method: "POST",
-        referrerPolicy: "origin",
-        headers: { Accept: "application/json" },
-        body: data,
-        signal: timeout.signal
-      })
-        .then(function (res) {
-          window.clearTimeout(timer);
-          return res.json().catch(function () { return null; });
-        })
-        .then(function (json) {
-          if (json && (json.success === true || json.success === "true")) {
-            var tab = window.open(thankYouUrl, "_blank");
-            if (!tab || tab.closed || typeof tab.closed === "undefined") {
-              window.location.assign(THANK_YOU_PATH);
-            }
-            resetAndCloseModal();
-          } else {
-            submitViaHiddenForm();
-          }
-        })
-        .catch(function () {
-          window.clearTimeout(timer);
-          submitViaHiddenForm();
-        });
+      // 5. Send to FormSubmit in background (fire-and-forget). Never navigate user to FormSubmit to prevent 522 host errors.
+      try {
+        fetch(FORM_ENDPOINT, {
+          method: "POST",
+          referrerPolicy: "origin",
+          headers: { Accept: "application/json" },
+          body: data
+        }).catch(function () {});
+      } catch (err) {}
     }, { capture: true });
 
     root.querySelectorAll('a[href^="/"]').forEach(function (link) {
@@ -635,8 +604,8 @@ def render_static_html(page):
     for sc in page.get("scripts", []):
         if sc.get("src"):
             script_parts.append(f'  <script src="{html.escape(sc["src"], quote=True)}"></script>')
-        elif sc.get("code"):
-            script_parts.append(f'  <script>{sc["code"]}</script>')
+        elif sc.get("code") or sc.get("inline"):
+            script_parts.append(f'  <script>{sc.get("code") or sc.get("inline")}</script>')
 
     return (
         "<!DOCTYPE html>\n"

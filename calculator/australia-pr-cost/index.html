@@ -484,6 +484,97 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    const AUD_TO_INR = 55.0;
+
+    function calculateAuCost() {
+        const family = document.getElementById('auCostFamily').value;
+        const assessType = document.getElementById('auCostAssess').value;
+        const subclass = document.getElementById('auCostSubclass').value;
+        const naatiAud = parseInt(document.getElementById('auCostNaati').value) || 0;
+
+        let numAdults = 1;
+        let numKids = 0;
+
+        if (family === 'couple') {
+            numAdults = 2;
+        } else if (family === 'family3') {
+            numAdults = 2;
+            numKids = 1;
+        } else if (family === 'family4') {
+            numAdults = 2;
+            numKids = 2;
+        }
+
+        // DHA Visa Application Charges (VAC)
+        // Primary: AUD 4,770; Secondary Adult: AUD 2,385; Under 18: AUD 1,195
+        const dhaAud = 4770 + ((numAdults - 1) * 2385) + (numKids * 1195);
+
+        // Skills Assessment fee
+        let assessAud = 560; // ACS
+        if (assessType === 'ea') assessAud = 930;
+        if (assessType === 'vetassess') assessAud = 1050;
+        if (assessType === 'cpa') assessAud = 650;
+        if (assessType === 'tra') assessAud = 1000;
+
+        // Language exam (AUD 310 / ₹17,000 per adult)
+        const langAud = numAdults * 310;
+
+        // Medicals (AUD 135 / ₹7,500 per person) + PCC (AUD 10 / ₹500 per adult)
+        const medAud = ((numAdults + numKids) * 135) + (numAdults * 10);
+
+        // State fee
+        let stateAud = 0;
+        if (subclass === '190_nsw') stateAud = 330;
+        if (subclass === '190_qld') stateAud = 260;
+
+        const totalAud = dhaAud + assessAud + langAud + medAud + stateAud + naatiAud;
+        const totalInr = Math.round(totalAud * AUD_TO_INR);
+
+        const fmtInr = num => '₹' + num.toLocaleString('en-IN');
+        const fmtAud = num => 'AUD ' + num.toLocaleString('en-US');
+
+        document.getElementById('auCostTotalInr').textContent = fmtInr(totalInr);
+        document.getElementById('auCostTotalAud').textContent = fmtAud(totalAud);
+
+        document.getElementById('bdDha').textContent = fmtAud(dhaAud) + ' (' + fmtInr(Math.round(dhaAud * AUD_TO_INR)) + ')';
+        document.getElementById('bdAssess').textContent = fmtAud(assessAud) + ' (' + fmtInr(Math.round(assessAud * AUD_TO_INR)) + ')';
+        document.getElementById('bdAuLang').textContent = fmtAud(langAud) + ' (' + fmtInr(Math.round(langAud * AUD_TO_INR)) + ')';
+        document.getElementById('bdAuMed').textContent = fmtAud(medAud) + ' (' + fmtInr(Math.round(medAud * AUD_TO_INR)) + ')';
+
+        const stateRow = document.getElementById('rowAuState');
+        if (stateAud > 0) {
+            stateRow.style.display = 'flex';
+            document.getElementById('bdAuState').textContent = fmtAud(stateAud) + ' (' + fmtInr(Math.round(stateAud * AUD_TO_INR)) + ')';
+        } else {
+            stateRow.style.display = 'none';
+        }
+
+        const naatiRow = document.getElementById('rowAuNaati');
+        if (naatiAud > 0) {
+            naatiRow.style.display = 'flex';
+            document.getElementById('bdAuNaati').textContent = fmtAud(naatiAud) + ' (' + fmtInr(Math.round(naatiAud * AUD_TO_INR)) + ')';
+        } else {
+            naatiRow.style.display = 'none';
+        }
+    }
+
+    function toggleFaq(btn) {
+        const body = btn.nextElementSibling;
+        const isOpen = btn.classList.contains('active');
+        document.querySelectorAll('.calc-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isOpen) {
+            btn.classList.add('active');
+            body.classList.add('show');
+        }
+    }
+
+                    // Initial run
+    calculateAuCost();
+    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>

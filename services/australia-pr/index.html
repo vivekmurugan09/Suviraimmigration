@@ -592,6 +592,50 @@
 </div>
 <a href="/ai-preparation/" class="suvira-ai-prep-fab">AI Preparation →</a>
   <script src="/site-enhancements.js"></script>
+  <script>
+    // FAQ Toggle
+    function toggleFaq(btn) {
+        const panel = btn.nextElementSibling;
+        const isActive = btn.classList.contains('active');
+        document.querySelectorAll('.pp-faq-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.nextElementSibling) b.nextElementSibling.classList.remove('show');
+        });
+        if (!isActive) {
+            btn.classList.add('active');
+            panel.classList.add('show');
+        }
+    }
+
+    // Australia Points Estimator
+    function calculateAuPoints() {
+        const age = parseInt(document.getElementById('auAgeSelect').value) || 0;
+        const lang = parseInt(document.getElementById('auLangSelect').value) || 0;
+        const edu = parseInt(document.getElementById('auEduSelect').value) || 0;
+        const exp = parseInt(document.getElementById('auExpSelect').value) || 0;
+        const nom = parseInt(document.getElementById('auNomSelect').value) || 0;
+        const partner = parseInt(document.getElementById('auPartnerSelect').value) || 0;
+
+        const total = age + lang + edu + exp + nom + partner;
+
+        const scoreVal = document.getElementById('auScoreVal');
+        const feedback = document.getElementById('auScoreFeedback');
+
+        scoreVal.textContent = total + " Points";
+
+        if (total >= 85) {
+            feedback.innerHTML = "🎯 <strong style='color:#10B981;'>Exceptional Invitation Likelihood!</strong> Your score places you at the top of Subclass 189 &amp; 190 invitation rounds.";
+        } else if (total >= 75) {
+            feedback.innerHTML = "🇦🇺 <strong style='color:#F59E0B;'>Strong State Nomination Profile!</strong> Competitive for Subclass 190 and 491 in NSW, VIC, WA and Queensland.";
+        } else if (total >= 65) {
+            feedback.innerHTML = "⚡ <strong style='color:#2563EB;'>Eligible Benchmark Achieved!</strong> You meet the 65-point baseline. Subclass 491 regional nomination will maximize your invitation chances.";
+        } else {
+            feedback.innerHTML = "⚠️ <strong style='color:#EF4444;'>Below 65 Points.</strong> Target Superior English (IELTS 8/PTE 79) or partner skills to attain eligibility.";
+        }
+    }
+
+    // Modal Submit
+                    </script>
   <script src="/app.js?v=20260810-v4"></script>
 </body>
 </html>
