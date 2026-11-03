@@ -1189,47 +1189,26 @@ function toggleFaqAccordion(headerEl) {
 
 // Global FormSubmit helper with automatic fallback & Thank-You redirect
 function suviraThankYouUrl() {
-    return window.location.origin + '/thankyou';
-}
-
-function suviraStandardPostFallback(formData) {
-    const tempForm = document.createElement('form');
-    tempForm.method = 'POST';
-    tempForm.action = 'https://formsubmit.co/reachus@suviraimmigration.com';
-    tempForm.style.display = 'none';
-    for (const [key, val] of formData.entries()) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = val;
-        tempForm.appendChild(input);
-    }
-    const nextInput = document.createElement('input');
-    nextInput.type = 'hidden';
-    nextInput.name = '_next';
-    nextInput.value = suviraThankYouUrl();
-    tempForm.appendChild(nextInput);
-    document.body.appendChild(tempForm);
-    tempForm.submit();
+    return window.location.origin + '/Thank-you/';
 }
 
 function suviraSendLeadForm(formData, onComplete) {
     fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
         method: "POST",
+        referrerPolicy: "origin",
         headers: { 'Accept': 'application/json' },
         body: formData
     })
     .then(res => res.json())
     .then(data => {
-        if (data && (data.success === 'false' || data.success === false)) {
-            suviraStandardPostFallback(formData);
-            return;
+        if (!data || (data.success !== 'true' && data.success !== true)) {
+            throw new Error((data && data.message) || 'Submission not confirmed');
         }
         if (onComplete) onComplete();
         window.location.href = suviraThankYouUrl();
     })
     .catch(() => {
-        suviraStandardPostFallback(formData);
+        alert('We could not send your request right now. Please try again or call +91 99403 52086.');
     });
 }
 

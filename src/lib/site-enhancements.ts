@@ -58,19 +58,31 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
     form.setAttribute('aria-busy', 'true'); status.dataset['state'] = 'sending'; status.textContent = 'Sending your request…';
     const data = new FormData(form);
     data.set('_subject', String(data.get('_subject') || `Suvira website enquiry — ${document.title}`));
+    data.set('_captcha', 'false');
     data.set('source_page', window.location.href);
     const timeout = new AbortController();
     const timer = window.setTimeout(() => timeout.abort(), 20000);
     try {
-      const response = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { Accept: 'application/json' }, body: data, signal: timeout.signal });
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        referrerPolicy: 'origin',
+        headers: { Accept: 'application/json' },
+        body: data,
+        signal: timeout.signal,
+      });
       const result = await response.json();
-      if (!response.ok || (result.success !== true && result.success !== 'true')) throw new Error('Submission not confirmed');
+      if (!response.ok || (result.success !== true && result.success !== 'true')) {
+        throw new Error(typeof result?.message === 'string' ? result.message : 'Submission not confirmed');
+      }
       status.dataset['state'] = 'success'; status.textContent = 'Your request has been received. Thank you.';
       form.reset();
-      navigate('/thankyou');
-    } catch {
+      navigate('/Thank-you/');
+    } catch (err) {
       status.dataset['state'] = 'error';
-      status.textContent = 'Your request could not be confirmed. Please try again or call +91 99403 52086.';
+      const msg = err instanceof Error && /Activation/i.test(err.message)
+        ? 'Almost ready: please click the FormSubmit activation link sent to reachus@suviraimmigration.com to enable submissions on this domain.'
+        : 'Your request could not be confirmed. Please try again or call +91 99403 52086.';
+      status.textContent = msg;
     } finally {
       window.clearTimeout(timer); busy.delete(form); form.removeAttribute('aria-busy');
       buttons.forEach((button, index) => button.disabled = disabled[index] ?? false);

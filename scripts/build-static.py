@@ -98,170 +98,98 @@ if "--site-ink:" not in existing_polish:
     with open(site_polish_path, "w", encoding="utf-8") as f:
         f.write(root_tokens_css + "\n" + existing_polish)
 
-# 4. Write dist/site-enhancements.js
+# 4. Write dist/site-enhancements.js (exact browser JS translation of src/lib/site-enhancements.ts)
 site_enhancements_js = """(function () {
-  var FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@suviraimmigration.com";
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
   var THANK_YOU_PATH = "/Thank-you/";
+  var probe = null;
 
-  function normalizePath(path) {
-    var clean = (path.split(/[?#]/)[0] || "/").replace(/index\\.html$/i, "");
-    return clean.length > 1 ? clean.replace(/\\/+$/, "") : "/";
-  }
-
-  function ensureHiddenInput(form, name, value) {
-    var existing = form.querySelector('input[name="' + name + '"]');
-    if (existing) {
-      existing.value = value;
-      return;
+  function parseRgb(value) {
+    if (!value || value === "transparent") return null;
+    if (!/^rgba?\\(/.test(value)) {
+      if (!probe) {
+        var canvas = document.createElement("canvas");
+        canvas.width = 1;
+        canvas.height = 1;
+        probe = canvas.getContext("2d", { willReadFrequently: true });
+      }
+      if (!probe) return null;
+      probe.clearRect(0, 0, 1, 1);
+      probe.fillStyle = "#000";
+      probe.fillStyle = value;
+      probe.fillRect(0, 0, 1, 1);
+      var d = probe.getImageData(0, 0, 1, 1).data;
+      return [d[0] || 0, d[1] || 0, d[2] || 0, (d[3] || 0) / 255];
     }
-    var input = document.createElement("input");
-    input.type = "hidden";
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
+    var m = value.match(/rgba?\\(([^)]+)\\)/);
+    if (!m || !m[1]) return null;
+    var p = m[1].split(/[ ,/]+/).filter(Boolean).map(Number);
+    return [p[0] || 0, p[1] || 0, p[2] || 0, p[3] === undefined ? 1 : p[3]];
   }
 
-  function getStatusElement(form) {
-    var existing = form.querySelector(".suvira-form-status");
-    if (existing) return existing;
-    var status = document.createElement("p");
-    status.className = "suvira-form-status";
-    status.setAttribute("role", "status");
-    status.setAttribute("aria-live", "polite");
-    form.appendChild(status);
-    return status;
+  function luminance(rgb) {
+    var c = [rgb[0] || 0, rgb[1] || 0, rgb[2] || 0].map(function (v) {
+      var s = v / 255;
+      return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
   }
 
-  function enhanceFormSubmitForm(form) {
-    if (form.dataset.suviraEnhanced === "true") return;
-    form.dataset.suviraEnhanced = "true";
-
-    var nextUrl = new URL(THANK_YOU_PATH, window.location.origin).toString();
-    ensureHiddenInput(form, "_next", nextUrl);
-    ensureHiddenInput(form, "_captcha", "false");
-
-    form.addEventListener("submit", function (event) {
-      if (typeof form.checkValidity === "function" && !form.checkValidity()) {
-        form.reportValidity();
-        return;
+  function backgroundOf(el) {
+    while (el && el !== document.documentElement) {
+      var cs = getComputedStyle(el);
+      if (cs.backgroundImage && cs.backgroundImage.indexOf("url(") !== -1) return null;
+      var bg = parseRgb(cs.backgroundColor);
+      if (bg && bg[3] > 0.6) return luminance(bg);
+      var grad = cs.backgroundImage && cs.backgroundImage.match(/(?:rgba?|oklch|hsla?)\\([^)]+\\)/);
+      if (grad) {
+        var g = parseRgb(grad[0]);
+        if (g && g[3] > 0.6) return luminance(g);
       }
+      el = el.parentElement;
+    }
+    return 1;
+  }
 
-      event.preventDefault();
-      var submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
-      var originalLabel = submitButton ? submitButton.innerHTML : "";
-      var status = getStatusElement(form);
-
-      if (submitButton) {
-        submitButton.disabled = true;
-        submitButton.setAttribute("aria-busy", "true");
-        if (submitButton instanceof HTMLButtonElement) {
-          submitButton.textContent = "Submitting your enquiry...";
-        }
-      }
-      status.dataset.state = "pending";
-      status.textContent = "Sending your details to Suvira Immigration...";
-
-      var formData = new FormData(form);
-      formData.set("_next", nextUrl);
-      formData.set("_captcha", "false");
-      formData.set("source_page", window.location.pathname);
-
-      fetch(FORMSUBMIT_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: formData
-      })
-        .then(function (response) {
-          return response.json().catch(function () { return null; }).then(function (payload) {
-            var isConfirmed = response.ok && (payload === null || payload.success === true || payload.success === "true");
-            if (!isConfirmed) {
-              throw new Error((payload && payload.message) || "Submission was not confirmed.");
-            }
-            status.dataset.state = "success";
-            status.textContent = "Thank you. Redirecting to your confirmation page...";
-            window.location.assign(THANK_YOU_PATH);
-          });
-        })
-        .catch(function () {
-          status.dataset.state = "error";
-          status.innerHTML = 'We could not send your form right now. Please try again or <a href="https://wa.me/917338999369" target="_blank" rel="noopener noreferrer">message us on WhatsApp</a>.';
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.removeAttribute("aria-busy");
-            if (submitButton instanceof HTMLButtonElement) {
-              submitButton.innerHTML = originalLabel;
-            }
-          }
-        });
+  function fixLowContrastText(root) {
+    root.querySelectorAll("h1,h2,h3,h4,h5,h6,p,li,span,label,strong,small,a").forEach(function (el) {
+      if (!el.textContent || !el.textContent.trim() || el.closest(".horizon-hero")) return;
+      var cs = getComputedStyle(el);
+      if (cs.webkitTextFillColor === "transparent" || cs.backgroundClip === "text") return;
+      var fg = parseRgb(cs.color);
+      var bgL = backgroundOf(el);
+      if (!fg || bgL === null) return;
+      var fgL = luminance(fg);
+      var ratio = (Math.max(fgL, bgL) + 0.05) / (Math.min(fgL, bgL) + 0.05);
+      if (ratio >= 3) return;
+      var dark = bgL < 0.3;
+      el.style.setProperty("color", dark ? "var(--site-surface, #fff)" : "var(--site-ink, #0f2a24)", "important");
+      el.style.setProperty("-webkit-text-fill-color", "currentColor", "important");
     });
   }
 
-  function fixHeroContrast(root) {
-    var parseRGB = function (s) {
-      var m = s && s.match(/rgba?\\(([\\d.]+),\\s*([\\d.]+),\\s*([\\d.]+)(?:,\\s*([\\d.]+))?/);
-      return m ? [Number(m[1]), Number(m[2]), Number(m[3]), m[4] === undefined ? 1 : Number(m[4])] : null;
-    };
-    var lum = function (rgb) {
-      var vals = [rgb[0], rgb[1], rgb[2]].map(function (v) {
-        v /= 255;
-        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-      });
-      return 0.2126 * vals[0] + 0.7152 * vals[1] + 0.0722 * vals[2];
-    };
-    var effectiveLum = function (el) {
-      var cur = el;
-      while (cur && cur !== document.documentElement) {
-        var cs = getComputedStyle(cur);
-        var bg = cs.backgroundColor;
-        var img = cs.backgroundImage;
-        var rgb = parseRGB(bg);
-        if (rgb && rgb[3] > 0.2) return lum(rgb);
-        if (img && img !== "none") {
-          var stops = Array.from(img.matchAll(/rgba?\\([\\d.,\\s]+\\)/g))
-            .map(function (m) { return parseRGB(m[0]); })
-            .filter(Boolean);
-          if (stops.length) {
-            return stops.reduce(function (a, c) { return a + lum(c); }, 0) / stops.length;
-          }
-          if (/url\\(/.test(img)) return 0.08;
-        }
-        cur = cur.parentElement;
-      }
-      return 0.95;
-    };
-
-    var heroes = root.querySelectorAll(
-      'section[class*="hero"], header[class*="hero"], div[class*="hero-section"], .page-hero, .country-hero, .service-hero, .calc-hero'
-    );
-    heroes.forEach(function (hero) {
-      if (hero.classList.contains("horizon-hero") || hero.classList.contains("family-premium-hero")) return;
-      var before = getComputedStyle(hero, "::before");
-      var hasLightWash = before && before.backgroundImage && /255,\\s*253,\\s*247/.test(before.backgroundImage);
-      var L = hasLightWash ? 0.92 : effectiveLum(hero);
-      var darkBg = L < 0.42;
-
-      var setImportant = function (el, prop, val) {
-        el.style.setProperty(prop, val, "important");
-      };
-      hero.querySelectorAll("h1, h1 *, h2, .hero-title, [class*='hero-title']").forEach(function (el) {
-        if (el.closest(".talk-experts-card, form, [class*='form-card'], [class*='calc-card']")) return;
-        setImportant(el, "color", darkBg ? "#ffffff" : "#0f2a1f");
-        setImportant(el, "-webkit-text-fill-color", darkBg ? "#ffffff" : "#0f2a1f");
-        setImportant(el, "background", "none");
-        setImportant(el, "opacity", "1");
-      });
-      hero.querySelectorAll("p, li, .hero-sub, .hero-desc, [class*='hero-desc'], [class*='hero-sub']").forEach(function (el) {
-        if (el.closest(".talk-experts-card, form, [class*='form-card'], [class*='calc-card']")) return;
-        setImportant(el, "color", darkBg ? "rgba(255,255,255,0.9)" : "#24372e");
-        setImportant(el, "opacity", "1");
-      });
-      hero.querySelectorAll(".talk-experts-card, [class*='form-card']").forEach(function (card) {
-        setImportant(card, "background", "#ffffff");
-        card.querySelectorAll("h2, h3, h4, label, p, span").forEach(function (t) {
-          if (t.closest("button, a")) return;
-          setImportant(t, "color", "#14231c");
-          setImportant(t, "-webkit-text-fill-color", "#14231c");
-        });
+  function injectFlyingIcons(root) {
+    var heroes = Array.from(root.querySelectorAll(".study-hero-slides, .horizon-hero"));
+    if (!heroes.length) {
+      var heading = root.querySelector("main h1, .main-content h1, h1");
+      var hero = heading ? heading.closest("section, header") : null;
+      if (hero) heroes.push(hero);
+    }
+    var icons = [
+      ["plane", '<path d="m22 2-7 20-4-9-9-4zM22 2 11 13"/>'],
+      ["globe", '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>'],
+      ["pin", '<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/>']
+    ];
+    heroes.forEach(function (h) {
+      var host = h.closest("section, header") || h;
+      if (host.querySelector(".hero-fly-icon")) return;
+      icons.forEach(function (pair, index) {
+        var icon = document.createElement("span");
+        icon.className = "hero-fly-icon hero-fly-icon-" + (index + 1);
+        icon.dataset.icon = pair[0];
+        icon.setAttribute("aria-hidden", "true");
+        icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + pair[1] + "</svg>";
+        host.appendChild(icon);
       });
     });
   }
@@ -270,65 +198,202 @@ site_enhancements_js = """(function () {
     if (!root || root.dataset.suviraInstalled === "true") return;
     root.dataset.suviraInstalled = "true";
 
-    var currentPath = normalizePath(window.location.pathname);
-    root.querySelectorAll(".suvira-navbar a[href]").forEach(function (anchor) {
-      var href = anchor.getAttribute("href");
-      if (!href || href.startsWith("http") || href.startsWith("#")) return;
-      if (normalizePath(href) === currentPath) {
-        anchor.setAttribute("aria-current", "page");
-      } else {
-        anchor.removeAttribute("aria-current");
+    var busy = new WeakSet();
+
+    // Header menu links (desktop nav + mobile drawer) open in a new browser tab.
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      var link = target && target.closest ? target.closest("a[href]") : null;
+      if (!link || !link.closest(".suvira-nav-menu, .mobile-nav, .nav-dropdown-menu")) return;
+      var href = link.getAttribute("href") || "";
+      if (!href || href.indexOf("#") === 0 || href.indexOf("tel:") === 0 || href.indexOf("mailto:") === 0) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      window.open(link.href, "_blank", "noopener");
+    }, { capture: true });
+
+    // Normalize all migrated forms so none use legacy inline onsubmit or direct browser POSTs.
+    root.querySelectorAll("form").forEach(function (form) {
+      form.removeAttribute("onsubmit");
+      form.action = FORM_ENDPOINT;
+      form.method = "post";
+      form.querySelectorAll("input,select,textarea").forEach(function (field) {
+        if (!field.name && field.id) field.name = field.id;
+        if (!field.getAttribute("aria-label") && (!field.id || !form.querySelector('label[for="' + field.id + '"]'))) {
+          field.setAttribute("aria-label", field.getAttribute("placeholder") || field.name || "Select an option");
+        }
+        if (field instanceof HTMLInputElement) {
+          if (field.type === "email") field.autocomplete = "email";
+          if (field.type === "tel") { field.autocomplete = "tel"; field.inputMode = "tel"; }
+          if (/name/i.test(field.name)) field.autocomplete = "name";
+        }
+      });
+    });
+
+    // Capture all form submissions before legacy handlers and send with explicit origin Referer.
+    document.addEventListener("submit", function (event) {
+      var form = event.target;
+      if (!(form instanceof HTMLFormElement) || !root.contains(form)) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (busy.has(form) || (typeof form.reportValidity === "function" && !form.reportValidity())) return;
+
+      var phone = form.querySelector('input[type="tel"]');
+      if (phone && !/^[+\\d\\s().-]{7,22}$/.test(phone.value.trim())) {
+        phone.setCustomValidity("Please enter a valid phone number.");
+        phone.reportValidity();
+        phone.addEventListener("input", function () { phone.setCustomValidity(""); }, { once: true });
+        return;
+      }
+
+      var status = form.querySelector(".suvira-form-status");
+      if (!status) {
+        status = document.createElement("p");
+        status.className = "suvira-form-status";
+        status.setAttribute("role", "status");
+        status.setAttribute("aria-live", "polite");
+        form.appendChild(status);
+      }
+
+      var buttons = Array.from(form.querySelectorAll('button[type="submit"],input[type="submit"],button:not([type])'));
+      var disabledStates = buttons.map(function (b) { return b.disabled; });
+      busy.add(form);
+      buttons.forEach(function (b) { b.disabled = true; });
+      form.setAttribute("aria-busy", "true");
+      status.dataset.state = "sending";
+      status.textContent = "Sending your request…";
+
+      var data = new FormData(form);
+      data.set("_subject", String(data.get("_subject") || ("Suvira website enquiry — " + document.title)));
+      data.set("_captcha", "false");
+      data.set("source_page", window.location.href);
+
+      var timeout = new AbortController();
+      var timer = window.setTimeout(function () { timeout.abort(); }, 20000);
+
+      fetch(FORM_ENDPOINT, {
+        method: "POST",
+        referrerPolicy: "origin",
+        headers: { Accept: "application/json" },
+        body: data,
+        signal: timeout.signal
+      })
+        .then(function (response) {
+          return response.json().then(function (result) {
+            if (!response.ok || (result.success !== true && result.success !== "true")) {
+              throw new Error((result && result.message) || "Submission not confirmed");
+            }
+            status.dataset.state = "success";
+            status.textContent = "Your request has been received. Thank you.";
+            form.reset();
+            window.location.assign(THANK_YOU_PATH);
+          });
+        })
+        .catch(function (err) {
+          status.dataset.state = "error";
+          var msg = err && err.message && /Activation/i.test(err.message)
+            ? "Almost ready: please click the FormSubmit activation link sent to reachus@suviraimmigration.com to enable submissions on this domain."
+            : "Your request could not be confirmed. Please try again or call +91 99403 52086.";
+          status.textContent = msg;
+        })
+        .finally(function () {
+          window.clearTimeout(timer);
+          busy.delete(form);
+          form.removeAttribute("aria-busy");
+          buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
+        });
+    }, { capture: true });
+
+    root.querySelectorAll('a[href^="/"]').forEach(function (link) {
+      link.removeAttribute("target");
+      if (link.pathname.replace(/\\/+$/, "") === window.location.pathname.replace(/\\/+$/, "")) {
+        link.setAttribute("aria-current", "page");
       }
     });
 
-    root.querySelectorAll('form[action*="formsubmit.co"]').forEach(enhanceFormSubmitForm);
+    var menu = root.querySelector(".mobile-menu");
+    var toggle = root.querySelector(".mobile-menu-btn");
+    if (menu && toggle) {
+      menu.id = "mobile-menu";
+      toggle.setAttribute("aria-label", "Open navigation");
+    }
+    var closeBtn = root.querySelector(".close-menu");
+    if (closeBtn) closeBtn.setAttribute("aria-label", "Close navigation");
 
-    var revealTargets = Array.from(
-      root.querySelectorAll(
-        ".visa-intent-header-wrap, .visa-country-card, .free-calc-card, .ldr-card, .partner-card-3d, .why-stat-card, .talk-experts-card, .service-card, .country-card, .step-card, .blog-card, .calc-card, .faq-item"
-      )
-    );
-    revealTargets.forEach(function (element, index) {
-      element.classList.add("suvira-reveal");
-      element.style.setProperty("--reveal-delay", ((index % 4) * 75) + "ms");
+    root.querySelectorAll(".suvira-btn-eligibility").forEach(function (button) {
+      button.removeAttribute("onclick");
+      button.addEventListener("click", function () { window.location.assign("/free-eligibility-check"); });
     });
 
-    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window) {
-      var observer = new IntersectionObserver(
-        function (entries) {
+    root.querySelectorAll('[onclick*="leadModal"]').forEach(function (button) {
+      if (!root.querySelector("#leadModal")) {
+        button.removeAttribute("onclick");
+        button.addEventListener("click", function () { window.location.assign("/free-eligibility-check"); });
+      }
+    });
+
+    injectFlyingIcons(root);
+
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    root.querySelectorAll("[data-leadership-mode]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        var mode = root.querySelector("#teMode");
+        if (mode) {
+          mode.value = link.dataset.leadershipMode || mode.value;
+          mode.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+      });
+    });
+
+    var observer = !reduced && typeof IntersectionObserver !== "undefined"
+      ? new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
               entry.target.classList.add("is-revealed");
               observer.unobserve(entry.target);
             }
           });
-        },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
-      );
-      revealTargets.forEach(function (element) { observer.observe(element); });
-    } else {
-      revealTargets.forEach(function (element) { element.classList.add("is-revealed"); });
+        }, { threshold: 0.08 })
+      : null;
+
+    if (observer) {
+      root.querySelectorAll(".service-card,.country-card,.contact-card,.partner-card-3d,.section-title,.ldr-card,.visa-country-card,.free-calc-card,.story-card,.horizon-pathway,.visa-intent-heading,.leadership-title,.free-calc-title,.program-card,.pnp-card,.doc-check-card,.study-card,.study-uni-card,.calc-other-card,.calc-step-card,.adviser-photo,.executive-copy,.executive-visual,.executive-consult,.study-campus-figure,.study-journey-step,.study-premium-feature,.study-support-item").forEach(function (element) {
+        var siblings = element.parentElement ? Array.from(element.parentElement.children) : [];
+        element.style.setProperty("--reveal-delay", (Math.min(siblings.indexOf(element) % 4, 3) * 85) + "ms");
+        element.classList.add("suvira-reveal");
+        observer.observe(element);
+      });
     }
 
-    var finePointer = !window.matchMedia("(prefers-reduced-motion: reduce)").matches && window.matchMedia("(pointer: fine)").matches;
-    if (finePointer) {
-      var heroPhoto = root.querySelector(".horizon-photo");
-      var onScroll = function () {
-        if (!heroPhoto) return;
-        var y = Math.min(window.scrollY, 680);
-        heroPhoto.style.transform = "scale(1.05) translate3d(0, " + Math.round(y * 0.07) + "px, 0)";
+    var frame = 0;
+    var photo = root.querySelector(".horizon-photo");
+    var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    if (!reduced && photo) {
+      var updatePhoto = function () {
+        frame = 0;
+        var hero = photo.parentElement;
+        if (!hero) return;
+        var bounds = hero.getBoundingClientRect();
+        if (bounds.bottom > 0 && bounds.top < window.innerHeight) {
+          var offset = Math.max(-36, Math.min(36, -bounds.top * 0.065));
+          photo.style.transform = "translateY(" + offset + "px) scale(1.08)";
+        }
       };
-      if (heroPhoto) {
-        onScroll();
-        window.addEventListener("scroll", onScroll, { passive: true });
-      }
-      root.querySelectorAll(".visa-country-card").forEach(function (card) {
+      var schedulePhoto = function () {
+        if (!frame) frame = window.requestAnimationFrame(updatePhoto);
+      };
+      window.addEventListener("scroll", schedulePhoto, { passive: true });
+      schedulePhoto();
+    }
+
+    if (!reduced && finePointer) {
+      root.querySelectorAll(".horizon-pathway,.visa-country-card").forEach(function (card) {
         card.addEventListener("pointermove", function (event) {
           var rect = card.getBoundingClientRect();
           var x = (event.clientX - rect.left) / rect.width - 0.5;
           var y = (event.clientY - rect.top) / rect.height - 0.5;
-          card.style.setProperty("--tilt-x", (-y * 4).toFixed(2) + "deg");
-          card.style.setProperty("--tilt-y", (x * 5).toFixed(2) + "deg");
+          card.style.setProperty("--tilt-x", (-y * 3) + "deg");
+          card.style.setProperty("--tilt-y", (x * 3) + "deg");
         });
         card.addEventListener("pointerleave", function () {
           card.style.setProperty("--tilt-x", "0deg");
@@ -337,37 +402,17 @@ site_enhancements_js = """(function () {
       });
     }
 
-    var heroIcons = [
-      { cls: "hero-fly-icon-1", svg: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5Z"/></svg>' },
-      { cls: "hero-fly-icon-2", svg: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>' },
-      { cls: "hero-fly-icon-3", svg: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>' }
-    ];
-    root.querySelectorAll(
-      'section[class*="hero"], header[class*="hero"], div[class*="hero-section"], .page-hero, .country-hero, .service-hero'
-    ).forEach(function (hero) {
-      if (hero.querySelector(".hero-fly-icon")) return;
-      var pos = getComputedStyle(hero).position;
-      if (pos === "static") hero.style.position = "relative";
-      heroIcons.forEach(function (item) {
-        var span = document.createElement("span");
-        span.className = "hero-fly-icon " + item.cls;
-        span.setAttribute("aria-hidden", "true");
-        span.innerHTML = item.svg;
-        hero.appendChild(span);
-      });
-    });
-
-    fixHeroContrast(root);
-    requestAnimationFrame(function () { fixHeroContrast(root); });
-    setTimeout(function () { fixHeroContrast(root); }, 250);
+    window.setTimeout(function () { fixLowContrastText(root); }, 300);
   }
 
   function boot() {
     var container = document.querySelector(".suvira-site") || document.body;
-    installSiteEnhancements(container);
+    if (container) installSiteEnhancements(container);
   }
 
-  if (document.readyState === "loading") {
+  if (document.querySelector(".suvira-site")) {
+    boot();
+  } else if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", boot);
   } else {
     boot();
@@ -408,6 +453,7 @@ def render_static_html(page):
     head_parts = [
         '  <meta charset="utf-8"/>',
         '  <meta name="viewport" content="width=device-width, initial-scale=1"/>',
+        '  <meta name="referrer" content="origin"/>',
         f'  <title>{html.escape(title)}</title>',
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
         '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>',
@@ -417,7 +463,7 @@ def render_static_html(page):
     for meta in page.get("metas", []):
         attrs = []
         for k, v in meta.items():
-            if k in ("charSet", "charset") or k == "name" and v.lower() == "viewport":
+            if k in ("charSet", "charset") or (k == "name" and v.lower() in ("viewport", "referrer")):
                 continue
             attrs.append(f'{k}="{html.escape(str(v), quote=True)}"')
         if attrs:
@@ -464,13 +510,13 @@ def render_static_html(page):
         classes.append("suvira-confirmation")
     wrapper_class = " ".join(classes)
 
-    script_parts = []
+    # Load site-enhancements.js BEFORE legacy scripts so capture-phase form handling & onsubmit removal happen immediately
+    script_parts = ['  <script src="/site-enhancements.js"></script>']
     for sc in page.get("scripts", []):
         if sc.get("src"):
             script_parts.append(f'  <script src="{html.escape(sc["src"], quote=True)}"></script>')
         elif sc.get("code"):
             script_parts.append(f'  <script>{sc["code"]}</script>')
-    script_parts.append('  <script src="/site-enhancements.js" defer></script>')
 
     return (
         "<!DOCTYPE html>\n"
@@ -524,6 +570,7 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="referrer" content="origin"/>
   <title>AI Consultation Preparation | Suvira Immigration</title>
   <meta name="description" content="Prepare a personalized potential document checklist and consultation questions for your immigration journey. Informational only, not legal advice."/>
   <link rel="canonical" href="/ai-preparation/"/>
@@ -638,13 +685,11 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
   </div>
   <script>
   (function() {
-    var NOTICE = "AI-generated information only—not legal advice or an official document list. Requirements change; confirm everything with the destination government and a qualified immigration adviser.";
     var bgInput = document.getElementById("background");
     var bgCount = document.getElementById("bgCount");
     var form = document.getElementById("prepForm");
     var errorEl = document.getElementById("prepError");
     var outputEl = document.getElementById("prepOutput");
-    var submitBtn = document.getElementById("prepSubmit");
     bgInput.addEventListener("input", function() { bgCount.textContent = bgInput.value.length + "/2500"; });
     form.addEventListener("submit", function(e) {
       e.preventDefault();
@@ -690,9 +735,12 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
 </html>
 """)
 
-# 7. Write dist/staticwebapp.config.json
+# 7. Write dist/staticwebapp.config.json (including globalHeaders Referrer-Policy override)
 with open(os.path.join(DIST, "staticwebapp.config.json"), "w", encoding="utf-8") as f:
     json.dump({
+        "globalHeaders": {
+            "Referrer-Policy": "strict-origin-when-cross-origin"
+        },
         "routes": [
             {"route": "/thankyou", "rewrite": "/Thank-you/index.html"},
             {"route": "/thankyou/*", "rewrite": "/Thank-you/index.html"},
