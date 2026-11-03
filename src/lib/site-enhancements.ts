@@ -102,13 +102,23 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
   const modal = root.querySelector<HTMLElement>('#leadModal') || document.getElementById('leadModal');
   if (modal) {
     let modalShown = false;
-    const showModal = () => {
-      if (modalShown) return;
-      if (sessionStorage.getItem('suvira_consultation_dismissed') || sessionStorage.getItem('popupShown')) return;
-      modalShown = true;
+
+    const openModal = (serviceName?: string) => {
+      if (!modal) return;
+      if (serviceName) {
+        const sInput = modal.querySelector<HTMLInputElement | HTMLSelectElement>('input[name="service"], select[name="service"]');
+        if (sInput) sInput.value = serviceName;
+      }
       modal.classList.remove('is-closing');
       modal.classList.add('is-visible');
       modal.style.display = 'flex';
+    };
+
+    const showAutoModal = () => {
+      if (modalShown) return;
+      if (sessionStorage.getItem('suvira_consultation_dismissed') || sessionStorage.getItem('popupShown')) return;
+      modalShown = true;
+      openModal();
     };
 
     const hideModal = () => {
@@ -121,11 +131,9 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       sessionStorage.setItem('popupShown', 'true');
     };
 
-    (window as any).openLeadModal = () => {
-      modalShown = false;
-      showModal();
-    };
+    (window as any).openLeadModal = openModal;
     (window as any).closeLeadModal = hideModal;
+    (window as any).handleModalSubmit = (window as any).handleModalSubmit || function () { /* handled by capture */ };
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) hideModal();
@@ -137,7 +145,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       }
     }, { signal });
 
-    modal.querySelectorAll('button[aria-label="Close"], .close-modal').forEach((btn) => {
+    modal.querySelectorAll('button[aria-label="Close"], .close-modal, .lead-modal-close').forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         hideModal();
@@ -157,9 +165,13 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       if (modalShown) return;
       if (sessionStorage.getItem('suvira_consultation_dismissed') || sessionStorage.getItem('popupShown')) return;
       const scrollPos = window.scrollY + window.innerHeight;
-      const totalHeight = document.documentElement.scrollHeight;
+      const totalHeight = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight
+      );
       if (totalHeight > 900 && (scrollPos >= totalHeight - 700 || scrollPos / totalHeight >= 0.78)) {
-        showModal();
+        showAutoModal();
       }
     };
     window.addEventListener('scroll', onScrollEnd, { passive: true, signal });

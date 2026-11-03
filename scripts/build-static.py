@@ -43,42 +43,42 @@ for fn in os.listdir(assets_src):
 # 3. Prepend :root design tokens and .suvira-ai-prep-fab rules from src/styles.css into dist/site-polish.css
 root_tokens_css = """/* Root design tokens and AI Preparation FAB from src/styles.css */
 :root {
-  --site-ink: oklch(0.2 0.04 162);
-  --site-muted: oklch(0.4 0.03 162);
-  --site-soft: oklch(0.95 0.015 152);
-  --site-surface: oklch(0.99 0.006 95);
-  --site-action: oklch(0.42 0.11 162);
-  --site-gold: oklch(0.74 0.13 82);
-  --site-rose: oklch(0.48 0.08 158);
-  --site-line: oklch(0.87 0.02 152);
-  --site-shadow: 0 22px 48px -28px oklch(0.2 0.05 162 / 0.28);
-  --site-success: oklch(0.46 0.12 155);
-  --site-error: oklch(0.48 0.17 28);
-  --site-hero-wash: linear-gradient(96deg, oklch(0.985 0.008 95 / 0.96) 0%, oklch(0.97 0.015 150 / 0.9) 55%, oklch(0.96 0.02 152 / 0.72) 100%);
-  --site-photo-ink: oklch(0.985 0.008 95);
-  --site-photo-muted: oklch(0.9 0.02 150);
-  --site-photo-scrim: oklch(0.18 0.04 162 / 0.62);
-  --site-photo-chip: oklch(0.2 0.04 162 / 0.56);
-  --site-photo-chip-border: oklch(0.98 0.01 95 / 0.26);
-  --site-photo-shadow: 0 2px 22px oklch(0.14 0.04 162 / 0.52);
-  --background: oklch(0.99 0.006 95);
-  --foreground: oklch(0.2 0.04 162);
-  --card: oklch(0.99 0.006 95);
-  --card-foreground: oklch(0.2 0.04 162);
-  --popover: oklch(0.99 0.006 95);
-  --popover-foreground: oklch(0.2 0.04 162);
-  --primary: oklch(0.42 0.11 162);
-  --primary-foreground: oklch(0.99 0.006 95);
-  --secondary: oklch(0.95 0.015 152);
-  --secondary-foreground: oklch(0.2 0.04 162);
-  --muted: oklch(0.95 0.015 152);
-  --muted-foreground: oklch(0.4 0.03 162);
-  --accent: oklch(0.74 0.13 82);
-  --accent-foreground: oklch(0.2 0.04 162);
-  --destructive: oklch(0.48 0.17 28);
-  --border: oklch(0.87 0.02 152);
-  --input: oklch(0.87 0.02 152);
-  --ring: oklch(0.74 0.13 82);
+  --site-ink: #07172C;
+  --site-muted: #64748B;
+  --site-soft: #F8FAFC;
+  --site-surface: #FFFFFF;
+  --site-action: #EA580C;
+  --site-gold: #F59E0B;
+  --site-rose: #C2410C;
+  --site-line: #E2E8F0;
+  --site-shadow: 0 22px 48px -28px rgba(7, 23, 44, 0.28);
+  --site-success: #16A34A;
+  --site-error: #DC2626;
+  --site-hero-wash: linear-gradient(96deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.9) 55%, rgba(241, 245, 249, 0.72) 100%);
+  --site-photo-ink: #FFFFFF;
+  --site-photo-muted: #E2E8F0;
+  --site-photo-scrim: rgba(7, 23, 44, 0.62);
+  --site-photo-chip: rgba(7, 23, 44, 0.56);
+  --site-photo-chip-border: rgba(255, 255, 255, 0.26);
+  --site-photo-shadow: 0 2px 22px rgba(7, 23, 44, 0.52);
+  --background: #FFFFFF;
+  --foreground: #07172C;
+  --card: #FFFFFF;
+  --card-foreground: #07172C;
+  --popover: #FFFFFF;
+  --popover-foreground: #07172C;
+  --primary: #07172C;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F8FAFC;
+  --secondary-foreground: #07172C;
+  --muted: #F8FAFC;
+  --muted-foreground: #64748B;
+  --accent: #F59E0B;
+  --accent-foreground: #07172C;
+  --destructive: #DC2626;
+  --border: #E2E8F0;
+  --input: #E2E8F0;
+  --ring: #F59E0B;
   --radius: 0.375rem;
 }
 .prep-page { font-family: 'DM Sans', sans-serif; }
@@ -323,13 +323,23 @@ site_enhancements_js = """(function () {
     var modal = root.querySelector("#leadModal") || document.getElementById("leadModal");
     if (modal) {
       var modalShown = false;
-      var showModal = function () {
-        if (modalShown) return;
-        if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
-        modalShown = true;
+
+      var openModal = function (serviceName) {
+        if (!modal) return;
+        if (serviceName) {
+          var sInput = modal.querySelector('input[name="service"], select[name="service"]');
+          if (sInput) sInput.value = serviceName;
+        }
         modal.classList.remove("is-closing");
         modal.classList.add("is-visible");
         modal.style.display = "flex";
+      };
+
+      var showAutoModal = function () {
+        if (modalShown) return;
+        if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
+        modalShown = true;
+        openModal();
       };
 
       var hideModal = function () {
@@ -342,11 +352,9 @@ site_enhancements_js = """(function () {
         sessionStorage.setItem("popupShown", "true");
       };
 
-      window.openLeadModal = function () {
-        modalShown = false;
-        showModal();
-      };
+      window.openLeadModal = openModal;
       window.closeLeadModal = hideModal;
+      window.handleModalSubmit = window.handleModalSubmit || function () { /* handled by capture */ };
 
       modal.addEventListener("click", function (e) {
         if (e.target === modal) hideModal();
@@ -358,7 +366,7 @@ site_enhancements_js = """(function () {
         }
       });
 
-      modal.querySelectorAll('button[aria-label="Close"], .close-modal').forEach(function (btn) {
+      modal.querySelectorAll('button[aria-label="Close"], .close-modal, .lead-modal-close').forEach(function (btn) {
         btn.addEventListener("click", function (e) {
           e.preventDefault();
           hideModal();
@@ -384,7 +392,7 @@ site_enhancements_js = """(function () {
           document.documentElement.offsetHeight
         );
         if (totalHeight > 900 && (scrollPos >= totalHeight - 700 || scrollPos / totalHeight >= 0.78)) {
-          showModal();
+          showAutoModal();
         }
       };
       window.addEventListener("scroll", onScrollEnd, { passive: true });

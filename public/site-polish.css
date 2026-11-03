@@ -144,116 +144,260 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .footer :is(p,a) { color: color-mix(in oklab,var(--site-surface) 72%,var(--site-ink)) !important; font-size: 13px; }
 .suvira-site .footer-bottom { border-top: 1px solid color-mix(in oklab,var(--site-surface) 15%,var(--site-ink)); }
 /* Premium Consultation / Eligibility Modal Animation & Style */
-.suvira-site #leadModal {
+.suvira-site #leadModal,
+.suvira-site .lead-modal-overlay,
+.suvira-site .lead-modal,
+#leadModal,
+.lead-modal-overlay,
+.lead-modal {
   display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 22, 40, 0.78) !important;
+  position: fixed !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(10, 22, 40, 0.82) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  z-index: 99999 !important;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
+  z-index: 999999 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
   opacity: 0;
-  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.suvira-site #leadModal.is-visible {
+
+.suvira-site #leadModal.is-visible,
+.suvira-site #leadModal[style*="display: flex"],
+.suvira-site #leadModal[style*="display: block"],
+.suvira-site .lead-modal-overlay.is-visible,
+.suvira-site .lead-modal-overlay[style*="display: flex"],
+.suvira-site .lead-modal-overlay[style*="display: block"],
+.suvira-site .lead-modal.is-visible,
+.suvira-site .lead-modal[style*="display: flex"],
+.suvira-site .lead-modal[style*="display: block"],
+#leadModal.is-visible,
+#leadModal[style*="display: flex"],
+#leadModal[style*="display: block"] {
   display: flex !important;
-  opacity: 1;
+  opacity: 1 !important;
 }
-.suvira-site #leadModal.is-closing {
-  opacity: 0;
+
+.suvira-site #leadModal.is-closing,
+.suvira-site .lead-modal-overlay.is-closing,
+.suvira-site .lead-modal.is-closing,
+#leadModal.is-closing {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
-.suvira-site #leadModal > div {
+
+/* Modal Card */
+.suvira-site #leadModal > div,
+.suvira-site .lead-modal-card,
+.suvira-site .lead-modal-content,
+#leadModal > div,
+#leadModal .lead-modal-card,
+#leadModal .lead-modal-content {
   background: #ffffff !important;
   border-radius: 20px !important;
-  max-width: 450px !important;
+  max-width: 460px !important;
   width: 100% !important;
-  overflow: hidden !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.5), 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
-  transform: translateY(30px) scale(0.92);
-  will-change: transform, opacity;
+  position: relative !important;
+  margin: auto !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
 }
-.suvira-site #leadModal.is-visible > div {
-  animation: suviraModalPop 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+
+.suvira-site #leadModal.is-visible > div,
+.suvira-site #leadModal.is-visible .lead-modal-card,
+.suvira-site #leadModal.is-visible .lead-modal-content,
+#leadModal.is-visible > div,
+#leadModal.is-visible .lead-modal-card,
+#leadModal.is-visible .lead-modal-content {
+  animation: suviraModalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
 }
-.suvira-site #leadModal.is-closing > div {
-  animation: suviraModalExit 0.25s ease-in forwards !important;
+
+.suvira-site #leadModal.is-closing > div,
+.suvira-site #leadModal.is-closing .lead-modal-card,
+.suvira-site #leadModal.is-closing .lead-modal-content,
+#leadModal.is-closing > div,
+#leadModal.is-closing .lead-modal-card,
+#leadModal.is-closing .lead-modal-content {
+  animation: suviraModalExit 0.2s ease-in forwards !important;
 }
-.suvira-site #leadModal > div > div:first-child {
+
+/* Modal Header */
+.suvira-site #leadModal .lead-modal-header,
+.suvira-site .lead-modal-card .lead-modal-header,
+.suvira-site .lead-modal-content .study-card-header,
+#leadModal .lead-modal-header,
+#leadModal > div > div:first-child:not(form) {
   background: #0a1628 !important;
   padding: 22px 26px 18px !important;
-  display: flex !important;
-  justify-content: space-between !important;
-  align-items: flex-start !important;
+  display: block !important;
+  text-align: left !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  position: relative !important;
 }
-.suvira-site #leadModal > div > div:first-child div > div:first-child {
-  color: #f59e0b !important;
-  font-size: 11px !important;
-  font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 1.5px !important;
-  margin-bottom: 4px !important;
-}
-.suvira-site #leadModal h3 {
+
+.suvira-site #leadModal .lead-modal-header h3,
+.suvira-site .lead-modal-card .lead-modal-header h3,
+.suvira-site .lead-modal-content .study-card-header h3,
+#leadModal .lead-modal-header h3,
+#leadModal h3 {
   font-family: 'DM Serif Display', Georgia, serif !important;
-  font-size: 22px !important;
+  font-size: 21px !important;
   font-weight: 700 !important;
   letter-spacing: -0.2px !important;
   color: #ffffff !important;
   margin: 0 !important;
 }
-.suvira-site #leadModal > div > div:first-child p {
+
+.suvira-site #leadModal .lead-modal-header p,
+.suvira-site .lead-modal-card .lead-modal-header p,
+.suvira-site .lead-modal-content .study-card-header p,
+#leadModal .lead-modal-header p,
+#leadModal p {
   color: #94a3b8 !important;
   font-size: 12.5px !important;
   margin-top: 4px !important;
   margin-bottom: 0 !important;
+  line-height: 1.4 !important;
 }
-.suvira-site #leadModal > div > div:first-child button {
+
+/* Close button */
+.suvira-site #leadModal .lead-modal-close,
+.suvira-site .lead-modal-card .lead-modal-close,
+.suvira-site .lead-modal-content .lead-modal-close,
+.suvira-site #leadModal button[aria-label="Close"],
+#leadModal .lead-modal-close,
+#leadModal button[aria-label="Close"] {
+  position: absolute !important;
+  top: 18px !important;
+  right: 20px !important;
+  background: transparent !important;
+  border: none !important;
   color: #94a3b8 !important;
   font-size: 26px !important;
   line-height: 1 !important;
-  margin-top: -2px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  z-index: 10 !important;
   transition: color 0.2s ease, transform 0.2s ease !important;
 }
-.suvira-site #leadModal > div > div:first-child button:hover {
+
+.suvira-site #leadModal .lead-modal-close:hover,
+.suvira-site .lead-modal-card .lead-modal-close:hover,
+.suvira-site .lead-modal-content .lead-modal-close:hover,
+.suvira-site #leadModal button[aria-label="Close"]:hover,
+#leadModal .lead-modal-close:hover,
+#leadModal button[aria-label="Close"]:hover {
   color: #ffffff !important;
   transform: scale(1.15) !important;
 }
-.suvira-site #leadModal form {
-  padding: 22px 26px 20px !important;
-}
-.suvira-site #leadModal :is(input, select) {
+
+/* Form & Inputs */
+.suvira-site #leadModal form,
+.suvira-site .lead-modal-card form,
+.suvira-site .lead-modal-content form,
+#leadModal form {
+  padding: 24px 26px 22px !important;
   background: #ffffff !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.suvira-site #leadModal .modal-field,
+.suvira-site .lead-modal-card .modal-field,
+.suvira-site .lead-modal-content .form-group-study,
+#leadModal .modal-field,
+#leadModal .form-group-study {
+  margin-bottom: 14px !important;
+  text-align: left !important;
+}
+
+.suvira-site #leadModal .modal-field label,
+.suvira-site .lead-modal-card .modal-field label,
+.suvira-site .lead-modal-content .form-group-study label,
+#leadModal .modal-field label,
+#leadModal .form-group-study label {
+  display: block !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #475569 !important;
+  margin-bottom: 5px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.suvira-site #leadModal :is(input, select),
+.suvira-site .lead-modal-card :is(input, select),
+.suvira-site .lead-modal-content :is(input, select),
+#leadModal :is(input, select) {
+  width: 100% !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  background: #f8fafc !important;
   color: #0f172a !important;
-  border: 1px solid #e2e8f0 !important;
-  border-radius: 8px !important;
-  font-size: 13px !important;
-  padding: 11px 14px !important;
-  margin-bottom: 12px !important;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
-}
-.suvira-site #leadModal :is(input, select):focus {
-  border-color: #f59e0b !important;
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18) !important;
-}
-.suvira-site #leadModal button[type='submit'] {
-  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
-  color: #ffffff !important;
-  border: none !important;
+  border: 1.5px solid #e2e8f0 !important;
   border-radius: 10px !important;
   font-size: 14px !important;
-  font-weight: 700 !important;
-  padding: 13px !important;
-  box-shadow: 0 10px 24px -6px rgba(234, 88, 12, 0.45) !important;
-  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease !important;
+  padding: 12px 14px !important;
+  margin-bottom: 0 !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  height: auto !important;
 }
-.suvira-site #leadModal button[type='submit']:hover {
+
+.suvira-site #leadModal :is(input, select):focus,
+.suvira-site .lead-modal-card :is(input, select):focus,
+.suvira-site .lead-modal-content :is(input, select):focus,
+#leadModal :is(input, select):focus {
+  border-color: #ea580c !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.15) !important;
+}
+
+.suvira-site #leadModal :is(.lead-modal-btn, .study-form-btn, button[type='submit']),
+.suvira-site .lead-modal-card :is(.lead-modal-btn, button[type='submit']),
+.suvira-site .lead-modal-content :is(.study-form-btn, button[type='submit']),
+#leadModal :is(.lead-modal-btn, .study-form-btn, button[type='submit']) {
+  width: 100% !important;
+  padding: 14px 20px !important;
+  background: linear-gradient(135deg, #e65100 0%, #f97316 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  box-shadow: 0 8px 20px rgba(230, 81, 0, 0.35) !important;
+  transition: all 0.2s ease !important;
+  margin-top: 6px !important;
+}
+
+.suvira-site #leadModal :is(.lead-modal-btn, .study-form-btn, button[type='submit']):hover,
+.suvira-site .lead-modal-card :is(.lead-modal-btn, button[type='submit']):hover,
+.suvira-site .lead-modal-content :is(.study-form-btn, button[type='submit']):hover,
+#leadModal :is(.lead-modal-btn, .study-form-btn, button[type='submit']):hover {
   transform: translateY(-2px) !important;
   filter: brightness(1.08) !important;
-  box-shadow: 0 14px 28px -6px rgba(234, 88, 12, 0.65) !important;
+  box-shadow: 0 12px 26px rgba(230, 81, 0, 0.5) !important;
 }
 
 @keyframes suviraModalPop {
