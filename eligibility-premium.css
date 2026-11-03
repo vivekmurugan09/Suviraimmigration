@@ -1,0 +1,179 @@
+/* ==========================================================================
+   Free Eligibility Check — premium study-visa theme (emerald & gold)
+   Scoped to .eligibility-premium so the shared navy stylesheets stay intact.
+   ========================================================================== */
+
+body:has(.eligibility-premium) {
+    background: var(--site-soft) !important;
+}
+
+/* ─── HERO ─────────────────────────────────────────────────────────────── */
+.eligibility-premium .page-hero {
+    background: var(--site-soft);
+    padding: 140px 0 80px;
+    text-align: center;
+}
+
+.eligibility-premium .page-hero::before {
+    display: none;
+}
+
+.eligibility-premium .page-hero-badge {
+    background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important;
+    border: 1px solid var(--site-gold) !important;
+    color: var(--site-ink) !important;
+    box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--site-action) 40%, transparent);
+    animation: epBadgePulse 2.6s ease-in-out infinite;
+}
+
+.eligibility-premium .page-hero-badge i {
+    color: var(--site-action);
+}
+
+@keyframes epBadgePulse {
+    0%, 100% { box-shadow: 0 10px 30px -12px color-mix(in oklab, var(--site-action) 40%, transparent); }
+    50% { box-shadow: 0 10px 34px -8px color-mix(in oklab, var(--site-gold) 65%, transparent); }
+}
+
+.eligibility-premium .page-hero-title {
+    color: var(--site-ink) !important;
+    font-family: 'DM Serif Display', Georgia, serif !important;
+    font-weight: 500 !important;
+    letter-spacing: -0.5px;
+    text-shadow: 0 1px 0 color-mix(in oklab, var(--site-surface) 80%, transparent);
+}
+
+.eligibility-premium .page-hero-subtitle {
+    color: color-mix(in oklab, var(--site-ink) 82%, transparent) !important;
+}
+
+.eligibility-premium .flag-strip {
+    margin-top: 24px;
+}
+
+.eligibility-premium .flag-chip {
+    background: color-mix(in oklab, var(--site-surface) 92%, transparent) !important;
+    border: 1px solid color-mix(in oklab, var(--site-gold) 55%, transparent) !important;
+    color: var(--site-ink) !important;
+    box-shadow: 0 6px 18px -10px color-mix(in oklab, var(--site-action) 45%, transparent);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.eligibility-premium .flag-chip:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 26px -10px color-mix(in oklab, var(--site-action) 55%, transparent);
+}
+
+/* ─── STATS STRIP ──────────────────────────────────────────────────────── */
+.eligibility-premium .stats-strip {
+    background: var(--site-surface);
+    border-bottom: 1px solid color-mix(in oklab, var(--site-gold) 30%, transparent);
+}
+
+/* ─── FORM CARD ────────────────────────────────────────────────────────── */
+.eligibility-premium .form-card {
+    border: 1px solid color-mix(in oklab, var(--site-gold) 40%, transparent);
+    box-shadow: 0 24px 60px -30px color-mix(in oklab, var(--site-action) 45%, transparent);
+    border-top: 3px solid var(--site-gold);
+}
+
+.eligibility-premium .form-card-header {
+    background: linear-gradient(135deg, var(--site-action) 0%, oklch(0.3 0.07 175) 100%);
+}
+
+.eligibility-premium .form-card-header i {
+    color: var(--site-gold);
+}
+
+.eligibility-premium .section-divider {
+    border-bottom: 1.5px solid color-mix(in oklab, var(--site-gold) 25%, transparent);
+}
+
+.eligibility-premium .sdiv-icon {
+    background: color-mix(in oklab, var(--site-action) 10%, transparent);
+    color: var(--site-action);
+}
+
+.eligibility-premium .section-divider h3 {
+    color: var(--site-action);
+}
+
+.eligibility-premium .fgroup input:focus,
+.eligibility-premium .fgroup select:focus,
+.eligibility-premium .fgroup textarea:focus {
+    border-color: var(--site-action);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--site-action) 12%, transparent);
+}
+
+/* Submit button — brand gold, like the hero CTA everywhere else */
+.eligibility-premium .submit-btn {
+    background: linear-gradient(135deg, oklch(0.8 0.14 80) 0%, oklch(0.7 0.13 68) 100%);
+    color: oklch(0.3 0.05 60);
+    box-shadow: 0 10px 26px -8px color-mix(in oklab, var(--site-gold) 70%, transparent);
+    overflow: hidden;
+    position: relative;
+}
+
+.eligibility-premium .submit-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -60%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(105deg, transparent 20%, rgba(255, 255, 255, 0.55) 50%, transparent 80%);
+    transform: skewX(-20deg);
+    animation: epShine 3.6s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes epShine {
+    0%, 55% { left: -60%; }
+    85%, 100% { left: 130%; }
+}
+
+.eligibility-premium .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px -8px color-mix(in oklab, var(--site-gold) 80%, transparent);
+}
+
+/* ─── SIDEBAR ──────────────────────────────────────────────────────────── */
+.eligibility-premium .call-card {
+    background: linear-gradient(135deg, var(--site-action) 0%, oklch(0.3 0.07 175) 100%);
+    border-top: 3px solid var(--site-gold);
+}
+
+.eligibility-premium .call-card i {
+    color: var(--site-gold);
+}
+
+.eligibility-premium .call-btn {
+    background: linear-gradient(135deg, oklch(0.8 0.14 80) 0%, oklch(0.7 0.13 68) 100%);
+    color: oklch(0.3 0.05 60);
+    font-weight: 700;
+}
+
+.eligibility-premium .side-card {
+    border-top: 3px solid var(--site-gold);
+}
+
+.eligibility-premium .side-card-header {
+    background: linear-gradient(135deg, var(--site-action) 0%, oklch(0.3 0.07 175) 100%);
+}
+
+.eligibility-premium .side-card-header i {
+    color: var(--site-gold);
+}
+
+.eligibility-premium .why-list li i,
+.eligibility-premium .country-row i {
+    color: var(--site-action);
+}
+
+/* ─── MOTION ───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .eligibility-premium .page-hero-badge,
+    .eligibility-premium .submit-btn::after {
+        animation: none !important;
+    }
+}

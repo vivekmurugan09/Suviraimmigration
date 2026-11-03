@@ -1,0 +1,1765 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+/* ==========================================================================
+   SUVIRA IMMIGRATION - PREMIER NAVBAR & HERO FORMATION (REFERENCE DESIGN SPEC)
+   Theme: Pure White Nav, Cosmic Deep Blue Hero (#071338), Warm Gold (#F59E0B),
+          Vibrant Orange (#F97316), Emerald WhatsApp (#22C55E)
+   ========================================================================== */
+
+/* --- 1. Top Navbar Styling --- */
+.suvira-navbar {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 2px 14px rgba(15, 23, 42, 0.06);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.suvira-nav-container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Logo Brand Styling */
+.suvira-logo-wrap {
+    flex-shrink: 0;
+}
+
+.suvira-brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.suvira-nav-butterfly {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.12));
+    transition: transform 0.25s ease;
+}
+
+.suvira-brand-link:hover .suvira-nav-butterfly {
+    transform: scale(1.04);
+}
+
+.suvira-brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.1;
+    text-align: left;
+}
+
+.brand-name-suvira {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    color: #0C1E5B;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.brand-name-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #0C1E5B;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-top: -1px;
+}
+
+.brand-tagline {
+    font-family: 'Outfit', sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    color: #475569;
+    letter-spacing: 0.35px;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+/* Nav Menu Links */
+.suvira-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+@media (max-width: 1300px) {
+    .suvira-nav-menu {
+        gap: 12px;
+    }
+    .nav-dropdown-trigger,
+    .nav-link-item {
+        font-size: 14px !important;
+        gap: 4px !important;
+    }
+    .suvira-nav-actions {
+        gap: 8px;
+    }
+    .suvira-btn-portal {
+        padding: 9px 18px !important;
+        font-size: 13.5px !important;
+    }
+    .suvira-btn-eligibility {
+        padding: 8px 16px !important;
+        font-size: 13.5px !important;
+    }
+}
+
+@media (max-width: 1180px) {
+    .suvira-nav-menu {
+        gap: 8px;
+    }
+    .nav-dropdown-trigger,
+    .nav-link-item {
+        font-size: 13px !important;
+        gap: 3px !important;
+    }
+    .suvira-nav-actions {
+        gap: 6px;
+    }
+    .suvira-btn-portal {
+        padding: 7px 14px !important;
+        font-size: 12.5px !important;
+    }
+    .suvira-btn-eligibility {
+        padding: 7px 12px !important;
+        font-size: 12.5px !important;
+    }
+}
+
+.nav-item-dropdown {
+    position: relative;
+    padding: 8px 0;
+}
+
+.nav-dropdown-trigger,
+.nav-link-item {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    color: #1E293B !important;
+    text-decoration: none !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    padding: 6px 2px !important;
+    transition: color 0.2s ease !important;
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+    white-space: nowrap !important;
+}
+
+.nav-dropdown-trigger:hover,
+.nav-link-item:hover,
+.nav-dropdown-trigger.active {
+    color: #F97316 !important;
+}
+
+.nav-caret {
+    font-size: 9px;
+    color: #64748B;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.nav-item-dropdown:hover .nav-caret {
+    transform: rotate(180deg);
+    color: #F97316;
+}
+
+/* Dropdown Menu Container */
+.nav-dropdown-menu {
+    position: absolute;
+    top: calc(100% - 2px);
+    left: 0;
+    min-width: 270px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    box-shadow: 0 16px 36px rgba(12, 30, 91, 0.15);
+    border: 1px solid #E2E8F0;
+    padding: 10px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 200;
+    pointer-events: none;
+}
+
+.nav-item-dropdown:hover .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.nav-dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #1E293B !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.nav-dropdown-menu a i {
+    width: 20px;
+    color: #F97316;
+    font-size: 14px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown-menu a:hover {
+    background: #FFF7ED;
+    color: #EA580C !important;
+    padding-left: 24px;
+}
+
+.nav-dropdown-menu a:hover i {
+    transform: scale(1.15);
+}
+
+/* Nav Right Action Buttons */
+.suvira-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 6px;
+    flex-shrink: 0;
+}
+
+/* Portal Access Button (Replacing Pay Now) */
+.suvira-btn-portal {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 9999px !important;
+    padding: 10px 22px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35) !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+}
+
+.suvira-btn-portal i {
+    color: #FFFFFF !important;
+    font-size: 14px !important;
+}
+
+.suvira-btn-portal:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45) !important;
+    color: #FFFFFF !important;
+}
+
+.portal-pulse-dot {
+    width: 7px;
+    height: 7px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    display: inline-block;
+    animation: portalPulse 1.5s infinite;
+}
+
+@keyframes portalPulse {
+    0% { transform: scale(0.9); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+/* Eligibility Check Outline Button - High Specificity */
+.suvira-navbar .suvira-nav-actions button.suvira-btn-eligibility,
+.nav-links button.suvira-btn-eligibility,
+.suvira-btn-eligibility {
+    background: #FFFFFF !important;
+    background-color: #FFFFFF !important;
+    color: #0C1E5B !important;
+    border: 1.5px solid #0C1E5B !important;
+    border-radius: 9999px !important;
+    padding: 9px 20px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    white-space: nowrap !important;
+    box-shadow: none !important;
+}
+
+.suvira-navbar .suvira-nav-actions button.suvira-btn-eligibility i,
+.nav-links button.suvira-btn-eligibility i,
+.suvira-btn-eligibility i {
+    color: #0C1E5B !important;
+    font-size: 14px !important;
+    transition: color 0.25s ease !important;
+}
+
+.suvira-navbar .suvira-nav-actions button.suvira-btn-eligibility:hover,
+.nav-links button.suvira-btn-eligibility:hover,
+.suvira-btn-eligibility:hover {
+    background: #0C1E5B !important;
+    background-color: #0C1E5B !important;
+    color: #FFFFFF !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 14px rgba(12, 30, 91, 0.25) !important;
+}
+
+.suvira-navbar .suvira-nav-actions button.suvira-btn-eligibility:hover i,
+.nav-links button.suvira-btn-eligibility:hover i,
+.suvira-btn-eligibility:hover i {
+    color: #FFFFFF !important;
+}
+
+.suvira-mobile-toggle {
+    display: none;
+    font-size: 24px;
+    color: #0C1E5B;
+    cursor: pointer;
+}
+
+@media (max-width: 1040px) {
+    .suvira-nav-menu {
+        display: none !important;
+    }
+    .suvira-mobile-toggle {
+        display: block !important;
+    }
+}
+
+/* ==========================================================================
+   2. PREMIER HERO SECTION (COSMIC BANNER FORMATION)
+   ========================================================================== */
+.suvira-hero-section {
+    position: relative;
+    background-color: #071338;
+    background-image: 
+        linear-gradient(180deg, rgba(7, 19, 56, 0.4) 0%, rgba(7, 19, 56, 0.15) 55%, rgba(7, 19, 56, 0.6) 100%),
+        url('images/suvira-hero-bg-cosmic.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    min-height: 660px;
+    padding-top: 55px;
+    padding-bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.suvira-hero-container {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 30px;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+@media (max-width: 991px) {
+    .suvira-hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 35px;
+    }
+}
+
+/* Left Column */
+.suvira-hero-left {
+    padding-top: 15px;
+    padding-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (max-width: 991px) {
+    .suvira-hero-left {
+        align-items: center;
+    }
+}
+
+/* Premier Award Badge */
+.suvira-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(14, 25, 66, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(245, 158, 11, 0.75);
+    border-radius: 9999px;
+    padding: 6px 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.suvira-hero-badge i {
+    color: #F59E0B;
+    font-size: 13px;
+}
+
+.suvira-hero-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #FBBF24;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* Main Heading */
+.suvira-hero-title {
+    font-family: 'Outfit', sans-serif;
+    color: #FFFFFF;
+    font-size: clamp(32px, 3.8vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.5px;
+}
+
+.suvira-gold-gradient {
+    background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FCD34D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.25));
+}
+
+/* Tagline with Curved Underline */
+.suvira-tagline-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 18px;
+}
+
+.suvira-hero-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(18px, 2.2vw, 25px);
+    font-weight: 700;
+    color: #F6A623;
+    line-height: 1.3;
+}
+
+.suvira-curve-svg {
+    display: block;
+    width: 230px;
+    height: 14px;
+    margin-top: 2px;
+    filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.35));
+}
+
+@media (max-width: 991px) {
+    .suvira-curve-svg {
+        margin: 2px auto 0 auto;
+    }
+}
+
+/* Description */
+.suvira-hero-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(14px, 1.35vw, 16px);
+    font-weight: 400;
+    color: rgba(241, 245, 249, 0.92);
+    line-height: 1.6;
+    max-width: 550px;
+    margin: 0 0 24px 0;
+}
+
+/* 4 Feature Value Badges Grid */
+.suvira-feature-badges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 630px;
+    margin-bottom: 26px;
+}
+
+@media (max-width: 640px) {
+    .suvira-feature-badges {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.feature-badge-item {
+    background: rgba(14, 29, 78, 0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+}
+
+.feature-badge-item:hover {
+    background: rgba(22, 42, 108, 0.8);
+    border-color: rgba(245, 158, 11, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.badge-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(245, 158, 11, 0.14);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.badge-icon i {
+    color: #F59E0B;
+    font-size: 16px;
+}
+
+.badge-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    text-align: left;
+}
+
+.badge-text span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #CBD5E1;
+    white-space: nowrap;
+}
+
+.badge-text strong {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #FFFFFF;
+    white-space: nowrap;
+}
+
+/* Call To Action Buttons Row */
+.suvira-hero-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+    .suvira-hero-cta-row {
+        justify-content: center;
+    }
+}
+
+.suvira-cta-btn-primary {
+    background: linear-gradient(90deg, #F97316 0%, #EA580C 100%);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 9999px;
+    padding: 13px 28px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 24px rgba(234, 88, 12, 0.45);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.suvira-cta-btn-primary i {
+    transition: transform 0.2s ease;
+}
+
+.suvira-cta-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(234, 88, 12, 0.6);
+    color: #FFFFFF;
+}
+
+.suvira-cta-btn-primary:hover i {
+    transform: translateX(4px);
+}
+
+.suvira-cta-btn-whatsapp {
+    background: rgba(8, 24, 52, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1.5px solid #22C55E;
+    color: #FFFFFF;
+    border-radius: 9999px;
+    padding: 12px 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 15.5px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.suvira-cta-btn-whatsapp i {
+    color: #22C55E;
+    font-size: 20px;
+    transition: color 0.25s ease;
+}
+
+.suvira-cta-btn-whatsapp:hover {
+    background: #22C55E;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+}
+
+.suvira-cta-btn-whatsapp:hover i {
+    color: #FFFFFF;
+}
+
+/* Animated Sky & Flying Airplane Graphic Animation */
+.suvira-animated-sky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.animated-plane-flight {
+    position: absolute;
+    top: 55px;
+    left: -120px;
+    display: flex;
+    align-items: center;
+    animation: flightCruise 24s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+
+.plane-icon {
+    color: #FBBF24;
+    font-size: 22px;
+    transform: rotate(18deg);
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.85));
+}
+
+.plane-vapor-trail {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(245, 158, 11, 0) 0%, rgba(245, 158, 11, 0.6) 70%, rgba(255, 255, 255, 0.9) 100%);
+    margin-right: -4px;
+    border-radius: 9999px;
+    transform: rotate(18deg);
+    filter: blur(0.5px);
+}
+
+@keyframes flightCruise {
+    0% {
+        transform: translate(-120px, 80px) scale(0.7);
+        opacity: 0;
+    }
+    8% {
+        opacity: 0.95;
+    }
+    50% {
+        transform: translate(60vw, -20px) scale(1);
+        opacity: 1;
+    }
+    92% {
+        opacity: 0.95;
+    }
+    100% {
+        transform: translate(110vw, -70px) scale(0.85);
+        opacity: 0;
+    }
+}
+
+/* Dynamic Running Letters / Typewriter in Subtitle */
+.suvira-running-typed {
+    background: linear-gradient(90deg, #F59E0B 0%, #FBBF24 50%, #FCD34D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+}
+
+.suvira-cursor {
+    color: #F59E0B;
+    -webkit-text-fill-color: #F59E0B;
+    animation: blinkCursor 0.8s infinite;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+@keyframes blinkCursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* CTA Button Shimmer Effect */
+.suvira-cta-btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.suvira-cta-btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 40%;
+    height: 200%;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(25deg);
+    animation: buttonShimmer 4.5s infinite;
+}
+
+@keyframes buttonShimmer {
+    0%, 70% { transform: translateX(0) rotate(25deg); }
+    100% { transform: translateX(380%) rotate(25deg); }
+}
+
+/* Right Column: 3 Consultants with Bottom Fade, Aura & Floating Badges */
+.suvira-hero-right {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+    .suvira-hero-right {
+        justify-content: center;
+        margin-top: 15px;
+    }
+}
+
+.suvira-consultants-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* Ambient Backlight Aura */
+.suvira-consultants-aura {
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(30, 64, 175, 0.35) 48%, transparent 72%);
+    filter: blur(45px);
+    pointer-events: none;
+    z-index: 1;
+    animation: auraBreathe 7s ease-in-out infinite alternate;
+}
+
+@keyframes auraBreathe {
+    0% { transform: scale(0.92) translate(0, 0); opacity: 0.7; }
+    50% { transform: scale(1.08) translate(-10px, -15px); opacity: 1; }
+    100% { transform: scale(0.96) translate(10px, 10px); opacity: 0.85; }
+}
+
+/* Floating Glass Badges */
+.suvira-floating-badge {
+    position: absolute;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(10, 24, 66, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    pointer-events: none;
+}
+
+.badge-top-left {
+    top: 5%;
+    left: -115px;
+    border-left: 3px solid #F59E0B;
+    animation: floatBadge1 4.5s ease-in-out infinite;
+}
+
+.badge-bottom-right {
+    bottom: 14%;
+    right: -10px;
+    border-left: 3px solid #10B981;
+    animation: floatBadge2 5.2s ease-in-out infinite reverse;
+}
+
+@media (max-width: 1280px) {
+    .badge-top-left {
+        left: -85px;
+        top: 2%;
+    }
+}
+
+@media (max-width: 991px) {
+    .suvira-floating-badge {
+        display: none;
+    }
+}
+
+@keyframes floatBadge1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+
+@keyframes floatBadge2 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(8px) rotate(0.5deg); }
+}
+
+.badge-icon-gold {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    flex-shrink: 0;
+}
+
+.badge-icon-emerald {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 15px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    flex-shrink: 0;
+}
+
+.badge-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.badge-content strong {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #FFFFFF;
+    line-height: 1.2;
+}
+
+.badge-content span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #CBD5E1;
+    line-height: 1.2;
+}
+
+.suvira-consultants-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 590px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.4));
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.5) 86%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 72%, rgba(0,0,0,0.5) 86%, rgba(0,0,0,0) 100%);
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 767px) {
+    .suvira-consultants-img {
+        max-height: 380px;
+    }
+}
+
+/* ==========================================================================
+   LIVE CLIENT & USER ACTIVITY RUNNING MARQUEE TICKER TAPE
+   ========================================================================== */
+.suvira-client-marquee-container {
+    background: rgba(6, 15, 45, 0.95);
+    border-top: 1px solid rgba(245, 158, 11, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 44px;
+    position: relative;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.marquee-title-badge {
+    background: linear-gradient(90deg, #1E3A8A 0%, #0F172A 100%);
+    border-right: 1px solid rgba(245, 158, 11, 0.4);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 18px;
+    flex-shrink: 0;
+    z-index: 2;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.pulse-radar-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
+    animation: dotPulse 1.8s infinite;
+}
+
+@keyframes dotPulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.marquee-title-badge i {
+    color: #F59E0B;
+    font-size: 12px;
+}
+
+.marquee-title-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    color: #FBBF24;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+.marquee-scroll-wrap {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    white-space: nowrap;
+    animation: marqueeScroll 45s linear infinite;
+    will-change: transform;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.marquee-item {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12.5px;
+    color: #CBD5E1;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.marquee-item strong {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.marquee-bullet {
+    color: #F59E0B;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.text-emerald { color: #10B981; }
+.text-gold { color: #F59E0B; }
+.text-blue { color: #38BDF8; }
+.text-purple { color: #A855F7; }
+.text-cyan { color: #06B6D4; }
+
+/* ==========================================================================
+   3. FLOATING CATEGORY BAR (DARK GLASSMORPHIC VISA TABS)
+   ========================================================================== */
+.suvira-category-bar-wrapper {
+    position: relative;
+    z-index: 5;
+    margin-top: 30px;
+    max-width: 1360px;
+    padding: 0 24px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.suvira-category-bar {
+    background: rgba(10, 24, 66, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    overflow: hidden;
+}
+
+@media (max-width: 991px) {
+    .suvira-category-bar {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .suvira-category-bar {
+        grid-template-columns: 1fr;
+    }
+}
+
+.category-item-tab {
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.category-item-tab:last-child {
+    border-right: none;
+}
+
+.category-item-tab:hover {
+    background: rgba(245, 158, 11, 0.14);
+}
+
+.cat-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cat-icon i {
+    color: #F59E0B;
+    font-size: 24px;
+    transition: transform 0.25s ease;
+}
+
+.category-item-tab:hover .cat-icon i {
+    transform: scale(1.15) translateY(-2px);
+}
+
+.cat-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    text-align: left;
+}
+
+.cat-title {
+    font-family: 'Outfit', sans-serif;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 14.5px;
+    white-space: nowrap;
+}
+
+.cat-desc {
+    font-family: 'Outfit', sans-serif;
+    color: #94A3B8;
+    font-size: 11px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   4. FLOATING WHITE STAT / TRUST BAR
+   ========================================================================== */
+.suvira-stat-bar-wrapper {
+    position: relative;
+    z-index: 5;
+    margin-top: 18px;
+    max-width: 1360px;
+    padding: 0 24px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.suvira-stat-bar {
+    background: #FFFFFF;
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E2E8F0;
+    padding: 18px 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+    .suvira-stat-bar {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px;
+    }
+    .stat-pill-divider {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .suvira-stat-bar {
+        grid-template-columns: 1fr;
+    }
+}
+
+.stat-pill-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    justify-content: center;
+}
+
+.stat-icon-wrap {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: rgba(249, 115, 22, 0.1);
+    color: #F97316;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+}
+
+.stat-pill-item:hover .stat-icon-wrap {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.stat-number {
+    font-family: 'Outfit', sans-serif;
+    color: #0F172A;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+.stat-label {
+    font-family: 'Outfit', sans-serif;
+    color: #64748B;
+    font-size: 13.5px;
+    font-weight: 600;
+    white-space: nowrap;
+    text-transform: none !important;
+}
+
+.stat-pill-divider {
+    width: 1px;
+    height: 38px;
+    background: #E2E8F0;
+    margin: 0 16px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   2. VISA INTENT SECTION (Which visa are you planning to apply for?)
+   Premium Card Grid, Flag Chips, Media Banners & Baseline-Aligned CTAs
+   ========================================================================== */
+.visa-intent-section {
+    padding: 75px 0 85px;
+    background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+    position: relative;
+    border-bottom: 1px solid #EEF2F6;
+}
+
+.visa-intent-header-wrap {
+    text-align: center;
+    max-width: 860px;
+    margin: 0 auto 30px;
+}
+
+.visa-intent-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(7, 36, 168, 0.08);
+    color: #0724A8;
+    border: 1px solid rgba(7, 36, 168, 0.18);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.visa-intent-heading {
+    color: #0A1628 !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-weight: 900 !important;
+    font-size: clamp(28px, 3.2vw, 42px) !important;
+    line-height: 1.2 !important;
+    margin-bottom: 24px !important;
+    text-align: center;
+    letter-spacing: -0.5px;
+}
+
+.visa-intent-heading .highlight-text {
+    background: linear-gradient(135deg, #0724A8 0%, #F87034 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Category Tabs */
+.visa-tabs-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.visa-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #FFFFFF;
+    color: #1E293B;
+    border: 1.5px solid #E2E8F0;
+    padding: 11px 24px;
+    border-radius: 50px;
+    font-size: 14.5px;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    cursor: pointer;
+    transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.visa-tab-btn i {
+    font-size: 15px;
+    color: #64748B;
+    transition: color 0.25s ease;
+}
+
+.visa-tab-btn:hover {
+    border-color: #0724A8;
+    color: #0724A8;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(7, 36, 168, 0.12);
+}
+
+.visa-tab-btn:hover i {
+    color: #0724A8;
+}
+
+.visa-tab-btn.active {
+    background: linear-gradient(135deg, #0724A8 0%, #1538C4 100%);
+    color: #FFFFFF !important;
+    border-color: #0724A8;
+    box-shadow: 0 8px 20px rgba(7, 36, 168, 0.28);
+    transform: translateY(-2px);
+}
+
+.visa-tab-btn.active i {
+    color: #F87034;
+}
+
+/* Subheading Pill */
+.visa-intent-subheading-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+    padding: 0 20px;
+}
+
+.visa-intent-subheading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 50px;
+    padding: 11px 28px;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #334155;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    text-align: center;
+    max-width: 860px;
+    line-height: 1.5;
+}
+
+.visa-intent-subheading i {
+    color: #F87034;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+/* Grid Layout: 3 Columns, Equal Height */
+.visa-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 28px !important;
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    align-items: stretch !important;
+}
+
+@media (max-width: 1080px) {
+    .visa-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 24px !important;
+    }
+}
+
+@media (max-width: 680px) {
+    .visa-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* Individual Country Card */
+.visa-country-card {
+    background: #FFFFFF !important;
+    border: 1.5px solid #E2E8F0 !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    padding: 0 !important;
+}
+
+.visa-country-card.is-hidden {
+    display: none !important;
+}
+
+.visa-country-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(7, 36, 168, 0.4) !important;
+    box-shadow: 0 20px 42px rgba(7, 36, 168, 0.16) !important;
+}
+
+/* Graphic Media Banner */
+.visa-card-media {
+    position: relative;
+    height: 185px;
+    width: 100%;
+    overflow: hidden;
+    background: #0A1628;
+}
+
+.visa-card-media-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.visa-country-card:hover .visa-card-media-img {
+    transform: scale(1.08);
+}
+
+.visa-card-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 22, 40, 0.25) 0%, rgba(10, 22, 40, 0.82) 100%);
+    pointer-events: none;
+}
+
+/* Flag Chip */
+.visa-flag-chip {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 22, 40, 0.82);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 30px;
+    padding: 5px 12px 5px 6px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.visa-flag-chip img {
+    width: 22px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Media Bottom Tag */
+.visa-media-tag {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(248, 112, 52, 0.95);
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 11px;
+    border-radius: 6px;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Card Body */
+.visa-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.visa-country-title-row {
+    margin-bottom: 8px;
+}
+
+.visa-country-title {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #0A1628 !important;
+    margin: 0 !important;
+    line-height: 1.25 !important;
+}
+
+.visa-country-subtitle {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0724A8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.visa-country-desc {
+    font-size: 13.5px !important;
+    color: #475569 !important;
+    line-height: 1.6 !important;
+    margin: 0 0 18px 0 !important;
+    flex-grow: 1 !important;
+}
+
+/* Perks List */
+.visa-card-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 22px;
+    padding-top: 14px;
+    border-top: 1px dashed #E2E8F0;
+}
+
+.visa-perk-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.visa-perk-item i {
+    color: #10B981;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+/* Aligned Card Footer */
+.visa-card-footer {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.visa-country-btn {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    background: linear-gradient(135deg, #0724A8 0%, #1538C4 100%) !important;
+    color: #FFFFFF !important;
+    padding: 12px 20px !important;
+    border-radius: 12px !important;
+    font-size: 14.5px !important;
+    font-weight: 700 !important;
+    font-family: 'Outfit', sans-serif !important;
+    text-decoration: none !important;
+    transition: all 0.28s ease !important;
+    box-shadow: 0 4px 14px rgba(7, 36, 168, 0.2) !important;
+    border: none !important;
+}
+
+.visa-country-btn .btn-arrow-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #FFFFFF;
+    transition: all 0.25s ease;
+}
+
+.visa-country-btn:hover {
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%) !important;
+    box-shadow: 0 6px 18px rgba(248, 112, 52, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+.visa-country-btn:hover .btn-arrow-circle {
+    background: #FFFFFF;
+    color: #EA580C;
+    transform: translateX(3px);
+}
+
+@keyframes visaCardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =================================================================
+   UNIFIED "TALK WITH OUR EXPERTS" CONSULTATION FORM CARD (ALL PAGES)
+   ================================================================= */
+.talk-experts-card {
+    background: #FFFFFF !important;
+    border-radius: 24px !important;
+    padding: 34px 30px !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28) !important;
+    color: #1E293B !important;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+.talk-experts-card h3 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 25px !important;
+    font-weight: 800 !important;
+    color: #0A1628 !important;
+    margin: 0 0 8px 0 !important;
+    text-align: center !important;
+    letter-spacing: -0.3px !important;
+}
+
+.talk-experts-card .talk-card-sub {
+    text-align: center !important;
+    color: #64748B !important;
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+.talk-input-group {
+    margin-bottom: 14px !important;
+}
+
+.talk-input-group input,
+.talk-input-group select {
+    width: 100%;
+    padding: 12.5px 15px !important;
+    border: 1.5px solid #CBD5E1 !important;
+    border-radius: 12px !important;
+    font-size: 14px !important;
+    font-family: 'Outfit', sans-serif !important;
+    outline: none !important;
+    transition: all 0.2s ease !important;
+    background: #FFFFFF !important;
+    color: #1E293B !important;
+    box-sizing: border-box !important;
+}
+
+.talk-input-group input:focus,
+.talk-input-group select:focus {
+    border-color: #0724A8 !important;
+    box-shadow: 0 0 0 3px rgba(7, 36, 168, 0.12) !important;
+}
+
+.talk-phone-row {
+    display: flex !important;
+    gap: 10px !important;
+    width: 100% !important;
+    align-items: stretch !important;
+}
+
+.talk-input-group select.talk-phone-prefix,
+.talk-phone-prefix {
+    width: 118px !important;
+    flex: 0 0 118px !important;
+    padding: 12.5px 10px !important;
+}
+
+.talk-phone-row input {
+    width: auto !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+}
+
+.talk-submit-btn {
+    width: 100% !important;
+    padding: 14.5px 18px !important;
+    background: linear-gradient(135deg, #F87034 0%, #EA580C 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 15.5px !important;
+    font-weight: 800 !important;
+    font-family: 'Outfit', sans-serif !important;
+    cursor: pointer !important;
+    box-shadow: 0 6px 18px rgba(248, 112, 52, 0.35) !important;
+    transition: all 0.25s ease !important;
+    margin-top: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+}
+
+.talk-submit-btn:hover {
+    background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 25px rgba(248, 112, 52, 0.45) !important;
+}
+
+.talk-social-proof {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-top: 14px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #64748B !important;
+}
+
+.talk-social-dot {
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 50% !important;
+    background: #10B981 !important;
+    display: inline-block !important;
+    box-shadow: 0 0 10px #10B981 !important;
+    flex-shrink: 0 !important;
+}
+
+

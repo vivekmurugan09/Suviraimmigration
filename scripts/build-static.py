@@ -853,4 +853,33 @@ with open(os.path.join(DIST, "staticwebapp.config.json"), "w", encoding="utf-8")
         }
     }, f, indent=2)
 
-print("Built static dist/ from src/ and public/ successfully.")
+# 8. Write Cloudflare Pages _redirects and _headers
+with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
+    f.write("""/thankyou /Thank-you/index.html 200
+/thank-you /Thank-you/index.html 200
+/Thank-you /Thank-you/index.html 200
+/ai-preparation /ai-preparation/index.html 200
+/free-eligibility-check /free-eligibility-check/index.html 200
+""")
+
+with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:
+    f.write("""/*
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+""")
+
+# 9. Mirror static build into ROOT for Cloudflare Pages (deploying from root directory)
+ROOT_PRESERVE = {".git", ".github", "src", "public", "scripts", "node_modules", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts", "README.md", "AGENTS.md", "dist", "supabase"}
+for item in os.listdir(DIST):
+    if item in ROOT_PRESERVE:
+        continue
+    src_item = os.path.join(DIST, item)
+    dst_item = os.path.join(ROOT, item)
+    if os.path.isdir(src_item):
+        if os.path.exists(dst_item):
+            shutil.rmtree(dst_item)
+        shutil.copytree(src_item, dst_item)
+    else:
+        shutil.copy2(src_item, dst_item)
+
+print("Built static dist/ and mirrored to repository root successfully.")
