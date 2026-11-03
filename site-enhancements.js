@@ -131,7 +131,7 @@
         var fn = document.createElement("input");
         fn.type = "hidden";
         fn.name = "from_name";
-        fn.value = "Suvira Immigration Website";
+        fn.value = "SubmitForm";
         form.appendChild(fn);
       }
       form.querySelectorAll("input,select,textarea").forEach(function (field) {
@@ -190,7 +190,7 @@
 
       var payloadObj = {
         access_key: WEB3FORMS_KEY,
-        from_name: "Suvira Immigration Website",
+        from_name: "SubmitForm",
         Page_URL: window.location.href,
         Submitted_At: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST"
       };
@@ -257,7 +257,7 @@
       w3Data.set("Phone / WhatsApp", String(payloadObj["Phone_/_WhatsApp"] || ""));
       w3Data.set("Email Address", String(payloadObj["Email_Address"] || ""));
       w3Data.set("Service Required", String(serviceVal));
-      w3Data.set("Page URL", pageUrl);
+      w3Data.set("Page URL", window.location.href);
 
       // 2. Save lead backup in localStorage so inquiries are NEVER lost
       try {

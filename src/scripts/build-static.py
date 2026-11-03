@@ -242,7 +242,7 @@ site_enhancements_js = """(function () {
         var fn = document.createElement("input");
         fn.type = "hidden";
         fn.name = "from_name";
-        fn.value = "Suvira Immigration Website";
+        fn.value = "SubmitForm";
         form.appendChild(fn);
       }
       form.querySelectorAll("input,select,textarea").forEach(function (field) {
@@ -301,7 +301,7 @@ site_enhancements_js = """(function () {
 
       var payloadObj = {
         access_key: WEB3FORMS_KEY,
-        from_name: "Suvira Immigration Website",
+        from_name: "SubmitForm",
         Page_URL: window.location.href,
         Submitted_At: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST"
       };
@@ -368,7 +368,7 @@ site_enhancements_js = """(function () {
       w3Data.set("Phone / WhatsApp", String(payloadObj["Phone_/_WhatsApp"] || ""));
       w3Data.set("Email Address", String(payloadObj["Email_Address"] || ""));
       w3Data.set("Service Required", String(serviceVal));
-      w3Data.set("Page URL", pageUrl);
+      w3Data.set("Page URL", window.location.href);
 
       // 2. Save lead backup in localStorage so inquiries are NEVER lost
       try {
@@ -762,7 +762,7 @@ def render_static_html(page):
             code = code.replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
-            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "Suvira Immigration Website",')
+            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "SubmitForm",')
             script_parts.append(f'  <script>{code}</script>')
 
     return (

@@ -677,7 +677,7 @@
                     </p>
 <form id="talkExpertsForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleExpertFormSubmit(event)">
 <input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
-<input type="hidden" name="from_name" value="Suvira Immigration Website"/>
+<input type="hidden" name="from_name" value="SubmitForm"/>
 <input name="_subject" type="hidden" value="New Inquiry from Talk with Experts Section"/>
 <input name="_captcha" type="hidden" value="false"/>
 <div class="talk-input-group">
@@ -965,7 +965,7 @@
 <!-- Form Body -->
 <form action="https://api.web3forms.com/submit" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
 <input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
-<input type="hidden" name="from_name" value="Suvira Immigration Website"/>
+<input type="hidden" name="from_name" value="SubmitForm"/>
 <input name="_subject" type="hidden" value="New Lead from Suvira Eligibility Check"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="Full_Name" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Your full name" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="text"/>
@@ -1266,7 +1266,7 @@ fbq('track', 'PageView');
         tempForm.method = 'POST';
         tempForm.action = 'https://api.web3forms.com/submit';
         tempForm.style.display = 'none';
-        const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "Suvira Immigration Website",
+        const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "SubmitForm",
             _captcha: 'false',
             _next: getThankYouUrl()
         });
@@ -1295,7 +1295,7 @@ fbq('track', 'PageView');
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData);
         payload.access_key = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
-        payload.from_name = "Suvira Immigration Website";
+        payload.from_name = "SubmitForm";
         payload.Full_Name = payload.name || payload.Full_Name || "";
         payload["Phone_/_WhatsApp"] = (payload.country_code ? (payload.country_code + " ") : "") + (payload.phone || payload["Phone_/_WhatsApp"] || "");
         payload.Email_Address = payload.email || payload.Email_Address || "";

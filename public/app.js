@@ -1077,7 +1077,7 @@ function suviraThankYouUrl() {
 function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
     var WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
     formData.set("access_key", WEB3FORMS_KEY);
-    formData.set("from_name", "Suvira Immigration Website");
+    formData.set("from_name", "SubmitForm");
     if (!formData.get("Page_URL")) formData.set("Page_URL", window.location.href);
     if (!formData.get("Page URL")) formData.set("Page URL", window.location.href);
 
@@ -1156,7 +1156,7 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
     var payloadObj = {
         access_key: WEB3FORMS_KEY,
         subject: subject,
-        from_name: "Suvira Immigration Website",
+        from_name: "SubmitForm",
         Full_Name: nameVal,
         "Phone_/_WhatsApp": phoneVal,
         Email_Address: emailVal,
@@ -1223,7 +1223,7 @@ function handleModalSubmit(e) {
 
     const formData = new FormData();
     formData.append("access_key", "8fcdbf26-e2cf-4688-b37b-8c69f9d49399");
-    formData.append("from_name", "Suvira Immigration Website");
+    formData.append("from_name", "SubmitForm");
     formData.append("Full_Name", name);
     formData.append("Phone_/_WhatsApp", fullPhone);
     formData.append("Email_Address", email);
