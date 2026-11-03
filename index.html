@@ -675,11 +675,13 @@
 <p class="talk-card-sub" style="text-align: center; color: #64748B; font-size: 14px; margin-top: -14px; margin-bottom: 22px;">
                         Get personalized migration advice tailored to your career and education goals.
                     </p>
-<form id="talkExpertsForm" onsubmit="handleExpertFormSubmit(event)">
+<form id="talkExpertsForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleExpertFormSubmit(event)">
+<input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
+<input type="hidden" name="from_name" value="Suvira Immigration Website"/>
 <input name="_subject" type="hidden" value="New Inquiry from Talk with Experts Section"/>
 <input name="_captcha" type="hidden" value="false"/>
 <div class="talk-input-group">
-<input id="teName" name="name" placeholder="Your full name" required="" type="text"/>
+<input id="teName" name="Full_Name" placeholder="Your full name" required="" type="text"/>
 </div>
 <div class="talk-input-group">
 <div class="talk-phone-row">
@@ -691,14 +693,14 @@
 <option value="+44">🇬🇧 +44</option>
 <option value="+61">🇦🇺 +61</option>
 </select>
-<input id="tePhone" name="phone" placeholder="Phone / WhatsApp number" required="" style="flex: 1 1 auto; width: auto; min-width: 0;" type="tel"/>
+<input id="tePhone" name="Phone_/_WhatsApp" placeholder="Phone / WhatsApp number" required="" style="flex: 1 1 auto; width: auto; min-width: 0;" type="tel"/>
 </div>
 </div>
 <div class="talk-input-group">
-<input id="teEmail" name="email" placeholder="Email address" required="" type="email"/>
+<input id="teEmail" name="Email_Address" placeholder="Email address" required="" type="email"/>
 </div>
 <div class="talk-input-group">
-<select id="teVisa" name="visa_type" required="">
+<select id="teVisa" name="Service_Required" required="">
 <option value="">Select Interested Visa / Destination</option>
 <option value="Canada Express Entry PR">Canada Express Entry PR</option>
 <option value="Australia Skilled PR (Subclass 189/190)">Australia PR Visa (Subclass 189/190)</option>
@@ -711,7 +713,7 @@
 </select>
 </div>
 <div class="talk-input-group">
-<select id="teMode" name="consultation_mode" required="">
+<select id="teMode" name="Consultation_Mode" required="">
 <option value="Virtual Consultation (Google Meet / Zoom)">Virtual Video Consultation (Zoom / Meet)</option>
 <option value="In-Person Office Visit (Chennai HQ)">In-Person Office Visit (Chennai Ekkatuthangal HQ)</option>
 <option value="Telephone Discussion">Phone Call Discussion</option>
@@ -962,12 +964,14 @@
 </div>
 <!-- Form Body -->
 <form action="https://api.web3forms.com/submit" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
+<input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
+<input type="hidden" name="from_name" value="Suvira Immigration Website"/>
 <input name="_subject" type="hidden" value="New Lead from Suvira Eligibility Check"/>
 <input name="_captcha" type="hidden" value="false"/>
-<input name="name" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Your full name" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="text"/>
-<input name="phone" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="WhatsApp number" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="tel"/>
-<input name="email" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Email address" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="email"/>
-<select name="service" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:18px;outline:none;display:block;box-sizing:border-box;cursor:pointer;transition:all 0.2s;">
+<input name="Full_Name" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Your full name" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="text"/>
+<input name="Phone_/_WhatsApp" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="WhatsApp number" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="tel"/>
+<input name="Email_Address" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Email address" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="email"/>
+<select name="Service_Required" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:18px;outline:none;display:block;box-sizing:border-box;cursor:pointer;transition:all 0.2s;">
 <option value="">Service required...</option>
 <option>Canada PR / Express Entry</option>
 <option>Germany Opportunity Visa 2026</option>
@@ -1290,8 +1294,15 @@ fbq('track', 'PageView');
 
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData);
-        payload.page_url = window.location.href;
+        payload.access_key = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+        payload.from_name = "Suvira Immigration Website";
+        payload.Full_Name = payload.name || payload.Full_Name || "";
+        payload["Phone_/_WhatsApp"] = (payload.country_code ? (payload.country_code + " ") : "") + (payload.phone || payload["Phone_/_WhatsApp"] || "");
+        payload.Email_Address = payload.email || payload.Email_Address || "";
+        payload.Service_Required = payload.visa_type || payload.Service_Required || "Canada PR";
+        payload.Page_URL = window.location.href;
         payload._next = getThankYouUrl();
+        try { fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true }).catch(function(){}); } catch(e){}
 
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',

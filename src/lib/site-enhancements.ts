@@ -86,11 +86,11 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
 
     const data = new FormData(form);
 
-    const nameVal = data.get('Full Name') || data.get('name') || data.get('full_name') || data.get('cName') || '';
-    const phoneVal = data.get('Phone / WhatsApp') || data.get('phone') || data.get('WhatsApp') || data.get('cPhone') || '';
-    const emailVal = data.get('Email Address') || data.get('email') || data.get('cEmail') || '';
-    const serviceVal = data.get('Service Required') || data.get('service') || data.get('visa_type') || 'Consultation Request';
-    const modeVal = data.get('Consultation Mode') || data.get('consultation_mode') || 'Virtual Video Consultation';
+    const nameVal = data.get('Full_Name') || data.get('Full Name') || data.get('name') || data.get('full_name') || data.get('cName') || '';
+    const phoneVal = data.get('Phone_/_WhatsApp') || data.get('Phone / WhatsApp') || data.get('phone') || data.get('WhatsApp') || data.get('cPhone') || '';
+    const emailVal = data.get('Email_Address') || data.get('Email Address') || data.get('email') || data.get('cEmail') || '';
+    const serviceVal = data.get('Service_Required') || data.get('Service Required') || data.get('service') || data.get('visa_type') || 'Canada PR / Express Entry';
+    const modeVal = data.get('Consultation_Mode') || data.get('Consultation Mode') || data.get('consultation_mode') || 'Virtual Video Consultation';
     const pageUrl = window.location.href;
     const dynamicSubject = `New Inquiry (${serviceVal}): ${nameVal || 'Website Lead'}`;
 
@@ -99,25 +99,32 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
     w3Data.set('access_key', WEB3FORMS_KEY);
     w3Data.set('subject', dynamicSubject);
     w3Data.set('from_name', 'Suvira Immigration Website');
+    w3Data.set('Full_Name', String(nameVal));
+    w3Data.set('Phone_/_WhatsApp', String(phoneVal));
+    w3Data.set('Email_Address', String(emailVal));
+    w3Data.set('Service_Required', String(serviceVal));
+    w3Data.set('Consultation_Mode', String(modeVal));
+    w3Data.set('Page_URL', pageUrl);
+    w3Data.set('redirect', thankYouUrl);
+
+    // Aliases for multi-handler compatibility
     w3Data.set('Full Name', String(nameVal));
     w3Data.set('Phone / WhatsApp', String(phoneVal));
     w3Data.set('Email Address', String(emailVal));
     w3Data.set('Service Required', String(serviceVal));
-    w3Data.set('Consultation Mode', String(modeVal));
     w3Data.set('Page URL', pageUrl);
-    w3Data.set('redirect', thankYouUrl);
 
     // 2. Save lead backup in localStorage so inquiries are NEVER lost
     try {
       const backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
       const entry: Record<string, any> = {
         timestamp: new Date().toISOString(),
-        'Full Name': nameVal,
-        'Phone / WhatsApp': phoneVal,
-        'Email Address': emailVal,
-        'Service Required': serviceVal,
-        'Consultation Mode': modeVal,
-        'Page URL': pageUrl,
+        Full_Name: nameVal,
+        'Phone_/_WhatsApp': phoneVal,
+        Email_Address: emailVal,
+        Service_Required: serviceVal,
+        Consultation_Mode: modeVal,
+        Page_URL: pageUrl,
       };
       backupLeads.push(entry);
       localStorage.setItem('suvira_leads_backup', JSON.stringify(backupLeads.slice(-50)));
@@ -125,26 +132,39 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       // ignore
     }
 
-    // 3. Reset form, close modal, and re-enable buttons on main page
-    busy.delete(form);
-    form.removeAttribute('aria-busy');
-    buttons.forEach((button, index) => button.disabled = disabled[index] ?? false);
-    status.dataset['state'] = 'success';
-    status.textContent = 'Your request has been received. Thank you!';
-    form.reset();
-    const modal = document.getElementById('leadModal');
-    if (modal && typeof (window as any).closeLeadModal === 'function') {
-      (window as any).closeLeadModal();
-    } else if (modal) {
-      modal.style.display = 'none';
-    }
+    // 3. Dispatch submissions across channels
+    // A. Direct JSON to Web3Forms with keepalive
+    try {
+      fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: dynamicSubject,
+          from_name: 'Suvira Immigration Website',
+          Full_Name: String(nameVal),
+          'Phone_/_WhatsApp': String(phoneVal),
+          Email_Address: String(emailVal),
+          Service_Required: String(serviceVal),
+          Consultation_Mode: String(modeVal),
+          Page_URL: pageUrl,
+        }),
+        keepalive: true,
+      }).catch(() => null);
+    } catch {}
 
-    // 4. If separate tab was blocked by popup blocker, navigate current tab to Thank-You
-    if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === 'undefined') {
-      navigate(THANK_YOU_PATH);
-    }
+    // B. Backup to FormSubmit.io with keepalive
+    try {
+      fetch(FORMSUBMIT_IO_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        referrerPolicy: 'origin',
+        body: w3Data,
+        keepalive: true,
+      }).catch(() => null);
+    } catch {}
 
-    // 5. Send to Web3Forms via hidden iframe (guaranteed, browser-native POST)
+    // C. Native hidden iframe POST to Web3Forms
     try {
       const iframeName = 'suvira_form_sink';
       let sink = document.getElementById(iframeName) as HTMLIFrameElement | null;
@@ -175,43 +195,26 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       }, 5000);
     } catch {}
 
-    // 6. Direct JSON AJAX to Web3Forms
-    try {
-      fetch(WEB3FORMS_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: dynamicSubject,
-          from_name: 'Suvira Immigration Website',
-          'Full Name': String(nameVal),
-          'Phone / WhatsApp': String(phoneVal),
-          'Email Address': String(emailVal),
-          'Service Required': String(serviceVal),
-          'Consultation Mode': String(modeVal),
-          'Page URL': pageUrl,
-        }),
-      }).catch(() => null);
-    } catch {}
+    // 4. Reset form, close modal, and re-enable buttons
+    busy.delete(form);
+    form.removeAttribute('aria-busy');
+    buttons.forEach((button, index) => button.disabled = disabled[index] ?? false);
+    status.dataset['state'] = 'success';
+    status.textContent = 'Your request has been received. Thank you!';
+    form.reset();
+    const modal = document.getElementById('leadModal');
+    if (modal && typeof (window as any).closeLeadModal === 'function') {
+      (window as any).closeLeadModal();
+    } else if (modal) {
+      modal.style.display = 'none';
+    }
 
-    // 7. Backup background dispatches to FormSubmit
-    try {
-      fetch(BACKUP_FORM_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        referrerPolicy: 'origin',
-        body: w3Data,
-      }).catch(() => null);
-    } catch {}
-
-    try {
-      fetch(FORMSUBMIT_IO_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        referrerPolicy: 'origin',
-        body: w3Data,
-      }).catch(() => null);
-    } catch {}
+    // 5. Navigate to Thank-You page if separate tab was blocked
+    setTimeout(() => {
+      if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === 'undefined') {
+        navigate(THANK_YOU_PATH);
+      }
+    }, 400);
   };
   // Capture before the legacy page handlers, including document-level listeners.
   document.addEventListener('submit', submit, { capture: true, signal });

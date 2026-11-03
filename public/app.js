@@ -1193,12 +1193,32 @@ function suviraThankYouUrl() {
 }
 
 function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
-    formData.set("access_key", "8fcdbf26-e2cf-4688-b37b-8c69f9d49399");
+    var WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+    formData.set("access_key", WEB3FORMS_KEY);
     formData.set("from_name", "Suvira Immigration Website");
+    if (!formData.get("Page_URL")) formData.set("Page_URL", window.location.href);
     if (!formData.get("Page URL")) formData.set("Page URL", window.location.href);
 
-    var subject = formData.get("subject") || formData.get("_subject") || "New Inquiry from Suvira Website";
+    var nameVal = formData.get("Full_Name") || formData.get("Full Name") || "";
+    var phoneVal = formData.get("Phone_/_WhatsApp") || formData.get("Phone / WhatsApp") || "";
+    var emailVal = formData.get("Email_Address") || formData.get("Email Address") || "";
+    var serviceVal = formData.get("Service_Required") || formData.get("Service Required") || formData.get("Interested Visa / Pathway") || "Consultation Request";
+    var modeVal = formData.get("Consultation_Mode") || formData.get("Consultation Mode") || "Virtual Video Consultation";
+
+    var subject = "New Inquiry (" + serviceVal + "): " + (nameVal || "Website Lead");
     formData.set("subject", subject);
+    formData.set("Full_Name", nameVal);
+    formData.set("Phone_/_WhatsApp", phoneVal);
+    formData.set("Email_Address", emailVal);
+    formData.set("Service_Required", serviceVal);
+    formData.set("Consultation_Mode", modeVal);
+    formData.set("Page_URL", window.location.href);
+
+    // Aliases
+    formData.set("Full Name", nameVal);
+    formData.set("Phone / WhatsApp", phoneVal);
+    formData.set("Email Address", emailVal);
+    formData.set("Service Required", serviceVal);
 
     try {
         var backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
@@ -1222,7 +1242,7 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         }
     };
 
-    // 1. Submit to Web3Forms via native hidden iframe (bypasses CORS, guaranteed browser form POST)
+    // 1. Submit to Web3Forms via native hidden iframe
     try {
         var iframeName = 'suvira_form_sink';
         var sink = document.getElementById(iframeName);
@@ -1250,30 +1270,38 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         setTimeout(function() { if (hf.parentNode) hf.parentNode.removeChild(hf); }, 5000);
     } catch (e) {}
 
-    // 2. Fetch to Web3Forms
-    fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { 'Accept': 'application/json' },
-        body: formData
-    })
-    .then(function() { redirectToThankYou(); })
-    .catch(function() { redirectToThankYou(); });
-
-    // 3. Backup to FormSubmit (when online)
+    // 2. Fetch to Web3Forms with keepalive
+    var payloadObj = {
+        access_key: WEB3FORMS_KEY,
+        subject: subject,
+        from_name: "Suvira Immigration Website",
+        Full_Name: nameVal,
+        "Phone_/_WhatsApp": phoneVal,
+        Email_Address: emailVal,
+        Service_Required: serviceVal,
+        Consultation_Mode: modeVal,
+        Page_URL: window.location.href
+    };
     try {
-        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+        fetch("https://api.web3forms.com/submit", {
             method: "POST",
-            mode: "no-cors",
-            body: formData
-        }).catch(function() {});
-    } catch (e) {}
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(payloadObj),
+            keepalive: true
+        })
+        .then(function() { redirectToThankYou(); })
+        .catch(function() { redirectToThankYou(); });
+    } catch (e) {
+        redirectToThankYou();
+    }
 
-    // 4. Backup to FormSubmit.io
+    // 3. Backup to FormSubmit.io with keepalive
     try {
         fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
             method: "POST",
             mode: "no-cors",
-            body: formData
+            body: formData,
+            keepalive: true
         }).catch(function() {});
     } catch (e) {}
 }
@@ -1290,12 +1318,12 @@ function handleModalSubmit(e) {
         thankYouTab = window.open(suviraThankYouUrl(), '_blank');
     } catch (err) {}
     
-    const nameEl = form.elements['name'] || form.querySelector('input[type="text"]');
+    const nameEl = form.elements['Full_Name'] || form.elements['Full Name'] || form.elements['name'] || form.querySelector('input[type="text"]');
     const ccEl = form.elements['country_code'];
-    const phoneEl = form.elements['phone'] || form.querySelector('input[type="tel"]');
-    const emailEl = form.elements['email'] || form.querySelector('input[type="email"]');
-    const serviceEl = form.elements['visa_type'] || form.elements['service'] || form.elements['stream'] || form.elements['destination'] || form.elements['pnp'] || form.querySelector('select:not(.talk-phone-prefix)');
-    const modeEl = form.elements['consultation_mode'];
+    const phoneEl = form.elements['Phone_/_WhatsApp'] || form.elements['Phone / WhatsApp'] || form.elements['phone'] || form.querySelector('input[type="tel"]');
+    const emailEl = form.elements['Email_Address'] || form.elements['Email Address'] || form.elements['email'] || form.querySelector('input[type="email"]');
+    const serviceEl = form.elements['Service_Required'] || form.elements['Service Required'] || form.elements['visa_type'] || form.elements['service'] || form.elements['stream'] || form.elements['destination'] || form.elements['pnp'] || form.querySelector('select:not(.talk-phone-prefix)');
+    const modeEl = form.elements['Consultation_Mode'] || form.elements['consultation_mode'];
     const msgEl = form.elements['message'] || form.elements['occupation'] || form.querySelector('textarea');
 
     const name = nameEl ? nameEl.value : '';
@@ -1303,21 +1331,31 @@ function handleModalSubmit(e) {
     const phone = (phoneEl ? phoneEl.value : '');
     const fullPhone = phone.startsWith('+') ? phone : (cc + phone).trim();
     const email = emailEl ? emailEl.value : '';
-    const service = serviceEl ? serviceEl.value : 'General Inquiry';
+    const service = serviceEl ? serviceEl.value : 'Canada PR / Express Entry';
 
     const formData = new FormData();
+    formData.append("access_key", "8fcdbf26-e2cf-4688-b37b-8c69f9d49399");
+    formData.append("from_name", "Suvira Immigration Website");
+    formData.append("Full_Name", name);
+    formData.append("Phone_/_WhatsApp", fullPhone);
+    formData.append("Email_Address", email);
+    formData.append("Service_Required", service);
+    formData.append("Page_URL", window.location.href);
+
     formData.append("Full Name", name);
     formData.append("Phone / WhatsApp", fullPhone);
-    if (email) formData.append("Email Address", email);
+    formData.append("Email Address", email);
+    formData.append("Service Required", service);
     formData.append("Interested Visa / Pathway", service);
     if (modeEl && modeEl.value) {
+        formData.append("Consultation_Mode", modeEl.value);
         formData.append("Consultation Mode", modeEl.value);
     }
     if (msgEl && msgEl.value) {
         formData.append("Additional Details", msgEl.value);
     }
     formData.append("Page URL", window.location.href);
-    formData.append("_subject", `New Consultation Request (${service}): ${name}`);
+    formData.append("_subject", `New Inquiry (${service}): ${name}`);
     formData.append("_captcha", "false");
     formData.append("_next", suviraThankYouUrl());
 
