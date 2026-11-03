@@ -299,47 +299,81 @@ site_enhancements_js = """(function () {
         thankYouTab = window.open(thankYouUrl, "_blank");
       } catch (err) {}
 
-      var data = new FormData(form);
-      var nameVal = data.get("Full_Name") || data.get("Full Name") || data.get("name") || data.get("full_name") || data.get("cName") || "";
-      var phoneVal = data.get("Phone_/_WhatsApp") || data.get("Phone / WhatsApp") || data.get("phone") || data.get("WhatsApp") || data.get("cPhone") || "";
-      var emailVal = data.get("Email_Address") || data.get("Email Address") || data.get("email") || data.get("cEmail") || "";
-      var serviceVal = data.get("Service_Required") || data.get("Service Required") || data.get("service") || data.get("visa_type") || "Canada PR / Express Entry";
-      var modeVal = data.get("Consultation_Mode") || data.get("Consultation Mode") || data.get("consultation_mode") || "Virtual Video Consultation";
-      var pageUrl = window.location.href;
-      var dynamicSubject = "New Inquiry (" + serviceVal + "): " + (nameVal || "Website Lead");
+      var payloadObj = {
+        access_key: WEB3FORMS_KEY,
+        from_name: "Suvira Immigration Website",
+        Page_URL: window.location.href,
+        Submitted_At: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST"
+      };
+
+      // Extract all fields dynamically across all form types
+      form.querySelectorAll("input, select, textarea").forEach(function (el) {
+        var key = el.name || el.id;
+        if (!key || el.type === "submit" || el.type === "button") return;
+        var val = (el.value || "").trim();
+        if (!val) return;
+
+        if (key === "Full_Name" || key === "name" || key === "cName" || key === "eName" || key === "teName" || key === "clientName" || key === "htName" || key === "tName" || key === "Full Name") {
+          payloadObj["Full_Name"] = val;
+        } else if (key === "Phone_/_WhatsApp" || key === "phone" || key === "cPhone" || key === "ePhone" || key === "tePhone" || key === "clientPhone" || key === "htPhone" || key === "tPhone" || key === "Phone / WhatsApp") {
+          var ccEl = form.querySelector('[name="country_code"], #teCountryCode');
+          var cc = ccEl ? (ccEl.value || "").trim() : "";
+          payloadObj["Phone_/_WhatsApp"] = val.indexOf("+") === 0 ? val : (cc ? (cc + " " + val) : val);
+        } else if (key === "Email_Address" || key === "email" || key === "cEmail" || key === "eEmail" || key === "teEmail" || key === "clientEmail" || key === "htEmail" || key === "tEmail" || key === "Email Address") {
+          payloadObj["Email_Address"] = val;
+        } else if (key === "Service_Required" || key === "service" || key === "cService" || key === "visa_type" || key === "teVisa" || key === "htService" || key === "tService" || key === "Service Required") {
+          payloadObj["Service_Required"] = val;
+        } else if (key === "Date_of_Birth" || key === "eDob") {
+          payloadObj["Date_of_Birth"] = val;
+        } else if (key === "Highest_Education" || key === "eEdu" || key === "qualification") {
+          payloadObj["Highest_Education"] = val;
+        } else if (key === "English_Language_Test" || key === "eIelts") {
+          payloadObj["English_Language_Test"] = val;
+        } else if (key === "Years_of_Experience" || key === "eExp") {
+          payloadObj["Years_of_Experience"] = val;
+        } else if (key === "Occupation_or_Field" || key === "eOcc" || key === "occupation") {
+          payloadObj["Occupation_or_Field"] = val;
+        } else if (key === "Marital_Status" || key === "eMarital") {
+          payloadObj["Marital_Status"] = val;
+        } else if (key === "Preferred_Destination" || key === "eCountry" || key === "destination" || key === "clientCountry") {
+          payloadObj["Preferred_Destination"] = val;
+        } else if (key === "Visa_Category" || key === "eVisa") {
+          payloadObj["Visa_Category"] = val;
+        } else if (key === "Consultation_Mode" || key === "consultation_mode" || key === "teMode") {
+          payloadObj["Consultation_Mode"] = val;
+        } else if (key === "Message_or_Query" || key === "cMsg" || key === "eNotes" || key === "clientNotes" || key === "htMsg" || key === "tMsg" || key === "message" || key === "Questions_or_Notes" || key === "Qualifications_and_Notes") {
+          payloadObj["Message_or_Query"] = val;
+        } else if (key.indexOf("_") !== 0 && key !== "access_key" && key !== "country_code") {
+          payloadObj[key] = val;
+        }
+      });
+
+      var nameVal = payloadObj["Full_Name"] || "Website Lead";
+      var serviceVal = payloadObj["Service_Required"] || payloadObj["Visa_Category"] || payloadObj["Preferred_Destination"] || "Consultation Request";
+      var formName = form.id || form.getAttribute("name") || "Website Inquiry Form";
+      payloadObj["Form_Source"] = formName;
+
+      var dynamicSubject = "New Inquiry (" + serviceVal + "): " + nameVal + " [" + formName + "]";
+      payloadObj["subject"] = dynamicSubject;
 
       // Standardized Web3Forms payload matching reachus@suviraimmigration.com exact inbox format
       var w3Data = new FormData();
-      w3Data.set("access_key", WEB3FORMS_KEY);
-      w3Data.set("subject", dynamicSubject);
-      w3Data.set("from_name", "Suvira Immigration Website");
-      w3Data.set("Full_Name", String(nameVal));
-      w3Data.set("Phone_/_WhatsApp", String(phoneVal));
-      w3Data.set("Email_Address", String(emailVal));
-      w3Data.set("Service_Required", String(serviceVal));
-      w3Data.set("Consultation_Mode", String(modeVal));
-      w3Data.set("Page_URL", pageUrl);
+      Object.keys(payloadObj).forEach(function (k) {
+        w3Data.set(k, String(payloadObj[k]));
+      });
       w3Data.set("redirect", thankYouUrl);
 
       // Aliases
       w3Data.set("Full Name", String(nameVal));
-      w3Data.set("Phone / WhatsApp", String(phoneVal));
-      w3Data.set("Email Address", String(emailVal));
+      w3Data.set("Phone / WhatsApp", String(payloadObj["Phone_/_WhatsApp"] || ""));
+      w3Data.set("Email Address", String(payloadObj["Email_Address"] || ""));
       w3Data.set("Service Required", String(serviceVal));
       w3Data.set("Page URL", pageUrl);
 
       // 2. Save lead backup in localStorage so inquiries are NEVER lost
       try {
         var backupLeads = JSON.parse(localStorage.getItem("suvira_leads_backup") || "[]");
-        var entry = {
-          timestamp: new Date().toISOString(),
-          Full_Name: nameVal,
-          "Phone_/_WhatsApp": phoneVal,
-          Email_Address: emailVal,
-          Service_Required: serviceVal,
-          Consultation_Mode: modeVal,
-          Page_URL: pageUrl
-        };
+        var entry = Object.assign({ timestamp: new Date().toISOString() }, payloadObj);
         backupLeads.push(entry);
         localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
       } catch (e) {}
@@ -350,17 +384,7 @@ site_enhancements_js = """(function () {
         fetch(WEB3FORMS_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: dynamicSubject,
-            from_name: "Suvira Immigration Website",
-            Full_Name: String(nameVal),
-            "Phone_/_WhatsApp": String(phoneVal),
-            Email_Address: String(emailVal),
-            Service_Required: String(serviceVal),
-            Consultation_Mode: String(modeVal),
-            Page_URL: pageUrl
-          }),
+          body: JSON.stringify(payloadObj),
           keepalive: true
         }).catch(function () {});
       } catch (err) {}
@@ -413,6 +437,17 @@ site_enhancements_js = """(function () {
       buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
       status.dataset.state = "success";
       status.textContent = "Your request has been received. Thank you!";
+
+      var onPageMsg = document.getElementById("successMsg")
+        || document.getElementById("cntSuccessMsg")
+        || document.getElementById("teSuccessMsg")
+        || document.getElementById("htSuccess")
+        || document.getElementById("touchSuccess");
+      if (onPageMsg) {
+        onPageMsg.style.display = "flex";
+        onPageMsg.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
       form.reset();
       var modal = document.getElementById("leadModal");
       if (modal && typeof window.closeLeadModal === "function") {
@@ -426,9 +461,11 @@ site_enhancements_js = """(function () {
         if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === "undefined") {
           window.location.assign(THANK_YOU_PATH);
         }
-      }, 400);
-      } catch (err) {}
-    }, { capture: true });
+      }, 500);
+    };
+
+    window.suviraSubmitLead = submit;
+    document.addEventListener("submit", submit, { capture: true });
 
     root.querySelectorAll('a[href^="/"]').forEach(function (link) {
       link.removeAttribute("target");

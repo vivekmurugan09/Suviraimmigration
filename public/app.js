@@ -611,42 +611,18 @@ if (document.readyState === 'loading') {
 // Homepage Direct Contact Form Handler
 function handleHomeTouchSubmit(e) {
     sessionStorage.setItem('popupShown', 'true');
-    e.preventDefault();
-    const name    = document.getElementById('htName').value;
-    const phone   = document.getElementById('htPhone').value;
-    const email   = document.getElementById('htEmail').value;
-    const service = document.getElementById('htService').value;
-    const msg     = document.getElementById('htMsg').value;
-
-    try {
-        const formData = new FormData();
-        formData.append("Full Name", name);
-        formData.append("Phone / WhatsApp", phone);
-        formData.append("Email Address", email);
-        formData.append("Service Required", service);
-        formData.append("Message", msg);
-        formData.append("_subject", `New Inquiry from Homepage: ${name} (${service})`);
-        formData.append("_captcha", "false");
-
-        fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-            method: "POST",
-            headers: { 'Accept': 'application/json' },
-            body: formData
-        });
-    } catch (err) {
-        console.log(err);
+    if (e && e.preventDefault) e.preventDefault();
+    const form = document.getElementById('homeTouchForm') || (e ? e.target : null);
+    if (typeof window.suviraSubmitLead === 'function' && form) {
+        return window.suviraSubmitLead(form, e);
     }
-
-    const box = document.getElementById('htSuccess');
-    if (box) {
-        box.style.display = 'flex';
-        setTimeout(() => {
-            document.getElementById('homeTouchForm').reset();
-            box.style.display = 'none';
-        }, 3000);
-    } else {
-        alert("Thanks! We will call you within 3 business hours.");
-        document.getElementById('homeTouchForm').reset();
+    if (form) {
+        const formData = new FormData(form);
+        suviraSendLeadForm(formData, function() {
+            const box = document.getElementById('htSuccess');
+            if (box) box.style.display = 'flex';
+            setTimeout(() => form.reset(), 800);
+        });
     }
 }
 
@@ -819,35 +795,18 @@ function toggleFaqAccordion(headerEl) {
 
 
         function handleAboutFormSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('clientName').value;
-            const phone = document.getElementById('clientPhone').value;
-            const email = document.getElementById('clientEmail').value;
-            const country = document.getElementById('clientCountry').value;
-            const notes = document.getElementById('clientNotes').value || 'N/A';
-
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Target Country", country);
-                formData.append("Qualifications & Notes", notes);
-                formData.append("_subject", `New Profile Audit Request: ${name} (${country})`);
-                formData.append("_captcha", "false");
-
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
+            if (e && e.preventDefault) e.preventDefault();
+            const form = document.getElementById('aboutAuditForm') || (e ? e.target : null);
+            if (typeof window.suviraSubmitLead === 'function' && form) {
+                return window.suviraSubmitLead(form, e);
             }
-
-            alert(`Thank you, ${name}! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.`);
-            document.getElementById('aboutAuditForm').reset();
+            if (form) {
+                const formData = new FormData(form);
+                suviraSendLeadForm(formData, function() {
+                    alert("Thank you! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.");
+                    form.reset();
+                });
+            }
         }
     
 
@@ -956,56 +915,22 @@ function toggleFaqAccordion(headerEl) {
 
 
         function handleEligibilitySubmit(e) {
-            e.preventDefault();
-            const n = document.getElementById('eName').value;
-            const d = document.getElementById('eDob').value;
-            const p = document.getElementById('ePhone').value;
-            const em = document.getElementById('eEmail').value;
-            const ed = document.getElementById('eEdu').value;
-            const ie = document.getElementById('eIelts').value;
-            const ex = document.getElementById('eExp').value;
-            const oc = document.getElementById('eOcc').value || 'N/A';
-            const ma = document.getElementById('eMarital').value;
-            const co = document.getElementById('eCountry').value;
-            const vi = document.getElementById('eVisa').value;
-            const no = document.getElementById('eNotes').value || 'None';
-
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
-            try {
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: n,
-                        dob: d,
-                        phone: p,
-                        email: em,
-                        education: ed,
-                        language_test: ie,
-                        experience: ex,
-                        occupation: oc,
-                        marital_status: ma,
-                        target_country: co,
-                        visa_category: vi,
-                        notes: no,
-                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
-                        _captcha: "false"
-                    })
-                });
-            } catch (err) {
-                console.log(err);
+            if (e && e.preventDefault) e.preventDefault();
+            const form = document.getElementById('eligibilityForm') || (e ? e.target : null);
+            if (typeof window.suviraSubmitLead === 'function' && form) {
+                return window.suviraSubmitLead(form, e);
             }
-
-            const msg = document.getElementById('successMsg');
-            msg.style.display = 'flex';
-            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => {
-                document.getElementById('eligibilityForm').reset();
-                window.location.href = suviraThankYouUrl();
-            }, 900);
+            if (form) {
+                const formData = new FormData(form);
+                suviraSendLeadForm(formData, function() {
+                    const msg = document.getElementById('successMsg');
+                    if (msg) {
+                        msg.style.display = 'flex';
+                        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    setTimeout(() => form.reset(), 800);
+                });
+            }
         }
 
         // Live Interactive Tab Switcher & Calculator Logic
@@ -1039,41 +964,22 @@ function toggleFaqAccordion(headerEl) {
         });
 
         function handleContactPageSubmit(e) {
-            e.preventDefault();
-            const name    = document.getElementById('cName').value;
-            const phone   = document.getElementById('cPhone').value;
-            const email   = document.getElementById('cEmail').value;
-            const service = document.getElementById('cService').value;
-            const msg     = document.getElementById('cMsg').value;
-
-            // Direct background submit via FormSubmit API to reachus@suviraimmigration.com (No Gmail redirect!)
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Service / Country", service);
-                formData.append("Message", msg);
-                formData.append("_subject", `New Inquiry from Contact Page: ${name} (${service})`);
-                formData.append("_captcha", "false");
-
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
+            if (e && e.preventDefault) e.preventDefault();
+            const form = document.getElementById('contactPageForm') || (e ? e.target : null);
+            if (typeof window.suviraSubmitLead === 'function' && form) {
+                return window.suviraSubmitLead(form, e);
             }
-
-            // Show on-screen success banner cleanly without page redirect
-            const box = document.getElementById('cntSuccessMsg');
-            box.style.display = 'flex';
-            box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => {
-                document.getElementById('contactPageForm').reset();
-                window.location.href = suviraThankYouUrl();
-            }, 900);
+            if (form) {
+                const formData = new FormData(form);
+                suviraSendLeadForm(formData, function() {
+                    const box = document.getElementById('cntSuccessMsg');
+                    if (box) {
+                        box.style.display = 'flex';
+                        box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                    setTimeout(() => form.reset(), 800);
+                });
+            }
         }
     
 
@@ -1129,42 +1035,18 @@ function toggleFaqAccordion(headerEl) {
 
 
         function handleTouchSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('tName').value;
-            const phone = document.getElementById('tPhone').value;
-            const email = document.getElementById('tEmail').value;
-            const service = document.getElementById('tService').value;
-            const msg = document.getElementById('tMsg').value;
-
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Service Required", service);
-                formData.append("Message", msg);
-                formData.append("_subject", `New Inquiry from Process Page: ${name} (${service})`);
-                formData.append("_captcha", "false");
-
-                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
+            if (e && e.preventDefault) e.preventDefault();
+            const form = document.getElementById('processTouchForm') || (e ? e.target : null);
+            if (typeof window.suviraSubmitLead === 'function' && form) {
+                return window.suviraSubmitLead(form, e);
             }
-
-            const box = document.getElementById('touchSuccess');
-            if (box) {
-                box.style.display = 'flex';
-                box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                setTimeout(() => {
-                    document.getElementById('processTouchForm').reset();
-                    window.location.href = suviraThankYouUrl();
-                }, 900);
-            } else {
-                window.location.href = suviraThankYouUrl();
+            if (form) {
+                const formData = new FormData(form);
+                suviraSendLeadForm(formData, function() {
+                    const box = document.getElementById('touchSuccess');
+                    if (box) box.style.display = 'flex';
+                    setTimeout(() => form.reset(), 800);
+                });
             }
         }
     
@@ -1280,8 +1162,14 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         Email_Address: emailVal,
         Service_Required: serviceVal,
         Consultation_Mode: modeVal,
-        Page_URL: window.location.href
+        Page_URL: window.location.href,
+        Submitted_At: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }) + " IST"
     };
+    formData.forEach(function(val, key) {
+        if (typeof payloadObj[key] === "undefined") {
+            payloadObj[key] = val;
+        }
+    });
     try {
         fetch("https://api.web3forms.com/submit", {
             method: "POST",

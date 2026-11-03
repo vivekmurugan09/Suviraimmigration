@@ -856,21 +856,21 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Full Name *</label>
-<input id="eName" placeholder="Enter your full name" required="" type="text"/>
+<input id="eName" name="Full_Name" placeholder="Enter your full name" required="" type="text"/>
 </div>
 <div class="fgroup">
 <label>Date of Birth *</label>
-<input id="eDob" required="" type="date"/>
+<input id="eDob" name="Date_of_Birth" required="" type="date"/>
 </div>
 </div>
 <div class="fg-2">
 <div class="fgroup">
 <label>Phone / WhatsApp *</label>
-<input id="ePhone" placeholder="+91 99403 52086" required="" type="tel"/>
+<input id="ePhone" name="Phone_/_WhatsApp" placeholder="+91 99403 52086" required="" type="tel"/>
 </div>
 <div class="fgroup">
 <label>Email Address *</label>
-<input id="eEmail" placeholder="your.email@example.com" required="" type="email"/>
+<input id="eEmail" name="Email_Address" placeholder="your.email@example.com" required="" type="email"/>
 </div>
 </div>
 <!-- 2. Education & Language -->
@@ -881,7 +881,7 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Highest Education *</label>
-<select id="eEdu" required="">
+<select id="eEdu" name="Highest_Education" required="">
 <option disabled="" selected="" value="">Select qualification</option>
 <option value="PhD">Doctoral / Ph.D.</option>
 <option value="Master's Degree">Master's Degree / PG Diploma</option>
@@ -892,7 +892,7 @@
 </div>
 <div class="fgroup">
 <label>English Language Test Result</label>
-<select id="eIelts">
+<select id="eIelts" name="English_Language_Test">
 <option value="Not Taken Yet">Not Taken Yet</option>
 <option value="IELTS CLB 9 (8,7,7,7)">IELTS CLB 9 — 8, 7, 7, 7</option>
 <option value="IELTS CLB 8 (7.5,6.5,6.5,6.5)">IELTS CLB 8 — 7.5, 6.5, 6.5, 6.5
@@ -910,7 +910,7 @@
 <div class="fg-3">
 <div class="fgroup">
 <label>Years of Experience *</label>
-<select id="eExp" required="">
+<select id="eExp" name="Years_of_Experience" required="">
 <option disabled="" selected="" value="">Select</option>
 <option value="Less than 1 year">Less than 1 year</option>
 <option value="1–2 Years">1 – 2 Years</option>
@@ -920,11 +920,11 @@
 </div>
 <div class="fgroup">
 <label>Occupation / Field</label>
-<input id="eOcc" placeholder="e.g. IT Engineer, Nurse" type="text"/>
+<input id="eOcc" name="Occupation_or_Field" placeholder="e.g. IT Engineer, Nurse" type="text"/>
 </div>
 <div class="fgroup">
 <label>Marital Status</label>
-<select id="eMarital">
+<select id="eMarital" name="Marital_Status">
 <option value="Single">Single</option>
 <option value="Married">Married</option>
 <option value="Married (Spouse migrating too)">Married (Spouse too)</option>
@@ -939,7 +939,7 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Preferred Destination *</label>
-<select id="eCountry" required="">
+<select id="eCountry" name="Preferred_Destination" required="">
 <option disabled="" selected="" value="">Select country</option>
 <option value="Canada">🇨🇦 Canada</option>
 <option value="Australia">🇦🇺 Australia</option>
@@ -957,7 +957,7 @@
 </div>
 <div class="fgroup">
 <label>Visa Category</label>
-<select id="eVisa">
+<select id="eVisa" name="Visa_Category">
 <option value="Permanent Residency (PR)">Permanent Residency (PR)</option>
 <option value="Student / Study Visa">Student / Study Visa</option>
 <option value="MBBS Abroad Admission">MBBS Abroad Admission</option>
@@ -976,7 +976,7 @@
 <div class="fg-1">
 <div class="fgroup">
 <label>Any specific requirements or questions?</label>
-<textarea id="eNotes" placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…" rows="3"></textarea>
+<textarea id="eNotes" name="Questions_or_Notes" placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…" rows="3"></textarea>
 </div>
 </div>
 <!-- Submit -->
@@ -1154,114 +1154,25 @@
   <script src="/site-enhancements.js"></script>
   <script>
         function handleEligibilitySubmit(e) {
-            e.preventDefault();
-            const n = document.getElementById('eName').value;
-            const d = document.getElementById('eDob').value;
-            const p = document.getElementById('ePhone').value;
-            const em = document.getElementById('eEmail').value;
-            const ed = document.getElementById('eEdu').value;
-            const ie = document.getElementById('eIelts').value;
-            const ex = document.getElementById('eExp').value;
-            const oc = document.getElementById('eOcc').value || 'N/A';
-            const ma = document.getElementById('eMarital').value;
-            const co = document.getElementById('eCountry').value;
-            const vi = document.getElementById('eVisa').value;
-            const no = document.getElementById('eNotes').value || 'None';
-
-            // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
-            try {
-                fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        name: n,
-                        dob: d,
-                        phone: p,
-                        email: em,
-                        education: ed,
-                        language_test: ie,
-                        experience: ex,
-                        occupation: oc,
-                        marital_status: ma,
-                        target_country: co,
-                        visa_category: vi,
-                        notes: no,
-                        _subject: `New Eligibility Assessment: ${n} → ${co}`,
-                        _captcha: "false"
-                    })
-                });
-            } catch (err) {
-                console.log(err);
+            if (e && e.preventDefault) e.preventDefault();
+            const form = document.getElementById('eligibilityForm') || (e ? e.target : null);
+            if (typeof window.suviraSubmitLead === 'function' && form) {
+                return window.suviraSubmitLead(form, e);
             }
-
-            // 2. Mailto fallback
-            const subject = encodeURIComponent(`Eligibility Assessment: ${n} → ${co}`);
-            const body = encodeURIComponent(
-                `SUVIRA IMMIGRATION — PR & VISA ELIGIBILITY SUBMISSION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PERSONAL INFORMATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Full Name       : ${n}
-Date of Birth   : ${d}
-Phone/WhatsApp  : ${p}
-Email           : ${em}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-EDUCATION & LANGUAGE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Highest Education : ${ed}
-Language Test     : ${ie}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-WORK EXPERIENCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Experience      : ${ex}
-Occupation      : ${oc}
-Marital Status  : ${ma}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TARGET DESTINATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Country         : ${co}
-Visa Category   : ${vi}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ADDITIONAL NOTES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${no}`
-            );
-
-            try {
-                const formData = new FormData();
-                formData.append("Full Name", name);
-                formData.append("Phone / WhatsApp", phone);
-                formData.append("Email Address", email);
-                formData.append("Age", age);
-                formData.append("Education Level", edu);
-                formData.append("English Proficiency", eng);
-                formData.append("Work Experience", ex);
-                formData.append("Target Country", co);
-                formData.append("Visa Category", vi);
-                formData.append("Notes", no);
-                formData.append("_subject", `New Eligibility Calculator Submission: ${name} (${co})`);
-                formData.append("_captcha", "false");
-
-                fetch("https://api.web3forms.com/submit", {
-                    method: "POST",
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
-            } catch (err) {
-                console.log(err);
+            if (form) {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Submitting Profile...'; }
+                const formData = new FormData(form);
+                formData.set('access_key', '8fcdbf26-e2cf-4688-b37b-8c69f9d49399');
+                formData.set('from_name', 'Suvira Immigration Website');
+                formData.set('subject', 'New Eligibility Profile Assessment: ' + (form.querySelector('[name="Full_Name"]')?.value || 'Lead'));
+                formData.set('Page_URL', window.location.href);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData, keepalive: true }).catch(() => null);
+                fetch('https://api.web3forms.com/submit', { method: 'POST', mode: 'no-cors', body: formData, keepalive: true }).catch(() => null);
+                const msg = document.getElementById('successMsg');
+                if (msg) { msg.style.display = 'flex'; msg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+                setTimeout(() => { form.reset(); window.location.href = '/Thank-you/'; }, 800);
             }
-
-            const msg = document.getElementById('successMsg');
-            msg.style.display = 'flex';
-            msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => document.getElementById('eligibilityForm').reset(), 1500);
         }
     </script>
   <script src="/app.js?v=20260810-v4"></script>

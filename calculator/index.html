@@ -1168,21 +1168,21 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Full Name *</label>
-<input id="eName" placeholder="Enter your full name" required="" type="text"/>
+<input id="eName" name="Full_Name" placeholder="Enter your full name" required="" type="text"/>
 </div>
 <div class="fgroup">
 <label>Date of Birth *</label>
-<input id="eDob" required="" type="date"/>
+<input id="eDob" name="Date_of_Birth" required="" type="date"/>
 </div>
 </div>
 <div class="fg-2">
 <div class="fgroup">
 <label>Phone / WhatsApp *</label>
-<input id="ePhone" placeholder="+91 99403 52086" required="" type="tel"/>
+<input id="ePhone" name="Phone_/_WhatsApp" placeholder="+91 99403 52086" required="" type="tel"/>
 </div>
 <div class="fgroup">
 <label>Email Address *</label>
-<input id="eEmail" placeholder="your.email@example.com" required="" type="email"/>
+<input id="eEmail" name="Email_Address" placeholder="your.email@example.com" required="" type="email"/>
 </div>
 </div>
 <!-- 2. Education & Language -->
@@ -1193,7 +1193,7 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Highest Education *</label>
-<select id="eEdu" required="">
+<select id="eEdu" name="Highest_Education" required="">
 <option disabled="" selected="" value="">Select qualification</option>
 <option value="PhD">Doctoral / Ph.D.</option>
 <option value="Master's Degree">Master's Degree / PG Diploma</option>
@@ -1204,7 +1204,7 @@
 </div>
 <div class="fgroup">
 <label>English Language Test Result</label>
-<select id="eIelts">
+<select id="eIelts" name="English_Language_Test">
 <option value="Not Taken Yet">Not Taken Yet</option>
 <option value="IELTS CLB 9 (8,7,7,7)">IELTS CLB 9 — 8, 7, 7, 7</option>
 <option value="IELTS CLB 8 (7.5,6.5,6.5,6.5)">IELTS CLB 8 — 7.5, 6.5, 6.5, 6.5
@@ -1222,7 +1222,7 @@
 <div class="fg-3">
 <div class="fgroup">
 <label>Years of Experience *</label>
-<select id="eExp" required="">
+<select id="eExp" name="Years_of_Experience" required="">
 <option disabled="" selected="" value="">Select</option>
 <option value="Less than 1 year">Less than 1 year</option>
 <option value="1–2 Years">1 – 2 Years</option>
@@ -1232,11 +1232,11 @@
 </div>
 <div class="fgroup">
 <label>Occupation / Field</label>
-<input id="eOcc" placeholder="e.g. IT Engineer, Nurse" type="text"/>
+<input id="eOcc" name="Occupation_or_Field" placeholder="e.g. IT Engineer, Nurse" type="text"/>
 </div>
 <div class="fgroup">
 <label>Marital Status</label>
-<select id="eMarital">
+<select id="eMarital" name="Marital_Status">
 <option value="Single">Single</option>
 <option value="Married">Married</option>
 <option value="Married (Spouse migrating too)">Married (Spouse too)</option>
@@ -1251,7 +1251,7 @@
 <div class="fg-2">
 <div class="fgroup">
 <label>Preferred Destination *</label>
-<select id="eCountry" required="">
+<select id="eCountry" name="Preferred_Destination" required="">
 <option disabled="" selected="" value="">Select country</option>
 <option value="Canada">🇨🇦 Canada</option>
 <option value="Australia">🇦🇺 Australia</option>
@@ -1269,7 +1269,7 @@
 </div>
 <div class="fgroup">
 <label>Visa Category</label>
-<select id="eVisa">
+<select id="eVisa" name="Visa_Category">
 <option value="Permanent Residency (PR)">Permanent Residency (PR)</option>
 <option value="Student / Study Visa">Student / Study Visa</option>
 <option value="MBBS Abroad Admission">MBBS Abroad Admission</option>
@@ -1288,7 +1288,7 @@
 <div class="fg-1">
 <div class="fgroup">
 <label>Any specific requirements or questions?</label>
-<textarea id="eNotes" placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…" rows="3"></textarea>
+<textarea id="eNotes" name="Questions_or_Notes" placeholder="e.g. Have a Canadian spouse, currently outside India, had a previous visa refusal, MBBS interested…" rows="3"></textarea>
 </div>
 </div>
 <!-- Submit -->
