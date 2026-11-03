@@ -980,7 +980,7 @@ with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:
 """)
 
 # 9. Mirror static build into ROOT for Cloudflare Pages (deploying from root directory)
-ROOT_PRESERVE = {".git", ".github", "src", "public", "scripts", "node_modules", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts", "README.md", "AGENTS.md", "dist", "supabase"}
+ROOT_PRESERVE = {".git", ".github", "src", "public", "scripts", "node_modules", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts", "README.md", "AGENTS.md", "dist", "supabase", "Dockerfile", "nginx.conf", ".dockerignore", "buildpush"}
 for item in os.listdir(DIST):
     if item in ROOT_PRESERVE:
         continue
