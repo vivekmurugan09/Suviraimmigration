@@ -242,12 +242,18 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .lead-modal-content .study-card-header,
 #leadModal .lead-modal-header,
 #leadModal > div > div:first-child:not(form) {
-  background: #09281e !important;
+  background: #005030 !important;
   padding: 22px 26px 18px !important;
   display: block !important;
   text-align: left !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
   position: relative !important;
+}
+
+/* Hide legacy consultation label or badges if present */
+#leadModal .lead-modal-header div:first-child:not(:last-child),
+#leadModal > div > div:first-child div > div:first-child {
+  display: none !important;
 }
 
 .suvira-site #leadModal .lead-modal-header h3,
@@ -268,7 +274,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .lead-modal-content .study-card-header p,
 #leadModal .lead-modal-header p,
 #leadModal p {
-  color: #94a3b8 !important;
+  color: #a7f3d0 !important;
   font-size: 12.5px !important;
   margin-top: 4px !important;
   margin-bottom: 0 !important;
