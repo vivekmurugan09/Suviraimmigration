@@ -168,8 +168,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       // ignore
     }
 
-    // 3. Dispatch submissions across channels
-    // A. Direct JSON to Web3Forms with keepalive
+    // 3. Dispatch EXACTLY ONE submission to Web3Forms (prevents duplicate emails)
     try {
       fetch(WEB3FORMS_ENDPOINT, {
         method: 'POST',
@@ -177,48 +176,6 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
         body: JSON.stringify(payloadObj),
         keepalive: true,
       }).catch(() => null);
-    } catch {}
-
-    // B. Backup to FormSubmit.io with keepalive
-    try {
-      fetch(FORMSUBMIT_IO_ENDPOINT, {
-        method: 'POST',
-        mode: 'no-cors',
-        referrerPolicy: 'origin',
-        body: w3Data,
-        keepalive: true,
-      }).catch(() => null);
-    } catch {}
-
-    // C. Native hidden iframe POST to Web3Forms
-    try {
-      const iframeName = 'suvira_form_sink';
-      let sink = document.getElementById(iframeName) as HTMLIFrameElement | null;
-      if (!sink) {
-        sink = document.createElement('iframe');
-        sink.name = iframeName;
-        sink.id = iframeName;
-        sink.style.display = 'none';
-        sink.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(sink);
-      }
-      const hiddenForm = document.createElement('form');
-      hiddenForm.method = 'POST';
-      hiddenForm.action = WEB3FORMS_ENDPOINT;
-      hiddenForm.target = iframeName;
-      hiddenForm.style.display = 'none';
-      w3Data.forEach((val, key) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = String(val);
-        hiddenForm.appendChild(input);
-      });
-      document.body.appendChild(hiddenForm);
-      hiddenForm.submit();
-      setTimeout(() => {
-        hiddenForm.remove();
-      }, 5000);
     } catch {}
 
     // 4. Reset form, close modal, and re-enable buttons

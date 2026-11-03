@@ -1302,7 +1302,6 @@ fbq('track', 'PageView');
         payload.Service_Required = payload.visa_type || payload.Service_Required || "Canada PR";
         payload.Page_URL = window.location.href;
         payload._next = getThankYouUrl();
-        try { fetch("https://api.web3forms.com/submit", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload), keepalive: true }).catch(function(){}); } catch(e){}
 
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',

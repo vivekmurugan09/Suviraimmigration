@@ -1124,35 +1124,7 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         }
     };
 
-    // 1. Submit to Web3Forms via native hidden iframe
-    try {
-        var iframeName = 'suvira_form_sink';
-        var sink = document.getElementById(iframeName);
-        if (!sink) {
-            sink = document.createElement('iframe');
-            sink.name = iframeName;
-            sink.id = iframeName;
-            sink.style.display = 'none';
-            document.body.appendChild(sink);
-        }
-        var hf = document.createElement('form');
-        hf.method = 'POST';
-        hf.action = 'https://api.web3forms.com/submit';
-        hf.target = iframeName;
-        hf.style.display = 'none';
-        formData.forEach(function(v, k) {
-            var inp = document.createElement('input');
-            inp.type = 'hidden';
-            inp.name = k;
-            inp.value = v;
-            hf.appendChild(inp);
-        });
-        document.body.appendChild(hf);
-        hf.submit();
-        setTimeout(function() { if (hf.parentNode) hf.parentNode.removeChild(hf); }, 5000);
-    } catch (e) {}
-
-    // 2. Fetch to Web3Forms with keepalive
+    // Dispatch EXACTLY ONE submission to Web3Forms (prevents duplicate emails)
     var payloadObj = {
         access_key: WEB3FORMS_KEY,
         subject: subject,
@@ -1182,16 +1154,6 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
     } catch (e) {
         redirectToThankYou();
     }
-
-    // 3. Backup to FormSubmit.io with keepalive
-    try {
-        fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
-            method: "POST",
-            mode: "no-cors",
-            body: formData,
-            keepalive: true
-        }).catch(function() {});
-    } catch (e) {}
 }
 
 // Global Modal & Hero Consultation Form Handler

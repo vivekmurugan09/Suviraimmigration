@@ -378,8 +378,7 @@ site_enhancements_js = """(function () {
         localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
       } catch (e) {}
 
-      // 3. Dispatch submissions across channels
-      // A. Direct JSON AJAX to Web3Forms with keepalive
+      // 3. Dispatch EXACTLY ONE submission to Web3Forms (prevents duplicate emails)
       try {
         fetch(WEB3FORMS_ENDPOINT, {
           method: "POST",
@@ -388,48 +387,6 @@ site_enhancements_js = """(function () {
           keepalive: true
         }).catch(function () {});
       } catch (err) {}
-
-      // B. Backup to FormSubmit.io with keepalive
-      try {
-        fetch(FORMSUBMIT_IO_ENDPOINT, {
-          method: "POST",
-          mode: "no-cors",
-          referrerPolicy: "origin",
-          body: w3Data,
-          keepalive: true
-        }).catch(function () {});
-      } catch (err) {}
-
-      // C. Native hidden iframe POST to Web3Forms
-      try {
-        var iframeName = "suvira_form_sink";
-        var sink = document.getElementById(iframeName);
-        if (!sink) {
-          sink = document.createElement("iframe");
-          sink.name = iframeName;
-          sink.id = iframeName;
-          sink.style.display = "none";
-          sink.setAttribute("aria-hidden", "true");
-          document.body.appendChild(sink);
-        }
-        var hiddenForm = document.createElement("form");
-        hiddenForm.method = "POST";
-        hiddenForm.action = WEB3FORMS_ENDPOINT;
-        hiddenForm.target = iframeName;
-        hiddenForm.style.display = "none";
-        w3Data.forEach(function (val, key) {
-          var input = document.createElement("input");
-          input.type = "hidden";
-          input.name = key;
-          input.value = val;
-          hiddenForm.appendChild(input);
-        });
-        document.body.appendChild(hiddenForm);
-        hiddenForm.submit();
-        setTimeout(function () {
-          if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
-        }, 5000);
-      } catch (e) {}
 
       // 4. Reset form, close modal, and re-enable buttons
       busy.delete(form);

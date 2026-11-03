@@ -1168,7 +1168,6 @@
                 formData.set('subject', 'New Eligibility Profile Assessment: ' + (form.querySelector('[name="Full_Name"]')?.value || 'Lead'));
                 formData.set('Page_URL', window.location.href);
                 fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData, keepalive: true }).catch(() => null);
-                fetch('https://api.web3forms.com/submit', { method: 'POST', mode: 'no-cors', body: formData, keepalive: true }).catch(() => null);
                 const msg = document.getElementById('successMsg');
                 if (msg) { msg.style.display = 'flex'; msg.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
                 setTimeout(() => { form.reset(); window.location.href = '/Thank-you/'; }, 800);
