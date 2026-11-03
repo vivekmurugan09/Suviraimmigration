@@ -1,5 +1,6 @@
 (function () {
   var FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
+  var DIRECT_FORM_ENDPOINT = "https://formsubmit.co/reachus@suviraimmigration.com";
   var THANK_YOU_PATH = "/Thank-you/";
   var probe = null;
 
@@ -162,15 +163,12 @@
       status.dataset.state = "sending";
       status.textContent = "Sending your request…";
 
-      // Open Thank-You landing page in a separate tab within user gesture
-      var thankYouTab = null;
-      try {
-        thankYouTab = window.open(THANK_YOU_PATH, "_blank");
-      } catch (err) {}
+      var thankYouUrl = window.location.origin + THANK_YOU_PATH;
 
       var data = new FormData(form);
       data.set("_subject", String(data.get("_subject") || ("Suvira website enquiry — " + document.title)));
       data.set("_captcha", "false");
+      data.set("_next", thankYouUrl);
       data.set("source_page", window.location.href);
 
       // Save lead backup in localStorage so inquiries are NEVER lost
@@ -180,15 +178,9 @@
         data.forEach(function (val, key) { entry[key] = val; });
         backupLeads.push(entry);
         localStorage.setItem("suvira_leads_backup", JSON.stringify(backupLeads.slice(-50)));
-      } catch (e) {
-        // ignore
-      }
+      } catch (e) {}
 
-      var timeout = new AbortController();
-      var timer = window.setTimeout(function () { timeout.abort(); }, 6000);
-
-      var proceedToThankYou = function () {
-        window.clearTimeout(timer);
+      var resetAndCloseModal = function () {
         busy.delete(form);
         form.removeAttribute("aria-busy");
         buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
@@ -201,10 +193,31 @@
         } else if (modal) {
           modal.style.display = "none";
         }
-        if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === "undefined") {
-          window.location.assign(THANK_YOU_PATH);
-        }
       };
+
+      var submitViaHiddenForm = function () {
+        var tempForm = document.createElement("form");
+        tempForm.method = "POST";
+        tempForm.action = DIRECT_FORM_ENDPOINT;
+        tempForm.target = "_blank";
+        tempForm.style.display = "none";
+        data.forEach(function (val, key) {
+          var input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = String(val);
+          tempForm.appendChild(input);
+        });
+        document.body.appendChild(tempForm);
+        tempForm.submit();
+        window.setTimeout(function () {
+          if (tempForm.parentNode) tempForm.parentNode.removeChild(tempForm);
+        }, 2000);
+        resetAndCloseModal();
+      };
+
+      var timeout = new AbortController();
+      var timer = window.setTimeout(function () { timeout.abort(); }, 3000);
 
       fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -213,12 +226,24 @@
         body: data,
         signal: timeout.signal
       })
-        .then(function () {
-          proceedToThankYou();
+        .then(function (res) {
+          window.clearTimeout(timer);
+          return res.json().catch(function () { return null; });
+        })
+        .then(function (json) {
+          if (json && (json.success === true || json.success === "true")) {
+            var tab = window.open(thankYouUrl, "_blank");
+            if (!tab || tab.closed || typeof tab.closed === "undefined") {
+              window.location.assign(THANK_YOU_PATH);
+            }
+            resetAndCloseModal();
+          } else {
+            submitViaHiddenForm();
+          }
         })
         .catch(function () {
-          // Always proceed directly to Thank You landing page
-          proceedToThankYou();
+          window.clearTimeout(timer);
+          submitViaHiddenForm();
         });
     }, { capture: true });
 

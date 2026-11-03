@@ -1,4 +1,6 @@
+export const THANK_YOU_PATH = "/Thank-you/";
 export const FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
+export const DIRECT_FORM_ENDPOINT = "https://formsubmit.co/reachus@suviraimmigration.com";
 
 /** One submission path for all migrated enquiry and subscription forms. */
 export function installSiteEnhancements(root: HTMLElement, navigate = (path: string) => window.location.assign(path)) {
@@ -19,7 +21,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
 
   root.querySelectorAll<HTMLFormElement>('form').forEach(form => {
     form.removeAttribute('onsubmit');
-    form.action = FORM_ENDPOINT;
+    form.action = DIRECT_FORM_ENDPOINT;
     form.method = 'post';
     form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input,select,textarea').forEach(field => {
       if (!field.name && field.id) field.name = field.id;
@@ -57,15 +59,12 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
     busy.add(form); buttons.forEach(button => button.disabled = true);
     form.setAttribute('aria-busy', 'true'); status.dataset['state'] = 'sending'; status.textContent = 'Sending your request…';
 
-    // Open Thank-You landing page in a separate tab within user gesture
-    let thankYouTab: Window | null = null;
-    try {
-      thankYouTab = window.open(THANK_YOU_PATH, '_blank');
-    } catch {}
+    const thankYouUrl = window.location.origin + THANK_YOU_PATH;
 
     const data = new FormData(form);
     data.set('_subject', String(data.get('_subject') || `Suvira website enquiry — ${document.title}`));
     data.set('_captcha', 'false');
+    data.set('_next', thankYouUrl);
     data.set('source_page', window.location.href);
 
     // Save lead backup in localStorage so inquiries are NEVER lost
@@ -79,11 +78,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       // ignore
     }
 
-    const timeout = new AbortController();
-    const timer = window.setTimeout(() => timeout.abort(), 6000);
-
-    const proceedToThankYou = () => {
-      window.clearTimeout(timer);
+    const resetAndCloseModal = () => {
       busy.delete(form);
       form.removeAttribute('aria-busy');
       buttons.forEach((button, index) => button.disabled = disabled[index] ?? false);
@@ -96,23 +91,52 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       } else if (modal) {
         modal.style.display = 'none';
       }
-      if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === 'undefined') {
-        navigate(THANK_YOU_PATH);
-      }
     };
 
+    const submitViaHiddenForm = () => {
+      const tempForm = document.createElement('form');
+      tempForm.method = 'POST';
+      tempForm.action = DIRECT_FORM_ENDPOINT;
+      tempForm.target = '_blank';
+      tempForm.style.display = 'none';
+      data.forEach((val, key) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = String(val);
+        tempForm.appendChild(input);
+      });
+      document.body.appendChild(tempForm);
+      tempForm.submit();
+      window.setTimeout(() => { if (tempForm.parentNode) tempForm.parentNode.removeChild(tempForm); }, 2000);
+      resetAndCloseModal();
+    };
+
+    const timeout = new AbortController();
+    const timer = window.setTimeout(() => timeout.abort(), 3000);
+
     try {
-      await fetch(FORM_ENDPOINT, {
+      const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         referrerPolicy: 'origin',
         headers: { Accept: 'application/json' },
         body: data,
         signal: timeout.signal,
-      }).catch(() => null);
+      });
+      window.clearTimeout(timer);
+      const json = await res.json().catch(() => null);
+      if (res.ok && json && (json.success === true || json.success === 'true')) {
+        const tab = window.open(thankYouUrl, '_blank');
+        if (!tab || tab.closed || typeof tab.closed === 'undefined') {
+          navigate(THANK_YOU_PATH);
+        }
+        resetAndCloseModal();
+      } else {
+        submitViaHiddenForm();
+      }
     } catch {
-      // Ignore network errors - always proceed to confirmation
-    } finally {
-      proceedToThankYou();
+      window.clearTimeout(timer);
+      submitViaHiddenForm();
     }
   };
   // Capture before the legacy page handlers, including document-level listeners.
