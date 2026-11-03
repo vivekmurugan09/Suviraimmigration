@@ -110,7 +110,7 @@ if "--site-ink:" not in existing_polish:
 
 # 4. Write dist/site-enhancements.js (exact browser JS translation of src/lib/site-enhancements.ts)
 site_enhancements_js = """(function () {
-  var WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+  var WEB3FORMS_KEY = "ea06d6ee-0dba-458c-9e09-39db85dfaf1a";
   var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
   var FORM_ENDPOINT = "https://api.web3forms.com/submit";
   var BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
@@ -719,7 +719,7 @@ def render_static_html(page):
             code = code.replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
-            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "SubmitForm",')
+            code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "ea06d6ee-0dba-458c-9e09-39db85dfaf1a", from_name: "SubmitForm",')
             script_parts.append(f'  <script>{code}</script>')
 
     return (

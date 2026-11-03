@@ -1075,7 +1075,7 @@ function suviraThankYouUrl() {
 }
 
 function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
-    var WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+    var WEB3FORMS_KEY = "ea06d6ee-0dba-458c-9e09-39db85dfaf1a";
     formData.set("access_key", WEB3FORMS_KEY);
     formData.set("from_name", "SubmitForm");
     if (!formData.get("Page_URL")) formData.set("Page_URL", window.location.href);
@@ -1184,7 +1184,7 @@ function handleModalSubmit(e) {
     const service = serviceEl ? serviceEl.value : 'Canada PR / Express Entry';
 
     const formData = new FormData();
-    formData.append("access_key", "8fcdbf26-e2cf-4688-b37b-8c69f9d49399");
+    formData.append("access_key", "ea06d6ee-0dba-458c-9e09-39db85dfaf1a");
     formData.append("from_name", "SubmitForm");
     formData.append("Full_Name", name);
     formData.append("Phone_/_WhatsApp", fullPhone);

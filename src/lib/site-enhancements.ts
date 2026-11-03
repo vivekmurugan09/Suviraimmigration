@@ -1,5 +1,5 @@
 export const THANK_YOU_PATH = "/Thank-you/";
-export const WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+export const WEB3FORMS_KEY = "ea06d6ee-0dba-458c-9e09-39db85dfaf1a";
 export const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 export const FORM_ENDPOINT = "https://api.web3forms.com/submit";
 export const BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";

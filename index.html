@@ -676,7 +676,7 @@
                         Get personalized migration advice tailored to your career and education goals.
                     </p>
 <form id="talkExpertsForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="handleExpertFormSubmit(event)">
-<input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
+<input type="hidden" name="access_key" value="ea06d6ee-0dba-458c-9e09-39db85dfaf1a"/>
 <input type="hidden" name="from_name" value="SubmitForm"/>
 <input name="_subject" type="hidden" value="New Inquiry from Talk with Experts Section"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -964,7 +964,7 @@
 </div>
 <!-- Form Body -->
 <form action="https://api.web3forms.com/submit" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
-<input type="hidden" name="access_key" value="8fcdbf26-e2cf-4688-b37b-8c69f9d49399"/>
+<input type="hidden" name="access_key" value="ea06d6ee-0dba-458c-9e09-39db85dfaf1a"/>
 <input type="hidden" name="from_name" value="SubmitForm"/>
 <input name="_subject" type="hidden" value="New Lead from Suvira Eligibility Check"/>
 <input name="_captcha" type="hidden" value="false"/>
@@ -1266,7 +1266,7 @@ fbq('track', 'PageView');
         tempForm.method = 'POST';
         tempForm.action = 'https://api.web3forms.com/submit';
         tempForm.style.display = 'none';
-        const fields = Object.assign({}, payload, { access_key: "8fcdbf26-e2cf-4688-b37b-8c69f9d49399", from_name: "SubmitForm",
+        const fields = Object.assign({}, payload, { access_key: "ea06d6ee-0dba-458c-9e09-39db85dfaf1a", from_name: "SubmitForm",
             _captcha: 'false',
             _next: getThankYouUrl()
         });
@@ -1294,7 +1294,7 @@ fbq('track', 'PageView');
 
         const formData = new FormData(form);
         const payload = Object.fromEntries(formData);
-        payload.access_key = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+        payload.access_key = "ea06d6ee-0dba-458c-9e09-39db85dfaf1a";
         payload.from_name = "SubmitForm";
         payload.Full_Name = payload.name || payload.Full_Name || "";
         payload["Phone_/_WhatsApp"] = (payload.country_code ? (payload.country_code + " ") : "") + (payload.phone || payload["Phone_/_WhatsApp"] || "");

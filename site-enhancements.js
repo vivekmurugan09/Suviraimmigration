@@ -1,5 +1,5 @@
 (function () {
-  var WEB3FORMS_KEY = "8fcdbf26-e2cf-4688-b37b-8c69f9d49399";
+  var WEB3FORMS_KEY = "ea06d6ee-0dba-458c-9e09-39db85dfaf1a";
   var WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
   var FORM_ENDPOINT = "https://api.web3forms.com/submit";
   var BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
