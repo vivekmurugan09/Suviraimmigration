@@ -4,11 +4,11 @@
    ========================================================================== */
 
 :root {
-    --study-blue: #2563EB;
-    --study-blue-glow: rgba(37, 99, 235, 0.4);
+    --study-blue: #059669;
+    --study-blue-glow: rgba(5, 150, 105, 0.4);
     --gold-accent: #F59E0B;
     --gold-light: #FBBF24;
-    --navy-deep: #071338;
+    --navy-deep: #022C22;
 }
 
 /* --------------------------------------------------------------------------
@@ -16,9 +16,9 @@
    -------------------------------------------------------------------------- */
 .study-hero-section {
     position: relative;
-    background-color: #06112C;
+    background-color: #022C22;
     background-image: 
-        linear-gradient(180deg, rgba(6, 17, 44, 0.85) 0%, rgba(6, 17, 44, 0.75) 45%, rgba(6, 17, 44, 0.95) 100%),
+        linear-gradient(135deg, rgba(2, 44, 34, 0.90) 0%, rgba(6, 78, 59, 0.78) 45%, rgba(4, 120, 87, 0.88) 100%),
         url('../../images/global_map_bg.jpg');
     background-size: cover;
     background-position: center;
@@ -80,7 +80,7 @@
 }
 
 .study-cyan-gradient {
-    background: linear-gradient(90deg, #38BDF8 0%, #60A5FA 50%, #F59E0B 100%);
+    background: linear-gradient(90deg, #34D399 0%, #6EE7B7 50%, #F59E0B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -132,7 +132,7 @@
 }
 
 .btn-study-primary {
-    background: linear-gradient(90deg, #2563EB 0%, #1D4ED8 100%);
+    background: linear-gradient(90deg, #065F46 0%, #059669 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 9999px;
@@ -151,7 +151,7 @@
 
 .btn-study-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 12px 30px rgba(5, 150, 105, 0.55);
     color: #FFFFFF;
 }
 
@@ -180,8 +180,8 @@
 
 /* Right Side Lead Card */
 .study-lead-card {
-    background: rgba(10, 24, 66, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(2, 44, 34, 0.9);
+    border: 1px solid rgba(167, 243, 208, 0.22);
     border-radius: 20px;
     overflow: hidden;
     backdrop-filter: blur(16px);
@@ -190,7 +190,7 @@
 }
 
 .study-card-header {
-    background: linear-gradient(90deg, rgba(37, 99, 235, 0.35) 0%, rgba(15, 23, 42, 0.6) 100%);
+    background: linear-gradient(90deg, rgba(5, 150, 105, 0.4) 0%, rgba(2, 44, 34, 0.65) 100%);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 18px 24px;
     display: flex;
@@ -225,9 +225,9 @@
    2. KEY METRICS RIBBON
    -------------------------------------------------------------------------- */
 .study-metrics-section {
-    background: #091838;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: #011812;
+    border-top: 1px solid rgba(167, 243, 208, 0.12);
+    border-bottom: 1px solid rgba(167, 243, 208, 0.12);
     padding: 24px 0;
 }
 
@@ -251,8 +251,8 @@
 }
 
 .study-metric-card {
-    background: rgba(14, 30, 78, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(6, 78, 59, 0.55);
+    border: 1px solid rgba(167, 243, 208, 0.16);
     border-radius: 14px;
     padding: 18px 20px;
     text-align: center;

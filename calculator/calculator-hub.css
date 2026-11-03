@@ -5,33 +5,33 @@
    ========================================================================== */
 
 :root {
-    --calc-navy-900: #0A1628;
-    --calc-navy-800: #0F172A;
-    --calc-navy-700: #1E293B;
-    --calc-blue-600: #1D4ED8;
-    --calc-blue-500: #2563EB;
-    --calc-blue-50:  #EFF6FF;
+    --calc-navy-900: #022C22;
+    --calc-navy-800: #064E3B;
+    --calc-navy-700: #047857;
+    --calc-blue-600: #047857;
+    --calc-blue-500: #059669;
+    --calc-blue-50:  #ECFDF5;
     --calc-amber-500: #F59E0B;
     --calc-emerald-600: #059669;
     --calc-emerald-50: #ECFDF5;
     --calc-rose-600: #E11D48;
     --calc-rose-50: #FFF1F2;
-    --calc-slate-50: #F8FAFC;
-    --calc-slate-100: #F1F5F9;
-    --calc-slate-200: #E2E8F0;
-    --calc-slate-300: #CBD5E1;
+    --calc-slate-50: #F2FBF7;
+    --calc-slate-100: #ECFDF5;
+    --calc-slate-200: #D1FAE5;
+    --calc-slate-300: #A7F3D0;
     --calc-slate-600: #475569;
     --calc-slate-700: #334155;
-    --calc-slate-900: #0F172A;
+    --calc-slate-900: #022C22;
     --calc-radius-lg: 20px;
     --calc-radius-md: 12px;
-    --calc-shadow-card: 0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(15, 23, 42, 0.05);
-    --calc-shadow-hover: 0 20px 40px -5px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(37, 99, 235, 0.15);
+    --calc-shadow-card: 0 10px 30px -5px rgba(6, 78, 59, 0.08), 0 0 0 1px rgba(6, 78, 59, 0.05);
+    --calc-shadow-hover: 0 20px 40px -5px rgba(6, 78, 59, 0.14), 0 0 0 1px rgba(5, 150, 105, 0.2);
 }
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #F8FAFC;
+    background-color: #F2FBF7;
     color: var(--calc-slate-700);
     margin: 0;
     padding: 0;
@@ -49,8 +49,8 @@ h1, h2, h3, h4, .calc-brand-font {
    HERO BANNER
    ========================================================================== */
 .calc-page-hero {
-    background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.15), transparent 45%),
-                linear-gradient(135deg, #0A1628 0%, #0F2042 60%, #172554 100%);
+    background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.18), transparent 45%),
+                linear-gradient(135deg, #022C22 0%, #064E3B 60%, #047857 100%);
     color: #FFFFFF;
     padding: 130px 20px 80px;
     position: relative;
