@@ -1,6 +1,7 @@
 export const THANK_YOU_PATH = "/Thank-you/";
-export const FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
-export const DIRECT_FORM_ENDPOINT = "https://formsubmit.co/reachus@suviraimmigration.com";
+export const FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+export const BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
+export const DIRECT_FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
 
 /** One submission path for all migrated enquiry and subscription forms. */
 export function installSiteEnhancements(root: HTMLElement, navigate = (path: string) => window.location.assign(path)) {
@@ -21,7 +22,7 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
 
   root.querySelectorAll<HTMLFormElement>('form').forEach(form => {
     form.removeAttribute('onsubmit');
-    form.action = DIRECT_FORM_ENDPOINT;
+    form.action = FORM_ENDPOINT;
     form.method = 'post';
     form.querySelectorAll<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>('input,select,textarea').forEach(field => {
       if (!field.name && field.id) field.name = field.id;
@@ -103,27 +104,51 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       navigate(THANK_YOU_PATH);
     }
 
-    // 5. Send to FormSubmit via both JSON AJAX and standard POST in background
-    const payload: Record<string, any> = {};
-    data.forEach((val, key) => { payload[key] = val; });
-    payload['_subject'] = payload['_subject'] || `New Consultation Request: ${payload['name'] || payload['Full Name'] || 'Website Lead'}`;
-    payload['_captcha'] = 'false';
-    payload['_template'] = 'table';
+    // 5. Send to FormSubmit via multiple independent paths:
+    // A. Native Form POST targeted to hidden iframe (bypasses CORS, adblockers, & browser restrictions)
+    try {
+      const iframeName = 'suvira_form_sink';
+      let sink = document.getElementById(iframeName) as HTMLIFrameElement | null;
+      if (!sink) {
+        sink = document.createElement('iframe');
+        sink.name = iframeName;
+        sink.id = iframeName;
+        sink.style.display = 'none';
+        sink.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(sink);
+      }
+      const hiddenForm = document.createElement('form');
+      hiddenForm.method = 'POST';
+      hiddenForm.action = FORM_ENDPOINT;
+      hiddenForm.target = iframeName;
+      hiddenForm.style.display = 'none';
+      data.forEach((val, key) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = String(val);
+        hiddenForm.appendChild(input);
+      });
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+      setTimeout(() => {
+        hiddenForm.remove();
+      }, 4000);
+    } catch {}
 
+    // B. Direct fetch with FormData (no-cors mode)
     try {
       fetch(FORM_ENDPOINT, {
         method: 'POST',
+        mode: 'no-cors',
         referrerPolicy: 'origin',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(payload),
+        body: data,
       }).catch(() => null);
     } catch {}
 
+    // C. Backup endpoint in background
     try {
-      fetch(DIRECT_FORM_ENDPOINT, {
+      fetch(BACKUP_FORM_ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
         referrerPolicy: 'origin',

@@ -628,7 +628,7 @@ function handleHomeTouchSubmit(e) {
         formData.append("_subject", `New Inquiry from Homepage: ${name} (${service})`);
         formData.append("_captcha", "false");
 
-        fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+        fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
             method: "POST",
             headers: { 'Accept': 'application/json' },
             body: formData
@@ -837,7 +837,7 @@ function toggleFaqAccordion(headerEl) {
                 formData.append("_subject", `New Profile Audit Request: ${name} (${country})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData
@@ -972,7 +972,7 @@ function toggleFaqAccordion(headerEl) {
 
             // 1. Direct background submit to reachus@suviraimmigration.com via FormSubmit API
             try {
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -1057,7 +1057,7 @@ function toggleFaqAccordion(headerEl) {
                 formData.append("_subject", `New Inquiry from Contact Page: ${name} (${service})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData
@@ -1146,7 +1146,7 @@ function toggleFaqAccordion(headerEl) {
                 formData.append("_subject", `New Inquiry from Process Page: ${name} (${service})`);
                 formData.append("_captcha", "false");
 
-                fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+                fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
                     method: "POST",
                     headers: { 'Accept': 'application/json' },
                     body: formData
@@ -1215,7 +1215,7 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
         }
     };
 
-    fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
+    fetch("https://formsubmit.io/send/reachus@suviraimmigration.com", {
         method: "POST",
         referrerPolicy: "origin",
         headers: { 'Accept': 'application/json' },

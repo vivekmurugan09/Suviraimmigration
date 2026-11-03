@@ -110,8 +110,9 @@ if "--site-ink:" not in existing_polish:
 
 # 4. Write dist/site-enhancements.js (exact browser JS translation of src/lib/site-enhancements.ts)
 site_enhancements_js = """(function () {
-  var FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
-  var DIRECT_FORM_ENDPOINT = "https://formsubmit.co/reachus@suviraimmigration.com";
+  var FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
+  var BACKUP_FORM_ENDPOINT = "https://formsubmit.co/ajax/reachus@suviraimmigration.com";
+  var DIRECT_FORM_ENDPOINT = "https://formsubmit.io/send/reachus@suviraimmigration.com";
   var THANK_YOU_PATH = "/Thank-you/";
   var probe = null;
 
@@ -316,27 +317,51 @@ site_enhancements_js = """(function () {
         window.location.assign(THANK_YOU_PATH);
       }
 
-      // 5. Send to FormSubmit via both JSON AJAX and standard POST in background
-      var payload = {};
-      data.forEach(function (val, key) { payload[key] = val; });
-      payload._subject = payload._subject || ("New Consultation Request: " + (payload.name || payload["Full Name"] || "Website Lead"));
-      payload._captcha = "false";
-      payload._template = "table";
+      // 5. Send to FormSubmit via multiple independent paths:
+      // A. Native Form POST targeted to hidden iframe (bypasses CORS, adblockers, & browser restrictions)
+      try {
+        var iframeName = "suvira_form_sink";
+        var sink = document.getElementById(iframeName);
+        if (!sink) {
+          sink = document.createElement("iframe");
+          sink.name = iframeName;
+          sink.id = iframeName;
+          sink.style.display = "none";
+          sink.setAttribute("aria-hidden", "true");
+          document.body.appendChild(sink);
+        }
+        var hiddenForm = document.createElement("form");
+        hiddenForm.method = "POST";
+        hiddenForm.action = FORM_ENDPOINT;
+        hiddenForm.target = iframeName;
+        hiddenForm.style.display = "none";
+        data.forEach(function (val, key) {
+          var input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = val;
+          hiddenForm.appendChild(input);
+        });
+        document.body.appendChild(hiddenForm);
+        hiddenForm.submit();
+        setTimeout(function () {
+          if (hiddenForm.parentNode) hiddenForm.parentNode.removeChild(hiddenForm);
+        }, 5000);
+      } catch (e) {}
 
+      // B. Direct fetch with FormData (no-cors mode)
       try {
         fetch(FORM_ENDPOINT, {
           method: "POST",
+          mode: "no-cors",
           referrerPolicy: "origin",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(payload)
+          body: data
         }).catch(function () {});
       } catch (err) {}
 
+      // C. Backup endpoint in background
       try {
-        fetch(DIRECT_FORM_ENDPOINT, {
+        fetch(BACKUP_FORM_ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           referrerPolicy: "origin",
@@ -602,6 +627,8 @@ def render_static_html(page):
     body_html = (
         page["body"]
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
+        .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://formsubmit.io/send/reachus@suviraimmigration.com")
+        .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://formsubmit.io/send/reachus@suviraimmigration.com")
         .replace(
             '<a href="/services/study-visas" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Study Visa</a>',
             '<a href="/services/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
@@ -633,7 +660,10 @@ def render_static_html(page):
         if sc.get("src"):
             script_parts.append(f'  <script src="{html.escape(sc["src"], quote=True)}"></script>')
         elif sc.get("code") or sc.get("inline"):
-            script_parts.append(f'  <script>{sc.get("code") or sc.get("inline")}</script>')
+            code = sc.get("code") or sc.get("inline")
+            code = code.replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://formsubmit.io/send/reachus@suviraimmigration.com")
+            code = code.replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://formsubmit.io/send/reachus@suviraimmigration.com")
+            script_parts.append(f'  <script>{code}</script>')
 
     return (
         "<!DOCTYPE html>\n"
