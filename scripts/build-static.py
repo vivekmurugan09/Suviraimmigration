@@ -320,16 +320,84 @@ site_enhancements_js = """(function () {
     var closeBtn = root.querySelector(".close-menu");
     if (closeBtn) closeBtn.setAttribute("aria-label", "Close navigation");
 
+    var modal = root.querySelector("#leadModal") || document.getElementById("leadModal");
+    if (modal) {
+      var modalShown = false;
+      var showModal = function () {
+        if (modalShown) return;
+        if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
+        modalShown = true;
+        modal.classList.remove("is-closing");
+        modal.classList.add("is-visible");
+        modal.style.display = "flex";
+      };
+
+      var hideModal = function () {
+        modal.classList.add("is-closing");
+        window.setTimeout(function () {
+          modal.classList.remove("is-visible", "is-closing");
+          modal.style.display = "none";
+        }, 250);
+        sessionStorage.setItem("suvira_consultation_dismissed", "true");
+        sessionStorage.setItem("popupShown", "true");
+      };
+
+      window.openLeadModal = function () {
+        modalShown = false;
+        showModal();
+      };
+      window.closeLeadModal = hideModal;
+
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) hideModal();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && (modal.classList.contains("is-visible") || modal.style.display === "flex")) {
+          hideModal();
+        }
+      });
+
+      modal.querySelectorAll('button[aria-label="Close"], .close-modal').forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          hideModal();
+        });
+      });
+
+      root.querySelectorAll('[onclick*="leadModal"]').forEach(function (button) {
+        button.removeAttribute("onclick");
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (window.openLeadModal) window.openLeadModal();
+        });
+      });
+
+      var onScrollEnd = function () {
+        if (modalShown) return;
+        if (sessionStorage.getItem("suvira_consultation_dismissed") || sessionStorage.getItem("popupShown")) return;
+        var scrollPos = (window.scrollY || window.pageYOffset || document.documentElement.scrollTop) + window.innerHeight;
+        var totalHeight = Math.max(
+          document.body.scrollHeight,
+          document.documentElement.scrollHeight,
+          document.body.offsetHeight,
+          document.documentElement.offsetHeight
+        );
+        if (totalHeight > 900 && (scrollPos >= totalHeight - 700 || scrollPos / totalHeight >= 0.78)) {
+          showModal();
+        }
+      };
+      window.addEventListener("scroll", onScrollEnd, { passive: true });
+    } else {
+      root.querySelectorAll('[onclick*="leadModal"]').forEach(function (button) {
+        button.removeAttribute("onclick");
+        button.addEventListener("click", function () { window.location.assign("/free-eligibility-check"); });
+      });
+    }
+
     root.querySelectorAll(".suvira-btn-eligibility").forEach(function (button) {
       button.removeAttribute("onclick");
       button.addEventListener("click", function () { window.location.assign("/free-eligibility-check"); });
-    });
-
-    root.querySelectorAll('[onclick*="leadModal"]').forEach(function (button) {
-      if (!root.querySelector("#leadModal")) {
-        button.removeAttribute("onclick");
-        button.addEventListener("click", function () { window.location.assign("/free-eligibility-check"); });
-      }
     });
 
     injectFlyingIcons(root);

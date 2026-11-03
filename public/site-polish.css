@@ -143,12 +143,144 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .footer h3 { color: var(--site-surface) !important; font-family: 'DM Serif Display',Georgia,serif; font-size: 23px; font-weight: 400; }
 .suvira-site .footer :is(p,a) { color: color-mix(in oklab,var(--site-surface) 72%,var(--site-ink)) !important; font-size: 13px; }
 .suvira-site .footer-bottom { border-top: 1px solid color-mix(in oklab,var(--site-surface) 15%,var(--site-ink)); }
-.suvira-site #leadModal > div { border-radius: 6px !important; box-shadow: var(--site-shadow) !important; background: var(--site-surface) !important; }
-.suvira-site #leadModal > div > div { background: var(--site-action) !important; }
-.suvira-site #leadModal h3 { font-family: 'DM Serif Display',Georgia,serif !important; font-weight: 400 !important; }
-.suvira-site #leadModal > div > div :is(p,button) { color: var(--site-surface) !important; }
-.suvira-site #leadModal :is(input,select) { background: var(--site-soft) !important; color: var(--site-ink) !important; border-color: var(--site-line) !important; }
-.suvira-site #leadModal button[type='submit'] { background: var(--site-action) !important; color: var(--site-surface) !important; border-radius: 4px !important; box-shadow: none !important; font-weight: 500 !important; }
+/* Premium Consultation / Eligibility Modal Animation & Style */
+.suvira-site #leadModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 22, 40, 0.78) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 99999 !important;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.suvira-site #leadModal.is-visible {
+  display: flex !important;
+  opacity: 1;
+}
+.suvira-site #leadModal.is-closing {
+  opacity: 0;
+}
+.suvira-site #leadModal > div {
+  background: #ffffff !important;
+  border-radius: 20px !important;
+  max-width: 450px !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.5), 0 10px 25px -5px rgba(0, 0, 0, 0.25) !important;
+  transform: translateY(30px) scale(0.92);
+  will-change: transform, opacity;
+}
+.suvira-site #leadModal.is-visible > div {
+  animation: suviraModalPop 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+}
+.suvira-site #leadModal.is-closing > div {
+  animation: suviraModalExit 0.25s ease-in forwards !important;
+}
+.suvira-site #leadModal > div > div:first-child {
+  background: #0a1628 !important;
+  padding: 22px 26px 18px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+.suvira-site #leadModal > div > div:first-child div > div:first-child {
+  color: #f59e0b !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 4px !important;
+}
+.suvira-site #leadModal h3 {
+  font-family: 'DM Serif Display', Georgia, serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.2px !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+.suvira-site #leadModal > div > div:first-child p {
+  color: #94a3b8 !important;
+  font-size: 12.5px !important;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
+}
+.suvira-site #leadModal > div > div:first-child button {
+  color: #94a3b8 !important;
+  font-size: 26px !important;
+  line-height: 1 !important;
+  margin-top: -2px !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+.suvira-site #leadModal > div > div:first-child button:hover {
+  color: #ffffff !important;
+  transform: scale(1.15) !important;
+}
+.suvira-site #leadModal form {
+  padding: 22px 26px 20px !important;
+}
+.suvira-site #leadModal :is(input, select) {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  padding: 11px 14px !important;
+  margin-bottom: 12px !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+.suvira-site #leadModal :is(input, select):focus {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18) !important;
+}
+.suvira-site #leadModal button[type='submit'] {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  padding: 13px !important;
+  box-shadow: 0 10px 24px -6px rgba(234, 88, 12, 0.45) !important;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease !important;
+}
+.suvira-site #leadModal button[type='submit']:hover {
+  transform: translateY(-2px) !important;
+  filter: brightness(1.08) !important;
+  box-shadow: 0 14px 28px -6px rgba(234, 88, 12, 0.65) !important;
+}
+
+@keyframes suviraModalPop {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes suviraModalExit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+}
 .suvira-site .suvira-nav-actions .suvira-btn-eligibility { background: var(--site-action) !important; color: var(--site-surface) !important; border-radius: 4px !important; border-color: var(--site-action) !important; }
 .suvira-site #mbar > button { background: var(--site-action) !important; color: var(--site-surface) !important; }
 .suvira-site #waBubble { bottom: 24px !important; }

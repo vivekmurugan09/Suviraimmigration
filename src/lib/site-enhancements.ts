@@ -99,15 +99,80 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
   const toggle = root.querySelector<HTMLElement>('.mobile-menu-btn');
   if (menu && toggle) { menu.id = 'mobile-menu'; toggle.setAttribute('aria-label', 'Open navigation'); }
   root.querySelector('.close-menu')?.setAttribute('aria-label', 'Close navigation');
+  const modal = root.querySelector<HTMLElement>('#leadModal') || document.getElementById('leadModal');
+  if (modal) {
+    let modalShown = false;
+    const showModal = () => {
+      if (modalShown) return;
+      if (sessionStorage.getItem('suvira_consultation_dismissed') || sessionStorage.getItem('popupShown')) return;
+      modalShown = true;
+      modal.classList.remove('is-closing');
+      modal.classList.add('is-visible');
+      modal.style.display = 'flex';
+    };
+
+    const hideModal = () => {
+      modal.classList.add('is-closing');
+      window.setTimeout(() => {
+        modal.classList.remove('is-visible', 'is-closing');
+        modal.style.display = 'none';
+      }, 250);
+      sessionStorage.setItem('suvira_consultation_dismissed', 'true');
+      sessionStorage.setItem('popupShown', 'true');
+    };
+
+    (window as any).openLeadModal = () => {
+      modalShown = false;
+      showModal();
+    };
+    (window as any).closeLeadModal = hideModal;
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) hideModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && (modal.classList.contains('is-visible') || modal.style.display === 'flex')) {
+        hideModal();
+      }
+    }, { signal });
+
+    modal.querySelectorAll('button[aria-label="Close"], .close-modal').forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        hideModal();
+      });
+    });
+
+    root.querySelectorAll<HTMLElement>('[onclick*="leadModal"]').forEach(button => {
+      button.removeAttribute('onclick');
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        (window as any).openLeadModal?.();
+      }, { signal });
+    });
+
+    // Scroll trigger: pop up when user scrolls down towards the end of the page (>= 78% or near bottom)
+    const onScrollEnd = () => {
+      if (modalShown) return;
+      if (sessionStorage.getItem('suvira_consultation_dismissed') || sessionStorage.getItem('popupShown')) return;
+      const scrollPos = window.scrollY + window.innerHeight;
+      const totalHeight = document.documentElement.scrollHeight;
+      if (totalHeight > 900 && (scrollPos >= totalHeight - 700 || scrollPos / totalHeight >= 0.78)) {
+        showModal();
+      }
+    };
+    window.addEventListener('scroll', onScrollEnd, { passive: true, signal });
+  } else {
+    root.querySelectorAll<HTMLElement>('[onclick*="leadModal"]').forEach(button => {
+      button.removeAttribute('onclick');
+      button.addEventListener('click', () => window.location.assign('/free-eligibility-check'), { signal });
+    });
+  }
+
   root.querySelectorAll<HTMLElement>('.suvira-btn-eligibility').forEach(button => {
     button.removeAttribute('onclick');
     button.addEventListener('click', () => { window.location.assign('/free-eligibility-check'); }, { signal });
-  });
-  root.querySelectorAll<HTMLElement>('[onclick*="leadModal"]').forEach(button => {
-    if (!root.querySelector('#leadModal')) {
-      button.removeAttribute('onclick');
-      button.addEventListener('click', () => window.location.assign('/free-eligibility-check'), { signal });
-    }
   });
 
   injectFlyingIcons(root);
