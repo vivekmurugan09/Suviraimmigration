@@ -263,6 +263,12 @@ site_enhancements_js = """(function () {
       status.dataset.state = "sending";
       status.textContent = "Sending your request…";
 
+      // Open Thank-You landing page in a separate tab within user gesture
+      var thankYouTab = null;
+      try {
+        thankYouTab = window.open(THANK_YOU_PATH, "_blank");
+      } catch (err) {}
+
       var data = new FormData(form);
       data.set("_subject", String(data.get("_subject") || ("Suvira website enquiry — " + document.title)));
       data.set("_captcha", "false");
@@ -288,9 +294,17 @@ site_enhancements_js = """(function () {
         form.removeAttribute("aria-busy");
         buttons.forEach(function (b, idx) { b.disabled = Boolean(disabledStates[idx]); });
         status.dataset.state = "success";
-        status.textContent = "Your request has been received. Redirecting…";
+        status.textContent = "Your request has been received. Thank you!";
         form.reset();
-        window.location.assign(THANK_YOU_PATH);
+        var modal = document.getElementById("leadModal");
+        if (modal && typeof window.closeLeadModal === "function") {
+          window.closeLeadModal();
+        } else if (modal) {
+          modal.style.display = "none";
+        }
+        if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === "undefined") {
+          window.location.assign(THANK_YOU_PATH);
+        }
       };
 
       fetch(FORM_ENDPOINT, {

@@ -1187,12 +1187,12 @@ function toggleFaqAccordion(headerEl) {
 
 
 
-// Global FormSubmit helper with automatic fallback & Thank-You redirect
+// Global FormSubmit helper with automatic fallback & Thank-You redirect in a separate tab
 function suviraThankYouUrl() {
     return window.location.origin + '/Thank-you/';
 }
 
-function suviraSendLeadForm(formData, onComplete) {
+function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
     try {
         var backupLeads = JSON.parse(localStorage.getItem('suvira_leads_backup') || '[]');
         var entry = { timestamp: new Date().toISOString() };
@@ -1203,7 +1203,16 @@ function suviraSendLeadForm(formData, onComplete) {
 
     var redirectToThankYou = function() {
         if (onComplete) onComplete();
-        window.location.href = suviraThankYouUrl();
+        if (!preOpenedTab || preOpenedTab.closed || typeof preOpenedTab.closed === 'undefined') {
+            try {
+                var tab = window.open(suviraThankYouUrl(), '_blank');
+                if (!tab || tab.closed || typeof tab.closed === 'undefined') {
+                    window.location.href = suviraThankYouUrl();
+                }
+            } catch (e) {
+                window.location.href = suviraThankYouUrl();
+            }
+        }
     };
 
     fetch("https://formsubmit.co/ajax/reachus@suviraimmigration.com", {
@@ -1225,6 +1234,12 @@ function handleModalSubmit(e) {
     sessionStorage.setItem('popupShown', 'true');
     e.preventDefault();
     const form = e.target;
+    
+    // Open separate tab synchronously within user gesture
+    var thankYouTab = null;
+    try {
+        thankYouTab = window.open(suviraThankYouUrl(), '_blank');
+    } catch (err) {}
     
     const nameEl = form.elements['name'] || form.querySelector('input[type="text"]');
     const ccEl = form.elements['country_code'];
@@ -1265,9 +1280,17 @@ function handleModalSubmit(e) {
 
     suviraSendLeadForm(formData, function() {
         form.reset();
-        const modal = document.getElementById('leadModal');
-        if (modal) modal.style.display = 'none';
-    });
+        if (typeof window.closeLeadModal === 'function') {
+            window.closeLeadModal();
+        } else {
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.style.display = 'none';
+        }
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Get Free Consultation →';
+        }
+    }, thankYouTab);
 }
 
 function handleExpertFormSubmit(e) {

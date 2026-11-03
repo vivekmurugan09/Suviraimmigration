@@ -56,6 +56,13 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
     const disabled = buttons.map(button => button.disabled);
     busy.add(form); buttons.forEach(button => button.disabled = true);
     form.setAttribute('aria-busy', 'true'); status.dataset['state'] = 'sending'; status.textContent = 'Sending your request…';
+
+    // Open Thank-You landing page in a separate tab within user gesture
+    let thankYouTab: Window | null = null;
+    try {
+      thankYouTab = window.open(THANK_YOU_PATH, '_blank');
+    } catch {}
+
     const data = new FormData(form);
     data.set('_subject', String(data.get('_subject') || `Suvira website enquiry — ${document.title}`));
     data.set('_captcha', 'false');
@@ -81,9 +88,17 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       form.removeAttribute('aria-busy');
       buttons.forEach((button, index) => button.disabled = disabled[index] ?? false);
       status.dataset['state'] = 'success';
-      status.textContent = 'Your request has been received. Redirecting…';
+      status.textContent = 'Your request has been received. Thank you!';
       form.reset();
-      navigate(THANK_YOU_PATH);
+      const modal = document.getElementById('leadModal');
+      if (modal && typeof (window as any).closeLeadModal === 'function') {
+        (window as any).closeLeadModal();
+      } else if (modal) {
+        modal.style.display = 'none';
+      }
+      if (!thankYouTab || thankYouTab.closed || typeof thankYouTab.closed === 'undefined') {
+        navigate(THANK_YOU_PATH);
+      }
     };
 
     try {
