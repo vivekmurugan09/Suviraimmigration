@@ -57,9 +57,9 @@
 .suvira-study .study-consultation-band .study-check-item { color: var(--site-ink); font-size: 14px; }
 .suvira-study .study-consultation-band .study-check-item i { color: var(--site-action); }
 .suvira-study .study-premium-content { padding: 64px 0 !important; }
-.suvira-study .study-premium-content :is(.study-section-header,.study-section-title,.study-sec-title) { text-align: left; }
+.suvira-study .study-premium-content :is(.study-section-header,.study-section-title,.study-sec-title) { text-align: center !important; margin-inline: auto !important; }
 .suvira-study .study-premium-content :is(.study-section-title,.study-sec-title,h2) { font-size: 36px !important; line-height: 1.25; color: var(--site-ink) !important; }
-.suvira-study .study-premium-content :is(.study-section-subtitle,.study-sec-subtitle) { text-align: left; margin-left: 0; color: var(--site-muted) !important; line-height: 1.75; }
+.suvira-study .study-premium-content :is(.study-section-subtitle,.study-sec-subtitle) { text-align: center !important; margin-inline: auto !important; max-width: 680px !important; color: var(--site-muted) !important; line-height: 1.75; }
 .suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item,.study-metric-card) { background: var(--site-surface) !important; border: 1px solid var(--site-line) !important; border-top: 2px solid var(--site-gold) !important; border-radius: 6px !important; box-shadow: none !important; padding: 26px !important; transition: transform .35s,border-color .35s,box-shadow .35s !important; }
 .suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item):hover { transform: translateY(-5px) !important; border-color: var(--site-action) !important; box-shadow: var(--site-shadow) !important; }
 .suvira-study .study-premium-content :is(.study-card-icon,.study-uni-icon) { background: var(--site-soft) !important; color: var(--site-action) !important; border: 1px solid var(--site-line); width: 48px; height: 48px; border-radius: 50%; }

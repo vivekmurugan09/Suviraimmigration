@@ -1,385 +1,428 @@
 /* =================================================================
-   6-Step Journey — Premium graphic timeline + animation system
-   Targets: .study-pipeline + .study-step-card inside .suvira-study
+   6-Step Journey — Premium Card Grid + Animated Graphic Connectors
+   Targets: .study-pipeline + .study-step-card inside .suvira-study / .suvira-site
    ================================================================= */
 
 /* ── Section background & header ────────────────────────── */
 .suvira-study section:has(.study-pipeline),
 .suvira-site  section:has(.study-pipeline) {
   position: relative;
-  padding: 80px 0 !important;
+  padding: 84px 0 !important;
   background:
-    radial-gradient(ellipse 60% 40% at 10% 20%, color-mix(in oklab, var(--site-gold, #c9a227) 7%, transparent), transparent),
-    radial-gradient(ellipse 50% 35% at 90% 80%, color-mix(in oklab, var(--site-action, #107a5f) 7%, transparent), transparent),
+    radial-gradient(ellipse 60% 45% at 10% 18%, color-mix(in oklab, var(--site-gold, #c99a35) 9%, transparent), transparent),
+    radial-gradient(ellipse 55% 40% at 90% 82%, color-mix(in oklab, var(--site-action, #045030) 8%, transparent), transparent),
     var(--site-soft, #f8faf9) !important;
   overflow: hidden;
 }
 
-/* ── Override existing site-polish rule that forces bg/border ── */
-.suvira-study .study-pipeline .study-step-card,
-.suvira-site  .study-pipeline .study-step-card {
-  background: transparent !important;
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 24px 36px !important;
-  height: auto !important;
-}
-
-/* ── Pipeline grid ───────────────────────────────────────── */
+/* ── Pipeline 3x2 Card Grid ──────────────────────────────── */
 .suvira-study .study-pipeline,
 .suvira-site  .study-pipeline {
   position: relative;
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 0 !important;
-  margin-top: 56px !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+  max-width: 1320px !important;
+  width: 100% !important;
+  margin: 44px auto 0 !important;
   counter-reset: journey-step;
+  align-items: stretch !important;
 }
 
-/* Animated horizontal line — top row */
+/* Remove old absolute lines that cut across card text */
 .suvira-study .study-pipeline::before,
-.suvira-site  .study-pipeline::before {
-  content: '';
-  position: absolute;
-  top: 28px;                /* aligns with center of 56px circles */
-  left: calc(50% / 3);     /* start from first circle center */
-  right: calc(50% / 3);
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--site-gold, #c9a227) 15%,
-    var(--site-action, #107a5f) 50%,
-    var(--site-gold, #c9a227) 85%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: journeyLineScroll 5s linear infinite;
-  z-index: 0;
-  border-radius: 2px;
-  pointer-events: none;
-}
-
-/* Animated horizontal line — bottom row */
 .suvira-study .study-pipeline::after,
+.suvira-site  .study-pipeline::before,
 .suvira-site  .study-pipeline::after {
-  content: '';
-  position: absolute;
-  bottom: 36px;             /* mirrors top line position for bottom 3 cards */
-  left: calc(50% / 3);
-  right: calc(50% / 3);
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    var(--site-gold, #c9a227) 15%,
-    var(--site-action, #107a5f) 50%,
-    var(--site-gold, #c9a227) 85%,
-    transparent 100%
-  );
-  background-size: 200% 100%;
-  animation: journeyLineScroll 5s linear infinite reverse;
-  z-index: 0;
-  border-radius: 2px;
-  pointer-events: none;
+  display: none !important;
+  content: none !important;
 }
 
-@keyframes journeyLineScroll {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+/* ── Individual Step Card ────────────────────────────────── */
+@keyframes stepCardFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ── Individual step card ────────────────────────────────── */
+.suvira-study .study-pipeline .study-step-card,
+.suvira-site  .study-pipeline .study-step-card,
 .suvira-study .study-step-card,
 .suvira-site  .study-step-card {
   position: relative;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
-  text-align: center !important;
-  padding: 0 24px 44px !important;
-  box-sizing: border-box;
-  counter-increment: journey-step;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  background: #ffffff !important;
+  border: 1px solid #E2E8F0 !important;
+  border-top: 3px solid var(--site-action, #045030) !important;
+  border-radius: 16px !important;
+  padding: 28px 26px 24px !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 8px 26px rgba(4, 80, 48, 0.06) !important;
   z-index: 1;
-  /* Entrance */
-  opacity: 0;
-  transform: translateY(32px);
-  transition:
-    opacity 700ms cubic-bezier(.22,.8,.32,1),
-    transform 700ms cubic-bezier(.22,.8,.32,1);
-  transition-delay: var(--step-delay, 0ms);
-}
-
-.suvira-study .study-step-card.step-visible,
-.suvira-site  .study-step-card.step-visible {
-  opacity: 1;
+  overflow: hidden;
+  opacity: 1 !important;
   transform: translateY(0);
+  animation: stepCardFadeUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--step-delay, 0ms);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease !important;
 }
 
-/* Soft glow halo behind icon on reveal */
+/* Row 2 cards (Steps 4-6): gold top accent */
+.suvira-study .study-step-card:nth-child(n+4),
+.suvira-site  .study-step-card:nth-child(n+4) {
+  border-top-color: var(--site-gold, #c99a35) !important;
+}
+
+/* Hover lift */
+.suvira-study .study-step-card:hover,
+.suvira-site  .study-step-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(4, 80, 48, 0.28) !important;
+  box-shadow: 0 20px 42px rgba(4, 80, 48, 0.13) !important;
+}
+
+/* Subtle ambient corner glow inside card */
 .suvira-study .study-step-card::before,
 .suvira-site  .study-step-card::before {
   content: '';
   position: absolute;
-  top: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 130px;
-  height: 130px;
+  top: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    color-mix(in oklab, var(--site-action, #107a5f) 10%, transparent) 0%,
+    color-mix(in oklab, var(--site-action, #045030) 9%, transparent) 0%,
     transparent 70%
   );
   pointer-events: none;
   z-index: 0;
-  opacity: 0;
-  transition: opacity 800ms ease;
-  transition-delay: calc(var(--step-delay, 0ms) + 100ms);
 }
 
-.suvira-study .study-step-card.step-visible::before,
-.suvira-site  .study-step-card.step-visible::before {
-  opacity: 1;
-}
-
-/* Row-2 cards (4,5,6): gold halo */
-.suvira-study .study-step-card:nth-child(4)::before,
-.suvira-study .study-step-card:nth-child(5)::before,
-.suvira-study .study-step-card:nth-child(6)::before,
-.suvira-site  .study-step-card:nth-child(4)::before,
-.suvira-site  .study-step-card:nth-child(5)::before,
-.suvira-site  .study-step-card:nth-child(6)::before {
+.suvira-study .study-step-card:nth-child(n+4)::before,
+.suvira-site  .study-step-card:nth-child(n+4)::before {
   background: radial-gradient(
     circle,
-    color-mix(in oklab, var(--site-gold, #c9a227) 14%, transparent) 0%,
+    color-mix(in oklab, var(--site-gold, #c99a35) 14%, transparent) 0%,
     transparent 70%
   );
 }
 
-/* ── Step number bubble ──────────────────────────────────── */
+/* ── Top Graphic Header inside Card (Num + Connector + Icon) ── */
+.suvira-study .study-step-header,
+.suvira-site  .study-step-header {
+  position: relative;
+  z-index: 2;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-bottom: 18px !important;
+  gap: 12px;
+}
+
+/* ── Step Number Orb ─────────────────────────────────────── */
 .suvira-study .study-step-num,
 .suvira-site  .study-step-num {
   position: relative;
   z-index: 2;
-  width: 56px !important;
-  height: 56px !important;
+  width: 50px !important;
+  height: 50px !important;
   border-radius: 50% !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   flex-shrink: 0;
-  margin-bottom: 20px !important;
-  font-size: 20px !important;
+  margin: 0 !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 19px !important;
   font-weight: 800 !important;
-  /* Green gradient for first row */
   background: linear-gradient(
     135deg,
-    var(--site-action, #107a5f) 0%,
-    color-mix(in oklab, var(--site-action, #107a5f) 60%, var(--site-gold, #c9a227)) 100%
+    var(--site-action, #045030) 0%,
+    #0a7c4f 100%
   ) !important;
-  color: #fff !important;
+  color: #ffffff !important;
   box-shadow:
-    0 0 0 6px color-mix(in oklab, var(--site-action, #107a5f) 12%, transparent),
-    0 10px 28px -10px color-mix(in oklab, var(--site-action, #107a5f) 55%, transparent) !important;
-  transition: transform 350ms cubic-bezier(.22,.8,.32,1), box-shadow 350ms ease;
+    0 0 0 5px rgba(4, 80, 48, 0.10),
+    0 8px 20px rgba(4, 80, 48, 0.25) !important;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 
-/* Animated pulse ring on num */
+/* Continuous pulse aura ring on number orb */
 .suvira-study .study-step-num::before,
 .suvira-site  .study-step-num::before {
   content: '';
   position: absolute;
-  inset: -9px;
+  inset: -7px;
   border-radius: 50%;
-  border: 2px solid color-mix(in oklab, var(--site-gold, #c9a227) 60%, transparent);
+  border: 2px solid color-mix(in oklab, var(--site-gold, #c99a35) 65%, transparent);
   opacity: 0;
   animation: stepPulse 2.6s ease-in-out infinite;
   animation-delay: var(--step-pulse-delay, 0ms);
-  animation-play-state: paused;
-}
-
-.suvira-study .study-step-card.step-visible .study-step-num::before,
-.suvira-site  .study-step-card.step-visible .study-step-num::before {
-  animation-play-state: running;
 }
 
 @keyframes stepPulse {
-  0%   { transform: scale(1);    opacity: 0.75; }
-  70%  { transform: scale(1.4);  opacity: 0;    }
-  100% { transform: scale(1.4);  opacity: 0;    }
+  0%   { transform: scale(0.95); opacity: 0.75; }
+  70%  { transform: scale(1.35); opacity: 0;    }
+  100% { transform: scale(1.35); opacity: 0;    }
 }
 
-/* Inner tick/check mark shimmer on num */
-.suvira-study .study-step-num::after,
-.suvira-site  .study-step-num::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
+/* Row 2: Gold number orb (Steps 4-6) */
+.suvira-study .study-step-card:nth-child(n+4) .study-step-num,
+.suvira-site  .study-step-card:nth-child(n+4) .study-step-num {
   background: linear-gradient(
     135deg,
-    rgba(255,255,255,0.3) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
+    var(--site-gold, #c99a35) 0%,
+    #e0b44c 100%
+  ) !important;
+  color: #0F172A !important;
+  box-shadow:
+    0 0 0 5px rgba(201, 154, 53, 0.15),
+    0 8px 20px rgba(201, 154, 53, 0.30) !important;
 }
 
-/* Hover: lift + intensify */
 .suvira-study .study-step-card:hover .study-step-num,
 .suvira-site  .study-step-card:hover .study-step-num {
-  transform: translateY(-6px) scale(1.1);
-  box-shadow:
-    0 0 0 9px color-mix(in oklab, var(--site-gold, #c9a227) 16%, transparent),
-    0 18px 36px -12px color-mix(in oklab, var(--site-action, #107a5f) 65%, transparent) !important;
+  transform: scale(1.08);
 }
 
-/* ── Row 2: gold bubble (steps 4-6) ─────────────────────── */
-.suvira-study .study-step-card:nth-child(4) .study-step-num,
-.suvira-study .study-step-card:nth-child(5) .study-step-num,
-.suvira-study .study-step-card:nth-child(6) .study-step-num,
-.suvira-site  .study-step-card:nth-child(4) .study-step-num,
-.suvira-site  .study-step-card:nth-child(5) .study-step-num,
-.suvira-site  .study-step-card:nth-child(6) .study-step-num {
-  background: linear-gradient(
-    135deg,
-    var(--site-gold, #c9a227) 0%,
-    color-mix(in oklab, var(--site-gold, #c9a227) 55%, var(--site-action, #107a5f)) 100%
-  ) !important;
-  color: var(--site-ink, #0f2a24) !important;
-  box-shadow:
-    0 0 0 6px color-mix(in oklab, var(--site-gold, #c9a227) 14%, transparent),
-    0 10px 28px -10px color-mix(in oklab, var(--site-gold, #c9a227) 60%, transparent) !important;
+/* ── Animated Connector Line & Traveling Dot ─────────────── */
+.suvira-study .study-step-connector,
+.suvira-site  .study-step-connector {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #CBD5E1 0,
+    #CBD5E1 6px,
+    transparent 6px,
+    transparent 12px
+  );
+  border-radius: 999px;
+  overflow: visible;
 }
 
-.suvira-study .study-step-card:nth-child(4):hover .study-step-num,
-.suvira-study .study-step-card:nth-child(5):hover .study-step-num,
-.suvira-study .study-step-card:nth-child(6):hover .study-step-num,
-.suvira-site  .study-step-card:nth-child(4):hover .study-step-num,
-.suvira-site  .study-step-card:nth-child(5):hover .study-step-num,
-.suvira-site  .study-step-card:nth-child(6):hover .study-step-num {
-  box-shadow:
-    0 0 0 9px color-mix(in oklab, var(--site-gold, #c9a227) 20%, transparent),
-    0 18px 36px -12px color-mix(in oklab, var(--site-gold, #c9a227) 70%, transparent) !important;
+.suvira-study .study-step-line-dot,
+.suvira-site  .study-step-line-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--site-gold, #c99a35);
+  box-shadow: 0 0 10px var(--site-gold, #c99a35);
+  transform: translate(-50%, -50%);
+  animation: stepDotTravel 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-/* ── Step text ───────────────────────────────────────────── */
+.suvira-study .study-step-card:nth-child(2) .study-step-line-dot,
+.suvira-site  .study-step-card:nth-child(2) .study-step-line-dot { animation-delay: 0.4s; }
+.suvira-study .study-step-card:nth-child(3) .study-step-line-dot,
+.suvira-site  .study-step-card:nth-child(3) .study-step-line-dot { animation-delay: 0.8s; }
+.suvira-study .study-step-card:nth-child(4) .study-step-line-dot,
+.suvira-site  .study-step-card:nth-child(4) .study-step-line-dot { animation-delay: 1.2s; }
+.suvira-study .study-step-card:nth-child(5) .study-step-line-dot,
+.suvira-site  .study-step-card:nth-child(5) .study-step-line-dot { animation-delay: 1.6s; }
+.suvira-study .study-step-card:nth-child(6) .study-step-line-dot,
+.suvira-site  .study-step-card:nth-child(6) .study-step-line-dot { animation-delay: 2.0s; }
+
+@keyframes stepDotTravel {
+  0%   { left: 4%;  opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  85%  { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { left: 96%; opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+}
+
+/* ── Step Graphic Icon Box ───────────────────────────────── */
+@keyframes stepIconFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.suvira-study .study-step-icon-box,
+.suvira-site  .study-step-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(4, 80, 48, 0.08), rgba(201, 154, 53, 0.14));
+  border: 1px solid rgba(4, 80, 48, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--site-action, #045030);
+  font-size: 19px;
+  flex-shrink: 0;
+  animation: stepIconFloat 3.6s ease-in-out infinite;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.suvira-study .study-step-card:nth-child(n+4) .study-step-icon-box,
+.suvira-site  .study-step-card:nth-child(n+4) .study-step-icon-box {
+  background: linear-gradient(135deg, rgba(201, 154, 53, 0.16), rgba(4, 80, 48, 0.08));
+  border-color: rgba(201, 154, 53, 0.35);
+  color: #9a6f18;
+}
+
+.suvira-study .study-step-card:hover .study-step-icon-box,
+.suvira-site  .study-step-card:hover .study-step-icon-box {
+  background: var(--site-action, #045030);
+  color: #ffffff;
+  border-color: var(--site-action, #045030);
+}
+
+/* ── Step Phase Tag Pill ─────────────────────────────────── */
+.suvira-study .study-step-tag,
+.suvira-site  .study-step-tag {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--site-action, #045030);
+  background: rgba(4, 80, 48, 0.08);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.suvira-study .study-step-card:nth-child(n+4) .study-step-tag,
+.suvira-site  .study-step-card:nth-child(n+4) .study-step-tag {
+  color: #926712;
+  background: rgba(201, 154, 53, 0.15);
+}
+
+/* ── Step Title & Description ────────────────────────────── */
 .suvira-study .study-step-card h4,
 .suvira-site  .study-step-card h4 {
   position: relative;
-  z-index: 1;
-  font-family: 'DM Serif Display', Georgia, serif !important;
-  font-size: 17px !important;
-  font-weight: 400 !important;
-  color: var(--site-ink, #0f2a24) !important;
-  margin: 0 0 10px !important;
-  line-height: 1.35;
-  transition: color 220ms ease;
+  z-index: 2;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.35 !important;
+  text-align: left !important;
+  width: 100%;
+  transition: color 0.25s ease;
 }
 
 .suvira-study .study-step-card:hover h4,
 .suvira-site  .study-step-card:hover h4 {
-  color: var(--site-action, #107a5f) !important;
-}
-
-.suvira-study .study-step-card:nth-child(4):hover h4,
-.suvira-study .study-step-card:nth-child(5):hover h4,
-.suvira-study .study-step-card:nth-child(6):hover h4,
-.suvira-site  .study-step-card:nth-child(4):hover h4,
-.suvira-site  .study-step-card:nth-child(5):hover h4,
-.suvira-site  .study-step-card:nth-child(6):hover h4 {
-  color: color-mix(in oklab, var(--site-gold, #c9a227) 60%, var(--site-ink, #0f2a24)) !important;
+  color: var(--site-action, #045030) !important;
 }
 
 .suvira-study .study-step-card p,
 .suvira-site  .study-step-card p {
   position: relative;
-  z-index: 1;
-  font-size: 13px !important;
-  color: var(--site-muted, #5b6b63) !important;
-  line-height: 1.75 !important;
-  margin: 0 auto !important;
-  max-width: 210px;
+  z-index: 2;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 14px !important;
+  color: #475569 !important;
+  line-height: 1.65 !important;
+  margin: 0 0 18px 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  text-align: left !important;
+  flex: 1;
+}
+
+/* ── Bottom Animated Progress Bar ────────────────────────── */
+.suvira-study .study-step-progress,
+.suvira-site  .study-step-progress {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 5px;
+  background: #F1F5F9;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: auto;
+}
+
+.suvira-study .study-step-progress > span,
+.suvira-site  .study-step-progress > span {
+  display: block;
+  height: 100%;
+  width: var(--prog, 50%);
+  background: linear-gradient(90deg, var(--site-action, #045030), var(--site-gold, #c99a35));
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+}
+
+.suvira-study .study-step-progress > span::after,
+.suvira-site  .study-step-progress > span::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: translateX(-100%);
+  animation: stepProgShimmer 2.8s ease-in-out infinite;
+}
+
+@keyframes stepProgShimmer {
+  0%   { transform: translateX(-100%); }
+  65%, 100% { transform: translateX(100%); }
 }
 
 /* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 860px) {
+@media (max-width: 992px) {
   .suvira-study .study-pipeline,
   .suvira-site  .study-pipeline {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 32px 0 !important;
-  }
-
-  .suvira-study .study-pipeline::before,
-  .suvira-study .study-pipeline::after,
-  .suvira-site  .study-pipeline::before,
-  .suvira-site  .study-pipeline::after {
-    display: none;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 600px) {
   .suvira-study .study-pipeline,
   .suvira-site  .study-pipeline {
     grid-template-columns: 1fr !important;
-    gap: 10px !important;
-    margin-top: 36px !important;
+    gap: 16px !important;
+    margin-top: 32px !important;
   }
 
-  /* Mobile: horizontal card layout */
   .suvira-study .study-pipeline .study-step-card,
   .suvira-site  .study-pipeline .study-step-card {
-    flex-direction: row !important;
-    align-items: center !important;
-    text-align: left !important;
-    gap: 18px;
-    background: var(--site-surface, #fff) !important;
-    border: 1px solid var(--site-line, #e5e7eb) !important;
-    border-left: 3px solid var(--site-action, #107a5f) !important;
-    border-radius: 10px !important;
-    padding: 18px 18px !important;
+    padding: 22px 20px 20px !important;
   }
-
-  .suvira-study .study-pipeline .study-step-card:nth-child(4),
-  .suvira-study .study-pipeline .study-step-card:nth-child(5),
-  .suvira-study .study-pipeline .study-step-card:nth-child(6),
-  .suvira-site  .study-pipeline .study-step-card:nth-child(4),
-  .suvira-site  .study-pipeline .study-step-card:nth-child(5),
-  .suvira-site  .study-pipeline .study-step-card:nth-child(6) {
-    border-left-color: var(--site-gold, #c9a227) !important;
-  }
-
-  .suvira-study .study-step-num,
-  .suvira-site  .study-step-num {
-    flex-shrink: 0;
-    margin-bottom: 0 !important;
-    width: 44px !important;
-    height: 44px !important;
-    font-size: 15px !important;
-  }
-
-  .suvira-study .study-step-card::before,
-  .suvira-site  .study-step-card::before { display: none; }
-
-  .suvira-study .study-step-card p,
-  .suvira-site  .study-step-card p { max-width: none; margin: 0 !important; }
 }
 
 /* ── Reduced-motion ──────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .suvira-study .study-step-card,
-  .suvira-site  .study-step-card {
-    opacity: 1 !important;
-    transform: none !important;
+  .suvira-site  .study-step-card,
+  .suvira-study .study-step-num::before,
+  .suvira-site  .study-step-num::before,
+  .suvira-study .study-step-line-dot,
+  .suvira-site  .study-step-line-dot,
+  .suvira-study .study-step-icon-box,
+  .suvira-site  .study-step-icon-box,
+  .suvira-study .study-step-progress > span::after,
+  .suvira-site  .study-step-progress > span::after {
+    animation: none !important;
     transition: none !important;
   }
-  .suvira-study .study-step-num::before,
-  .suvira-site  .study-step-num::before { animation: none; }
-  .suvira-study .study-pipeline::before,
-  .suvira-study .study-pipeline::after,
-  .suvira-site  .study-pipeline::before,
-  .suvira-site  .study-pipeline::after { animation: none; }
-  .suvira-study .study-step-card::before,
-  .suvira-site  .study-step-card::before { opacity: 1; }
 }

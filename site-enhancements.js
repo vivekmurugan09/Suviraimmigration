@@ -624,6 +624,28 @@
       });
     }
 
+    var metricFills = [92, 99, 100, 85];
+    root.querySelectorAll(".study-metric-card").forEach(function (card, index) {
+      var delay = index * 110;
+      card.style.setProperty("--metric-delay", delay + "ms");
+      card.style.setProperty("--metric-bar-delay", (delay + 320) + "ms");
+      card.style.setProperty("--metric-fill", metricFills[index % metricFills.length] + "%");
+      card.classList.add("metric-visible");
+      if (!card.querySelector(".metric-bar")) {
+        var bar = document.createElement("span");
+        bar.className = "metric-bar";
+        bar.setAttribute("aria-hidden", "true");
+        card.appendChild(bar);
+      }
+    });
+
+    root.querySelectorAll(".study-step-card").forEach(function (card, index) {
+      var delay = index * 120;
+      card.style.setProperty("--step-delay", delay + "ms");
+      card.style.setProperty("--step-pulse-delay", (delay + 400) + "ms");
+      card.classList.add("step-visible");
+    });
+
     window.setTimeout(function () { fixLowContrastText(root); }, 300);
   }
 
