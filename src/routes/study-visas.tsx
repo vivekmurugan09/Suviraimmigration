@@ -1,10 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { StaticPage, pageHead } from "@/components/static-page";
-import page from "@/content/pages/services__study-visas";
-
-const StaticPageView = () => <StaticPage page={page} />;
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/study-visas")({
-  head: () => pageHead(page),
-  component: StaticPageView,
+  component: Outlet,
 });

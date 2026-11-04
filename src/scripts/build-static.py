@@ -814,21 +814,32 @@ def render_static_html(page):
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace(
+            '<a href="/study-visas" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Study Visa</a>',
+            '<a href="/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
+            '<a href="/study-visas/canada"><i class="fas fa-university"></i> Study in Canada</a>'
+            '<a href="/study-visas/uk"><i class="fas fa-book-reader"></i> Study in UK</a>'
+            '<a href="/study-visas/australia"><i class="fas fa-graduation-cap"></i> Study in Australia</a>'
+            '<a href="/study-visas/usa"><i class="fas fa-flag-usa"></i> Study in USA</a>'
+            '<a href="/study-visas/germany"><i class="fas fa-landmark"></i> Study in Germany</a>'
+            '<a href="/study-visas/ireland"><i class="fas fa-clover"></i> Study in Ireland</a>'
+            '<a href="/study-visas/newzealand"><i class="fas fa-mountain"></i> Study in New Zealand</a>'
+        )
+        .replace(
             '<a href="/services/study-visas" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Study Visa</a>',
-            '<a href="/services/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
-            '<a href="/services/study-visas/canada"><i class="fas fa-university"></i> Study in Canada</a>'
-            '<a href="/services/study-visas/uk"><i class="fas fa-book-reader"></i> Study in UK</a>'
-            '<a href="/services/study-visas/australia"><i class="fas fa-graduation-cap"></i> Study in Australia</a>'
-            '<a href="/services/study-visas/usa"><i class="fas fa-flag-usa"></i> Study in USA</a>'
-            '<a href="/services/study-visas/germany"><i class="fas fa-landmark"></i> Study in Germany</a>'
-            '<a href="/services/study-visas/ireland"><i class="fas fa-clover"></i> Study in Ireland</a>'
-            '<a href="/services/study-visas/newzealand"><i class="fas fa-mountain"></i> Study in New Zealand</a>'
+            '<a href="/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
+            '<a href="/study-visas/canada"><i class="fas fa-university"></i> Study in Canada</a>'
+            '<a href="/study-visas/uk"><i class="fas fa-book-reader"></i> Study in UK</a>'
+            '<a href="/study-visas/australia"><i class="fas fa-graduation-cap"></i> Study in Australia</a>'
+            '<a href="/study-visas/usa"><i class="fas fa-flag-usa"></i> Study in USA</a>'
+            '<a href="/study-visas/germany"><i class="fas fa-landmark"></i> Study in Germany</a>'
+            '<a href="/study-visas/ireland"><i class="fas fa-clover"></i> Study in Ireland</a>'
+            '<a href="/study-visas/newzealand"><i class="fas fa-mountain"></i> Study in New Zealand</a>'
         )
     )
 
     is_confirmation = route_path in ("/Thank-you", "/thankyou")
     is_home = route_path == "/"
-    is_study = route_path.startswith("/services/study-visas")
+    is_study = route_path.startswith("/services/study-visas") or route_path.startswith("/study-visas")
     classes = ["suvira-site"]
     if is_home:
         classes.append("suvira-editorial")
@@ -882,21 +893,20 @@ for ts_path in ts_files:
         targets.append(os.path.join(DIST, "thank-you", "index.html"))
     elif route_path == "/free-eligibility-check":
         targets.append(os.path.join(DIST, "free-eligibility-check", "index.html"))
-    elif route_path == "/services/study-visas":
-        targets.append(os.path.join(DIST, "services", "study-visas", "index.html"))
-        targets.append(os.path.join(DIST, "study-visas", "index.html"))
-    elif route_path == "/services/canada-pr":
-        targets.append(os.path.join(DIST, "services", "canada-pr", "index.html"))
-        targets.append(os.path.join(DIST, "canada-pr", "index.html"))
-        targets.append(os.path.join(DIST, "immigration-pr", "canada-pr", "index.html"))
-        targets.append(os.path.join(DIST, "Immigration & PR", "canada-pr", "index.html"))
-        targets.append(os.path.join(DIST, "Immigration%20&%20PR", "canada-pr", "index.html"))
-    elif route_path == "/services/pr-visas":
-        targets.append(os.path.join(DIST, "services", "pr-visas", "index.html"))
-        targets.append(os.path.join(DIST, "pr-visas", "index.html"))
-        targets.append(os.path.join(DIST, "immigration-pr", "index.html"))
-        targets.append(os.path.join(DIST, "Immigration & PR", "index.html"))
-        targets.append(os.path.join(DIST, "Immigration%20&%20PR", "index.html"))
+    elif route_path.startswith("/services/"):
+        # Legacy route: dist/services/...
+        targets.append(os.path.join(DIST, route_path.lstrip("/"), "index.html"))
+        # Clean header-based route: dist/...
+        clean_rel = route_path[len("/services/"):].lstrip("/")
+        targets.append(os.path.join(DIST, clean_rel, "index.html"))
+        if clean_rel == "canada-pr":
+            targets.append(os.path.join(DIST, "immigration-pr", "canada-pr", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration & PR", "canada-pr", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration%20&%20PR", "canada-pr", "index.html"))
+        elif clean_rel == "pr-visas":
+            targets.append(os.path.join(DIST, "immigration-pr", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration & PR", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration%20&%20PR", "index.html"))
     elif route_path.startswith("/countries/") and route_path != "/countries":
         slug = route_path[len("/countries/"):]
         targets.append(os.path.join(DIST, "countries", f"{slug}.html"))
@@ -1113,18 +1123,37 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /Thank-you /Thank-you/index.html 200
 /ai-preparation /ai-preparation/index.html 200
 /free-eligibility-check /free-eligibility-check/index.html 200
-/study-visas /services/study-visas/index.html 200
-/study-visas/ /services/study-visas/index.html 200
-/canada-pr /services/canada-pr/index.html 200
-/canada-pr/ /services/canada-pr/index.html 200
-/immigration-pr/canada-pr /services/canada-pr/index.html 200
-/immigration-pr/canada-pr/ /services/canada-pr/index.html 200
-/pr-visas /services/pr-visas/index.html 200
-/pr-visas/ /services/pr-visas/index.html 200
-/Immigration%20&%20PR/canada-pr /services/canada-pr 301
-/Immigration%20&%20PR/canada-pr/ /services/canada-pr 301
-"/Immigration & PR/canada-pr" /services/canada-pr 301
-"/Immigration & PR/canada-pr/" /services/canada-pr 301
+/services/study-visas /study-visas/ 301
+/services/study-visas/ /study-visas/ 301
+/services/study-visas/* /study-visas/:splat 301
+/services/spousal-sponsorship /spousal-sponsorship/ 301
+/services/spousal-sponsorship/ /spousal-sponsorship/ 301
+/services/spousal-sponsorship/* /spousal-sponsorship/:splat 301
+/services/visitor-visa /visitor-visa/ 301
+/services/visitor-visa/ /visitor-visa/ 301
+/services/visitor-visa/* /visitor-visa/:splat 301
+/services/pr-visas /pr-visas/ 301
+/services/pr-visas/ /pr-visas/ 301
+/services/canada-pr /canada-pr/ 301
+/services/canada-pr/ /canada-pr/ 301
+/services/australia-pr /australia-pr/ 301
+/services/australia-pr/ /australia-pr/ 301
+/services/uk-pr /uk-pr/ 301
+/services/uk-pr/ /uk-pr/ 301
+/services/germany-pr /germany-pr/ 301
+/services/germany-pr/ /germany-pr/ 301
+/services/germany-chancenkarte /germany-chancenkarte/ 301
+/services/germany-chancenkarte/ /germany-chancenkarte/ 301
+/services/sop-writing /sop-writing/ 301
+/services/sop-writing/ /sop-writing/ 301
+/Immigration%20&%20PR/canada-pr /canada-pr/ 301
+/Immigration%20&%20PR/canada-pr/ /canada-pr/ 301
+"/Immigration & PR/canada-pr" /canada-pr/ 301
+"/Immigration & PR/canada-pr/" /canada-pr/ 301
+/immigration-pr/canada-pr /canada-pr/ 301
+/immigration-pr/canada-pr/ /canada-pr/ 301
+/immigration-pr /pr-visas/ 301
+/immigration-pr/ /pr-visas/ 301
 """)
 
 with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:

@@ -8,3 +8,4 @@ export const Route = createFileRoute("/canada-pr")({
   head: () => pageHead(page),
   component: StaticPageView,
 });
+

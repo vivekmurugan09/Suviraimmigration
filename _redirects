@@ -3,15 +3,34 @@
 /Thank-you /Thank-you/index.html 200
 /ai-preparation /ai-preparation/index.html 200
 /free-eligibility-check /free-eligibility-check/index.html 200
-/study-visas /services/study-visas/index.html 200
-/study-visas/ /services/study-visas/index.html 200
-/canada-pr /services/canada-pr/index.html 200
-/canada-pr/ /services/canada-pr/index.html 200
-/immigration-pr/canada-pr /services/canada-pr/index.html 200
-/immigration-pr/canada-pr/ /services/canada-pr/index.html 200
-/pr-visas /services/pr-visas/index.html 200
-/pr-visas/ /services/pr-visas/index.html 200
-/Immigration%20&%20PR/canada-pr /services/canada-pr 301
-/Immigration%20&%20PR/canada-pr/ /services/canada-pr 301
-"/Immigration & PR/canada-pr" /services/canada-pr 301
-"/Immigration & PR/canada-pr/" /services/canada-pr 301
+/services/study-visas /study-visas/ 301
+/services/study-visas/ /study-visas/ 301
+/services/study-visas/* /study-visas/:splat 301
+/services/spousal-sponsorship /spousal-sponsorship/ 301
+/services/spousal-sponsorship/ /spousal-sponsorship/ 301
+/services/spousal-sponsorship/* /spousal-sponsorship/:splat 301
+/services/visitor-visa /visitor-visa/ 301
+/services/visitor-visa/ /visitor-visa/ 301
+/services/visitor-visa/* /visitor-visa/:splat 301
+/services/pr-visas /pr-visas/ 301
+/services/pr-visas/ /pr-visas/ 301
+/services/canada-pr /canada-pr/ 301
+/services/canada-pr/ /canada-pr/ 301
+/services/australia-pr /australia-pr/ 301
+/services/australia-pr/ /australia-pr/ 301
+/services/uk-pr /uk-pr/ 301
+/services/uk-pr/ /uk-pr/ 301
+/services/germany-pr /germany-pr/ 301
+/services/germany-pr/ /germany-pr/ 301
+/services/germany-chancenkarte /germany-chancenkarte/ 301
+/services/germany-chancenkarte/ /germany-chancenkarte/ 301
+/services/sop-writing /sop-writing/ 301
+/services/sop-writing/ /sop-writing/ 301
+/Immigration%20&%20PR/canada-pr /canada-pr/ 301
+/Immigration%20&%20PR/canada-pr/ /canada-pr/ 301
+"/Immigration & PR/canada-pr" /canada-pr/ 301
+"/Immigration & PR/canada-pr/" /canada-pr/ 301
+/immigration-pr/canada-pr /canada-pr/ 301
+/immigration-pr/canada-pr/ /canada-pr/ 301
+/immigration-pr /pr-visas/ 301
+/immigration-pr/ /pr-visas/ 301
