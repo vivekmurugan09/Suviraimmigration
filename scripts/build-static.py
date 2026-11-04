@@ -882,6 +882,21 @@ for ts_path in ts_files:
         targets.append(os.path.join(DIST, "thank-you", "index.html"))
     elif route_path == "/free-eligibility-check":
         targets.append(os.path.join(DIST, "free-eligibility-check", "index.html"))
+    elif route_path == "/services/study-visas":
+        targets.append(os.path.join(DIST, "services", "study-visas", "index.html"))
+        targets.append(os.path.join(DIST, "study-visas", "index.html"))
+    elif route_path == "/services/canada-pr":
+        targets.append(os.path.join(DIST, "services", "canada-pr", "index.html"))
+        targets.append(os.path.join(DIST, "canada-pr", "index.html"))
+        targets.append(os.path.join(DIST, "immigration-pr", "canada-pr", "index.html"))
+        targets.append(os.path.join(DIST, "Immigration & PR", "canada-pr", "index.html"))
+        targets.append(os.path.join(DIST, "Immigration%20&%20PR", "canada-pr", "index.html"))
+    elif route_path == "/services/pr-visas":
+        targets.append(os.path.join(DIST, "services", "pr-visas", "index.html"))
+        targets.append(os.path.join(DIST, "pr-visas", "index.html"))
+        targets.append(os.path.join(DIST, "immigration-pr", "index.html"))
+        targets.append(os.path.join(DIST, "Immigration & PR", "index.html"))
+        targets.append(os.path.join(DIST, "Immigration%20&%20PR", "index.html"))
     elif route_path.startswith("/countries/") and route_path != "/countries":
         slug = route_path[len("/countries/"):]
         targets.append(os.path.join(DIST, "countries", f"{slug}.html"))
@@ -1098,6 +1113,18 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /Thank-you /Thank-you/index.html 200
 /ai-preparation /ai-preparation/index.html 200
 /free-eligibility-check /free-eligibility-check/index.html 200
+/study-visas /services/study-visas/index.html 200
+/study-visas/ /services/study-visas/index.html 200
+/canada-pr /services/canada-pr/index.html 200
+/canada-pr/ /services/canada-pr/index.html 200
+/immigration-pr/canada-pr /services/canada-pr/index.html 200
+/immigration-pr/canada-pr/ /services/canada-pr/index.html 200
+/pr-visas /services/pr-visas/index.html 200
+/pr-visas/ /services/pr-visas/index.html 200
+/Immigration%20&%20PR/canada-pr /services/canada-pr 301
+/Immigration%20&%20PR/canada-pr/ /services/canada-pr 301
+"/Immigration & PR/canada-pr" /services/canada-pr 301
+"/Immigration & PR/canada-pr/" /services/canada-pr 301
 """)
 
 with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:
