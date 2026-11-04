@@ -1008,9 +1008,9 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v8"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v8"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v8"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v9"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v9"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v9"/>')
 
     head_parts.append(f'  <script type="application/ld+json">{ORG_PROFESSIONAL_JSONLD}</script>')
     has_faq_schema = False
