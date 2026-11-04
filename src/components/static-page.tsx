@@ -41,6 +41,14 @@ export function pageHead(page: StaticPageData) {
   const description = page.metas.find(meta => meta.name === 'description')?.content || 'Thank you for contacting Suvira Immigration. Your enquiry has been received by our team.';
   const path = page.routePath === '/' ? '/' : `${page.routePath}/`;
   const managed = new Set(['description', 'og:title', 'og:description', 'og:type', 'og:url', 'twitter:card', 'twitter:title', 'twitter:description']);
+  const standardFavicons = [
+    { rel: 'icon', href: '/favicon.ico', type: 'image/x-icon' },
+    { rel: 'icon', href: '/favicon.png', sizes: '32x32', type: 'image/png' },
+    { rel: 'icon', href: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    { rel: 'icon', href: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    { rel: 'icon', href: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', sizes: '180x180' },
+  ];
   return {
     meta: [
       { title: page.title },
@@ -55,6 +63,10 @@ export function pageHead(page: StaticPageData) {
       { name: 'twitter:description', content: description },
       ...(['/Thank-you', '/thankyou'].includes(page.routePath) ? [{ name: 'robots', content: 'noindex, follow' }] : []),
     ],
-    links: [...page.links.filter(link => link.rel !== 'canonical'), { rel: 'canonical', href: path }],
+    links: [
+      ...standardFavicons,
+      ...page.links.filter(link => link.rel !== 'canonical' && !link.rel.includes('icon')),
+      { rel: 'canonical', href: path },
+    ],
   };
 }

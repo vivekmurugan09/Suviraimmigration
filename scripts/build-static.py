@@ -783,6 +783,12 @@ def render_static_html(page):
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
         '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>',
         '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"/>',
+        '  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>',
+        '  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png"/>',
+        '  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png"/>',
+        '  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png"/>',
+        '  <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png"/>',
+        '  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>',
     ]
 
     for meta in page.get("metas", []):
@@ -795,6 +801,8 @@ def render_static_html(page):
             head_parts.append(f'  <meta {" ".join(attrs)}/>')
 
     for link in page.get("links", []):
+        if "icon" in link.get("rel", ""):
+            continue
         attrs = [f'{k}="{html.escape(str(v), quote=True)}"' for k, v in link.items()]
         if attrs:
             head_parts.append(f'  <link {" ".join(attrs)}/>')
