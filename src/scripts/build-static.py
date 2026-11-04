@@ -802,14 +802,162 @@ def load_ts_page(path):
     data["body"] = body
     return data
 
+def get_canonical_path(route_path):
+    if route_path == "/":
+        return "/"
+    if route_path == "/Thank-you":
+        return "/Thank-you/"
+    if route_path == "/free-eligibility-check":
+        return "/free-eligibility-check/"
+    if route_path.startswith("/services/"):
+        clean_rel = route_path[len("/services/"):].lstrip("/")
+        if clean_rel == "pr-visas":
+            return "/immigration-pr/"
+        if clean_rel in ("canada-pr", "australia-pr", "uk-pr", "germany-pr", "germany-chancenkarte"):
+            return f"/immigration-pr/{clean_rel}/"
+        if clean_rel == "study-visas" or clean_rel.startswith("study-visas/"):
+            return f"/{clean_rel}/"
+        if clean_rel == "spousal-sponsorship" or clean_rel.startswith("spousal-sponsorship/"):
+            return f"/{clean_rel}/"
+        if clean_rel == "visitor-visa" or clean_rel.startswith("visitor-visa/"):
+            return f"/{clean_rel}/"
+        if clean_rel == "sop-writing":
+            return "/sop-writing/"
+        return f"/services/{clean_rel}/"
+    return route_path.rstrip("/") + "/"
+
+def extract_faqs_from_html(body_html):
+    faqs = []
+    # Pattern 1: <details class="study-faq-item"> ... <summary>...</summary> ... <div class="study-faq-body">...</div>
+    for m in re.finditer(r'<summary[^>]*>(.*?)</summary>\s*<div[^>]*class="[^"]*study-faq-body[^"]*"[^>]*>(.*?)</div>', body_html, re.S | re.I):
+        q = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
+        q = re.sub(r"\s+", " ", q)
+        a = re.sub(r"<[^>]+>", " ", m.group(2)).strip()
+        a = re.sub(r"\s+", " ", a)
+        if q and a:
+            faqs.append((q, a))
+    # Pattern 2: <div class="faq-question"...>...</div> ... <div class="faq-answer"...>...</div>
+    if not faqs:
+        for m in re.finditer(r'<div[^>]*class="[^"]*faq-question[^"]*"[^>]*>(.*?)</div>\s*<div[^>]*class="[^"]*faq-answer[^"]*"[^>]*>(.*?)</div>', body_html, re.S | re.I):
+            q = re.sub(r"<[^>]+>", " ", m.group(1)).strip()
+            q = re.sub(r"\s+", " ", q)
+            a = re.sub(r"<[^>]+>", " ", m.group(2)).strip()
+            a = re.sub(r"\s+", " ", a)
+            if q and a:
+                faqs.append((q, a))
+    # Pattern 3: <h4>1. ...?</h4><p>...</p>
+    if not faqs:
+        for m in re.finditer(r'<h4[^>]*>([^<]*\?)</h4>\s*<p[^>]*>(.*?)</p>', body_html, re.S | re.I):
+            q = re.sub(r"^\d+\.\s*", "", re.sub(r"<[^>]+>", " ", m.group(1)).strip())
+            q = re.sub(r"\s+", " ", q)
+            a = re.sub(r"<[^>]+>", " ", m.group(2)).strip()
+            a = re.sub(r"\s+", " ", a)
+            if q and a:
+                faqs.append((q, a))
+    return faqs[:8]
+
+def build_breadcrumbs_schema(canon_path, title):
+    if canon_path == "/":
+        return None
+    items = [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.suviraimmigration.com/"}
+    ]
+    parts = [p for p in canon_path.strip("/").split("/") if p]
+    category_labels = {
+        "immigration-pr": ("Immigration & PR", "https://www.suviraimmigration.com/immigration-pr/"),
+        "study-visas": ("Study Visa", "https://www.suviraimmigration.com/study-visas/"),
+        "spousal-sponsorship": ("Spousal Sponsorship", "https://www.suviraimmigration.com/spousal-sponsorship/"),
+        "visitor-visa": ("Visitor Visa", "https://www.suviraimmigration.com/visitor-visa/"),
+        "blog": ("Immigration Blog", "https://www.suviraimmigration.com/blog/"),
+        "countries": ("Countries", "https://www.suviraimmigration.com/countries/"),
+        "services": ("Services", "https://www.suviraimmigration.com/services/"),
+    }
+    pos = 2
+    if len(parts) > 1 and parts[0] in category_labels:
+        cat_name, cat_url = category_labels[parts[0]]
+        items.append({"@type": "ListItem", "position": pos, "name": cat_name, "item": cat_url})
+        pos += 1
+    clean_title = title.split("|")[0].split("—")[0].strip()
+    items.append({"@type": "ListItem", "position": pos, "name": clean_title, "item": f"https://www.suviraimmigration.com{canon_path}"})
+    return json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": items
+    }, ensure_ascii=False)
+
+ORG_PROFESSIONAL_JSONLD = json.dumps({
+    "@context": "https://schema.org",
+    "@type": ["ProfessionalService", "LocalBusiness", "Organization"],
+    "name": "Suvira Immigration Consultants",
+    "url": "https://www.suviraimmigration.com/",
+    "logo": "https://www.suviraimmigration.com/images/suvira-logo.png",
+    "image": "https://www.suviraimmigration.com/images/suvira-logo.png",
+    "description": "Chennai's trusted immigration & study abroad consultancy in Ekkatuthangal. Expert filing for Canada Express Entry PR, Australia PR, Germany Opportunity Card, UK & Europe Study Visas, Spousal Sponsorship, and Visitor Visas.",
+    "telephone": "+91 99403 52086",
+    "contactPoint": [
+        {
+            "@type": "ContactPoint",
+            "telephone": "+91-99403-52086",
+            "contactType": "customer service",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Tamil", "Hindi", "Telugu"]
+        },
+        {
+            "@type": "ContactPoint",
+            "telephone": "+91-91504-64852",
+            "contactType": "sales",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Tamil"]
+        }
+    ],
+    "email": "reachus@suviraimmigration.com",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ground Floor, No: 28, Sai Supreme, near Puthiya Thalaimurai Office, Thiru Vi Ka Industrial Estate, SIDCO Industrial Estate, Ekkatuthangal",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "postalCode": "600032",
+        "addressCountry": "IN"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 13.0213,
+        "longitude": 80.2056
+    },
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            "opens": "09:30",
+            "closes": "18:30"
+        }
+    ],
+    "sameAs": [
+        "https://www.instagram.com/suviraimmigration/",
+        "https://www.linkedin.com/in/suvira-immigration-36b25a41a"
+    ],
+    "priceRange": "$$"
+}, ensure_ascii=False)
+
 def render_static_html(page):
     route_path = page["routePath"]
+    canon_path = get_canonical_path(route_path)
+    canon_url = f"https://www.suviraimmigration.com{canon_path}"
     title = page.get("title") or "Suvira Immigration"
+    desc = ""
+    for m in page.get("metas", []):
+        if m.get("name") == "description" and m.get("content"):
+            desc = m["content"]
+            break
+    if not desc:
+        desc = "Chennai's trusted PR, Study & Visa consultants in Ekkatuthangal. Expert guidance for Canada PR, Australia PR, Germany Opportunity Card, and Study Abroad."
+
     head_parts = [
         '  <meta charset="utf-8"/>',
         '  <meta name="viewport" content="width=device-width, initial-scale=1"/>',
         '  <meta name="referrer" content="origin"/>',
         f'  <title>{html.escape(title)}</title>',
+        f'  <link rel="canonical" href="{html.escape(canon_url, quote=True)}"/>',
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
         '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>',
         '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"/>',
@@ -821,17 +969,37 @@ def render_static_html(page):
         '  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>',
     ]
 
+    if route_path in ("/Thank-you", "/thankyou"):
+        head_parts.append('  <meta name="robots" content="noindex, follow"/>')
+
+    has_og_title = False
     for meta in page.get("metas", []):
         attrs = []
         for k, v in meta.items():
             if k in ("charSet", "charset") or (k == "name" and v.lower() in ("viewport", "referrer")):
                 continue
+            if k == "property" and v == "og:title":
+                has_og_title = True
             attrs.append(f'{k}="{html.escape(str(v), quote=True)}"')
         if attrs:
             head_parts.append(f'  <meta {" ".join(attrs)}/>')
 
+    if not has_og_title:
+        og_type = "article" if route_path.startswith("/blog/") and route_path != "/blog" else "website"
+        head_parts.extend([
+            f'  <meta property="og:type" content="{og_type}"/>',
+            '  <meta property="og:site_name" content="Suvira Immigration Consultants"/>',
+            f'  <meta property="og:title" content="{html.escape(title, quote=True)}"/>',
+            f'  <meta property="og:description" content="{html.escape(desc, quote=True)}"/>',
+            f'  <meta property="og:url" content="{html.escape(canon_url, quote=True)}"/>',
+            '  <meta property="og:image" content="https://www.suviraimmigration.com/images/suvira-logo.png"/>',
+            '  <meta name="twitter:card" content="summary_large_image"/>',
+            f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}"/>',
+            f'  <meta name="twitter:description" content="{html.escape(desc, quote=True)}"/>',
+        ])
+
     for link in page.get("links", []):
-        if "icon" in link.get("rel", ""):
+        if "icon" in link.get("rel", "") or link.get("rel") == "canonical":
             continue
         attrs = [f'{k}="{html.escape(str(v), quote=True)}"' for k, v in link.items()]
         if attrs:
@@ -844,8 +1012,60 @@ def render_static_html(page):
     head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v6"/>')
     head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v6"/>')
 
+    head_parts.append(f'  <script type="application/ld+json">{ORG_PROFESSIONAL_JSONLD}</script>')
+    has_faq_schema = False
     for jld in page.get("jsonLd", []):
+        if '"LocalBusiness"' in jld and '"FAQPage"' not in jld and '"Service"' not in jld and '"WebApplication"' not in jld:
+            continue
+        if '"FAQPage"' in jld:
+            has_faq_schema = True
         head_parts.append(f'  <script type="application/ld+json">{jld}</script>')
+
+    breadcrumb_jld = build_breadcrumbs_schema(canon_path, title)
+    if breadcrumb_jld:
+        head_parts.append(f'  <script type="application/ld+json">{breadcrumb_jld}</script>')
+
+    if not has_faq_schema:
+        extracted_faqs = extract_faqs_from_html(page["body"])
+        if extracted_faqs:
+            faq_jld = json.dumps({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": a}
+                    }
+                    for q, a in extracted_faqs
+                ]
+            }, ensure_ascii=False)
+            head_parts.append(f'  <script type="application/ld+json">{faq_jld}</script>')
+
+    if route_path.startswith("/blog/") and route_path != "/blog":
+        article_jld = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": title.split("|")[0].strip(),
+            "description": desc,
+            "author": {
+                "@type": "Organization",
+                "name": "Suvira Immigration Research Team",
+                "url": "https://www.suviraimmigration.com/about/"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Suvira Immigration Consultants",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://www.suviraimmigration.com/images/suvira-logo.png"
+                }
+            },
+            "datePublished": "2026-04-01",
+            "dateModified": "2026-11-04",
+            "mainEntityOfPage": canon_url
+        }, ensure_ascii=False)
+        head_parts.append(f'  <script type="application/ld+json">{article_jld}</script>')
 
     body_html = (
         page["body"]
@@ -975,9 +1195,9 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="referrer" content="origin"/>
-  <title>AI Consultation Preparation | Suvira Immigration</title>
-  <meta name="description" content="Prepare a personalized potential document checklist and consultation questions for your immigration journey. Informational only, not legal advice."/>
-  <link rel="canonical" href="/ai-preparation/"/>
+  <title>AI Consultation Preparation Tool | Suvira Immigration Chennai</title>
+  <meta name="description" content="Prepare a personalized immigration document checklist and consultation questions for Canada, Australia, Germany, UK & Europe with Suvira Immigration Chennai."/>
+  <link rel="canonical" href="https://www.suviraimmigration.com/ai-preparation/"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"/>
@@ -1182,18 +1402,18 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /services/visitor-visa /visitor-visa/ 301
 /services/visitor-visa/ /visitor-visa/ 301
 /services/visitor-visa/* /visitor-visa/:splat 301
-/services/pr-visas /pr-visas/ 301
-/services/pr-visas/ /pr-visas/ 301
-/services/canada-pr /canada-pr/ 301
-/services/canada-pr/ /canada-pr/ 301
-/services/australia-pr /australia-pr/ 301
-/services/australia-pr/ /australia-pr/ 301
-/services/uk-pr /uk-pr/ 301
-/services/uk-pr/ /uk-pr/ 301
-/services/germany-pr /germany-pr/ 301
-/services/germany-pr/ /germany-pr/ 301
-/services/germany-chancenkarte /germany-chancenkarte/ 301
-/services/germany-chancenkarte/ /germany-chancenkarte/ 301
+/services/pr-visas /immigration-pr/ 301
+/services/pr-visas/ /immigration-pr/ 301
+/services/canada-pr /immigration-pr/canada-pr/ 301
+/services/canada-pr/ /immigration-pr/canada-pr/ 301
+/services/australia-pr /immigration-pr/australia-pr/ 301
+/services/australia-pr/ /immigration-pr/australia-pr/ 301
+/services/uk-pr /immigration-pr/uk-pr/ 301
+/services/uk-pr/ /immigration-pr/uk-pr/ 301
+/services/germany-pr /immigration-pr/germany-pr/ 301
+/services/germany-pr/ /immigration-pr/germany-pr/ 301
+/services/germany-chancenkarte /immigration-pr/germany-chancenkarte/ 301
+/services/germany-chancenkarte/ /immigration-pr/germany-chancenkarte/ 301
 /services/sop-writing /sop-writing/ 301
 /services/sop-writing/ /sop-writing/ 301
 /Immigration%20&%20PR/canada-pr /immigration-pr/canada-pr/ 301
