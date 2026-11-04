@@ -1008,9 +1008,9 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261104-v7"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v7"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v7"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v8"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v8"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v8"/>')
 
     head_parts.append(f'  <script type="application/ld+json">{ORG_PROFESSIONAL_JSONLD}</script>')
     has_faq_schema = False
@@ -1069,7 +1069,7 @@ def render_static_html(page):
 
     body_html = (
         page["body"]
-        .replace('/study-premium.css"', '/study-premium.css?v=20261104-v7"')
+        .replace('/study-premium.css"', '/study-premium.css?v=20261105-v8"')
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
