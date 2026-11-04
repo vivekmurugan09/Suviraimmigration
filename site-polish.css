@@ -1295,16 +1295,75 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-study .study-card-body { display: flex; flex-direction: column; flex: 1; min-width: 0; }
 .suvira-site .visa-card-footer,
 .suvira-study .study-card-body .btn-study-apply { margin-top: auto; }
-.suvira-study .study-countries-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; align-items: stretch; }
-.suvira-study .study-country-card { display: flex; flex-direction: column; min-width: 0; border-radius: 8px; overflow: hidden; }
-.suvira-study .study-card-img-wrap { height: 220px; flex: 0 0 220px; }
-.suvira-study .study-card-img-wrap > img { width: 100%; height: 100%; object-fit: cover; }
-.suvira-study .study-card-body { padding: 24px; }
-.suvira-study .study-card-body .btn-study-apply { display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; background: var(--site-action); color: var(--site-surface); padding: 14px 16px; border-radius: 6px; }
-.suvira-study .study-hero-container { display: grid !important; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) !important; align-items: start !important; gap: 48px !important; }
-.suvira-study .study-hero-container > * { min-width: 0; width: 100%; }
-.suvira-study .study-hero-title { font-size: 48px !important; line-height: 1.15 !important; letter-spacing: 0 !important; overflow-wrap: anywhere; }
-.suvira-study .study-hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Unified destination grids across Study, Spousal & Visitor */
+.suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+  align-items: stretch !important;
+}
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card) {
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  background: #ffffff !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card):hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 40px rgba(0, 80, 48, 0.12) !important;
+}
+.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) {
+  height: 200px !important;
+  flex: 0 0 200px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.5s ease !important;
+}
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card):hover :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) > img {
+  transform: scale(1.08) !important;
+}
+.suvira-site :is(.study-card-body, .spousal-card-body, .visitor-card-body) {
+  padding: 26px 24px 22px !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) {
+  margin-top: auto !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 13px 20px !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 1024px) {
+  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+  }
+}
+@media (max-width: 680px) {
+  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
 .suvira-study .study-detail-hero { position: relative; isolation: isolate; min-height: 560px; padding: 150px 0 80px; background: var(--site-ink); }
 .suvira-study .study-detail-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
 .suvira-study .study-detail-hero::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--site-photo-scrim), var(--site-photo-scrim)); }
@@ -1404,17 +1463,72 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   .horizon-butterfly-4, .horizon-butterfly-5, .horizon-study-icon { animation: none; }
 }
 
-/* Spousal & visitor heroes: study-style country photo slides, light wash, flying logos */
-.suvira-site .family-premium-hero { position: relative !important; isolation: isolate; overflow: hidden; background: var(--site-soft) !important; }
-.suvira-site .family-premium-hero::before { content: '' !important; display: block !important; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--site-surface) 0%, color-mix(in oklab, var(--site-surface) 92%, transparent) 35%, color-mix(in oklab, var(--site-surface) 55%, transparent) 60%, transparent 100%) !important; opacity: 1 !important; }
-.suvira-site .family-premium-hero::after { display: none !important; }
-.suvira-site .family-premium-hero > .container { position: relative; z-index: 2; }
-.suvira-site .family-premium-hero :is(h1, h1 span, [class*="hero-title"], [class*="gradient"]) { color: var(--site-ink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
-.suvira-site .family-premium-hero h1 span { color: var(--site-action) !important; }
-.suvira-site .family-premium-hero :is([class*="hero-desc"], [class*="check-item"] span, [class*="hero-badge"] span) { color: var(--site-ink) !important; }
-.suvira-site .family-premium-hero [class*="hero-badge"] { background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important; border: 1px solid var(--site-gold) !important; }
-.suvira-site .family-premium-hero [class*="check-item"] i { color: var(--site-action) !important; }
-.suvira-site .family-premium-hero .talk-experts-card { box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--site-action) 60%, transparent); border-top: 3px solid var(--site-gold); }
+/* Spousal, study & visitor heroes: country photo slides, light wash, flying logos */
+.suvira-site :is(.family-premium-hero, .study-premium-hero) {
+  position: relative !important;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--site-soft) !important;
+  padding-top: 110px !important;
+  padding-bottom: 70px !important;
+  min-height: 560px;
+  display: flex !important;
+  align-items: center !important;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero)::before {
+  content: '' !important;
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--site-surface) 0%, color-mix(in oklab, var(--site-surface) 92%, transparent) 35%, color-mix(in oklab, var(--site-surface) 55%, transparent) 60%, transparent 100%) !important;
+  opacity: 1 !important;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero)::after { display: none !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) > .container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1320px !important;
+  margin-inline: auto !important;
+}
+.suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr) !important;
+  gap: 40px !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+.suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content) {
+  width: 100% !important;
+  max-width: 680px !important;
+}
+.suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
+  width: 100% !important;
+  max-width: 490px !important;
+  justify-self: end !important;
+}
+@media (max-width: 991px) {
+  .suvira-site :is(.family-premium-hero, .study-premium-hero) {
+    padding-top: 96px !important;
+    padding-bottom: 50px !important;
+    min-height: auto !important;
+  }
+  .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
+    justify-self: stretch !important;
+    max-width: 100% !important;
+  }
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero) :is(h1, h1 span, [class*="hero-title"], [class*="gradient"]) { color: var(--site-ink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) h1 span { color: var(--site-action) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) :is([class*="hero-desc"], [class*="check-item"] span, [class*="hero-badge"] span) { color: var(--site-ink) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="hero-badge"] { background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important; border: 1px solid var(--site-gold) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="check-item"] i { color: var(--site-action) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) .talk-experts-card { box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--site-action) 60%, transparent); border-top: 3px solid var(--site-gold); }
 .study-hero-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .study-hero-slides .study-premium-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .study-hero-slides .study-hero-slide { opacity: 0; animation: famHeroFade calc(var(--n) * 7s) infinite; animation-delay: calc(var(--i) * 7s); }
