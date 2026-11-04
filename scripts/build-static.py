@@ -259,77 +259,60 @@ site_enhancements_js = """(function () {
             field.setAttribute("minlength", "10");
             field.setAttribute("maxlength", "18");
             field.setAttribute("title", "Please enter a valid phone number with at least 10 digits (no alphabets)");
-
-            var getPhoneErrorContainer = function (inp) {
-              if (!inp || !inp.parentElement) return null;
-              var p = inp.parentElement;
-              if (p.classList.contains("talk-phone-row") || p.style.display === "flex") {
-                return p.parentElement || p;
-              }
-              return p;
-            };
-
-            var showPhoneErr = function (inp, msg) {
-              inp.setCustomValidity(msg);
-              inp.style.setProperty("border-color", "#ef4444", "important");
-              inp.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
-              var c = getPhoneErrorContainer(inp);
-              if (c) {
-                var err = c.querySelector(".suvira-phone-error-msg");
-                if (!err) {
-                  err = document.createElement("div");
-                  err.className = "suvira-phone-error-msg";
-                  err.style.cssText = "color:#ef4444;font-size:12px;margin-top:6px;font-weight:600;display:block;text-align:left;line-height:1.4;";
-                  c.appendChild(err);
-                }
-                err.textContent = msg;
-                err.style.display = "block";
-              }
-              if (typeof inp.reportValidity === "function") inp.reportValidity();
-            };
-
-            var clearPhoneErr = function (inp) {
-              inp.setCustomValidity("");
-              inp.style.removeProperty("border-color");
-              inp.style.removeProperty("box-shadow");
-              inp.style.borderColor = "";
-              inp.style.boxShadow = "";
-              var c = getPhoneErrorContainer(inp);
-              if (c) {
-                var err = c.querySelector(".suvira-phone-error-msg");
-                if (err) { err.textContent = ""; err.style.display = "none"; }
-              }
-            };
-
             field.addEventListener("keypress", function (e) {
               if (e.key && e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
                 e.preventDefault();
-                showPhoneErr(field, "Phone number cannot contain alphabets.");
+                var msg = "Phone number cannot contain alphabets.";
+                if (typeof window.suviraShowPhoneError === "function") {
+                  window.suviraShowPhoneError(field, msg);
+                } else {
+                  field.setCustomValidity(msg);
+                  field.reportValidity();
+                  field.style.setProperty("border-color", "#ef4444", "important");
+                  field.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+                }
               }
             });
-
             field.addEventListener("input", function () {
-              if (/[a-zA-Z]/.test(field.value)) {
-                field.value = field.value.replace(/[a-zA-Z]/g, "");
-                showPhoneErr(field, "Phone number cannot contain alphabets. Please enter a valid number.");
-                return;
-              }
-              var digits = field.value.replace(/\\D/g, "");
-              if (field.value.trim().length > 0 && digits.length < 10) {
-                showPhoneErr(field, "Please enter a valid phone number (minimum 10 digits required).");
-              } else if (digits.length >= 10 && digits.length <= 16) {
-                clearPhoneErr(field);
+              if (/[a-zA-Z]/.test(this.value)) {
+                this.value = this.value.replace(/[a-zA-Z]/g, "");
+                var msg = "Phone number cannot contain alphabets. Please enter a valid number.";
+                if (typeof window.suviraShowPhoneError === "function") {
+                  window.suviraShowPhoneError(this, msg);
+                } else {
+                  this.setCustomValidity(msg);
+                  this.reportValidity();
+                  this.style.setProperty("border-color", "#ef4444", "important");
+                  this.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+                }
+              } else if (this.value.replace(/\\D/g, "").length >= 10) {
+                if (typeof window.suviraClearPhoneError === "function") {
+                  window.suviraClearPhoneError(this);
+                } else {
+                  this.setCustomValidity("");
+                  this.style.removeProperty("border-color");
+                  this.style.removeProperty("box-shadow");
+                }
               }
             });
-
             field.addEventListener("blur", function () {
-              if (!field.value.trim()) {
-                clearPhoneErr(field);
+              if (!this.value.trim()) {
+                if (typeof window.suviraClearPhoneError === "function") {
+                  window.suviraClearPhoneError(this);
+                }
                 return;
               }
-              var digits = field.value.replace(/\\D/g, "");
+              var digits = this.value.replace(/\\D/g, "");
               if (digits.length < 10) {
-                showPhoneErr(field, "Please enter a valid phone number (minimum 10 digits required).");
+                var msg = "Please enter a valid phone number (minimum 10 digits required).";
+                if (typeof window.suviraShowPhoneError === "function") {
+                  window.suviraShowPhoneError(this, msg);
+                } else {
+                  this.setCustomValidity(msg);
+                  this.reportValidity();
+                  this.style.setProperty("border-color", "#ef4444", "important");
+                  this.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+                }
               }
             });
           }
@@ -339,7 +322,7 @@ site_enhancements_js = """(function () {
     });
 
     // Capture all form submissions before legacy handlers and send with explicit origin Referer.
-    document.addEventListener("submit", function (event) {
+    var submit = function (event) {
       var form = event.target;
       if (!(form instanceof HTMLFormElement) || !root.contains(form)) return;
       event.preventDefault();
@@ -348,30 +331,32 @@ site_enhancements_js = """(function () {
 
       var phone = form.querySelector('input[type="tel"], [name*="phone" i], [name*="whatsapp" i]');
       if (phone) {
-        var pVal = phone.value.trim();
-        var pDigits = pVal.replace(/\\D/g, "");
-        if (!pVal) {
-          showPhoneErr(phone, "Please enter your phone / WhatsApp number.");
+        var raw = (phone.value || "").trim();
+        var digits = raw.replace(/\\D/g, "");
+        if (!raw || /[a-zA-Z]/.test(raw) || digits.length < 10) {
+          var errorMsg = !raw
+            ? "Please enter your phone / WhatsApp number."
+            : /[a-zA-Z]/.test(raw)
+            ? "Phone number cannot contain alphabets. Please enter a valid number."
+            : "Please enter a valid phone number (minimum 10 digits required).";
+          if (typeof window.suviraShowPhoneError === "function") {
+            window.suviraShowPhoneError(phone, errorMsg);
+          } else {
+            phone.setCustomValidity(errorMsg);
+            phone.reportValidity();
+            phone.style.setProperty("border-color", "#ef4444", "important");
+            phone.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+          }
           phone.focus();
           return;
         }
-        if (/[a-zA-Z]/.test(pVal)) {
-          phone.value = pVal.replace(/[a-zA-Z]/g, "");
-          showPhoneErr(phone, "Phone number cannot contain alphabets. Please enter a valid number.");
-          phone.focus();
-          return;
+        if (typeof window.suviraClearPhoneError === "function") {
+          window.suviraClearPhoneError(phone);
+        } else {
+          phone.setCustomValidity("");
+          phone.style.removeProperty("border-color");
+          phone.style.removeProperty("box-shadow");
         }
-        if (pDigits.length < 10) {
-          showPhoneErr(phone, "Please enter a valid phone number (minimum 10 digits required).");
-          phone.focus();
-          return;
-        }
-        if (pDigits.length > 16) {
-          showPhoneErr(phone, "Phone number cannot exceed 16 digits.");
-          phone.focus();
-          return;
-        }
-        clearPhoneErr(phone);
       }
       if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
 

@@ -1338,7 +1338,6 @@ function handleModalSubmit(e) {
     
     const nameEl = form.elements['Full_Name'] || form.elements['Full Name'] || form.elements['name'] || form.querySelector('input[type="text"]');
     const ccEl = form.elements['country_code'];
-    const phoneEl = form.elements['Phone_/_WhatsApp'] || form.elements['Phone / WhatsApp'] || form.elements['phone'] || form.querySelector('input[type="tel"]');
     const emailEl = form.elements['Email_Address'] || form.elements['Email Address'] || form.elements['email'] || form.querySelector('input[type="email"]');
     const serviceEl = form.elements['Service_Required'] || form.elements['Service Required'] || form.elements['visa_type'] || form.elements['service'] || form.elements['stream'] || form.elements['destination'] || form.elements['pnp'] || form.querySelector('select:not(.talk-phone-prefix)');
     const modeEl = form.elements['Consultation_Mode'] || form.elements['consultation_mode'];
