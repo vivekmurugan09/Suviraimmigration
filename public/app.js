@@ -803,7 +803,7 @@ function toggleFaqAccordion(headerEl) {
             if (form) {
                 const formData = new FormData(form);
                 suviraSendLeadForm(formData, function() {
-                    alert("Thank you! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you within 24 hours.");
+                    alert("Thank you! Your details have been sent to reachus@suviraimmigration.com. Our senior Chennai team will contact you shortly.");
                     form.reset();
                 });
             }
