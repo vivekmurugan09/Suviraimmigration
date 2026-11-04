@@ -504,14 +504,22 @@
         }
       });
 
-      modal.querySelectorAll('button[aria-label="Close"], .close-modal, .lead-modal-close').forEach(function (btn) {
+      var closeButtons = modal.querySelectorAll('button[aria-label*="Close" i], .close-modal, .lead-modal-close, button[onclick*="none"], button[onclick*="closeLeadModal"]');
+      closeButtons.forEach(function (btn) {
+        btn.classList.add("lead-modal-close");
+        btn.setAttribute("aria-label", "Close modal");
+        btn.removeAttribute("onclick");
         btn.addEventListener("click", function (e) {
           e.preventDefault();
+          e.stopPropagation();
           hideModal();
         });
       });
 
       root.querySelectorAll('[onclick*="leadModal"]').forEach(function (button) {
+        if (button.closest("#leadModal") || (button.getAttribute("onclick") && button.getAttribute("onclick").indexOf("none") !== -1)) {
+          return;
+        }
         button.removeAttribute("onclick");
         button.addEventListener("click", function (e) {
           e.preventDefault();

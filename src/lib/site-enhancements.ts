@@ -399,14 +399,24 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       }
     }, { signal });
 
-    modal.querySelectorAll('button[aria-label="Close"], .close-modal, .lead-modal-close').forEach((btn) => {
+    const closeButtons = modal.querySelectorAll<HTMLElement>(
+      'button[aria-label*="Close" i], .close-modal, .lead-modal-close, button[onclick*="none"], button[onclick*="closeLeadModal"]'
+    );
+    closeButtons.forEach((btn) => {
+      btn.classList.add('lead-modal-close');
+      btn.setAttribute('aria-label', 'Close modal');
+      btn.removeAttribute('onclick');
       btn.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         hideModal();
       });
     });
 
     root.querySelectorAll<HTMLElement>('[onclick*="leadModal"]').forEach(button => {
+      if (button.closest('#leadModal') || button.getAttribute('onclick')?.includes('none')) {
+        return;
+      }
       button.removeAttribute('onclick');
       button.addEventListener('click', (e) => {
         e.preventDefault();

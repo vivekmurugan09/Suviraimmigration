@@ -243,7 +243,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 #leadModal .lead-modal-header,
 #leadModal > div > div:first-child:not(form) {
   background: #005030 !important;
-  padding: 22px 26px 18px !important;
+  padding: 22px 56px 18px 24px !important;
   display: block !important;
   text-align: left !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -281,36 +281,60 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   line-height: 1.4 !important;
 }
 
-/* Close button */
+/* Close button - prominently positioned at top-right */
 .suvira-site #leadModal .lead-modal-close,
 .suvira-site .lead-modal-card .lead-modal-close,
 .suvira-site .lead-modal-content .lead-modal-close,
 .suvira-site #leadModal button[aria-label="Close"],
+.suvira-site #leadModal button[aria-label="Close modal"],
+.suvira-site #leadModal button[onclick*="leadModal"][onclick*="none"],
+.suvira-site #leadModal button[onclick*="closeLeadModal"],
 #leadModal .lead-modal-close,
-#leadModal button[aria-label="Close"] {
+#leadModal button[aria-label="Close"],
+#leadModal button[aria-label="Close modal"],
+#leadModal button[onclick*="leadModal"][onclick*="none"],
+#leadModal button[onclick*="closeLeadModal"],
+#leadModal > div > div:first-child > button {
   position: absolute !important;
-  top: 18px !important;
-  right: 20px !important;
-  background: transparent !important;
-  border: none !important;
-  color: #94a3b8 !important;
-  font-size: 26px !important;
+  top: 14px !important;
+  right: 16px !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.28) !important;
+  border-radius: 50% !important;
+  color: #ffffff !important;
+  font-size: 22px !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  font-weight: 300 !important;
   line-height: 1 !important;
   cursor: pointer !important;
   padding: 0 !important;
   margin: 0 !important;
-  z-index: 10 !important;
-  transition: color 0.2s ease, transform 0.2s ease !important;
+  z-index: 30 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
 }
 
 .suvira-site #leadModal .lead-modal-close:hover,
 .suvira-site .lead-modal-card .lead-modal-close:hover,
 .suvira-site .lead-modal-content .lead-modal-close:hover,
 .suvira-site #leadModal button[aria-label="Close"]:hover,
+.suvira-site #leadModal button[aria-label="Close modal"]:hover,
+.suvira-site #leadModal button[onclick*="leadModal"][onclick*="none"]:hover,
+.suvira-site #leadModal button[onclick*="closeLeadModal"]:hover,
 #leadModal .lead-modal-close:hover,
-#leadModal button[aria-label="Close"]:hover {
+#leadModal button[aria-label="Close"]:hover,
+#leadModal button[aria-label="Close modal"]:hover,
+#leadModal button[onclick*="leadModal"][onclick*="none"]:hover,
+#leadModal button[onclick*="closeLeadModal"]:hover,
+#leadModal > div > div:first-child > button:hover {
+  background: rgba(255, 255, 255, 0.32) !important;
   color: #ffffff !important;
-  transform: scale(1.15) !important;
+  transform: scale(1.08) !important;
 }
 
 /* Form & Inputs */

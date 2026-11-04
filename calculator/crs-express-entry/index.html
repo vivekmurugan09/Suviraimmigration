@@ -558,7 +558,7 @@
 <h3 style="color:#fff;font-size:18px;font-weight:800;margin:4px 0 0 0;">Audit Your Category Draw Chances</h3>
 <p style="color:#94A3B8;font-size:12px;margin:2px 0 0 0;">Get recommendations to boost your CRS score</p>
 </div>
-<button onclick="document.getElementById('leadModal').style.display='none'" style="background:none;border:none;color:#94A3B8;font-size:24px;cursor:pointer;padding:0;line-height:1;">×</button>
+<button aria-label="Close modal" class="lead-modal-close" onclick="window.closeLeadModal?window.closeLeadModal():(document.getElementById('leadModal').style.display='none')" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;margin:0;z-index:30;transition:all 0.2s;">&times;</button>
 </div>
 <form onsubmit="handleModalSubmit(event)" style="padding:20px;">
 <input name="service" type="hidden" value="CRS Express Entry Calculator"/>

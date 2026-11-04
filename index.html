@@ -962,7 +962,7 @@
 <h3 style="color:#fff;font-size:22px;margin:0;font-weight:700;font-family:Georgia,'Times New Roman',serif;letter-spacing:-0.2px">Check Your Eligibility</h3>
 <p style="color:#94a3b8;font-size:12.5px;margin-top:4px;margin-bottom:0;line-height:1.4">We respond within 3 business hours</p>
 </div>
-<button aria-label="Close" onclick="window.closeLeadModal ? window.closeLeadModal() : document.getElementById('leadModal').style.display='none'" onmouseout="this.style.color='#94a3b8'" onmouseover="this.style.color='#fff'" style="background:none;border:none;color:#94a3b8;font-size:26px;cursor:pointer;padding:0;line-height:1;margin-top:-2px;transition:color 0.2s;">×</button>
+<button aria-label="Close modal" class="lead-modal-close" onclick="window.closeLeadModal?window.closeLeadModal():(document.getElementById('leadModal').style.display='none')" style="position:absolute;top:16px;right:18px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.28);color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;margin:0;z-index:30;transition:all 0.2s;">&times;</button>
 </div>
 <!-- Form Body -->
 <form action="https://api.web3forms.com/submit" id="leadModalForm" method="POST" onsubmit="handleModalSubmit(event)" style="padding:24px 26px 22px">
