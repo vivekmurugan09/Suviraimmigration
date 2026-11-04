@@ -934,7 +934,10 @@ ORG_PROFESSIONAL_JSONLD = json.dumps({
     ],
     "sameAs": [
         "https://www.instagram.com/suviraimmigration/",
-        "https://www.linkedin.com/in/suvira-immigration-36b25a41a"
+        "https://www.linkedin.com/company/suvira-immigration/",
+        "https://www.facebook.com/suviraimmigration/",
+        "https://www.youtube.com/@suviraimmigration",
+        "https://maps.google.com/?q=Suvira+Immigration,+Sai+Supreme,+28,+Thiru+Vi+Ka+Industrial+Estate,+Ekkatuthangal,+Chennai+600032"
     ],
     "priceRange": "$$"
 }, ensure_ascii=False)
@@ -1008,22 +1011,29 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v9"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v9"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v9"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v10"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v10"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v10"/>')
 
     head_parts.append(f'  <script type="application/ld+json">{ORG_PROFESSIONAL_JSONLD}</script>')
     has_faq_schema = False
+    has_breadcrumb_schema = False
+    has_article_schema = False
     for jld in page.get("jsonLd", []):
         if '"LocalBusiness"' in jld and '"FAQPage"' not in jld and '"Service"' not in jld and '"WebApplication"' not in jld:
             continue
         if '"FAQPage"' in jld:
             has_faq_schema = True
+        if '"BreadcrumbList"' in jld:
+            has_breadcrumb_schema = True
+        if '"Article"' in jld:
+            has_article_schema = True
         head_parts.append(f'  <script type="application/ld+json">{jld}</script>')
 
-    breadcrumb_jld = build_breadcrumbs_schema(canon_path, title)
-    if breadcrumb_jld:
-        head_parts.append(f'  <script type="application/ld+json">{breadcrumb_jld}</script>')
+    if not has_breadcrumb_schema:
+        breadcrumb_jld = build_breadcrumbs_schema(canon_path, title)
+        if breadcrumb_jld:
+            head_parts.append(f'  <script type="application/ld+json">{breadcrumb_jld}</script>')
 
     if not has_faq_schema:
         extracted_faqs = extract_faqs_from_html(page["body"])
@@ -1042,7 +1052,7 @@ def render_static_html(page):
             }, ensure_ascii=False)
             head_parts.append(f'  <script type="application/ld+json">{faq_jld}</script>')
 
-    if route_path.startswith("/blog/") and route_path != "/blog":
+    if route_path.startswith("/blog/") and route_path != "/blog" and not has_article_schema:
         article_jld = json.dumps({
             "@context": "https://schema.org",
             "@type": "Article",
@@ -1062,14 +1072,14 @@ def render_static_html(page):
                 }
             },
             "datePublished": "2026-04-01",
-            "dateModified": "2026-11-04",
+            "dateModified": "2026-11-05",
             "mainEntityOfPage": canon_url
         }, ensure_ascii=False)
         head_parts.append(f'  <script type="application/ld+json">{article_jld}</script>')
 
     body_html = (
         page["body"]
-        .replace('/study-premium.css"', '/study-premium.css?v=20261105-v8"')
+        .replace('/study-premium.css"', '/study-premium.css?v=20261105-v10"')
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
@@ -1382,8 +1392,9 @@ with open(os.path.join(DIST, "staticwebapp.config.json"), "w", encoding="utf-8")
     }, f, indent=2)
 
 # 8. Write Cloudflare Pages _redirects and _headers
-with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
-    f.write("""/services/study-visas/study-visas.css /services/study-visas/study-visas.css 200
+REDIRECTS_CONTENT = """https://suviraimmigrations.pages.dev/* https://www.suviraimmigration.com/:splat 301!
+https://suviraimmigration.pages.dev/* https://www.suviraimmigration.com/:splat 301!
+/services/study-visas/study-visas.css /services/study-visas/study-visas.css 200
 /services/spousal-sponsorship/spousal-sponsorship.css /services/spousal-sponsorship/spousal-sponsorship.css 200
 /services/visitor-visa/visitor-visa.css /services/visitor-visa/visitor-visa.css 200
 /services/canada-pr/canada-pr.css /services/canada-pr/canada-pr.css 200
@@ -1393,6 +1404,20 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /Thank-you /Thank-you/index.html 200
 /ai-preparation /ai-preparation/index.html 200
 /free-eligibility-check /free-eligibility-check/index.html 200
+/countries/newzealand /study-visas/newzealand/ 301
+/countries/newzealand/ /study-visas/newzealand/ 301
+/countries/ireland /study-visas/ireland/ 301
+/countries/ireland/ /study-visas/ireland/ 301
+/countries/usa /study-visas/usa/ 301
+/countries/usa/ /study-visas/usa/ 301
+/countries/uk /study-visas/uk/ 301
+/countries/uk/ /study-visas/uk/ 301
+/countries/australia /study-visas/australia/ 301
+/countries/australia/ /study-visas/australia/ 301
+/countries/canada /immigration-pr/canada-pr/ 301
+/countries/canada/ /immigration-pr/canada-pr/ 301
+/countries/germany /immigration-pr/germany-pr/ 301
+/countries/germany/ /immigration-pr/germany-pr/ 301
 /services/study-visas /study-visas/ 301
 /services/study-visas/ /study-visas/ 301
 /services/study-visas/* /study-visas/:splat 301
@@ -1428,13 +1453,20 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /immigration-pr/canada-pr/ /immigration-pr/canada-pr/index.html 200
 /immigration-pr /immigration-pr/index.html 200
 /immigration-pr/ /immigration-pr/index.html 200
-""")
+"""
+with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
+    f.write(REDIRECTS_CONTENT)
+with open(os.path.join(ROOT, "public", "_redirects"), "w", encoding="utf-8") as f:
+    f.write(REDIRECTS_CONTENT)
 
-with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:
-    f.write("""/*
+HEADERS_CONTENT = """/*
   Referrer-Policy: strict-origin-when-cross-origin
   X-Content-Type-Options: nosniff
-""")
+"""
+with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:
+    f.write(HEADERS_CONTENT)
+with open(os.path.join(ROOT, "public", "_headers"), "w", encoding="utf-8") as f:
+    f.write(HEADERS_CONTENT)
 
 # 9. Mirror static build into ROOT for Cloudflare Pages (deploying from root directory)
 ROOT_PRESERVE = {".git", ".github", "src", "public", "scripts", "node_modules", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts", "README.md", "AGENTS.md", "dist", "supabase", "Dockerfile", "nginx.conf", ".dockerignore", "buildpush"}

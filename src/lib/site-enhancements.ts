@@ -11,6 +11,14 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
   const { signal } = controller;
   const busy = new WeakSet<HTMLFormElement>();
 
+  // Protect against duplicate legacy pages.dev domains by forcing noindex + redirect to canonical domain
+  if (typeof window !== 'undefined' && /\.pages\.dev$/i.test(window.location.hostname)) {
+    const robots = document.querySelector('meta[name="robots"]') || document.head.appendChild(document.createElement('meta'));
+    robots.setAttribute('name', 'robots');
+    robots.setAttribute('content', 'noindex, nofollow');
+    window.location.replace(`https://www.suviraimmigration.com${window.location.pathname}${window.location.search}${window.location.hash}`);
+  }
+
   // Header menu links (desktop nav + mobile drawer) open in a new browser tab.
   document.addEventListener('click', event => {
     const link = (event.target as Element | null)?.closest?.('a[href]') as HTMLAnchorElement | null;
