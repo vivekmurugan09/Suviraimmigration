@@ -332,7 +332,7 @@
 </div>
 <div>
 <label style="display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; color: #64748B; margin-bottom: 6px;">Phone / WhatsApp *</label>
-<input class="form-input" id="cPhone" name="Phone_/_WhatsApp" placeholder="+91 99403 52086" required="" style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;" type="tel"/>
+<input class="form-input" id="cPhone" name="Phone_/_WhatsApp" inputmode="tel" pattern="[0-9+\s\-()]{10,20}" minlength="10" maxlength="18" title="Please enter a valid phone number with at least 10 digits (no alphabets)" onblur="if(typeof suviraValidatePhoneInput==='function')suviraValidatePhoneInput(this);" placeholder="+91 99403 52086" required="" style="width:100%;padding:11px 14px;border-radius:10px;border:1.5px solid #E2E8F0;background:#F8FAFC;font-size:0.9rem;outline:none;" type="tel"/>
 </div>
 </div>
 <div style="margin-bottom: 16px;">

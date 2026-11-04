@@ -966,6 +966,14 @@ function toggleFaqAccordion(headerEl) {
         function handleContactPageSubmit(e) {
             if (e && e.preventDefault) e.preventDefault();
             const form = document.getElementById('contactPageForm') || (e ? e.target : null);
+            if (!form) return false;
+            const phoneEl = form.querySelector('#cPhone') || form.querySelector('input[type="tel"]');
+            if (typeof suviraValidatePhoneInput === 'function' && !suviraValidatePhoneInput(phoneEl)) {
+                return false;
+            }
+            if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+                return false;
+            }
             if (typeof window.suviraSubmitLead === 'function' && form) {
                 return window.suviraSubmitLead(form, e);
             }
@@ -1069,6 +1077,150 @@ function toggleFaqAccordion(headerEl) {
 
 
 
+// Global Phone Error Helpers & Validation
+function suviraGetPhoneErrorContainer(input) {
+    if (!input || !input.parentElement) return null;
+    var p = input.parentElement;
+    if (p.classList.contains('talk-phone-row') || p.style.display === 'flex') {
+        return p.parentElement || p;
+    }
+    return p;
+}
+
+function suviraShowPhoneError(input, message) {
+    if (!input) return;
+    input.setCustomValidity(message);
+    input.style.setProperty('border-color', '#ef4444', 'important');
+    input.style.setProperty('box-shadow', '0 0 0 3px rgba(239, 68, 68, 0.25)', 'important');
+    
+    var container = suviraGetPhoneErrorContainer(input);
+    if (container) {
+        var errEl = container.querySelector('.suvira-phone-error-msg');
+        if (!errEl) {
+            errEl = document.createElement('div');
+            errEl.className = 'suvira-phone-error-msg';
+            errEl.style.cssText = 'color:#ef4444;font-size:12px;margin-top:6px;font-weight:600;display:block;text-align:left;line-height:1.4;';
+            container.appendChild(errEl);
+        }
+        errEl.textContent = message;
+        errEl.style.display = 'block';
+    }
+    if (typeof input.reportValidity === 'function') {
+        input.reportValidity();
+    }
+}
+
+function suviraClearPhoneError(input) {
+    if (!input) return;
+    input.setCustomValidity('');
+    input.style.removeProperty('border-color');
+    input.style.removeProperty('box-shadow');
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
+    
+    var container = suviraGetPhoneErrorContainer(input);
+    if (container) {
+        var errEl = container.querySelector('.suvira-phone-error-msg');
+        if (errEl) {
+            errEl.textContent = '';
+            errEl.style.display = 'none';
+        }
+    }
+}
+
+function suviraValidatePhoneInput(phoneEl) {
+    if (!phoneEl) return true;
+    var raw = (phoneEl.value || '').trim();
+    
+    // 1. Check if empty
+    if (!raw) {
+        suviraShowPhoneError(phoneEl, 'Please enter your phone / WhatsApp number.');
+        phoneEl.focus();
+        return false;
+    }
+    
+    // 2. Reject alphabets
+    if (/[a-zA-Z]/.test(raw)) {
+        phoneEl.value = raw.replace(/[a-zA-Z]/g, '');
+        suviraShowPhoneError(phoneEl, 'Phone number cannot contain alphabets. Please enter a valid number.');
+        phoneEl.focus();
+        return false;
+    }
+    
+    // 3. Count numeric digits (must be at least 10 digits)
+    var digits = raw.replace(/\D/g, '');
+    if (digits.length < 10) {
+        suviraShowPhoneError(phoneEl, 'Please enter a valid phone number (minimum 10 digits required).');
+        phoneEl.focus();
+        return false;
+    }
+    
+    // 4. Maximum digits limit (E.164 max 16 digits)
+    if (digits.length > 16) {
+        suviraShowPhoneError(phoneEl, 'Phone number cannot exceed 16 digits.');
+        phoneEl.focus();
+        return false;
+    }
+    
+    // Valid phone number
+    suviraClearPhoneError(phoneEl);
+    return true;
+}
+window.suviraValidatePhoneInput = suviraValidatePhoneInput;
+window.suviraShowPhoneError = suviraShowPhoneError;
+window.suviraClearPhoneError = suviraClearPhoneError;
+
+function suviraInitPhoneInput(input) {
+    if (!input || input.__suviraPhoneInit) return;
+    input.__suviraPhoneInit = true;
+    
+    input.setAttribute('inputmode', 'tel');
+    input.setAttribute('pattern', '[0-9+\\s\\-()]{10,20}');
+    input.setAttribute('minlength', '10');
+    input.setAttribute('maxlength', '18');
+    input.setAttribute('title', 'Please enter a valid phone number with at least 10 digits (no alphabets)');
+    
+    // Prevent typing alphabets directly
+    input.addEventListener('keypress', function(e) {
+        if (e.key && e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
+            e.preventDefault();
+            suviraShowPhoneError(input, 'Phone number cannot contain alphabets.');
+        }
+    });
+    
+    // Live strip alphabets if pasted or entered, and validate length live
+    input.addEventListener('input', function() {
+        if (/[a-zA-Z]/.test(this.value)) {
+            this.value = this.value.replace(/[a-zA-Z]/g, '');
+            suviraShowPhoneError(this, 'Phone number cannot contain alphabets. Please enter a valid number.');
+            return;
+        }
+        var digits = this.value.replace(/\D/g, '');
+        if (this.value.trim().length > 0 && digits.length < 10) {
+            suviraShowPhoneError(this, 'Please enter a valid phone number (minimum 10 digits required).');
+        } else if (digits.length >= 10 && digits.length <= 16) {
+            suviraClearPhoneError(this);
+        }
+    });
+    
+    input.addEventListener('blur', function() {
+        if (!this.value.trim()) {
+            suviraClearPhoneError(this);
+            return;
+        }
+        suviraValidatePhoneInput(this);
+    });
+}
+window.suviraInitPhoneInput = suviraInitPhoneInput;
+
+// Auto-initialize all phone inputs in document
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input[type="tel"], [name*="phone" i], [name*="whatsapp" i], #tePhone, #cPhone, #ePhone, #modalPhone').forEach(suviraInitPhoneInput);
+});
+if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    document.querySelectorAll('input[type="tel"], [name*="phone" i], [name*="whatsapp" i], #tePhone, #cPhone, #ePhone, #modalPhone').forEach(suviraInitPhoneInput);
+}
+
 // Global FormSubmit & Web3Forms helper with automatic fallback & Thank-You redirect in a separate tab
 function suviraThankYouUrl() {
     return window.location.origin + '/Thank-you/';
@@ -1083,6 +1235,12 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
 
     var nameVal = formData.get("Full_Name") || formData.get("Full Name") || "";
     var phoneVal = formData.get("Phone_/_WhatsApp") || formData.get("Phone / WhatsApp") || "";
+    var digitsOnly = String(phoneVal).replace(/\D/g, '');
+    if (/[a-zA-Z]/.test(phoneVal) || digitsOnly.length < 10) {
+        if (preOpenedTab && !preOpenedTab.closed) preOpenedTab.close();
+        alert("Please enter a valid phone number with at least 10 digits (no alphabets allowed).");
+        return false;
+    }
     var emailVal = formData.get("Email_Address") || formData.get("Email Address") || "";
     var serviceVal = formData.get("Service_Required") || formData.get("Service Required") || formData.get("Interested Visa / Pathway") || "Consultation Request";
     var modeVal = formData.get("Consultation_Mode") || formData.get("Consultation Mode") || "Virtual Video Consultation";
@@ -1159,10 +1317,20 @@ function suviraSendLeadForm(formData, onComplete, preOpenedTab) {
 // Global Modal & Hero Consultation Form Handler
 function handleModalSubmit(e) {
     sessionStorage.setItem('popupShown', 'true');
-    e.preventDefault();
-    const form = e.target;
-    
-    // Open separate tab synchronously within user gesture
+    if (e && e.preventDefault) e.preventDefault();
+    const form = (e && e.target) ? e.target : document.getElementById('leadModalForm');
+    if (!form) return false;
+
+    const phoneEl = form.elements['Phone_/_WhatsApp'] || form.elements['Phone / WhatsApp'] || form.elements['phone'] || form.querySelector('input[type="tel"]');
+    if (!suviraValidatePhoneInput(phoneEl)) {
+        return false;
+    }
+
+    if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+        return false;
+    }
+
+    // Open separate tab synchronously within user gesture ONLY after validation succeeds
     var thankYouTab = null;
     try {
         thankYouTab = window.open(suviraThankYouUrl(), '_blank');

@@ -693,7 +693,7 @@
 <option value="+44">🇬🇧 +44</option>
 <option value="+61">🇦🇺 +61</option>
 </select>
-<input id="tePhone" name="Phone_/_WhatsApp" placeholder="Phone / WhatsApp number" required="" style="flex: 1 1 auto; width: auto; min-width: 0;" type="tel"/>
+<input id="tePhone" name="Phone_/_WhatsApp" inputmode="tel" pattern="[0-9+\s\-()]{10,20}" minlength="10" maxlength="18" title="Please enter a valid phone number with at least 10 digits (no alphabets)" onblur="if(typeof suviraValidatePhoneInput==='function')suviraValidatePhoneInput(this);" placeholder="Phone / WhatsApp number" required="" style="flex: 1 1 auto; width: auto; min-width: 0;" type="tel"/>
 </div>
 </div>
 <div class="talk-input-group">
@@ -969,7 +969,7 @@
 <input name="_subject" type="hidden" value="New Lead from Suvira Eligibility Check"/>
 <input name="_captcha" type="hidden" value="false"/>
 <input name="Full_Name" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Your full name" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="text"/>
-<input name="Phone_/_WhatsApp" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="WhatsApp number" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="tel"/>
+<input id="modalPhone" name="Phone_/_WhatsApp" inputmode="tel" pattern="[0-9+\s\-()]{10,20}" minlength="10" maxlength="18" title="Please enter a valid phone number with at least 10 digits (no alphabets)" onblur="if(typeof suviraValidatePhoneInput==='function'){suviraValidatePhoneInput(this);}" onfocus="if(!this.validationMessage){this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)';}" placeholder="WhatsApp number" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="tel"/>
 <input name="Email_Address" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" placeholder="Email address" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:13px;outline:none;display:block;box-sizing:border-box;transition:all 0.2s;" type="email"/>
 <select name="Service_Required" onblur="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';this.style.boxShadow='none'" onfocus="this.style.borderColor='#10b981';this.style.background='#fff';this.style.boxShadow='0 0 0 3px rgba(16,185,129,0.18)'" required="" style="width:100%;padding:13px 16px;border:1.5px solid #e2e8f0;border-radius:12px;font-size:14.5px;color:#0f172a;background:#f8fafc;margin-bottom:18px;outline:none;display:block;box-sizing:border-box;cursor:pointer;transition:all 0.2s;">
 <option value="">Service required...</option>
@@ -1284,6 +1284,13 @@ fbq('track', 'PageView');
     function handleExpertFormSubmit(e) {
         e.preventDefault();
         const form = document.getElementById('talkExpertsForm');
+        const phoneEl = form ? (form.querySelector('#tePhone') || form.querySelector('input[type="tel"]')) : null;
+        if (typeof suviraValidatePhoneInput === 'function' && !suviraValidatePhoneInput(phoneEl)) {
+            return false;
+        }
+        if (form && typeof form.reportValidity === 'function' && !form.reportValidity()) {
+            return false;
+        }
         const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
         const successMsg = document.getElementById('teSuccessMsg');
 
