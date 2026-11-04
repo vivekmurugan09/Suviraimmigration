@@ -1874,25 +1874,15 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 }
 
 /* Unified Process Timelines Across Hubs */
-.suvira-site :is(.spousal-timeline, .visitor-timeline, .pp-roadmap, .study-steps-grid) {
+.suvira-site :is(.study-steps-grid) {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
   gap: 20px !important;
   width: 100% !important;
   align-items: stretch !important;
 }
-.suvira-site :is(.spousal-step-item, .visitor-step-item, .study-step-card, .pp-step-item, .pp-roadmap-step) {
-  display: flex !important;
-  flex-direction: column !important;
-  height: 100% !important;
-  background: #ffffff !important;
-  border-radius: 14px !important;
-  border: 1px solid #E2E8F0 !important;
-  padding: 24px 20px !important;
-  box-sizing: border-box !important;
-}
 @media (max-width: 991px) {
-  .suvira-site :is(.spousal-timeline, .visitor-timeline, .pp-roadmap, .study-steps-grid) {
+  .suvira-site :is(.study-steps-grid) {
     grid-template-columns: 1fr !important;
     gap: 18px !important;
   }
@@ -1903,6 +1893,9 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   max-width: 820px !important;
   margin: 0 auto !important;
   width: 100% !important;
+}
+.suvira-site :is(.faq-container-narrow, .spousal-faq-container, .visitor-faq-container, .pp-faq-wrap):has(.study-faq-grid) {
+  max-width: 1320px !important;
 }
 
 /* Circular Flag Badges on Destination Cards */
@@ -2367,8 +2360,8 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.suvira-site .faq-accordion-item:is(.active, :has(.active), :has(.show)) .faq-q-badge,
-.suvira-site .faq-question-btn:hover .faq-q-badge {
+.suvira-site :is(.faq-accordion-item, .pp-faq-card, .spousal-faq-item, .visitor-faq-item, .faq-item):is(.active, :has(.active), :has(.show)) .faq-q-badge,
+.suvira-site :is(.faq-question-btn, .pp-faq-btn, .spousal-faq-q, .visitor-faq-q):hover .faq-q-badge {
   background: var(--site-action, #045030);
   color: #ffffff;
   transform: scale(1.05);
@@ -2392,19 +2385,18 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   transition: transform 0.35s ease, color 0.25s ease !important;
 }
 
-.suvira-site :is(.faq-question-btn.active, .pp-faq-btn.active, .spousal-faq-item.active .spousal-faq-q, .visitor-faq-item.active .visitor-faq-q, .faq-item.active .faq-question) i.fa-chevron-down,
-.suvira-site .faq-accordion-item:has(.show) i.fa-chevron-down,
-.suvira-site .pp-faq-card:has(.show) i.fa-chevron-down {
+.suvira-site :is(.faq-question-btn.active, .pp-faq-btn.active, .spousal-faq-q.active, .visitor-faq-q.active, .spousal-faq-item.active .spousal-faq-q, .visitor-faq-item.active .visitor-faq-q, .faq-item.active .faq-question) i.fa-chevron-down,
+.suvira-site :is(.faq-accordion-item, .pp-faq-card, .spousal-faq-item, .visitor-faq-item):has(.show) i.fa-chevron-down {
   transform: rotate(180deg) !important;
 }
 
-.suvira-site :is(.faq-question-btn.active, .faq-accordion-item:has(.show) .faq-question-btn, .faq-item.active .faq-question) .faq-q-chevron {
+.suvira-site :is(.faq-question-btn.active, .pp-faq-btn.active, .spousal-faq-q.active, .visitor-faq-q.active, .spousal-faq-item.active .spousal-faq-q, .visitor-faq-item.active .visitor-faq-q, .faq-accordion-item:has(.show) .faq-question-btn, .pp-faq-card:has(.show) .pp-faq-btn, .spousal-faq-item:has(.show) .spousal-faq-q, .visitor-faq-item:has(.show) .visitor-faq-q, .faq-item.active .faq-question) .faq-q-chevron {
   background: var(--site-action, #045030);
   color: #ffffff;
 }
 
 /* FAQ Answer Panel — Collapsed by default, Expanded on .show or .active */
-.suvira-site :is(.faq-answer-panel, .pp-faq-panel, .pp-faq-content, .faq-answer) {
+.suvira-site :is(.faq-answer-panel, .pp-faq-panel, .pp-faq-content, .faq-answer, .spousal-faq-a, .visitor-faq-a, .calc-faq-body) {
   max-height: 0 !important;
   opacity: 0 !important;
   overflow: hidden !important;
@@ -2417,11 +2409,15 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.3s ease !important;
 }
 
-.suvira-site :is(.faq-answer-panel.show, .pp-faq-panel.show, .pp-faq-content.show, .faq-answer.show),
+.suvira-site :is(.faq-answer-panel.show, .pp-faq-panel.show, .pp-faq-content.show, .faq-answer.show, .spousal-faq-a.show, .visitor-faq-a.show, .calc-faq-body.show),
 .suvira-site .faq-question-btn.active + .faq-answer-panel,
 .suvira-site .pp-faq-btn.active + :is(.pp-faq-panel, .pp-faq-content),
+.suvira-site .spousal-faq-q.active + .spousal-faq-a,
+.suvira-site .visitor-faq-q.active + .visitor-faq-a,
 .suvira-site .faq-accordion-item.active .faq-answer-panel,
 .suvira-site .faq-item.active .faq-answer,
+.suvira-site .spousal-faq-item.active .spousal-faq-a,
+.suvira-site .visitor-faq-item.active .visitor-faq-a,
 .suvira-site .pp-faq-card.active :is(.pp-faq-panel, .pp-faq-content) {
   max-height: 560px !important;
   opacity: 1 !important;

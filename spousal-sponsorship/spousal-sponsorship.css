@@ -1,0 +1,846 @@
+/* ==========================================================================
+   SUVIRA IMMIGRATION — SPOUSAL & FAMILY SPONSORSHIP STYLESHEET
+   Design Spec: High-Converting Digital Marketing Standards, Fully Responsive
+   ========================================================================== */
+
+:root {
+    --spousal-rose: #E11D48;
+    --spousal-rose-glow: rgba(225, 29, 72, 0.4);
+    --spousal-gold: #F59E0B;
+    --spousal-dark: #0A1128;
+    --spousal-card-bg: rgba(15, 23, 42, 0.75);
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO SECTION
+   -------------------------------------------------------------------------- */
+.spousal-hero-section {
+    position: relative;
+    background-color: #070D1E;
+    background-image: 
+        linear-gradient(180deg, rgba(7, 13, 30, 0.88) 0%, rgba(7, 13, 30, 0.80) 50%, rgba(7, 13, 30, 0.96) 100%),
+        url('../../images/hero-family-travel.png');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+    padding: 70px 0 60px 0;
+    overflow: hidden;
+    color: #FFFFFF;
+}
+
+.spousal-hero-container {
+    display: grid;
+    grid-template-columns: 1.25fr 0.85fr;
+    gap: 40px;
+    align-items: center;
+}
+
+@media (max-width: 991px) {
+    .spousal-hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.spousal-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(225, 29, 72, 0.16);
+    border: 1px solid rgba(244, 63, 94, 0.5);
+    border-radius: 9999px;
+    padding: 6px 18px;
+    margin-bottom: 18px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.spousal-hero-badge i {
+    color: #FB7185;
+    font-size: 14px;
+    animation: spousalPulse 2s infinite ease-in-out;
+}
+
+@keyframes spousalPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.spousal-hero-badge span {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #FECDD3;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.spousal-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(32px, 3.8vw, 50px);
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 0 0 16px 0;
+    letter-spacing: -0.5px;
+    color: #FFFFFF;
+}
+
+.spousal-rose-gradient {
+    background: linear-gradient(90deg, #FB7185 0%, #F43F5E 50%, #F59E0B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.spousal-hero-desc {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(14px, 1.35vw, 16px);
+    line-height: 1.65;
+    color: #CBD5E1;
+    margin-bottom: 24px;
+    max-width: 620px;
+}
+
+.spousal-hero-checks {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 20px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+    .spousal-hero-checks {
+        grid-template-columns: 1fr;
+    }
+}
+
+.spousal-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #E2E8F0;
+    font-weight: 500;
+}
+
+.spousal-check-item i {
+    color: #F43F5E;
+    font-size: 14px;
+}
+
+.spousal-hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.spousal-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+    color: #FFFFFF !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14.5px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(225, 29, 72, 0.45);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.spousal-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.6);
+    background: linear-gradient(135deg, #F43F5E 0%, #E11D48 100%);
+}
+
+.spousal-btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(37, 211, 102, 0.15);
+    border: 1px solid rgba(37, 211, 102, 0.5);
+    color: #4ADE80 !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    padding: 13px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.spousal-btn-whatsapp:hover {
+    background: rgba(37, 211, 102, 0.25);
+    border-color: #25D366;
+    color: #FFFFFF !important;
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   HERO ASSESSMENT CARD
+   -------------------------------------------------------------------------- */
+.spousal-form-card {
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(244, 63, 94, 0.35);
+    border-radius: 16px;
+    padding: 30px 28px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(225, 29, 72, 0.2);
+}
+
+.spousal-form-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.spousal-form-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 6px 0;
+}
+
+.spousal-form-header p {
+    font-size: 13px;
+    color: #94A3B8;
+    margin: 0;
+}
+
+.spousal-form-group {
+    margin-bottom: 14px;
+}
+
+.spousal-form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #CBD5E1;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.spousal-form-group input,
+.spousal-form-group select {
+    width: 100%;
+    background: rgba(2, 6, 23, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 8px;
+    padding: 11px 14px;
+    font-size: 13.5px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.spousal-form-group input:focus,
+.spousal-form-group select:focus {
+    border-color: #F43F5E;
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.25);
+}
+
+.spousal-form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, #E11D48 0%, #F59E0B 100%);
+    border: none;
+    border-radius: 8px;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(225, 29, 72, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 6px;
+}
+
+.spousal-form-submit:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(225, 29, 72, 0.6);
+}
+
+.spousal-form-guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.spousal-form-guarantee i {
+    color: #10B981;
+}
+
+/* --------------------------------------------------------------------------
+   2. METRICS STATS RIBBON
+   -------------------------------------------------------------------------- */
+.spousal-stats-ribbon {
+    background: #020617;
+    border-top: 1px solid rgba(244, 63, 94, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 28px 0;
+}
+
+.spousal-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .spousal-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+.spousal-stat-card {
+    padding: 10px;
+}
+
+.spousal-stat-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 2.5vw, 36px);
+    font-weight: 800;
+    color: #FB7185;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.spousal-stat-label {
+    font-size: 12.5px;
+    color: #94A3B8;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. SECTION HEADER
+   -------------------------------------------------------------------------- */
+.spousal-section-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 50px auto;
+}
+
+.spousal-section-badge {
+    display: inline-block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: #F43F5E;
+    background: rgba(244, 63, 94, 0.1);
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    border-radius: 9999px;
+    padding: 4px 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.spousal-section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(26px, 2.8vw, 38px);
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 14px 0;
+    letter-spacing: -0.5px;
+}
+
+.spousal-section-desc {
+    font-size: 15px;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. COUNTRY DESTINATIONS GRID
+   -------------------------------------------------------------------------- */
+.spousal-destinations-section {
+    padding: 80px 0;
+    background: #F8FAFC;
+}
+
+.spousal-destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .spousal-destinations-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .spousal-destinations-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.spousal-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.spousal-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(225, 29, 72, 0.12);
+    border-color: rgba(244, 63, 94, 0.4);
+}
+
+.spousal-card-media {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.spousal-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.spousal-card:hover .spousal-card-media img {
+    transform: scale(1.08);
+}
+
+.spousal-card-pill {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 9999px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.spousal-card-pill i {
+    color: #FB7185;
+}
+
+.spousal-card-flag {
+    position: absolute;
+    bottom: -16px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.spousal-card-body {
+    padding: 26px 24px 20px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.spousal-card-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 10px 0;
+}
+
+.spousal-card-highlight {
+    background: #FFF1F2;
+    color: #BE123C;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-bottom: 16px;
+}
+
+.spousal-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    flex: 1;
+}
+
+.spousal-card-list li {
+    font-size: 13.5px;
+    color: #475569;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+}
+
+.spousal-card-list li i {
+    color: #E11D48;
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.spousal-card-action {
+    display: block;
+    text-align: center;
+    background: #0F172A;
+    color: #FFFFFF !important;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.spousal-card-action:hover {
+    background: #E11D48;
+    box-shadow: 0 6px 16px rgba(225, 29, 72, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   5. RELATIONSHIP PROOF DOSSIER SECTION
+   -------------------------------------------------------------------------- */
+.spousal-dossier-section {
+    padding: 85px 0;
+    background: #0F172A;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+.spousal-dossier-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+    .spousal-dossier-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .spousal-dossier-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.spousal-dossier-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 28px 24px;
+    transition: all 0.3s ease;
+}
+
+.spousal-dossier-card:hover {
+    border-color: #F43F5E;
+    transform: translateY(-5px);
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.spousal-dossier-icon {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, rgba(225, 29, 72, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+    border: 1px solid rgba(244, 63, 94, 0.4);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #FB7185;
+    margin-bottom: 20px;
+}
+
+.spousal-dossier-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 10px 0;
+}
+
+.spousal-dossier-desc {
+    font-size: 13.5px;
+    color: #94A3B8;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   6. 5-STEP SPONSORSHIP ROADMAP
+   -------------------------------------------------------------------------- */
+.spousal-process-section {
+    padding: 85px 0;
+    background: #FFFFFF;
+}
+
+.spousal-timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    position: relative;
+    margin-top: 40px;
+}
+
+@media (max-width: 991px) {
+    .spousal-timeline {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+.spousal-step-item {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.spousal-step-item:hover {
+    border-color: #E11D48;
+    box-shadow: 0 12px 28px rgba(225, 29, 72, 0.1);
+}
+
+.spousal-step-num {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #E11D48 0%, #BE123C 100%);
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    margin: 0 auto 16px auto;
+    box-shadow: 0 6px 14px rgba(225, 29, 72, 0.3);
+}
+
+.spousal-step-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 8px 0;
+}
+
+.spousal-step-desc {
+    font-size: 12.5px;
+    color: #64748B;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7. DOCUMENT CHECKLIST & FAQ
+   -------------------------------------------------------------------------- */
+.spousal-docs-section {
+    padding: 80px 0;
+    background: #F1F5F9;
+}
+
+.spousal-docs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+@media (max-width: 768px) {
+    .spousal-docs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.spousal-doc-box {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid #E2E8F0;
+}
+
+.spousal-doc-box h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spousal-doc-box h4 i {
+    color: #E11D48;
+}
+
+.spousal-doc-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.spousal-doc-box ul li {
+    font-size: 13.5px;
+    color: #334155;
+    padding: 8px 0;
+    border-bottom: 1px dashed #E2E8F0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.spousal-doc-box ul li:last-child {
+    border-bottom: none;
+}
+
+.spousal-doc-box ul li i {
+    color: #10B981;
+    font-size: 13px;
+}
+
+/* FAQ Accordion */
+.spousal-faq-section {
+    padding: 85px 0;
+    background: #FFFFFF;
+}
+
+.spousal-faq-container {
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.spousal-faq-item {
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.spousal-faq-item:hover {
+    border-color: #CBD5E1;
+}
+
+.spousal-faq-q {
+    padding: 18px 22px;
+    background: #F8FAFC;
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F172A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    user-select: none;
+}
+
+.spousal-faq-q i {
+    color: #E11D48;
+    transition: transform 0.3s ease;
+}
+
+.spousal-faq-item.active .spousal-faq-q i {
+    transform: rotate(180deg);
+}
+
+.spousal-faq-a {
+    padding: 0 22px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #475569;
+    background: #FFFFFF;
+}
+
+.spousal-faq-item.active .spousal-faq-a {
+    padding: 18px 22px 22px 22px;
+    max-height: 350px;
+}
+
+/* --------------------------------------------------------------------------
+   8. CLOSING CTA BANNER
+   -------------------------------------------------------------------------- */
+.spousal-cta-banner {
+    background: linear-gradient(135deg, #0A1128 0%, #1E1B4B 60%, #4C0519 100%);
+    padding: 70px 0;
+    text-align: center;
+    color: #FFFFFF;
+    position: relative;
+    border-top: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.spousal-cta-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.spousal-cta-wrap h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    margin: 0 0 14px 0;
+    color: #FFFFFF;
+}
+
+.spousal-cta-wrap p {
+    font-size: 15px;
+    color: #CBD5E1;
+    margin: 0 0 28px 0;
+    line-height: 1.6;
+}
+
+.spousal-cta-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}

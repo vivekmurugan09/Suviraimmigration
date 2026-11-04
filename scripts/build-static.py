@@ -840,16 +840,16 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261104-v5"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v5"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v5"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261104-v6"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v6"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v6"/>')
 
     for jld in page.get("jsonLd", []):
         head_parts.append(f'  <script type="application/ld+json">{jld}</script>')
 
     body_html = (
         page["body"]
-        .replace('/study-premium.css"', '/study-premium.css?v=20261104-v5"')
+        .replace('/study-premium.css"', '/study-premium.css?v=20261104-v6"')
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
@@ -1163,7 +1163,12 @@ with open(os.path.join(DIST, "staticwebapp.config.json"), "w", encoding="utf-8")
 
 # 8. Write Cloudflare Pages _redirects and _headers
 with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
-    f.write("""/thankyou /Thank-you/index.html 200
+    f.write("""/services/study-visas/study-visas.css /services/study-visas/study-visas.css 200
+/services/spousal-sponsorship/spousal-sponsorship.css /services/spousal-sponsorship/spousal-sponsorship.css 200
+/services/visitor-visa/visitor-visa.css /services/visitor-visa/visitor-visa.css 200
+/services/canada-pr/canada-pr.css /services/canada-pr/canada-pr.css 200
+/services/pr-pathway.css /services/pr-pathway.css 200
+/thankyou /Thank-you/index.html 200
 /thank-you /Thank-you/index.html 200
 /Thank-you /Thank-you/index.html 200
 /ai-preparation /ai-preparation/index.html 200

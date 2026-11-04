@@ -170,9 +170,9 @@
   color: #34d399 !important;
 }
 
-/* ── 6-Step Pipeline Grid (.study-pipeline) ──────────────── */
-.suvira-study .study-pipeline,
-.suvira-site  .study-pipeline {
+/* ── 6-Step Pipeline Grid (.study-pipeline, .process-pipeline) ── */
+.suvira-study :is(.study-pipeline, .process-pipeline),
+.suvira-site  :is(.study-pipeline, .process-pipeline) {
   position: relative;
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
@@ -184,17 +184,17 @@
   align-items: stretch !important;
 }
 
-.suvira-study .study-pipeline::before,
-.suvira-study .study-pipeline::after,
-.suvira-site  .study-pipeline::before,
-.suvira-site  .study-pipeline::after {
+.suvira-study :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap)::before,
+.suvira-study :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap)::after,
+.suvira-site  :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap)::before,
+.suvira-site  :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap)::after {
   display: none !important;
   content: none !important;
 }
 
-/* ── 5-Step Country Roadmap Grid (.study-roadmap) ────────── */
-.suvira-study .study-roadmap,
-.suvira-site  .study-roadmap {
+/* ── 5-Step Country & Service Roadmap Grid ───────────────── */
+.suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)),
+.suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) {
   position: relative;
   display: grid !important;
   grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
@@ -205,23 +205,23 @@
   align-items: stretch !important;
 }
 
-.suvira-study .study-roadmap .roadmap-step,
-.suvira-site  .study-roadmap .roadmap-step {
+.suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item),
+.suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) {
   grid-column: span 2 !important;
 }
 
 /* Center steps 4 and 5 on Row 2 in the 6-column grid */
-.suvira-study .study-roadmap .roadmap-step:nth-child(4),
-.suvira-site  .study-roadmap .roadmap-step:nth-child(4) {
+.suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4),
+.suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4) {
   grid-column: 2 / span 2 !important;
 }
 
-.suvira-study .study-roadmap .roadmap-step:nth-child(5),
-.suvira-site  .study-roadmap .roadmap-step:nth-child(5) {
+.suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5),
+.suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5) {
   grid-column: 4 / span 2 !important;
 }
 
-/* ── Individual Step Card (.study-step-card & .roadmap-step) ── */
+/* ── Individual Step Card ────────────────────────────────── */
 @keyframes stepCardFadeUp {
   from {
     opacity: 0;
@@ -233,14 +233,8 @@
   }
 }
 
-.suvira-study .study-pipeline .study-step-card,
-.suvira-site  .study-pipeline .study-step-card,
-.suvira-study .study-step-card,
-.suvira-site  .study-step-card,
-.suvira-study .study-roadmap .roadmap-step,
-.suvira-site  .study-roadmap .roadmap-step,
-.suvira-study .roadmap-step,
-.suvira-site  .roadmap-step {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) {
   position: relative;
   display: flex !important;
   flex-direction: column !important;
@@ -268,28 +262,22 @@
 }
 
 /* Row 2 cards (Steps 4-6): gold top accent */
-.suvira-study .study-step-card:nth-child(n+4),
-.suvira-site  .study-step-card:nth-child(n+4),
-.suvira-study .roadmap-step:nth-child(n+4),
-.suvira-site  .roadmap-step:nth-child(n+4) {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) {
   border-top-color: var(--site-gold, #c99a35) !important;
 }
 
 /* Hover lift */
-.suvira-study .study-step-card:hover,
-.suvira-site  .study-step-card:hover,
-.suvira-study .roadmap-step:hover,
-.suvira-site  .roadmap-step:hover {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover {
   transform: translateY(-8px) !important;
   border-color: rgba(4, 80, 48, 0.28) !important;
   box-shadow: 0 20px 42px rgba(4, 80, 48, 0.13) !important;
 }
 
 /* Subtle ambient corner glow inside card */
-.suvira-study .study-step-card::before,
-.suvira-site  .study-step-card::before,
-.suvira-study .roadmap-step::before,
-.suvira-site  .roadmap-step::before {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item)::before,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item)::before {
   content: '';
   position: absolute;
   top: -40px;
@@ -306,10 +294,8 @@
   z-index: 0;
 }
 
-.suvira-study .study-step-card:nth-child(n+4)::before,
-.suvira-site  .study-step-card:nth-child(n+4)::before,
-.suvira-study .roadmap-step:nth-child(n+4)::before,
-.suvira-site  .roadmap-step:nth-child(n+4)::before {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4)::before,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4)::before {
   background: radial-gradient(
     circle,
     color-mix(in oklab, var(--site-gold, #c99a35) 14%, transparent) 0%,
@@ -330,11 +316,9 @@
   gap: 12px;
 }
 
-/* ── Step Number Orb (.study-step-num & .step-num) ───────── */
-.suvira-study .study-step-num,
-.suvira-site  .study-step-num,
-.suvira-study .roadmap-step .step-num,
-.suvira-site  .roadmap-step .step-num {
+/* ── Step Number Orb ─────────────────────────────────────── */
+.suvira-study :is(.study-step-num, .step-num-bubble, .roadmap-step .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle),
+.suvira-site  :is(.study-step-num, .step-num-bubble, .roadmap-step .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle) {
   position: relative;
   z-index: 2;
   width: 50px !important;
@@ -361,10 +345,8 @@
 }
 
 /* Continuous pulse aura ring on number orb */
-.suvira-study .study-step-num::before,
-.suvira-site  .study-step-num::before,
-.suvira-study .roadmap-step .step-num::before,
-.suvira-site  .roadmap-step .step-num::before {
+.suvira-study :is(.study-step-num, .step-num-bubble, .roadmap-step .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle)::before,
+.suvira-site  :is(.study-step-num, .step-num-bubble, .roadmap-step .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle)::before {
   content: '';
   position: absolute;
   inset: -7px;
@@ -382,10 +364,8 @@
 }
 
 /* Row 2: Gold number orb (Steps 4-6) */
-.suvira-study .study-step-card:nth-child(n+4) .study-step-num,
-.suvira-site  .study-step-card:nth-child(n+4) .study-step-num,
-.suvira-study .roadmap-step:nth-child(n+4) .step-num,
-.suvira-site  .roadmap-step:nth-child(n+4) .step-num {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) :is(.study-step-num, .step-num-bubble, .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) :is(.study-step-num, .step-num-bubble, .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle) {
   background: linear-gradient(
     135deg,
     var(--site-gold, #c99a35) 0%,
@@ -397,10 +377,8 @@
     0 8px 20px rgba(201, 154, 53, 0.30) !important;
 }
 
-.suvira-study .study-step-card:hover .study-step-num,
-.suvira-site  .study-step-card:hover .study-step-num,
-.suvira-study .roadmap-step:hover .step-num,
-.suvira-site  .roadmap-step:hover .step-num {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover :is(.study-step-num, .step-num-bubble, .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover :is(.study-step-num, .step-num-bubble, .step-num, .spousal-step-num, .visitor-step-num, .pp-step-num, .pp-step-circle) {
   transform: scale(1.08);
 }
 
@@ -435,16 +413,16 @@
   animation: stepDotTravel 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(2) .study-step-line-dot,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(2) .study-step-line-dot { animation-delay: 0.4s; }
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(3) .study-step-line-dot,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(3) .study-step-line-dot { animation-delay: 0.8s; }
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(4) .study-step-line-dot,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(4) .study-step-line-dot { animation-delay: 1.2s; }
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(5) .study-step-line-dot,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(5) .study-step-line-dot { animation-delay: 1.6s; }
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(6) .study-step-line-dot,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(6) .study-step-line-dot { animation-delay: 2.0s; }
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(2) .study-step-line-dot,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(2) .study-step-line-dot { animation-delay: 0.4s; }
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(3) .study-step-line-dot,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(3) .study-step-line-dot { animation-delay: 0.8s; }
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4) .study-step-line-dot,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4) .study-step-line-dot { animation-delay: 1.2s; }
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5) .study-step-line-dot,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5) .study-step-line-dot { animation-delay: 1.6s; }
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(6) .study-step-line-dot,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(6) .study-step-line-dot { animation-delay: 2.0s; }
 
 @keyframes stepDotTravel {
   0%   { left: 4%;  opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
@@ -476,15 +454,15 @@
   transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(n+4) .study-step-icon-box,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(n+4) .study-step-icon-box {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) .study-step-icon-box,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) .study-step-icon-box {
   background: linear-gradient(135deg, rgba(201, 154, 53, 0.16), rgba(4, 80, 48, 0.08));
   border-color: rgba(201, 154, 53, 0.35);
   color: #9a6f18;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step):hover .study-step-icon-box,
-.suvira-site  :is(.study-step-card, .roadmap-step):hover .study-step-icon-box {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover .study-step-icon-box,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover .study-step-icon-box {
   background: var(--site-action, #045030);
   color: #ffffff;
   border-color: var(--site-action, #045030);
@@ -509,8 +487,8 @@
   margin-bottom: 10px;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step):nth-child(n+4) .study-step-tag,
-.suvira-site  :is(.study-step-card, .roadmap-step):nth-child(n+4) .study-step-tag {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) .study-step-tag,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(n+4) .study-step-tag {
   color: #926712;
   background: rgba(201, 154, 53, 0.15);
 }
@@ -525,8 +503,8 @@
   text-align: left !important;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step) h4,
-.suvira-site  :is(.study-step-card, .roadmap-step) h4 {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) :is(h4, h3),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) :is(h4, h3) {
   position: relative;
   z-index: 2;
   font-family: 'Outfit', sans-serif !important;
@@ -540,13 +518,13 @@
   transition: color 0.25s ease;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step):hover h4,
-.suvira-site  :is(.study-step-card, .roadmap-step):hover h4 {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover :is(h4, h3),
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):hover :is(h4, h3) {
   color: var(--site-action, #045030) !important;
 }
 
-.suvira-study :is(.study-step-card, .roadmap-step) p,
-.suvira-site  :is(.study-step-card, .roadmap-step) p {
+.suvira-study :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) p,
+.suvira-site  :is(.study-step-card, .pipeline-step, .roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item) p {
   position: relative;
   z-index: 2;
   font-family: 'Outfit', sans-serif !important;
@@ -880,24 +858,24 @@
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 992px) {
-  .suvira-study .study-pipeline,
-  .suvira-site  .study-pipeline {
+  .suvira-study :is(.study-pipeline, .process-pipeline),
+  .suvira-site  :is(.study-pipeline, .process-pipeline) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 22px !important;
   }
 
-  .suvira-study .study-roadmap,
-  .suvira-site  .study-roadmap {
+  .suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)),
+  .suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 22px !important;
   }
 
-  .suvira-study .study-roadmap .roadmap-step,
-  .suvira-site  .study-roadmap .roadmap-step,
-  .suvira-study .study-roadmap .roadmap-step:nth-child(4),
-  .suvira-site  .study-roadmap .roadmap-step:nth-child(4),
-  .suvira-study .study-roadmap .roadmap-step:nth-child(5),
-  .suvira-site  .study-roadmap .roadmap-step:nth-child(5) {
+  .suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item),
+  .suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item),
+  .suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4),
+  .suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(4),
+  .suvira-study :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5),
+  .suvira-site  :is(.study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) > :is(.roadmap-step, .spousal-step-item, .visitor-step-item, .pp-roadmap-step, .pp-step-item):nth-child(5) {
     grid-column: span 1 !important;
   }
 
@@ -916,10 +894,8 @@
 }
 
 @media (max-width: 600px) {
-  .suvira-study .study-pipeline,
-  .suvira-site  .study-pipeline,
-  .suvira-study .study-roadmap,
-  .suvira-site  .study-roadmap {
+  .suvira-study :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)),
+  .suvira-site  :is(.study-pipeline, .process-pipeline, .study-roadmap, .spousal-timeline, .visitor-timeline, .pp-roadmap, .pp-grid-3:has(.pp-step-item)) {
     grid-template-columns: 1fr !important;
     gap: 16px !important;
     margin-top: 24px !important;
