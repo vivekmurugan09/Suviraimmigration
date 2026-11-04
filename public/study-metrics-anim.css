@@ -1,0 +1,226 @@
+/* ===================================================================
+   Study Metrics Cards — Premium animation layer
+   Affects: .study-metric-card inside .study-metrics-section
+   =================================================================== */
+
+/* ---------- Grid ---------- */
+.suvira-study .study-metrics-grid,
+.suvira-site .study-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ---------- Base card ---------- */
+.suvira-study .study-metric-card,
+.suvira-site .study-metric-card {
+  position: relative;
+  background: var(--site-surface, #fff) !important;
+  border: 1px solid var(--site-line, #e5e7eb) !important;
+  border-radius: 12px !important;
+  padding: 32px 24px 28px !important;
+  overflow: hidden;
+  isolation: isolate;
+  /* Entrance: start hidden, shifted down */
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 650ms cubic-bezier(.22,.8,.32,1),
+    transform 650ms cubic-bezier(.22,.8,.32,1),
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+  /* Stagger siblings via CSS custom property set by JS */
+  transition-delay: var(--metric-delay, 0ms);
+}
+
+/* Entrance once revealed */
+.suvira-study .study-metric-card.metric-visible,
+.suvira-site .study-metric-card.metric-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold accent bar along the left edge */
+.suvira-study .study-metric-card::before,
+.suvira-site .study-metric-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 20%;
+  width: 3px;
+  height: 60%;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(180deg, var(--site-gold, #c9a227) 0%, var(--site-action, #107a5f) 100%);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: opacity 350ms ease, transform 500ms cubic-bezier(.22,.8,.32,1);
+  transition-delay: var(--metric-delay, 0ms);
+}
+
+.suvira-study .study-metric-card.metric-visible::before,
+.suvira-site .study-metric-card.metric-visible::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+/* Shimmer sweep on hover */
+.suvira-study .study-metric-card::after,
+.suvira-site .study-metric-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    color-mix(in oklab, var(--site-gold, #c9a227) 14%, transparent) 50%,
+    transparent 65%
+  );
+  transform: translateX(-120%);
+  transition: transform 0s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.suvira-study .study-metric-card:hover::after,
+.suvira-site .study-metric-card:hover::after {
+  transform: translateX(120%);
+  transition: transform 600ms ease;
+}
+
+/* Hover lift */
+.suvira-study .study-metric-card:hover,
+.suvira-site .study-metric-card:hover {
+  transform: translateY(-6px) !important;
+  border-color: color-mix(in oklab, var(--site-gold, #c9a227) 60%, var(--site-line, #e5e7eb)) !important;
+  box-shadow:
+    0 20px 48px -16px color-mix(in oklab, var(--site-action, #107a5f) 28%, transparent),
+    0 4px 12px -4px color-mix(in oklab, var(--site-gold, #c9a227) 24%, transparent) !important;
+}
+
+/* ---------- Card content (z above shimmer) ---------- */
+.suvira-study .study-metric-value,
+.suvira-site .study-metric-value {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(28px, 3.2vw, 38px) !important;
+  font-weight: 800 !important;
+  line-height: 1.1;
+  color: var(--site-action, #107a5f) !important;
+  /* Gradient shimmer on the number itself */
+  background: linear-gradient(
+    90deg,
+    var(--site-action, #107a5f) 0%,
+    color-mix(in oklab, var(--site-action, #107a5f) 70%, var(--site-gold, #c9a227)) 50%,
+    var(--site-action, #107a5f) 100%
+  );
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: metricShimmer 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.suvira-study .study-metric-card.metric-visible .study-metric-value,
+.suvira-site .study-metric-card.metric-visible .study-metric-value {
+  animation-play-state: running;
+}
+
+@keyframes metricShimmer {
+  0%   { background-position: 220% center; }
+  100% { background-position: -220% center; }
+}
+
+.suvira-study .study-metric-label,
+.suvira-site .study-metric-label {
+  position: relative;
+  z-index: 1;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--site-ink, #0f2a24) !important;
+  margin-top: 10px;
+}
+
+.suvira-study .study-metric-sub,
+.suvira-site .study-metric-sub {
+  position: relative;
+  z-index: 1;
+  font-size: 12px !important;
+  color: var(--site-muted, #5b6b63) !important;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ---------- Bottom progress bar (decorative) ---------- */
+.suvira-study .study-metric-card .metric-bar,
+.suvira-site .study-metric-card .metric-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: var(--metric-fill, 85%);
+  background: linear-gradient(90deg, var(--site-action, #107a5f), var(--site-gold, #c9a227));
+  border-radius: 0 2px 2px 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 900ms cubic-bezier(.22,.8,.32,1);
+  transition-delay: var(--metric-bar-delay, 300ms);
+}
+
+.suvira-study .study-metric-card.metric-visible .metric-bar,
+.suvira-site .study-metric-card.metric-visible .metric-bar {
+  transform: scaleX(1);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .suvira-study .study-metrics-grid,
+  .suvira-site .study-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .suvira-study .study-metrics-grid,
+  .suvira-site .study-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .suvira-study .study-metric-card,
+  .suvira-site .study-metric-card {
+    padding: 22px 16px 18px !important;
+  }
+}
+
+/* ---------- Respect reduced-motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .suvira-study .study-metric-card,
+  .suvira-site .study-metric-card {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .suvira-study .study-metric-card::before,
+  .suvira-site .study-metric-card::before {
+    opacity: 1;
+    transform: scaleY(1);
+    transition: none;
+  }
+  .suvira-study .study-metric-card::after,
+  .suvira-site .study-metric-card::after {
+    display: none;
+  }
+  .suvira-study .study-metric-value,
+  .suvira-site .study-metric-value {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: var(--site-action, #107a5f);
+    color: var(--site-action, #107a5f) !important;
+  }
+  .suvira-study .study-metric-card .metric-bar,
+  .suvira-site .study-metric-card .metric-bar {
+    transform: scaleX(1) !important;
+  }
+}
+

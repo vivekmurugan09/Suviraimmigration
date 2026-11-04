@@ -819,6 +819,8 @@ def render_static_html(page):
         head_parts.append(f'  <style>{st}</style>')
 
     head_parts.append('  <link rel="stylesheet" href="/site-polish.css"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css"/>')
 
     for jld in page.get("jsonLd", []):
         head_parts.append(f'  <script type="application/ld+json">{jld}</script>')

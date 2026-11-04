@@ -28,6 +28,8 @@ export function StaticPage({ page }: { page: StaticPageData }) {
         <style key={i} dangerouslySetInnerHTML={{ __html: css }} />
       ))}
       <link rel="stylesheet" href="/site-polish.css" />
+      <link rel="stylesheet" href="/study-metrics-anim.css" />
+      <link rel="stylesheet" href="/study-journey-anim.css" />
       {page.jsonLd.map((json, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />
       ))}

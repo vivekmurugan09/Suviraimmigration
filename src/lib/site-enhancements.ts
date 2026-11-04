@@ -501,6 +501,64 @@ export function installSiteEnhancements(root: HTMLElement, navigate = (path: str
       card.style.setProperty('--tilt-x', '0deg'); card.style.setProperty('--tilt-y', '0deg');
     }, { signal });
   });
+  // Animated metric cards (study-metric-card): staggered entrance + bottom progress bar injection
+  const metricFills = [92, 99, 100, 85] as const; // fill % per card slot
+  root.querySelectorAll<HTMLElement>('.study-metric-card').forEach((card, index) => {
+    const delay = index * 110;
+    card.style.setProperty('--metric-delay', `${delay}ms`);
+    card.style.setProperty('--metric-bar-delay', `${delay + 320}ms`);
+    card.style.setProperty('--metric-fill', `${metricFills[index % metricFills.length]}%`);
+    // Inject bottom bar element if not already present
+    if (!card.querySelector('.metric-bar')) {
+      const bar = document.createElement('span');
+      bar.className = 'metric-bar';
+      bar.setAttribute('aria-hidden', 'true');
+      card.appendChild(bar);
+    }
+  });
+
+  if (!reduced && typeof IntersectionObserver !== 'undefined') {
+    const metricObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('metric-visible');
+          metricObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    root.querySelectorAll<HTMLElement>('.study-metric-card').forEach(card => {
+      metricObserver.observe(card);
+    });
+    // Stash for cleanup
+    (controller.signal as any).__metricObserver = metricObserver;
+  } else {
+    // No JS / reduced motion: immediately show all
+    root.querySelectorAll<HTMLElement>('.study-metric-card').forEach(card => {
+      card.classList.add('metric-visible');
+    });
+  }
+
+  // 6-Step Journey pipeline: staggered entrance + staggered pulse ring animation
+  root.querySelectorAll<HTMLElement>('.study-step-card').forEach((card, index) => {
+    const delay = index * 120;
+    card.style.setProperty('--step-delay', `${delay}ms`);
+    card.style.setProperty('--step-pulse-delay', `${delay + 400}ms`);
+  });
+
+  if (!reduced && typeof IntersectionObserver !== 'undefined') {
+    const stepObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          (entry.target as HTMLElement).classList.add('step-visible');
+          stepObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    root.querySelectorAll<HTMLElement>('.study-step-card').forEach(card => stepObserver.observe(card));
+  } else {
+    root.querySelectorAll<HTMLElement>('.study-step-card').forEach(card => card.classList.add('step-visible'));
+  }
+
   const contrastTimer = window.setTimeout(() => fixLowContrastText(root), 300);
   return () => { controller.abort(); observer?.disconnect(); window.cancelAnimationFrame(frame); window.clearTimeout(contrastTimer); };
 }

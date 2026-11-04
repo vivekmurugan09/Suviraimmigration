@@ -1303,9 +1303,14 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   gap: 28px !important;
   align-items: stretch !important;
   width: 100% !important;
-  margin-bottom: 20px !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  margin-bottom: 24px !important;
+  box-sizing: border-box !important;
 }
-.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card) {
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card, .study-card, .study-uni-card) {
   display: flex !important;
   flex-direction: column !important;
   min-width: 0 !important;
@@ -1313,13 +1318,15 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   border-radius: 16px !important;
   overflow: hidden !important;
   border: 1px solid #E2E8F0 !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
   background: #ffffff !important;
-  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease !important;
+  box-sizing: border-box !important;
 }
-.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card):hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 40px rgba(0, 80, 48, 0.12) !important;
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card, .study-card, .study-uni-card):hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 20px 45px rgba(4, 80, 48, 0.14) !important;
+  border-color: rgba(201, 154, 53, 0.45) !important;
 }
 .suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media, .pp-card-media) {
   height: 200px !important;
@@ -1576,7 +1583,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   padding-right: 24px !important;
   box-sizing: border-box !important;
 }
-.suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container) {
+.suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container, .contact-hero-container, .about-hero-container, .about-hero .hero-container) {
   display: grid !important;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr) !important;
   gap: 40px !important;
@@ -1589,13 +1596,13 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   padding-right: 24px !important;
   box-sizing: border-box !important;
 }
-.suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content) {
+.suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content, .contact-hero-content, .about-hero-content, .about-hero .hero-content) {
   width: 100% !important;
   max-width: 680px !important;
   margin: 0 !important;
   text-align: left !important;
 }
-.suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .pp-hero-container > .talk-experts-card, .canada-hero-container > .talk-experts-card) {
+.suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .talk-experts-card, .about-hero-card, .hero-graphic, :is(.pp-hero-container, .study-hero-container, .spousal-hero-container, .visitor-hero-container, .about-hero-container) > .talk-experts-card) {
   width: 100% !important;
   max-width: 490px !important;
   justify-self: end !important;
@@ -1606,16 +1613,16 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
     padding: 48px 0 40px !important;
     min-height: auto !important;
   }
-  .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container) {
+  .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container, .contact-hero-container, .about-hero-container, .about-hero .hero-container) {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
     padding-left: 18px !important;
     padding-right: 18px !important;
   }
-  .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content) {
+  .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content, .contact-hero-content, .about-hero-content, .about-hero .hero-content) {
     max-width: 100% !important;
   }
-  .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .pp-hero-container > .talk-experts-card, .canada-hero-container > .talk-experts-card) {
+  .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .talk-experts-card, .about-hero-card, .hero-graphic, :is(.pp-hero-container, .study-hero-container, .spousal-hero-container, .visitor-hero-container, .about-hero-container) > .talk-experts-card) {
     justify-self: stretch !important;
     max-width: 100% !important;
   }
@@ -1919,15 +1926,15 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .study-hero-slides .study-premium-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .study-hero-slides .study-hero-slide { opacity: 0; animation: famHeroFade calc(var(--n) * 7s) infinite; animation-delay: calc(var(--i) * 7s); }
 @keyframes famHeroFade { 0% { opacity: 0; transform: scale(1.1); } 8% { opacity: 1; } 45% { opacity: 1; } 55% { opacity: 0; transform: scale(1); } 100% { opacity: 0; } }
-.family-premium-hero .study-fly { position: absolute; z-index: 1; width: 56px; height: auto; pointer-events: none; opacity: 0; filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--site-action) 45%, transparent)); animation: famFly 18s ease-in-out infinite; }
-.family-premium-hero .study-fly-1 { top: 70%; left: 42%; }
-.family-premium-hero .study-fly-2 { top: 25%; left: 50%; width: 40px; animation-duration: 22s; animation-delay: -6s; }
-.family-premium-hero .study-fly-3 { top: 60%; left: 8%; width: 34px; animation-duration: 15s; animation-delay: -10s; }
-.family-premium-hero .study-fly-4 { top: 12%; left: 30%; width: 46px; animation-duration: 20s; animation-delay: -3s; }
-.family-premium-hero .study-fly-5 { top: 85%; left: 60%; width: 30px; animation-duration: 24s; animation-delay: -14s; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly { position: absolute; z-index: 1; width: 56px; height: auto; pointer-events: none; opacity: 0; filter: drop-shadow(0 8px 18px color-mix(in oklab, var(--site-action) 45%, transparent)); animation: famFly 18s ease-in-out infinite; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly-1 { top: 70%; left: 42%; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly-2 { top: 25%; left: 50%; width: 40px; animation-duration: 22s; animation-delay: -6s; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly-3 { top: 60%; left: 8%; width: 34px; animation-duration: 15s; animation-delay: -10s; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly-4 { top: 12%; left: 30%; width: 46px; animation-duration: 20s; animation-delay: -3s; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly-5 { top: 85%; left: 60%; width: 30px; animation-duration: 24s; animation-delay: -14s; }
 @keyframes famFly { 0% { opacity: 0; transform: translate(0,0) rotate(-8deg) scaleX(1); } 10% { opacity: .95; } 25% { transform: translate(-80px,-90px) rotate(6deg) scaleX(.8); } 50% { transform: translate(60px,-170px) rotate(-6deg) scaleX(1); } 75% { transform: translate(140px,-80px) rotate(8deg) scaleX(.8); } 90% { opacity: .95; } 100% { opacity: 0; transform: translate(40px,20px) rotate(-8deg) scaleX(1); } }
-@media (max-width: 900px) { .suvira-site .family-premium-hero::before { background: color-mix(in oklab, var(--site-surface) 88%, transparent) !important; } .family-premium-hero .study-fly { display: none; } }
-@media (prefers-reduced-motion: reduce) { .study-hero-slides .study-hero-slide, .family-premium-hero .study-fly { animation: none !important; } .study-hero-slides .study-hero-slide:first-child { opacity: 1; } }
+@media (max-width: 900px) { .suvira-site .family-premium-hero::before { background: color-mix(in oklab, var(--site-surface) 88%, transparent) !important; } .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly { display: none; } }
+@media (prefers-reduced-motion: reduce) { .study-hero-slides .study-hero-slide, .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly { animation: none !important; } .study-hero-slides .study-hero-slide:first-child { opacity: 1; } }
 
 /* ==== Flying header icons (plane, globe, pin) across page heroes ==== */
 .suvira-site .hero-fly-icon {
@@ -1992,3 +1999,53 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .sop-premium-hero .hero-fly-icon-2 { width: 46px; height: 46px; }
 .suvira-site .sop-premium-hero .hero-fly-icon-2 svg { width: 23px; height: 23px; }
 .suvira-site .sop-premium-hero .hero-fly-icon-3 svg { width: 20px; height: 20px; }
+
+/* ==== Unified Entrance, Card & Pulse Animations Layer ==== */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.pp-hero-badge, .study-hero-badge, .spousal-hero-badge, .visitor-hero-badge, .page-hero-badge, .hero-pill) {
+  animation: heroFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.pp-hero-title, .study-hero-title, .spousal-hero-title, .visitor-hero-title, .page-hero-title, .hero-title) {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.pp-hero-desc, .study-hero-desc, .spousal-hero-desc, .visitor-hero-desc, .page-hero-subtitle, .hero-subtitle) {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.pp-hero-metrics, .study-hero-checks, .spousal-hero-checks, .visitor-hero-checks, .canada-hero-checks) {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.pp-hero-actions, .study-hero-ctas, .spousal-hero-cta, .visitor-hero-cta, .canada-hero-ctas) {
+  animation: heroFadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section, .about-hero, .page-hero) :is(.talk-experts-card, .about-hero-card, .hero-graphic) {
+  animation: heroFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+@keyframes pulseDotGlow {
+  0%, 100% { transform: scale(1); opacity: 0.9; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  50% { transform: scale(1.15); opacity: 1; box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+}
+.suvira-site :is(.talk-social-dot, .portal-pulse-dot) {
+  display: inline-block !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: #10B981 !important;
+  animation: pulseDotGlow 2s infinite ease-in-out !important;
+}
+
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card, .study-card, .study-uni-card):hover :is(.pp-btn-primary, .btn-study-apply, .spousal-card-btn, .visitor-card-btn) i.fa-arrow-right {
+  transform: translateX(4px) !important;
+}
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card, .study-card, .study-uni-card) :is(.pp-btn-primary, .btn-study-apply, .spousal-card-btn, .visitor-card-btn) {
+  margin-top: auto !important;
+}
