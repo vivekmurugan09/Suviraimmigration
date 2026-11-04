@@ -63,12 +63,8 @@
 .suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item,.study-metric-card) { background: var(--site-surface) !important; border: 1px solid var(--site-line) !important; border-top: 2px solid var(--site-gold) !important; border-radius: 6px !important; box-shadow: none !important; padding: 26px !important; transition: transform .35s,border-color .35s,box-shadow .35s !important; }
 .suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item):hover { transform: translateY(-5px) !important; border-color: var(--site-action) !important; box-shadow: var(--site-shadow) !important; }
 .suvira-study .study-premium-content :is(.study-card-icon,.study-uni-icon) { background: var(--site-soft) !important; color: var(--site-action) !important; border: 1px solid var(--site-line); width: 48px; height: 48px; border-radius: 50%; }
-.suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item,.study-req-box) :is(h3,h4) { color: var(--site-ink) !important; font-size: 19px; line-height: 1.4; }
-.suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item,.study-req-box) :is(p,li) { color: var(--site-muted) !important; font-size: 14px; line-height: 1.8; }
-.suvira-study .study-premium-content .roadmap-step { border-left: 1px solid var(--site-gold); padding: 0 0 26px 28px; }
-.suvira-study .study-premium-content .step-num { background: var(--site-action) !important; color: var(--site-surface) !important; box-shadow: none !important; }
-.suvira-study .study-premium-content .faq-item { border: 1px solid var(--site-line); border-radius: 4px; margin-bottom: 12px; }
-.suvira-study .study-premium-content .faq-question { color: var(--site-ink) !important; font-size: 15px; }
+.suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item) :is(h3,h4) { color: var(--site-ink) !important; font-size: 19px; line-height: 1.4; }
+.suvira-study .study-premium-content :is(.study-card,.study-uni-card,.study-premium-feature,.study-support-item) :is(p,li) { color: var(--site-muted) !important; font-size: 14px; line-height: 1.8; }
 .suvira-study .study-premium-content.study-cta-banner { background: var(--site-action) !important; }
 .suvira-study .study-premium-content.study-cta-banner :is(h2,p) { color: var(--site-surface) !important; }
 .suvira-study .study-premium-content.study-cta-banner .btn-study-primary { background: var(--site-gold) !important; color: var(--site-ink) !important; }

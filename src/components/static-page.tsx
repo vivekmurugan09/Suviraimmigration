@@ -27,13 +27,13 @@ export function StaticPage({ page }: { page: StaticPageData }) {
       {(page.styles ?? []).map((css, i) => (
         <style key={i} dangerouslySetInnerHTML={{ __html: css }} />
       ))}
-      <link rel="stylesheet" href="/site-polish.css" />
-      <link rel="stylesheet" href="/study-metrics-anim.css" />
-      <link rel="stylesheet" href="/study-journey-anim.css" />
+      <link rel="stylesheet" href="/site-polish.css?v=20261104-v5" />
+      <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v5" />
+      <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v5" />
       {page.jsonLd.map((json, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: json }} />
       ))}
-      <div className={`suvira-site${page.routePath === '/' ? ' suvira-editorial' : ''}${page.routePath.startsWith('/services/study-visas') || page.routePath.startsWith('/study-visas') ? ' suvira-study' : ''}${['/Thank-you', '/thankyou'].includes(page.routePath) ? ' suvira-confirmation' : ''}`} ref={containerRef} dangerouslySetInnerHTML={{ __html: page.body.replaceAll('/images/suvira-butterfly-icon.png', '/images/suvira-logo.png').replace(/(<a href="(?:(?:\/services)?\/study-visas)"[^>]*><i class="fas fa-graduation-cap"><\/i> Study Visa<\/a>)/g, '$1' + ['australia', 'canada', 'uk', 'germany', 'usa', 'ireland', 'newzealand'].map(country => `<a class="mobile-study-destination" href="/study-visas/${country}"><i class="fas fa-angle-right"></i> Study in ${({ uk: 'United Kingdom', usa: 'USA', newzealand: 'New Zealand' } as Record<string, string>)[country] || country.charAt(0).toUpperCase() + country.slice(1)}</a>`).join('')) }} />
+      <div className={`suvira-site${page.routePath === '/' ? ' suvira-editorial' : ''}${page.routePath.startsWith('/services/study-visas') || page.routePath.startsWith('/study-visas') ? ' suvira-study' : ''}${['/Thank-you', '/thankyou'].includes(page.routePath) ? ' suvira-confirmation' : ''}`} ref={containerRef} dangerouslySetInnerHTML={{ __html: page.body.replaceAll('/study-premium.css"', '/study-premium.css?v=20261104-v5"').replaceAll('/images/suvira-butterfly-icon.png', '/images/suvira-logo.png').replace(/(<a href="(?:(?:\/services)?\/study-visas)"[^>]*><i class="fas fa-graduation-cap"><\/i> Study Visa<\/a>)/g, '$1' + ['australia', 'canada', 'uk', 'germany', 'usa', 'ireland', 'newzealand'].map(country => `<a class="mobile-study-destination" href="/study-visas/${country}"><i class="fas fa-angle-right"></i> Study in ${({ uk: 'United Kingdom', usa: 'USA', newzealand: 'New Zealand' } as Record<string, string>)[country] || country.charAt(0).toUpperCase() + country.slice(1)}</a>`).join('')) }} />
       <Link to="/ai-preparation" className="fixed bottom-5 left-5 z-40 rounded-md border border-border bg-background px-4 py-3 text-sm font-semibold text-primary shadow-sm max-md:bottom-20">AI Preparation →</Link>
     </>
   );

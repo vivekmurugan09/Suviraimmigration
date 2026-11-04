@@ -840,15 +840,16 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261104-v5"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261104-v5"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261104-v5"/>')
 
     for jld in page.get("jsonLd", []):
         head_parts.append(f'  <script type="application/ld+json">{jld}</script>')
 
     body_html = (
         page["body"]
+        .replace('/study-premium.css"', '/study-premium.css?v=20261104-v5"')
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")

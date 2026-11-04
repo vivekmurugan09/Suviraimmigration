@@ -2398,13 +2398,13 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   transform: rotate(180deg) !important;
 }
 
-.suvira-site :is(.faq-question-btn.active, .faq-accordion-item:has(.show) .faq-question-btn) .faq-q-chevron {
+.suvira-site :is(.faq-question-btn.active, .faq-accordion-item:has(.show) .faq-question-btn, .faq-item.active .faq-question) .faq-q-chevron {
   background: var(--site-action, #045030);
   color: #ffffff;
 }
 
 /* FAQ Answer Panel — Collapsed by default, Expanded on .show or .active */
-.suvira-site :is(.faq-answer-panel, .pp-faq-panel, .pp-faq-content) {
+.suvira-site :is(.faq-answer-panel, .pp-faq-panel, .pp-faq-content, .faq-answer) {
   max-height: 0 !important;
   opacity: 0 !important;
   overflow: hidden !important;
@@ -2417,10 +2417,11 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.3s ease !important;
 }
 
-.suvira-site :is(.faq-answer-panel.show, .pp-faq-panel.show, .pp-faq-content.show),
+.suvira-site :is(.faq-answer-panel.show, .pp-faq-panel.show, .pp-faq-content.show, .faq-answer.show),
 .suvira-site .faq-question-btn.active + .faq-answer-panel,
 .suvira-site .pp-faq-btn.active + :is(.pp-faq-panel, .pp-faq-content),
 .suvira-site .faq-accordion-item.active .faq-answer-panel,
+.suvira-site .faq-item.active .faq-answer,
 .suvira-site .pp-faq-card.active :is(.pp-faq-panel, .pp-faq-content) {
   max-height: 560px !important;
   opacity: 1 !important;
