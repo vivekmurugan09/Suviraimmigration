@@ -1282,16 +1282,23 @@ fbq('track', 'PageView');
     }
 
     function handleExpertFormSubmit(e) {
-        e.preventDefault();
+        if (e && e.preventDefault) e.preventDefault();
         const form = document.getElementById('talkExpertsForm');
-        const phoneEl = form ? (form.querySelector('#tePhone') || form.querySelector('input[type="tel"]')) : null;
-        if (typeof suviraValidatePhoneInput === 'function' && !suviraValidatePhoneInput(phoneEl)) {
+        if (!form) return false;
+        const phoneEl = form.querySelector('#tePhone') || form.querySelector('input[type="tel"]');
+        const ccEl = form.querySelector('#teCountryCode') || form.querySelector('[name="country_code"]');
+        const countryCode = ccEl ? ccEl.value : null;
+        if (typeof suviraValidatePhoneInput === 'function' && !suviraValidatePhoneInput(phoneEl, countryCode)) {
             return false;
         }
-        if (form && typeof form.reportValidity === 'function' && !form.reportValidity()) {
+        const emailEl = form.querySelector('#teEmail') || form.querySelector('input[type="email"]');
+        if (typeof suviraValidateEmailInput === 'function' && !suviraValidateEmailInput(emailEl)) {
             return false;
         }
-        const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+        if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
+            return false;
+        }
+        const submitBtn = form.querySelector('button[type="submit"]');
         const successMsg = document.getElementById('teSuccessMsg');
 
         if (submitBtn) {

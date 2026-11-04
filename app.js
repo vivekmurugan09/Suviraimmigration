@@ -971,6 +971,10 @@ function toggleFaqAccordion(headerEl) {
             if (typeof suviraValidatePhoneInput === 'function' && !suviraValidatePhoneInput(phoneEl)) {
                 return false;
             }
+            const emailEl = form.querySelector('#cEmail') || form.querySelector('input[type="email"]');
+            if (typeof suviraValidateEmailInput === 'function' && !suviraValidateEmailInput(emailEl)) {
+                return false;
+            }
             if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
                 return false;
             }
@@ -1077,11 +1081,11 @@ function toggleFaqAccordion(headerEl) {
 
 
 
-// Global Phone Error Helpers & Validation
+// Global Error Helpers, Country-Specific Phone Validation & Email Validation
 function suviraGetPhoneErrorContainer(input) {
     if (!input || !input.parentElement) return null;
     var p = input.parentElement;
-    if (p.classList.contains('talk-phone-row') || p.style.display === 'flex') {
+    if ((p.classList && p.classList.contains('talk-phone-row')) || (p.style && p.style.display === 'flex')) {
         return p.parentElement || p;
     }
     return p;
@@ -1128,7 +1132,72 @@ function suviraClearPhoneError(input) {
     }
 }
 
-function suviraValidatePhoneInput(phoneEl) {
+function suviraDetectCountryCode(phoneEl, explicitCountryCode) {
+    if (explicitCountryCode && explicitCountryCode.trim()) {
+        var cc = explicitCountryCode.trim();
+        return cc.indexOf('+') === 0 ? cc : ('+' + cc);
+    }
+    if (phoneEl && phoneEl.form) {
+        var ccEl = phoneEl.form.querySelector('[name="country_code"], #teCountryCode');
+        if (ccEl && ccEl.value) {
+            var ccVal = ccEl.value.trim();
+            return ccVal.indexOf('+') === 0 ? ccVal : ('+' + ccVal);
+        }
+    }
+    var val = (phoneEl && phoneEl.value ? phoneEl.value.trim() : (typeof phoneEl === 'string' ? phoneEl.trim() : ''));
+    if (val.indexOf('+91') === 0) return '+91';
+    if (val.indexOf('+971') === 0) return '+971';
+    if (val.indexOf('+65') === 0) return '+65';
+    if (val.indexOf('+44') === 0) return '+44';
+    if (val.indexOf('+61') === 0) return '+61';
+    if (val.indexOf('+1') === 0) return '+1';
+    if (val.indexOf('+') === 0) return 'OTHER';
+    
+    var allDigits = val.replace(/\D/g, '');
+    if (allDigits.length === 12 && allDigits.indexOf('91') === 0) return '+91';
+    return '+91';
+}
+
+function suviraExtractNationalDigits(rawVal, countryCode) {
+    var rawDigits = (rawVal || '').replace(/\D/g, '');
+    if (!rawDigits) return '';
+    
+    if (countryCode === '+91') {
+        if (rawVal.trim().indexOf('+91') === 0) return rawDigits.slice(2);
+        if (rawDigits.length === 12 && rawDigits.indexOf('91') === 0) return rawDigits.slice(2);
+        return rawDigits;
+    }
+    if (countryCode === '+1') {
+        if (rawVal.trim().indexOf('+1') === 0) return rawDigits.slice(1);
+        if (rawDigits.length === 11 && rawDigits.indexOf('1') === 0) return rawDigits.slice(1);
+        return rawDigits;
+    }
+    if (countryCode === '+44') {
+        if (rawVal.trim().indexOf('+44') === 0) rawDigits = rawDigits.slice(2);
+        else if (rawDigits.length >= 12 && rawDigits.indexOf('44') === 0) rawDigits = rawDigits.slice(2);
+        if (rawDigits.indexOf('0') === 0) rawDigits = rawDigits.slice(1);
+        return rawDigits;
+    }
+    if (countryCode === '+61') {
+        if (rawVal.trim().indexOf('+61') === 0) rawDigits = rawDigits.slice(2);
+        else if (rawDigits.length >= 11 && rawDigits.indexOf('61') === 0) rawDigits = rawDigits.slice(2);
+        if (rawDigits.indexOf('0') === 0) rawDigits = rawDigits.slice(1);
+        return rawDigits;
+    }
+    if (countryCode === '+971') {
+        if (rawVal.trim().indexOf('+971') === 0) return rawDigits.slice(3);
+        if (rawDigits.length === 12 && rawDigits.indexOf('971') === 0) return rawDigits.slice(3);
+        return rawDigits;
+    }
+    if (countryCode === '+65') {
+        if (rawVal.trim().indexOf('+65') === 0) return rawDigits.slice(2);
+        if (rawDigits.length === 10 && rawDigits.indexOf('65') === 0) return rawDigits.slice(2);
+        return rawDigits;
+    }
+    return rawDigits;
+}
+
+function suviraValidatePhoneInput(phoneEl, explicitCountryCode) {
     if (!phoneEl) return true;
     var raw = (phoneEl.value || '').trim();
     
@@ -1147,38 +1216,121 @@ function suviraValidatePhoneInput(phoneEl) {
         return false;
     }
     
-    // 3. Count numeric digits (must be at least 10 digits)
-    var digits = raw.replace(/\D/g, '');
-    if (digits.length < 10) {
-        suviraShowPhoneError(phoneEl, 'Please enter a valid phone number (minimum 10 digits required).');
+    // 3. Country-specific validation
+    var cc = suviraDetectCountryCode(phoneEl, explicitCountryCode);
+    var nat = suviraExtractNationalDigits(raw, cc);
+    
+    if (cc === '+91') {
+        if (nat.length < 10) {
+            suviraShowPhoneError(phoneEl, 'India phone numbers require exactly 10 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 10) {
+            suviraShowPhoneError(phoneEl, 'India phone numbers must be exactly 10 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (cc === '+1') {
+        if (nat.length < 10) {
+            suviraShowPhoneError(phoneEl, 'US/Canada phone numbers require exactly 10 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 10) {
+            suviraShowPhoneError(phoneEl, 'US/Canada phone numbers must be exactly 10 digits.');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (cc === '+971') {
+        if (nat.length < 9) {
+            suviraShowPhoneError(phoneEl, 'UAE phone numbers require 9 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 9) {
+            suviraShowPhoneError(phoneEl, 'UAE phone numbers must be exactly 9 digits.');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (cc === '+65') {
+        if (nat.length < 8) {
+            suviraShowPhoneError(phoneEl, 'Singapore phone numbers require 8 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 8) {
+            suviraShowPhoneError(phoneEl, 'Singapore phone numbers must be exactly 8 digits.');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (cc === '+44') {
+        if (nat.length < 10) {
+            suviraShowPhoneError(phoneEl, 'UK phone numbers require at least 10 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 11) {
+            suviraShowPhoneError(phoneEl, 'UK phone numbers cannot exceed 11 digits.');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (cc === '+61') {
+        if (nat.length < 9) {
+            suviraShowPhoneError(phoneEl, 'Australia phone numbers require at least 9 digits (entered ' + nat.length + ').');
+            phoneEl.focus();
+            return false;
+        }
+        if (nat.length > 10) {
+            suviraShowPhoneError(phoneEl, 'Australia phone numbers cannot exceed 10 digits.');
+            phoneEl.focus();
+            return false;
+        }
+        suviraClearPhoneError(phoneEl);
+        return true;
+    }
+    if (nat.length < 8) {
+        suviraShowPhoneError(phoneEl, 'Please enter a valid international phone number (minimum 8 digits).');
+        phoneEl.focus();
+        return false;
+    }
+    if (nat.length > 15) {
+        suviraShowPhoneError(phoneEl, 'Phone numbers cannot exceed 15 digits.');
         phoneEl.focus();
         return false;
     }
     
-    // 4. Maximum digits limit (E.164 max 16 digits)
-    if (digits.length > 16) {
-        suviraShowPhoneError(phoneEl, 'Phone number cannot exceed 16 digits.');
-        phoneEl.focus();
-        return false;
-    }
-    
-    // Valid phone number
     suviraClearPhoneError(phoneEl);
     return true;
 }
 window.suviraValidatePhoneInput = suviraValidatePhoneInput;
 window.suviraShowPhoneError = suviraShowPhoneError;
 window.suviraClearPhoneError = suviraClearPhoneError;
+window.suviraDetectCountryCode = suviraDetectCountryCode;
+window.suviraExtractNationalDigits = suviraExtractNationalDigits;
 
 function suviraInitPhoneInput(input) {
     if (!input || input.__suviraPhoneInit) return;
     input.__suviraPhoneInit = true;
     
     input.setAttribute('inputmode', 'tel');
-    input.setAttribute('pattern', '[0-9+\\s\\-()]{10,20}');
-    input.setAttribute('minlength', '10');
-    input.setAttribute('maxlength', '18');
-    input.setAttribute('title', 'Please enter a valid phone number with at least 10 digits (no alphabets)');
+    input.setAttribute('pattern', '[0-9+\\s\\-()]{8,20}');
+    input.setAttribute('title', 'Please enter a valid country-specific phone number (no alphabets)');
     
     // Prevent typing alphabets directly
     input.addEventListener('keypress', function(e) {
@@ -1195,10 +1347,10 @@ function suviraInitPhoneInput(input) {
             suviraShowPhoneError(this, 'Phone number cannot contain alphabets. Please enter a valid number.');
             return;
         }
-        var digits = this.value.replace(/\D/g, '');
-        if (this.value.trim().length > 0 && digits.length < 10) {
-            suviraShowPhoneError(this, 'Please enter a valid phone number (minimum 10 digits required).');
-        } else if (digits.length >= 10 && digits.length <= 16) {
+        var cc = suviraDetectCountryCode(this);
+        var nat = suviraExtractNationalDigits(this.value, cc);
+        var minRequired = (cc === '+65') ? 8 : ((cc === '+971' || cc === '+61') ? 9 : 10);
+        if (nat.length >= minRequired) {
             suviraClearPhoneError(this);
         }
     });
@@ -1210,15 +1362,143 @@ function suviraInitPhoneInput(input) {
         }
         suviraValidatePhoneInput(this);
     });
+    
+    // Wire country code dropdown changes if present in parent form
+    if (input.form) {
+        var ccEl = input.form.querySelector('[name="country_code"], #teCountryCode');
+        if (ccEl && !ccEl.__suviraCountryChangeInit) {
+            ccEl.__suviraCountryChangeInit = true;
+            ccEl.addEventListener('change', function() {
+                var selectedCc = this.value;
+                if (input.value.trim()) {
+                    suviraValidatePhoneInput(input, selectedCc);
+                }
+            });
+        }
+    }
 }
 window.suviraInitPhoneInput = suviraInitPhoneInput;
 
-// Auto-initialize all phone inputs in document
-document.addEventListener('DOMContentLoaded', function() {
+// Global Email Validation Helpers
+var SUVIRA_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+function suviraGetEmailErrorContainer(input) {
+    if (!input || !input.parentElement) return null;
+    return input.parentElement;
+}
+
+function suviraShowEmailError(input, message) {
+    if (!input) return;
+    input.setCustomValidity(message);
+    input.style.setProperty('border-color', '#ef4444', 'important');
+    input.style.setProperty('box-shadow', '0 0 0 3px rgba(239, 68, 68, 0.25)', 'important');
+    
+    var container = suviraGetEmailErrorContainer(input);
+    if (container) {
+        var errEl = container.querySelector('.suvira-email-error-msg');
+        if (!errEl) {
+            errEl = document.createElement('div');
+            errEl.className = 'suvira-email-error-msg';
+            errEl.style.cssText = 'color:#ef4444;font-size:12px;margin-top:6px;font-weight:600;display:block;text-align:left;line-height:1.4;';
+            container.appendChild(errEl);
+        }
+        errEl.textContent = message;
+        errEl.style.display = 'block';
+    }
+    if (typeof input.reportValidity === 'function') {
+        input.reportValidity();
+    }
+}
+
+function suviraClearEmailError(input) {
+    if (!input) return;
+    input.setCustomValidity('');
+    input.style.removeProperty('border-color');
+    input.style.removeProperty('box-shadow');
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
+    
+    var container = suviraGetEmailErrorContainer(input);
+    if (container) {
+        var errEl = container.querySelector('.suvira-email-error-msg');
+        if (errEl) {
+            errEl.textContent = '';
+            errEl.style.display = 'none';
+        }
+    }
+}
+
+function suviraValidateEmailInput(emailEl) {
+    if (!emailEl) return true;
+    var raw = (emailEl.value || '').trim();
+    if (!raw) {
+        suviraShowEmailError(emailEl, 'Please enter your email address.');
+        emailEl.focus();
+        return false;
+    }
+    if (!SUVIRA_EMAIL_REGEX.test(raw)) {
+        suviraShowEmailError(emailEl, 'Please enter a valid email address (e.g., name@example.com).');
+        emailEl.focus();
+        return false;
+    }
+    var parts = raw.split('@');
+    if (parts.length === 2) {
+        var domainParts = parts[1].split('.');
+        var tld = domainParts[domainParts.length - 1];
+        if (!tld || tld.length < 2 || !/^[a-zA-Z]+$/.test(tld)) {
+            suviraShowEmailError(emailEl, 'Please enter a valid email domain (e.g., .com, .in).');
+            emailEl.focus();
+            return false;
+        }
+    }
+    suviraClearEmailError(emailEl);
+    return true;
+}
+window.suviraValidateEmailInput = suviraValidateEmailInput;
+window.suviraShowEmailError = suviraShowEmailError;
+window.suviraClearEmailError = suviraClearEmailError;
+
+function suviraInitEmailInput(input) {
+    if (!input || input.__suviraEmailInit) return;
+    input.__suviraEmailInit = true;
+    
+    input.setAttribute('autocomplete', 'email');
+    input.setAttribute('inputmode', 'email');
+    
+    input.addEventListener('input', function() {
+        if (this.validationMessage || (this.parentElement && this.parentElement.querySelector('.suvira-email-error-msg'))) {
+            var val = this.value.trim();
+            if (val && SUVIRA_EMAIL_REGEX.test(val)) {
+                var parts = val.split('@');
+                if (parts.length === 2 && parts[1].indexOf('.') !== -1) {
+                    var tld = parts[1].split('.').pop();
+                    if (tld && tld.length >= 2) {
+                        suviraClearEmailError(this);
+                    }
+                }
+            }
+        }
+    });
+    
+    input.addEventListener('blur', function() {
+        if (!this.value.trim()) {
+            suviraClearEmailError(this);
+            return;
+        }
+        suviraValidateEmailInput(this);
+    });
+}
+window.suviraInitEmailInput = suviraInitEmailInput;
+
+// Auto-initialize all phone and email inputs in document
+function suviraInitAllFormInputs() {
     document.querySelectorAll('input[type="tel"], [name*="phone" i], [name*="whatsapp" i], #tePhone, #cPhone, #ePhone, #modalPhone').forEach(suviraInitPhoneInput);
-});
+    document.querySelectorAll('input[type="email"], [name*="email" i], #teEmail, #cEmail, #eEmail').forEach(suviraInitEmailInput);
+}
+
+document.addEventListener('DOMContentLoaded', suviraInitAllFormInputs);
 if (document.readyState === 'interactive' || document.readyState === 'complete') {
-    document.querySelectorAll('input[type="tel"], [name*="phone" i], [name*="whatsapp" i], #tePhone, #cPhone, #ePhone, #modalPhone').forEach(suviraInitPhoneInput);
+    suviraInitAllFormInputs();
 }
 
 // Global FormSubmit & Web3Forms helper with automatic fallback & Thank-You redirect in a separate tab
@@ -1326,6 +1606,11 @@ function handleModalSubmit(e) {
         return false;
     }
 
+    const emailEl = form.elements['Email_Address'] || form.elements['Email Address'] || form.elements['email'] || form.querySelector('input[type="email"]');
+    if (typeof suviraValidateEmailInput === 'function' && !suviraValidateEmailInput(emailEl)) {
+        return false;
+    }
+
     if (typeof form.reportValidity === 'function' && !form.reportValidity()) {
         return false;
     }
@@ -1338,7 +1623,6 @@ function handleModalSubmit(e) {
     
     const nameEl = form.elements['Full_Name'] || form.elements['Full Name'] || form.elements['name'] || form.querySelector('input[type="text"]');
     const ccEl = form.elements['country_code'];
-    const emailEl = form.elements['Email_Address'] || form.elements['Email Address'] || form.elements['email'] || form.querySelector('input[type="email"]');
     const serviceEl = form.elements['Service_Required'] || form.elements['Service Required'] || form.elements['visa_type'] || form.elements['service'] || form.elements['stream'] || form.elements['destination'] || form.elements['pnp'] || form.querySelector('select:not(.talk-phone-prefix)');
     const modeEl = form.elements['Consultation_Mode'] || form.elements['consultation_mode'];
     const msgEl = form.elements['message'] || form.elements['occupation'] || form.querySelector('textarea');

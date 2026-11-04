@@ -140,14 +140,32 @@
           field.setAttribute("aria-label", field.getAttribute("placeholder") || field.name || "Select an option");
         }
         if (field instanceof HTMLInputElement) {
-          if (field.type === "email") field.autocomplete = "email";
+          if (field.type === "email" || /email/i.test(field.name || field.id)) {
+            field.autocomplete = "email";
+            field.inputMode = "email";
+            field.addEventListener("input", function () {
+              if (this.validationMessage || (this.parentElement && this.parentElement.querySelector(".suvira-email-error-msg"))) {
+                var val = this.value.trim();
+                if (val && /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(val)) {
+                  if (typeof window.suviraClearEmailError === "function") {
+                    window.suviraClearEmailError(this);
+                  }
+                }
+              }
+            });
+            field.addEventListener("blur", function () {
+              if (this.value.trim().length > 0) {
+                if (typeof window.suviraValidateEmailInput === "function") {
+                  window.suviraValidateEmailInput(this);
+                }
+              }
+            });
+          }
           if (field.type === "tel" || /phone|whatsapp/i.test(field.name || field.id)) {
             field.autocomplete = "tel";
             field.inputMode = "tel";
-            field.setAttribute("pattern", "[0-9+\\s\\-()]{10,20}");
-            field.setAttribute("minlength", "10");
-            field.setAttribute("maxlength", "18");
-            field.setAttribute("title", "Please enter a valid phone number with at least 10 digits (no alphabets)");
+            field.setAttribute("pattern", "[0-9+\\s\\-()]{8,20}");
+            field.setAttribute("title", "Please enter a valid country-specific phone number (no alphabets)");
             field.addEventListener("keypress", function (e) {
               if (e.key && e.key.length === 1 && /[a-zA-Z]/.test(e.key)) {
                 e.preventDefault();
@@ -174,13 +192,16 @@
                   this.style.setProperty("border-color", "#ef4444", "important");
                   this.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
                 }
-              } else if (this.value.replace(/\D/g, "").length >= 10) {
-                if (typeof window.suviraClearPhoneError === "function") {
-                  window.suviraClearPhoneError(this);
-                } else {
-                  this.setCustomValidity("");
-                  this.style.removeProperty("border-color");
-                  this.style.removeProperty("box-shadow");
+              } else {
+                var digits = this.value.replace(/\D/g, "");
+                if (digits.length >= 8) {
+                  if (typeof window.suviraClearPhoneError === "function") {
+                    window.suviraClearPhoneError(this);
+                  } else {
+                    this.setCustomValidity("");
+                    this.style.removeProperty("border-color");
+                    this.style.removeProperty("box-shadow");
+                  }
                 }
               }
             });
@@ -191,12 +212,12 @@
                 }
                 return;
               }
-              var digits = this.value.replace(/\D/g, "");
-              if (digits.length < 10) {
-                var msg = "Please enter a valid phone number (minimum 10 digits required).";
-                if (typeof window.suviraShowPhoneError === "function") {
-                  window.suviraShowPhoneError(this, msg);
-                } else {
+              if (typeof window.suviraValidatePhoneInput === "function") {
+                window.suviraValidatePhoneInput(this);
+              } else {
+                var digits = this.value.replace(/\D/g, "");
+                if (digits.length < 10) {
+                  var msg = "Please enter a valid phone number (minimum 10 digits required).";
                   this.setCustomValidity(msg);
                   this.reportValidity();
                   this.style.setProperty("border-color", "#ef4444", "important");
@@ -220,31 +241,53 @@
 
       var phone = form.querySelector('input[type="tel"], [name*="phone" i], [name*="whatsapp" i]');
       if (phone) {
-        var raw = (phone.value || "").trim();
-        var digits = raw.replace(/\D/g, "");
-        if (!raw || /[a-zA-Z]/.test(raw) || digits.length < 10) {
-          var errorMsg = !raw
-            ? "Please enter your phone / WhatsApp number."
-            : /[a-zA-Z]/.test(raw)
-            ? "Phone number cannot contain alphabets. Please enter a valid number."
-            : "Please enter a valid phone number (minimum 10 digits required).";
-          if (typeof window.suviraShowPhoneError === "function") {
-            window.suviraShowPhoneError(phone, errorMsg);
-          } else {
+        if (typeof window.suviraValidatePhoneInput === "function") {
+          var ccEl = form.querySelector('[name="country_code"], #teCountryCode');
+          var cc = ccEl ? ccEl.value : null;
+          if (!window.suviraValidatePhoneInput(phone, cc)) {
+            phone.focus();
+            return;
+          }
+        } else {
+          var raw = (phone.value || "").trim();
+          var digits = raw.replace(/\D/g, "");
+          if (!raw || /[a-zA-Z]/.test(raw) || digits.length < 10) {
+            var errorMsg = !raw
+              ? "Please enter your phone / WhatsApp number."
+              : /[a-zA-Z]/.test(raw)
+              ? "Phone number cannot contain alphabets. Please enter a valid number."
+              : "Please enter a valid phone number (minimum 10 digits required).";
             phone.setCustomValidity(errorMsg);
             phone.reportValidity();
             phone.style.setProperty("border-color", "#ef4444", "important");
             phone.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+            phone.focus();
+            return;
           }
-          phone.focus();
-          return;
         }
-        if (typeof window.suviraClearPhoneError === "function") {
-          window.suviraClearPhoneError(phone);
+      }
+
+      var email = form.querySelector('input[type="email"], [name*="email" i]');
+      if (email) {
+        if (typeof window.suviraValidateEmailInput === "function") {
+          if (!window.suviraValidateEmailInput(email)) {
+            email.focus();
+            return;
+          }
         } else {
-          phone.setCustomValidity("");
-          phone.style.removeProperty("border-color");
-          phone.style.removeProperty("box-shadow");
+          var rawEmail = (email.value || "").trim();
+          var emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+          if (!rawEmail || !emailRegex.test(rawEmail)) {
+            var emailErrorMsg = !rawEmail
+              ? "Please enter your email address."
+              : "Please enter a valid email address (e.g., name@example.com).";
+            email.setCustomValidity(emailErrorMsg);
+            email.reportValidity();
+            email.style.setProperty("border-color", "#ef4444", "important");
+            email.style.setProperty("box-shadow", "0 0 0 3px rgba(239, 68, 68, 0.25)", "important");
+            email.focus();
+            return;
+          }
         }
       }
       if (typeof form.reportValidity === "function" && !form.reportValidity()) return;
