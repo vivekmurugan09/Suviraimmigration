@@ -1247,8 +1247,8 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .visa-card-footer,
 .suvira-study .study-card-body .btn-study-apply { margin-top: auto; }
 
-/* Unified destination grids across Study, Spousal & Visitor */
-.suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+/* Unified destination grids across Study, Spousal, Visitor & PR */
+.suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid, .pp-grid-3, .programs-grid, .pnp-cards-grid, .study-cards-grid, .study-uni-grid) {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 28px !important;
@@ -1256,7 +1256,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   width: 100% !important;
   margin-bottom: 20px !important;
 }
-.suvira-site :is(.study-country-card, .spousal-card, .visitor-card) {
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card) {
   display: flex !important;
   flex-direction: column !important;
   min-width: 0 !important;
@@ -1268,23 +1268,23 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   background: #ffffff !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease !important;
 }
-.suvira-site :is(.study-country-card, .spousal-card, .visitor-card):hover {
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card):hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 20px 40px rgba(0, 80, 48, 0.12) !important;
 }
-.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) {
+.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media, .pp-card-media) {
   height: 200px !important;
   flex: 0 0 200px !important;
   position: relative !important;
   overflow: hidden !important;
 }
-.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) > img {
+.suvira-site :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media, .pp-card-media) > img {
   width: 100% !important;
   height: 100% !important;
   object-fit: cover !important;
   transition: transform 0.5s ease !important;
 }
-.suvira-site :is(.study-country-card, .spousal-card, .visitor-card):hover :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media) > img {
+.suvira-site :is(.study-country-card, .spousal-card, .visitor-card, .pp-card, .program-card, .pnp-card):hover :is(.study-card-img-wrap, .spousal-card-media, .visitor-card-media, .pp-card-media) > img {
   transform: scale(1.08) !important;
 }
 .suvira-site :is(.study-card-body, .spousal-card-body, .visitor-card-body) {
@@ -1293,7 +1293,10 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   display: flex !important;
   flex-direction: column !important;
 }
-.suvira-site :is(.study-card-body, .spousal-card-body, .visitor-card-body) :is(h3, .spousal-card-title, .visitor-card-title) {
+.suvira-site .pp-card {
+  padding: 28px 24px 22px !important;
+}
+.suvira-site :is(.study-card-body, .spousal-card-body, .visitor-card-body, .pp-card) :is(h3, .spousal-card-title, .visitor-card-title, .pp-card-title) {
   font-family: 'Outfit', sans-serif !important;
   font-size: 20px !important;
   font-weight: 700 !important;
@@ -1301,7 +1304,14 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   margin: 0 0 10px 0 !important;
   line-height: 1.3 !important;
 }
-.suvira-site :is(.spousal-card-highlight, .visitor-card-highlight, .study-lead-text) {
+.suvira-site .pp-card .pp-card-desc {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  color: #475569 !important;
+  margin-bottom: 16px !important;
+}
+.suvira-site :is(.spousal-card-highlight, .visitor-card-highlight, .study-lead-text, .pp-card-badge) {
   display: inline-block !important;
   border-radius: 6px !important;
   font-size: 12.5px !important;
@@ -1313,9 +1323,9 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 }
 .suvira-site .spousal-card-highlight { background: #FFF1F2 !important; color: #BE123C !important; }
 .suvira-site .visitor-card-highlight { background: #ECFDF5 !important; color: #047857 !important; }
-.suvira-site .study-lead-text { background: #EFF6FF !important; color: #1D4ED8 !important; }
+.suvira-site :is(.study-lead-text, .pp-card-badge) { background: #EFF6FF !important; color: #1D4ED8 !important; }
 
-.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) {
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list, .pp-card-list) {
   list-style: none !important;
   padding: 0 !important;
   margin: 0 0 20px 0 !important;
@@ -1324,7 +1334,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   gap: 10px !important;
   flex: 1 1 auto !important;
 }
-.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) li {
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list, .pp-card-list) li {
   font-size: 13.5px !important;
   line-height: 1.55 !important;
   color: #475569 !important;
@@ -1333,14 +1343,14 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   gap: 10px !important;
   margin: 0 !important;
 }
-.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) li i {
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list, .pp-card-list) li i {
   color: var(--site-action, #045030) !important;
   font-size: 13px !important;
   margin-top: 3px !important;
   flex-shrink: 0 !important;
 }
 
-.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) {
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action, .pp-card .pp-btn-primary) {
   margin-top: auto !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
@@ -1356,32 +1366,32 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   color: #ffffff !important;
   transition: all 0.25s ease !important;
 }
-.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action):hover {
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action, .pp-card .pp-btn-primary):hover {
   background: #06663e !important;
   color: #ffffff !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 6px 18px rgba(4, 80, 48, 0.25) !important;
 }
-.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) :is(span, strong) {
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action, .pp-card .pp-btn-primary) :is(span, strong) {
   color: #ffffff !important;
 }
-.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) i {
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action, .pp-card .pp-btn-primary) i {
   color: #ffffff !important;
   font-size: 13px !important;
   transition: transform 0.2s ease !important;
 }
-.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action):hover i {
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action, .pp-card .pp-btn-primary):hover i {
   transform: translateX(4px) !important;
 }
 
 @media (max-width: 1024px) {
-  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid, .pp-grid-3, .programs-grid, .pnp-cards-grid, .study-cards-grid, .study-uni-grid) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 22px !important;
   }
 }
 @media (max-width: 680px) {
-  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid) {
+  .suvira-site :is(.study-countries-grid, .spousal-destinations-grid, .visitor-destinations-grid, .pp-grid-3, .programs-grid, .pnp-cards-grid, .study-cards-grid, .study-uni-grid) {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
@@ -1486,7 +1496,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 }
 
 /* Spousal, study & visitor heroes: country photo slides, light wash, flying logos */
-.suvira-site :is(.family-premium-hero, .study-premium-hero) {
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) {
   position: relative !important;
   isolation: isolate !important;
   overflow: hidden !important;
@@ -1496,7 +1506,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   display: block !important;
   box-sizing: border-box !important;
 }
-.suvira-site :is(.family-premium-hero, .study-premium-hero)::before {
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section)::before {
   content: '' !important;
   display: block !important;
   position: absolute !important;
@@ -1505,8 +1515,8 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   background: linear-gradient(90deg, var(--site-surface, #ffffff) 0%, color-mix(in oklab, var(--site-surface, #ffffff) 94%, transparent) 35%, color-mix(in oklab, var(--site-surface, #ffffff) 65%, transparent) 60%, transparent 100%) !important;
   opacity: 1 !important;
 }
-.suvira-site :is(.family-premium-hero, .study-premium-hero)::after { display: none !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) > .container {
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section)::after { display: none !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) > .container {
   position: relative !important;
   z-index: 2 !important;
   width: 100% !important;
@@ -1517,7 +1527,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   padding-right: 24px !important;
   box-sizing: border-box !important;
 }
-.suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
+.suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container) {
   display: grid !important;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.95fr) !important;
   gap: 40px !important;
@@ -1530,43 +1540,43 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   padding-right: 24px !important;
   box-sizing: border-box !important;
 }
-.suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content) {
+.suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content) {
   width: 100% !important;
   max-width: 680px !important;
   margin: 0 !important;
   text-align: left !important;
 }
-.suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
+.suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .pp-hero-container > .talk-experts-card, .canada-hero-container > .talk-experts-card) {
   width: 100% !important;
   max-width: 490px !important;
   justify-self: end !important;
   margin: 0 !important;
 }
 @media (max-width: 991px) {
-  .suvira-site :is(.family-premium-hero, .study-premium-hero) {
+  .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) {
     padding: 48px 0 40px !important;
     min-height: auto !important;
   }
-  .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
+  .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container, .pp-hero-container) {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
     padding-left: 18px !important;
     padding-right: 18px !important;
   }
-  .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content) {
+  .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content, .pp-hero-content) {
     max-width: 100% !important;
   }
-  .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
+  .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right, .canada-hero-form, .pp-hero-card, .pp-hero-container > .talk-experts-card, .canada-hero-container > .talk-experts-card) {
     justify-self: stretch !important;
     max-width: 100% !important;
   }
 }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) :is(h1, h1 span, [class*="hero-title"], [class*="gradient"]) { color: var(--site-ink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) h1 span { color: var(--site-action) !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) :is([class*="hero-desc"], [class*="check-item"] span, [class*="hero-badge"] span) { color: var(--site-ink) !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="hero-badge"] { background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important; border: 1px solid var(--site-gold) !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="check-item"] i { color: var(--site-action) !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) .talk-experts-card {
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) :is(h1, h1 span, [class*="hero-title"], [class*="gradient"]) { color: var(--site-ink) !important; -webkit-text-fill-color: currentColor !important; background: none !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) h1 span { color: var(--site-action) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) :is([class*="hero-desc"], [class*="check-item"] span, [class*="hero-badge"] span, .pp-hero-desc) { color: var(--site-ink) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) [class*="hero-badge"] { background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important; border: 1px solid var(--site-gold) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) [class*="check-item"] i { color: var(--site-action) !important; }
+.suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .canada-hero-section) .talk-experts-card {
   background: #FFFFFF !important;
   border-radius: 20px !important;
   padding: 32px 28px !important;
@@ -1578,8 +1588,8 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   margin: 0 !important;
 }
 
-/* Hero check items & CTAs alignment */
-.suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks) {
+/* Hero check items & Metrics alignment */
+.suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks, .canada-hero-checks) {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr) !important;
   gap: 12px 20px !important;
@@ -1599,18 +1609,51 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   font-size: 14px !important;
   flex-shrink: 0 !important;
 }
+.suvira-site .pp-hero-metrics {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+.suvira-site .pp-metric-item {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04) !important;
+  box-sizing: border-box !important;
+}
+.suvira-site .pp-metric-val {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 800 !important;
+  color: var(--site-action, #045030) !important;
+  line-height: 1.2 !important;
+}
+.suvira-site .pp-metric-lbl {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 12px !important;
+  color: #64748B !important;
+  margin-top: 4px !important;
+  line-height: 1.3 !important;
+}
 @media (max-width: 580px) {
-  .suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks) {
+  .suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks, .canada-hero-checks) {
     grid-template-columns: 1fr !important;
   }
+  .suvira-site .pp-hero-metrics {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
 }
-.suvira-site :is(.study-hero-ctas, .spousal-hero-cta, .visitor-hero-cta) {
+.suvira-site :is(.study-hero-ctas, .spousal-hero-cta, .visitor-hero-cta, .canada-hero-ctas, .pp-hero-actions) {
   display: flex !important;
   align-items: center !important;
   gap: 14px !important;
   flex-wrap: wrap !important;
 }
-.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary) {
+.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary, .canada-hero-ctas .btn-primary, .pp-btn-primary) {
   background: var(--site-action, #045030) !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -1624,14 +1667,16 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   gap: 10px !important;
   box-shadow: 0 4px 14px rgba(4, 80, 48, 0.25) !important;
   transition: all 0.25s ease !important;
+  border: none !important;
+  cursor: pointer !important;
 }
-.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary):hover {
+.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary, .canada-hero-ctas .btn-primary, .pp-btn-primary):hover {
   background: #06663e !important;
   color: #ffffff !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 8px 20px rgba(4, 80, 48, 0.35) !important;
 }
-.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp) {
+.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp, .pp-btn-secondary, .pp-btn-wa) {
   background: #25D366 !important;
   color: #ffffff !important;
   font-weight: 700 !important;
@@ -1644,21 +1689,40 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   justify-content: center !important;
   gap: 10px !important;
   transition: all 0.25s ease !important;
+  border: none !important;
 }
-.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp):hover {
+.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp, .pp-btn-secondary, .pp-btn-wa):hover {
   background: #22bf5b !important;
   color: #ffffff !important;
   transform: translateY(-2px) !important;
 }
 
+/* Unified Section Containers & Sections */
+.suvira-site :is(.pp-section, .study-section, .spousal-section, .visitor-section, .canada-section, .canada-metrics-section) {
+  padding: 80px 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: transparent !important;
+}
+.suvira-site :is(.pp-section, .study-section, .spousal-section, .visitor-section, .canada-section, .canada-metrics-section) > .container,
+.suvira-site :is(.study-country-grid-wrap, .study-pathway-container, .study-faq-section .study-container) {
+  width: 100% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+
 /* Unified Section Headers Across Hubs */
-.suvira-site :is(.section-header-center, .spousal-section-head, .visitor-section-head) {
+.suvira-site :is(.section-header-center, .spousal-section-head, .visitor-section-head, .pp-section-header, .pp-head, .study-section-header) {
   text-align: center !important;
   max-width: 820px !important;
   margin: 0 auto 48px auto !important;
   width: 100% !important;
 }
-.suvira-site :is(.section-pill-badge, .spousal-section-badge, .visitor-section-badge) {
+.suvira-site :is(.section-pill-badge, .spousal-section-badge, .visitor-section-badge, .pp-tag, .pp-badge, .pp-head-badge, .canada-hero-badge, .pp-hero-badge) {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1671,8 +1735,11 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   letter-spacing: 1px !important;
   text-transform: uppercase !important;
   margin-bottom: 16px !important;
+  background: color-mix(in oklab, var(--site-surface, #ffffff) 92%, transparent) !important;
+  border: 1px solid var(--site-gold, #c99a35) !important;
+  color: var(--site-ink, #0F172A) !important;
 }
-.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title) {
+.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title, .pp-section-title, .pp-head h2, .study-section-title) {
   font-family: 'Outfit', sans-serif !important;
   font-size: clamp(28px, 3.2vw, 42px) !important;
   font-weight: 800 !important;
@@ -1683,10 +1750,10 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   display: block !important;
   text-align: center !important;
 }
-.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title)::after {
+.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title, .pp-section-title, .pp-head h2, .study-section-title)::after {
   display: none !important;
 }
-.suvira-site :is(.section-subtitle, .spousal-section-desc, .visitor-section-desc) {
+.suvira-site :is(.section-subtitle, .spousal-section-desc, .visitor-section-desc, .pp-section-desc, .pp-head p, .study-section-desc) {
   font-family: 'Outfit', sans-serif !important;
   font-size: 15.5px !important;
   color: #64748B !important;
@@ -1700,7 +1767,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 }
 
 /* Unified Stats Ribbon Across Hubs */
-.suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid) {
+.suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid, .pp-stats-grid, .metrics-grid) {
   display: grid !important;
   grid-template-columns: repeat(4, 1fr) !important;
   gap: 20px !important;
@@ -1709,58 +1776,74 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   width: 100% !important;
 }
 @media (max-width: 768px) {
-  .suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid) {
+  .suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid, .pp-stats-grid, .metrics-grid) {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 16px !important;
   }
 }
 
 /* Unified 4-Column Feature Grids */
-.suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+.suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid, .pp-grid-4, .study-support-grid, .docs-checklist-grid) {
   display: grid !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   gap: 24px !important;
   width: 100% !important;
   align-items: stretch !important;
 }
-.suvira-site :is(.spousal-dossier-card, .visitor-solution-card) {
+.suvira-site :is(.spousal-dossier-card, .visitor-solution-card, .pp-feature-box, .doc-check-card) {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  border: 1px solid #E2E8F0 !important;
+  padding: 28px 24px !important;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  box-sizing: border-box !important;
+}
+.suvira-site :is(.spousal-dossier-card, .visitor-solution-card, .pp-feature-box, .doc-check-card):hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 30px rgba(0, 80, 48, 0.08) !important;
 }
 @media (max-width: 1024px) {
-  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid, .pp-grid-4, .study-support-grid, .docs-checklist-grid) {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 @media (max-width: 600px) {
-  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid, .pp-grid-4, .study-support-grid, .docs-checklist-grid) {
     grid-template-columns: 1fr !important;
   }
 }
 
 /* Unified Process Timelines Across Hubs */
-.suvira-site :is(.spousal-timeline, .visitor-timeline) {
+.suvira-site :is(.spousal-timeline, .visitor-timeline, .pp-roadmap, .study-steps-grid) {
   display: grid !important;
-  grid-template-columns: repeat(5, 1fr) !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
   gap: 20px !important;
   width: 100% !important;
   align-items: stretch !important;
 }
-.suvira-site :is(.spousal-step-item, .visitor-step-item, .study-step-card) {
+.suvira-site :is(.spousal-step-item, .visitor-step-item, .study-step-card, .pp-step-item, .pp-roadmap-step) {
   display: flex !important;
   flex-direction: column !important;
   height: 100% !important;
+  background: #ffffff !important;
+  border-radius: 14px !important;
+  border: 1px solid #E2E8F0 !important;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
 }
 @media (max-width: 991px) {
-  .suvira-site :is(.spousal-timeline, .visitor-timeline) {
+  .suvira-site :is(.spousal-timeline, .visitor-timeline, .pp-roadmap, .study-steps-grid) {
     grid-template-columns: 1fr !important;
     gap: 18px !important;
   }
 }
 
 /* Unified FAQ Containers */
-.suvira-site :is(.faq-container-narrow, .spousal-faq-container, .visitor-faq-container) {
+.suvira-site :is(.faq-container-narrow, .spousal-faq-container, .visitor-faq-container, .pp-faq-wrap) {
   max-width: 820px !important;
   margin: 0 auto !important;
   width: 100% !important;
