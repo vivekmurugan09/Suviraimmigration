@@ -56,7 +56,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 
 /* New Horizons: an editorial, destination-led visual direction. */
 .suvira-site { font-family: 'DM Sans', sans-serif; color: var(--site-ink); background: var(--site-surface); }
-.suvira-site .container { max-width: 1320px; }
+.suvira-site .container { max-width: 1320px !important; margin-left: auto !important; margin-right: auto !important; padding-left: 24px !important; padding-right: 24px !important; width: 100% !important; box-sizing: border-box !important; }
 .suvira-site :is(h1,h2,h3,h4,p,a,button,span) { letter-spacing: 0 !important; }
 .suvira-site :is(h1,h2) { font-family: 'DM Serif Display', Georgia, serif !important; font-weight: 400 !important; }
 .suvira-site :is(button,input,select,textarea) { font-family: 'DM Sans', sans-serif !important; }
@@ -1253,11 +1253,14 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 28px !important;
   align-items: stretch !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
 }
 .suvira-site :is(.study-country-card, .spousal-card, .visitor-card) {
   display: flex !important;
   flex-direction: column !important;
   min-width: 0 !important;
+  height: 100% !important;
   border-radius: 16px !important;
   overflow: hidden !important;
   border: 1px solid #E2E8F0 !important;
@@ -1290,17 +1293,85 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   display: flex !important;
   flex-direction: column !important;
 }
+.suvira-site :is(.study-card-body, .spousal-card-body, .visitor-card-body) :is(h3, .spousal-card-title, .visitor-card-title) {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: #0F172A !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.3 !important;
+}
+.suvira-site :is(.spousal-card-highlight, .visitor-card-highlight, .study-lead-text) {
+  display: inline-block !important;
+  border-radius: 6px !important;
+  font-size: 12.5px !important;
+  font-weight: 700 !important;
+  padding: 6px 12px !important;
+  margin-bottom: 14px !important;
+  line-height: 1.4 !important;
+  width: fit-content !important;
+}
+.suvira-site .spousal-card-highlight { background: #FFF1F2 !important; color: #BE123C !important; }
+.suvira-site .visitor-card-highlight { background: #ECFDF5 !important; color: #047857 !important; }
+.suvira-site .study-lead-text { background: #EFF6FF !important; color: #1D4ED8 !important; }
+
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex: 1 1 auto !important;
+}
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) li {
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+  color: #475569 !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin: 0 !important;
+}
+.suvira-site :is(.spousal-card-list, .visitor-card-list, .study-perks-list) li i {
+  color: var(--site-action, #045030) !important;
+  font-size: 13px !important;
+  margin-top: 3px !important;
+  flex-shrink: 0 !important;
+}
+
 .suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) {
   margin-top: auto !important;
   border-radius: 8px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
   padding: 13px 20px !important;
-  text-align: center !important;
   text-decoration: none !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: var(--site-action, #045030) !important;
+  color: #ffffff !important;
+  transition: all 0.25s ease !important;
+}
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action):hover {
+  background: #06663e !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 18px rgba(4, 80, 48, 0.25) !important;
+}
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) :is(span, strong) {
+  color: #ffffff !important;
+}
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action) i {
+  color: #ffffff !important;
+  font-size: 13px !important;
+  transition: transform 0.2s ease !important;
+}
+.suvira-site :is(.btn-study-apply, .spousal-card-action, .visitor-card-action):hover i {
+  transform: translateX(4px) !important;
 }
 
 @media (max-width: 1024px) {
@@ -1417,31 +1488,34 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 /* Spousal, study & visitor heroes: country photo slides, light wash, flying logos */
 .suvira-site :is(.family-premium-hero, .study-premium-hero) {
   position: relative !important;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--site-soft) !important;
-  padding-top: 110px !important;
-  padding-bottom: 70px !important;
-  min-height: 560px;
-  display: flex !important;
-  align-items: center !important;
+  isolation: isolate !important;
+  overflow: hidden !important;
+  background: var(--site-soft, #f8fafc) !important;
+  padding: 68px 0 60px !important;
+  min-height: 540px !important;
+  display: block !important;
+  box-sizing: border-box !important;
 }
 .suvira-site :is(.family-premium-hero, .study-premium-hero)::before {
   content: '' !important;
   display: block !important;
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(90deg, var(--site-surface) 0%, color-mix(in oklab, var(--site-surface) 92%, transparent) 35%, color-mix(in oklab, var(--site-surface) 55%, transparent) 60%, transparent 100%) !important;
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: -1 !important;
+  background: linear-gradient(90deg, var(--site-surface, #ffffff) 0%, color-mix(in oklab, var(--site-surface, #ffffff) 94%, transparent) 35%, color-mix(in oklab, var(--site-surface, #ffffff) 65%, transparent) 60%, transparent 100%) !important;
   opacity: 1 !important;
 }
 .suvira-site :is(.family-premium-hero, .study-premium-hero)::after { display: none !important; }
 .suvira-site :is(.family-premium-hero, .study-premium-hero) > .container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
   max-width: 1320px !important;
-  margin-inline: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
 }
 .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
   display: grid !important;
@@ -1449,25 +1523,38 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
   gap: 40px !important;
   align-items: center !important;
   width: 100% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
 }
 .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content) {
   width: 100% !important;
   max-width: 680px !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
 .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
   width: 100% !important;
   max-width: 490px !important;
   justify-self: end !important;
+  margin: 0 !important;
 }
 @media (max-width: 991px) {
   .suvira-site :is(.family-premium-hero, .study-premium-hero) {
-    padding-top: 96px !important;
-    padding-bottom: 50px !important;
+    padding: 48px 0 40px !important;
     min-height: auto !important;
   }
   .suvira-site :is(.study-hero-container, .spousal-hero-container, .visitor-hero-container, .canada-hero-container) {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+  .suvira-site :is(.study-hero-content, .spousal-hero-left, .visitor-hero-left, .canada-hero-content) {
+    max-width: 100% !important;
   }
   .suvira-site :is(.study-hero-right, .spousal-hero-right, .visitor-hero-right) {
     justify-self: stretch !important;
@@ -1479,7 +1566,223 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site :is(.family-premium-hero, .study-premium-hero) :is([class*="hero-desc"], [class*="check-item"] span, [class*="hero-badge"] span) { color: var(--site-ink) !important; }
 .suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="hero-badge"] { background: color-mix(in oklab, var(--site-surface) 90%, transparent) !important; border: 1px solid var(--site-gold) !important; }
 .suvira-site :is(.family-premium-hero, .study-premium-hero) [class*="check-item"] i { color: var(--site-action) !important; }
-.suvira-site :is(.family-premium-hero, .study-premium-hero) .talk-experts-card { box-shadow: 0 30px 60px -30px color-mix(in oklab, var(--site-action) 60%, transparent); border-top: 3px solid var(--site-gold); }
+.suvira-site :is(.family-premium-hero, .study-premium-hero) .talk-experts-card {
+  background: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 32px 28px !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12) !important;
+  border: 1px solid #E2E8F0 !important;
+  border-top: 4px solid var(--site-gold, #c99a35) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* Hero check items & CTAs alignment */
+.suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks) {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 12px 20px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+.suvira-site :is(.study-check-item, .spousal-check-item, .visitor-check-item) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  font-size: 13.5px !important;
+  color: var(--site-ink, #0F172A) !important;
+  font-weight: 500 !important;
+}
+.suvira-site :is(.study-check-item, .spousal-check-item, .visitor-check-item) i {
+  color: var(--site-action, #045030) !important;
+  font-size: 14px !important;
+  flex-shrink: 0 !important;
+}
+@media (max-width: 580px) {
+  .suvira-site :is(.study-hero-checks, .spousal-hero-checks, .visitor-hero-checks) {
+    grid-template-columns: 1fr !important;
+  }
+}
+.suvira-site :is(.study-hero-ctas, .spousal-hero-cta, .visitor-hero-cta) {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  flex-wrap: wrap !important;
+}
+.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary) {
+  background: var(--site-action, #045030) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  padding: 14px 24px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  box-shadow: 0 4px 14px rgba(4, 80, 48, 0.25) !important;
+  transition: all 0.25s ease !important;
+}
+.suvira-site :is(.btn-study-primary, .spousal-btn-primary, .visitor-btn-primary):hover {
+  background: #06663e !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(4, 80, 48, 0.35) !important;
+}
+.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp) {
+  background: #25D366 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  padding: 14px 22px !important;
+  border-radius: 8px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  transition: all 0.25s ease !important;
+}
+.suvira-site :is(.btn-study-whatsapp, .spousal-btn-whatsapp, .visitor-btn-whatsapp):hover {
+  background: #22bf5b !important;
+  color: #ffffff !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Unified Section Headers Across Hubs */
+.suvira-site :is(.section-header-center, .spousal-section-head, .visitor-section-head) {
+  text-align: center !important;
+  max-width: 820px !important;
+  margin: 0 auto 48px auto !important;
+  width: 100% !important;
+}
+.suvira-site :is(.section-pill-badge, .spousal-section-badge, .visitor-section-badge) {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding: 6px 16px !important;
+  border-radius: 9999px !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  margin-bottom: 16px !important;
+}
+.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title) {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: clamp(28px, 3.2vw, 42px) !important;
+  font-weight: 800 !important;
+  color: #0F172A !important;
+  margin: 0 0 16px 0 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.5px !important;
+  display: block !important;
+  text-align: center !important;
+}
+.suvira-site :is(.section-title, .spousal-section-title, .visitor-section-title)::after {
+  display: none !important;
+}
+.suvira-site :is(.section-subtitle, .spousal-section-desc, .visitor-section-desc) {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 15.5px !important;
+  color: #64748B !important;
+  line-height: 1.65 !important;
+  margin: 0 auto !important;
+  max-width: 680px !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+}
+
+/* Unified Stats Ribbon Across Hubs */
+.suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid) {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 20px !important;
+  align-items: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+@media (max-width: 768px) {
+  .suvira-site :is(.spousal-stats-grid, .visitor-stats-grid, .study-metrics-grid) {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+/* Unified 4-Column Feature Grids */
+.suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 24px !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+.suvira-site :is(.spousal-dossier-card, .visitor-solution-card) {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+@media (max-width: 1024px) {
+  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+@media (max-width: 600px) {
+  .suvira-site :is(.spousal-dossier-grid, .visitor-solutions-grid) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Unified Process Timelines Across Hubs */
+.suvira-site :is(.spousal-timeline, .visitor-timeline) {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  align-items: stretch !important;
+}
+.suvira-site :is(.spousal-step-item, .visitor-step-item, .study-step-card) {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+@media (max-width: 991px) {
+  .suvira-site :is(.spousal-timeline, .visitor-timeline) {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+}
+
+/* Unified FAQ Containers */
+.suvira-site :is(.faq-container-narrow, .spousal-faq-container, .visitor-faq-container) {
+  max-width: 820px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* Circular Flag Badges on Destination Cards */
+.suvira-site :is(.spousal-card-flag, .visitor-card-flag) {
+  position: absolute !important;
+  bottom: -16px !important;
+  right: 20px !important;
+  width: 44px !important;
+  height: 44px !important;
+  background: #FFFFFF !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+  z-index: 3 !important;
+}
 .study-hero-slides { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .study-hero-slides .study-premium-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .study-hero-slides .study-hero-slide { opacity: 0; animation: famHeroFade calc(var(--n) * 7s) infinite; animation-delay: calc(var(--i) * 7s); }
