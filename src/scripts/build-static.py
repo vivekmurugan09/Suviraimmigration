@@ -899,14 +899,18 @@ for ts_path in ts_files:
         # Clean header-based route: dist/...
         clean_rel = route_path[len("/services/"):].lstrip("/")
         targets.append(os.path.join(DIST, clean_rel, "index.html"))
-        if clean_rel == "canada-pr":
-            targets.append(os.path.join(DIST, "immigration-pr", "canada-pr", "index.html"))
-            targets.append(os.path.join(DIST, "Immigration & PR", "canada-pr", "index.html"))
-            targets.append(os.path.join(DIST, "Immigration%20&%20PR", "canada-pr", "index.html"))
+        if clean_rel in ("canada-pr", "australia-pr", "uk-pr", "germany-pr", "germany-chancenkarte"):
+            targets.append(os.path.join(DIST, "immigration-pr", clean_rel, "index.html"))
+            targets.append(os.path.join(DIST, "Immigration & PR", clean_rel, "index.html"))
+            targets.append(os.path.join(DIST, "Immigration &PR", clean_rel, "index.html"))
+            targets.append(os.path.join(DIST, "Immigration%20&%20PR", clean_rel, "index.html"))
+            targets.append(os.path.join(DIST, "Immigration%20&PR", clean_rel, "index.html"))
         elif clean_rel == "pr-visas":
             targets.append(os.path.join(DIST, "immigration-pr", "index.html"))
             targets.append(os.path.join(DIST, "Immigration & PR", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration &PR", "index.html"))
             targets.append(os.path.join(DIST, "Immigration%20&%20PR", "index.html"))
+            targets.append(os.path.join(DIST, "Immigration%20&PR", "index.html"))
     elif route_path.startswith("/countries/") and route_path != "/countries":
         slug = route_path[len("/countries/"):]
         targets.append(os.path.join(DIST, "countries", f"{slug}.html"))
@@ -1146,14 +1150,18 @@ with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
 /services/germany-chancenkarte/ /germany-chancenkarte/ 301
 /services/sop-writing /sop-writing/ 301
 /services/sop-writing/ /sop-writing/ 301
-/Immigration%20&%20PR/canada-pr /canada-pr/ 301
-/Immigration%20&%20PR/canada-pr/ /canada-pr/ 301
-"/Immigration & PR/canada-pr" /canada-pr/ 301
-"/Immigration & PR/canada-pr/" /canada-pr/ 301
-/immigration-pr/canada-pr /canada-pr/ 301
-/immigration-pr/canada-pr/ /canada-pr/ 301
-/immigration-pr /pr-visas/ 301
-/immigration-pr/ /pr-visas/ 301
+/Immigration%20&%20PR/canada-pr /immigration-pr/canada-pr/ 301
+/Immigration%20&%20PR/canada-pr/ /immigration-pr/canada-pr/ 301
+"/Immigration & PR/canada-pr" /immigration-pr/canada-pr/ 301
+"/Immigration & PR/canada-pr/" /immigration-pr/canada-pr/ 301
+/Immigration%20&PR/canada-pr /immigration-pr/canada-pr/ 301
+/Immigration%20&PR/canada-pr/ /immigration-pr/canada-pr/ 301
+"/Immigration &PR/canada-pr" /immigration-pr/canada-pr/ 301
+"/Immigration &PR/canada-pr/" /immigration-pr/canada-pr/ 301
+/immigration-pr/canada-pr /immigration-pr/canada-pr/index.html 200
+/immigration-pr/canada-pr/ /immigration-pr/canada-pr/index.html 200
+/immigration-pr /immigration-pr/index.html 200
+/immigration-pr/ /immigration-pr/index.html 200
 """)
 
 with open(os.path.join(DIST, "_headers"), "w", encoding="utf-8") as f:

@@ -26,11 +26,15 @@
 /services/germany-chancenkarte/ /germany-chancenkarte/ 301
 /services/sop-writing /sop-writing/ 301
 /services/sop-writing/ /sop-writing/ 301
-/Immigration%20&%20PR/canada-pr /canada-pr/ 301
-/Immigration%20&%20PR/canada-pr/ /canada-pr/ 301
-"/Immigration & PR/canada-pr" /canada-pr/ 301
-"/Immigration & PR/canada-pr/" /canada-pr/ 301
-/immigration-pr/canada-pr /canada-pr/ 301
-/immigration-pr/canada-pr/ /canada-pr/ 301
-/immigration-pr /pr-visas/ 301
-/immigration-pr/ /pr-visas/ 301
+/Immigration%20&%20PR/canada-pr /immigration-pr/canada-pr/ 301
+/Immigration%20&%20PR/canada-pr/ /immigration-pr/canada-pr/ 301
+"/Immigration & PR/canada-pr" /immigration-pr/canada-pr/ 301
+"/Immigration & PR/canada-pr/" /immigration-pr/canada-pr/ 301
+/Immigration%20&PR/canada-pr /immigration-pr/canada-pr/ 301
+/Immigration%20&PR/canada-pr/ /immigration-pr/canada-pr/ 301
+"/Immigration &PR/canada-pr" /immigration-pr/canada-pr/ 301
+"/Immigration &PR/canada-pr/" /immigration-pr/canada-pr/ 301
+/immigration-pr/canada-pr /immigration-pr/canada-pr/index.html 200
+/immigration-pr/canada-pr/ /immigration-pr/canada-pr/index.html 200
+/immigration-pr /immigration-pr/index.html 200
+/immigration-pr/ /immigration-pr/index.html 200
