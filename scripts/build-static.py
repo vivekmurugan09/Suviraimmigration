@@ -39,16 +39,19 @@ for dirpath, dirnames, filenames in os.walk(public_dir):
             continue
         shutil.copy2(os.path.join(dirpath, fn), os.path.join(target_dir, fn))
 
-# 2. Copy src/assets/* into dist/assets/
+# 2. Copy src/assets/* into dist/assets/ and dist/images/
 assets_src = os.path.join(ROOT, "src", "assets")
 assets_dst = os.path.join(DIST, "assets")
+images_dst = os.path.join(DIST, "images")
 os.makedirs(assets_dst, exist_ok=True)
+os.makedirs(images_dst, exist_ok=True)
 for fn in os.listdir(assets_src):
     if fn == ".DS_Store":
         continue
     src_file = os.path.join(assets_src, fn)
     if os.path.isfile(src_file):
         shutil.copy2(src_file, os.path.join(assets_dst, fn))
+        shutil.copy2(src_file, os.path.join(images_dst, fn))
 
 # 3. Prepend :root design tokens and .suvira-ai-prep-fab rules from src/styles.css into dist/site-polish.css
 root_tokens_css = """/* Root design tokens and AI Preparation FAB from src/styles.css */
@@ -1024,7 +1027,7 @@ def render_static_html(page):
         f'  <link rel="canonical" href="{html.escape(canon_url, quote=True)}"/>',
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
         '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>',
-        '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"/>',
+        '  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700;800;900&display=swap"/>',
         '  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>',
         '  <link rel="icon" href="/favicon.png" sizes="32x32" type="image/png"/>',
         '  <link rel="icon" href="/favicon-16x16.png" sizes="16x16" type="image/png"/>',

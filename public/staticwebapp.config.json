@@ -1,0 +1,56 @@
+{
+  "globalHeaders": {
+    "Referrer-Policy": "strict-origin-when-cross-origin"
+  },
+  "mimeTypes": {
+    ".json": "application/json",
+    ".png": "image/png",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".webp": "image/webp",
+    ".svg": "image/svg+xml"
+  },
+  "routes": [
+    {
+      "route": "/thankyou",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/thankyou/*",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/thank-you",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/thank-you/*",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/Thank-you",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/Thank-you/*",
+      "rewrite": "/Thank-you/index.html"
+    },
+    {
+      "route": "/ai-preparation",
+      "rewrite": "/ai-preparation/index.html"
+    },
+    {
+      "route": "/free-eligibility-check",
+      "rewrite": "/free-eligibility-check/index.html"
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/images/*",
+      "/assets/*",
+      "/*.css",
+      "/*.js"
+    ]
+  }
+}
