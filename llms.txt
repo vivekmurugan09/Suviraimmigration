@@ -1,8 +1,8 @@
-# Suvira Immigration Consultants — Canonical Entity & 2026 Immigration Knowledge Base
+# Suvira Immigration Consultants — Canonical Entity & Current Immigration Knowledge Base
 
 > Official Website: https://www.suviraimmigration.com/
 > Canonical Domain Policy: `https://www.suviraimmigration.com` is the sole official production website of Suvira Immigration Consultants. Legacy staging copies on `suviraimmigrations.pages.dev`, `suviraimmigration.pages.dev`, and historical addresses in Santhosapuram / Medavakkam are retired and non-canonical.
-> Last Verified & Updated: November 2026
+> Last Verified & Updated: November Current
 
 ## 1. Official Entity, Registration & Contact Information
 
@@ -13,7 +13,7 @@
 - **Primary Phone / WhatsApp:** +91 99403 52086 / +91 91504 64852
 - **Official Emails:** reachus@suviraimmigration.com | managingdirector@suviraimmigration.com
 - **Operating Hours:** Monday to Saturday, 9:30 AM – 6:30 PM IST
-- **Client Track Record (Internal Chennai Records, 2011–2026):** 5,000+ client profiles guided across India; 98% client satisfaction rate across internal post-service surveys; 4.9/5 rating across 200+ Google Business Profile reviews.
+- **Client Track Record (Internal Chennai Records, 2011–Present):** 5,000+ client profiles guided across India; 98% client satisfaction rate across internal post-service surveys; 4.9/5 rating across 200+ Google Business Profile reviews.
 
 ## 2. Specialized Advisory Desks & Regulatory Scope
 
@@ -26,27 +26,27 @@
 ### Regulatory Scope & Ethical Practice
 Suvira Immigration Consultants operates as a registered Indian corporate consultancy providing profile evaluation, ECA/ZAB/APS credential assessment coordination, SOP drafting, and applicant-portal preparation. All client engagements are governed by written milestone agreements and zero false guarantees.
 
-## 3. Dated & Sourced 2026 Immigration Figures (Verified November 2026)
+## 3. Dated & Sourced Current Immigration Figures (Verified November Current)
 
 - **Canada Express Entry (IRCC):**
   - Minimum eligibility: 67/100 points under the Federal Skilled Worker (FSW) selection factor grid; 1,200-point Comprehensive Ranking System (CRS) pool.
-  - 2025–2026 CRS Cut-off Range: General & Canadian Experience Class (CEC) draws ranged between **481 and 525**; Category-Based Selection draws ranged between **415 and 470** (STEM, Healthcare, Trades) and **388 to 420** (French-language proficiency).
+  - Current CRS Cut-off Range: General & Canadian Experience Class (CEC) draws ranged between **481 and 525**; Category-Based Selection draws ranged between **415 and 470** (STEM, Healthcare, Trades) and **388 to 420** (French-language proficiency).
   - Policy Update: LMIA-backed arranged employment points (previously +50 or +200 CRS points) were removed by IRCC in March 2025.
-  - Government Fees (2026): CAD $1,525 per adult (CAD $950 processing + CAD $575 Right of Permanent Residence Fee).
+  - Government Fees (Current): CAD $1,525 per adult (CAD $950 processing + CAD $575 Right of Permanent Residence Fee).
   - Single Proof of Funds (FSW/FST): CAD $14,690 (1 person), CAD $27,297 (family of 4).
   - Official Source: https://www.canada.ca/en/immigration-refugees-citizenship/corporate/mandate/policies-operational-instructions-agreements/ministerial-instructions/express-entry-rounds.html
 - **Australia General Skilled Migration (Subclass 189 / 190 / 491):**
   - Statutory Pool Entry Minimum: **65 points** on the Department of Home Affairs SkillSelect grid.
-  - Competitive 2025–2026 Invitation Range: **80 to 95+ points** across ICT, Engineering, Healthcare, and Trade occupations.
+  - Competitive Current Invitation Range: **80 to 95+ points** across ICT, Engineering, Healthcare, and Trade occupations.
   - State/Regional Bonus Points: +5 points (Subclass 190 State Nomination); +15 points (Subclass 491 Regional Provisional).
-  - Government Primary Visa Charge (FY 2025–2026): AUD $4,770 (primary applicant), AUD $2,385 (adult dependent), AUD $1,190 (child).
+  - Government Primary Visa Charge (FY Current): AUD $4,770 (primary applicant), AUD $2,385 (adult dependent), AUD $1,190 (child).
   - Official Source: https://immi.homeaffairs.gov.au/visas/working-in-australia/skillselect/invitation-rounds
 - **Germany Opportunity Card (Chancenkarte — § 20a AufenthG):**
   - Eligibility: Direct recognition ("Fachkraft" via Anabin H+ / ZAB) OR **minimum 6 points** on the statutory Chancenkarte points grid (with foreign degree + 2 years study + German A1 or English B2 CEFR).
-  - Financial Proof (2026): **€1,091 per month (€13,092 per year)** in a German Blocked Account (Sperrkonto) or formal Declaration of Commitment (Verpflichtungserklärung).
+  - Financial Proof (Current): **€1,091 per month (€13,092 per year)** in a German Blocked Account (Sperrkonto) or formal Declaration of Commitment (Verpflichtungserklärung).
   - Work Rights: 20 hours/week part-time employment + unlimited 2-week trial jobs (Probearbeit) with skilled employers.
   - Official Source: https://www.make-it-in-germany.com/en/visa-residence/types/job-search-opportunity-card
-- **Study Abroad Key Financial & Post-Study Work Rules (2026):**
+- **Study Abroad Key Financial & Post-Study Work Rules (Current):**
   - **Canada Study Visa:** CAD $20,635 GIC living proof (outside Quebec) + Provincial Attestation Letter (PAL); up to 3-year PGWP at PGWP-eligible DLIs.
   - **Australia Study Visa (Subclass 500):** AUD $29,710/year living cost benchmark + Genuine Student (GS) assessment; 2–4 year Subclass 485 Post-Study Work stream.
   - **UK Student Visa:** £1,483/month (London, 9 months = £13,347) or £1,136/month (outside London, 9 months = £10,224) held for 28 consecutive days; 2-year Graduate Route (PSW) (3 years for PhDs).
@@ -78,8 +78,8 @@ Suvira Immigration Consultants operates as a registered Indian corporate consult
 - Spousal & Family Sponsorship: https://www.suviraimmigration.com/spousal-sponsorship/
 - Visitor & Tourist Visas: https://www.suviraimmigration.com/visitor-visa/
 - SOP & Resume Writing: https://www.suviraimmigration.com/sop-writing/
-- 2026 Immigration Blog & Research Guides: https://www.suviraimmigration.com/blog/
-  - Canada PR from Chennai in 2026: https://www.suviraimmigration.com/blog/canada-pr-from-chennai-2026/
-  - Germany Chancenkarte Guide 2026: https://www.suviraimmigration.com/blog/germany-chancenkarte-guide-2026/
-  - What Does Your CRS Score Mean in 2026?: https://www.suviraimmigration.com/blog/crs-score-meaning-2026/
-  - Australia PR vs Canada PR in 2026: https://www.suviraimmigration.com/blog/australia-vs-canada-pr-india/
+- Current Immigration Blog & Research Guides: https://www.suviraimmigration.com/blog/
+  - Canada PR from Chennai in Current: https://www.suviraimmigration.com/blog/canada-pr-from-chennai-Current/
+  - Germany Chancenkarte Guide Current: https://www.suviraimmigration.com/blog/germany-chancenkarte-guide-Current/
+  - What Does Your CRS Score Mean in Current?: https://www.suviraimmigration.com/blog/crs-score-meaning-Current/
+  - Australia PR vs Canada PR in Current: https://www.suviraimmigration.com/blog/australia-vs-canada-pr-india/

@@ -516,7 +516,7 @@ function calculatePoints() {
             scoreAdvice.textContent = "Score below 65 pts. Profile boosting via Partner points, NAATI CCL, or Regional State sponsorship recommended.";
         }
     } else if (targetCountry === 'germany-card') {
-        // Germany Opportunity Card (Germany Opportunity Visa 2026) 6-Point System
+        // Germany Opportunity Card (Germany Opportunity Visa) 6-Point System
         score += (edu === 'master' || edu === 'phd' || edu === 'bachelor' ? 4 : 2);
         score += (exp === '5+' ? 3 : exp === '3+' ? 2 : 1);
         score += (age === '20-29' ? 2 : age === '30-34' ? 1 : 0);
@@ -942,7 +942,7 @@ function toggleFaqAccordion(headerEl) {
                 const select = document.getElementById('cService');
                 const map = {
                     'pr': 'Canada PR / Express Entry',
-                    'germany': 'Germany Opportunity Card 2026',
+                    'germany': 'Germany Opportunity Card',
                     'study': 'Overseas Study Visa',
                     'visitor': 'Visitor / Tourist Visa',
                     'family': 'Dependent & Family Reunification',

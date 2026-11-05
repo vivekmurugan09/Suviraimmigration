@@ -1019,7 +1019,7 @@ def render_static_html(page):
         '  <meta charset="utf-8"/>',
         '  <meta name="viewport" content="width=device-width, initial-scale=1"/>',
         '  <meta name="referrer" content="origin"/>',
-        '  <meta name="google-site-verification" content="SuviraImmigrationChennai2026GSCVerification"/>',
+        '  <meta name="google-site-verification" content="SuviraImmigrationChennaiGSCVerification"/>',
         f'  <title>{html.escape(title)}</title>',
         f'  <link rel="canonical" href="{html.escape(canon_url, quote=True)}"/>',
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
@@ -1032,8 +1032,8 @@ def render_static_html(page):
         '  <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png"/>',
         '  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>',
         '  <!-- Google Analytics 4 (gtag.js) & Google Tag Manager Measurement Suite -->',
-        '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SUVIRA2026"></script>',
-        '  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag("js",new Date());gtag("config",window.SUVIRA_GA4_ID||"G-SUVIRA2026",{page_path:window.location.pathname,send_page_view:true});(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer",window.SUVIRA_GTM_ID||"GTM-SUVIRA26");</script>',
+        '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SUVIRAIN"></script>',
+        '  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag("js",new Date());gtag("config",window.SUVIRA_GA4_ID||"G-SUVIRAIN",{page_path:window.location.pathname,send_page_view:true});(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer",window.SUVIRA_GTM_ID||"GTM-SUVIRAIN");</script>',
     ]
 
     if route_path in ("/Thank-you", "/thankyou"):
@@ -1075,9 +1075,9 @@ def render_static_html(page):
     for st in page.get("styles", []):
         head_parts.append(f'  <style>{st}</style>')
 
-    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=20261105-v10"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=20261105-v10"/>')
-    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=20261105-v10"/>')
+    head_parts.append('  <link rel="stylesheet" href="/site-polish.css?v=polish-v10"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-metrics-anim.css?v=anim-v10"/>')
+    head_parts.append('  <link rel="stylesheet" href="/study-journey-anim.css?v=journey-v10"/>')
 
     head_parts.append(f'  <script type="application/ld+json">{ORG_PROFESSIONAL_JSONLD}</script>')
     has_faq_schema = False
@@ -1135,15 +1135,15 @@ def render_static_html(page):
                     "url": "https://www.suviraimmigration.com/images/suvira-logo.png"
                 }
             },
-            "datePublished": "2026-08-14",
-            "dateModified": "2026-11-04",
+            "datePublished": "2025-08-14",
+            "dateModified": "2025-11-04",
             "mainEntityOfPage": canon_url
         }, ensure_ascii=False)
         head_parts.append(f'  <script type="application/ld+json">{article_jld}</script>')
 
     body_html = (
         page["body"]
-        .replace('/study-premium.css"', '/study-premium.css?v=20261105-v10"')
+        .replace('/study-premium.css"', '/study-premium.css?v=prem-v10"')
         .replace("/images/suvira-butterfly-icon.png", "/images/suvira-logo.png")
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
@@ -1161,7 +1161,7 @@ def render_static_html(page):
             "<strong>Corporate &amp; Statutory Registrations:</strong> Ministry of Corporate Affairs (MCA) Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (State Code 33 – Tamil Nadu)"
         )
         .replace("15+ Yrs Chennai Desk", "Chennai Headquarters")
-        .replace("Updated Nov 2026 · Suvira Chennai Desk", "Updated November 2026")
+        .replace("Updated Nov 2026 · Suvira Chennai Desk", "Recently Updated")
         .replace(" • Senior Advisory Leads: <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Raghunath KP</span></span>, <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Karthik Subramanian</span></span> &amp; <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Priya Raghavan</span></span>", "")
         .replace("• Senior Advisory Leads: Raghunath KP, Karthik Subramanian & Priya Raghavan", "")
         .replace(
@@ -1270,10 +1270,17 @@ for ts_path in ts_files:
     else:
         rel = route_path.lstrip("/")
         targets.append(os.path.join(DIST, rel, "index.html"))
-        if route_path == "/blog/germany-chancenkarte-guide-2026":
+        if route_path in ("/blog/germany-chancenkarte-guide", "/blog/germany-chancenkarte-guide-2026"):
             targets.append(os.path.join(DIST, "blog", "germany-opportunity-card-2026", "index.html"))
-        elif route_path == "/blog/canada-pr-from-chennai-2026":
+            targets.append(os.path.join(DIST, "blog", "germany-chancenkarte-guide-2026", "index.html"))
+            targets.append(os.path.join(DIST, "blog", "germany-chancenkarte-guide", "index.html"))
+        elif route_path in ("/blog/canada-pr-from-chennai", "/blog/canada-pr-from-chennai-2026"):
             targets.append(os.path.join(DIST, "blog", "canada-express-entry-crs-guide-2026", "index.html"))
+            targets.append(os.path.join(DIST, "blog", "canada-pr-from-chennai-2026", "index.html"))
+            targets.append(os.path.join(DIST, "blog", "canada-pr-from-chennai", "index.html"))
+        elif route_path in ("/blog/crs-score-meaning", "/blog/crs-score-meaning-2026"):
+            targets.append(os.path.join(DIST, "blog", "crs-score-meaning-2026", "index.html"))
+            targets.append(os.path.join(DIST, "blog", "crs-score-meaning", "index.html"))
         elif route_path == "/blog/australia-vs-canada-pr-india":
             targets.append(os.path.join(DIST, "blog", "australia-skilled-pr-189-190-guide", "index.html"))
 
@@ -1540,10 +1547,16 @@ https://suviraimmigration.pages.dev/* https://www.suviraimmigration.com/:splat 3
 /immigration-pr/canada-pr/ /immigration-pr/canada-pr/index.html 200
 /immigration-pr /immigration-pr/index.html 200
 /immigration-pr/ /immigration-pr/index.html 200
-/blog/germany-opportunity-card-2026 /blog/germany-chancenkarte-guide-2026/ 301
-/blog/germany-opportunity-card-2026/ /blog/germany-chancenkarte-guide-2026/ 301
-/blog/canada-express-entry-crs-guide-2026 /blog/canada-pr-from-chennai-2026/ 301
-/blog/canada-express-entry-crs-guide-2026/ /blog/canada-pr-from-chennai-2026/ 301
+/blog/germany-opportunity-card-2026 /blog/germany-chancenkarte-guide/ 301
+/blog/germany-opportunity-card-2026/ /blog/germany-chancenkarte-guide/ 301
+/blog/germany-chancenkarte-guide-2026 /blog/germany-chancenkarte-guide/ 301
+/blog/germany-chancenkarte-guide-2026/ /blog/germany-chancenkarte-guide/ 301
+/blog/canada-express-entry-crs-guide-2026 /blog/canada-pr-from-chennai/ 301
+/blog/canada-express-entry-crs-guide-2026/ /blog/canada-pr-from-chennai/ 301
+/blog/canada-pr-from-chennai-2026 /blog/canada-pr-from-chennai/ 301
+/blog/canada-pr-from-chennai-2026/ /blog/canada-pr-from-chennai/ 301
+/blog/crs-score-meaning-2026 /blog/crs-score-meaning/ 301
+/blog/crs-score-meaning-2026/ /blog/crs-score-meaning/ 301
 /blog/australia-skilled-pr-189-190-guide /blog/australia-vs-canada-pr-india/ 301
 /blog/australia-skilled-pr-189-190-guide/ /blog/australia-vs-canada-pr-india/ 301
 """
