@@ -995,16 +995,6 @@ ORG_PROFESSIONAL_JSONLD = json.dumps({
             "@type": "PropertyValue",
             "name": "MSME Udyam Registration",
             "value": "UDYAM-TN-02-0189452"
-        },
-        {
-            "@type": "PropertyValue",
-            "name": "Authorized Legal Co-Counsel (Canada CICC)",
-            "value": "RCIC #R711842 / #R532189"
-        },
-        {
-            "@type": "PropertyValue",
-            "name": "Authorized Legal Co-Counsel (Australia OMARA)",
-            "value": "MARN #1804291"
         }
     ]
 }, ensure_ascii=False)
@@ -1130,19 +1120,9 @@ def render_static_html(page):
             "headline": title.split("|")[0].strip(),
             "description": desc,
             "author": {
-                "@type": "Person",
-                "name": "Karthik Subramanian",
-                "jobTitle": "Senior PR & Skilled Migration Documentation Lead (12+ Yrs)",
-                "worksFor": {
-                    "@type": "Organization",
-                    "name": "Suvira Immigration Consultants",
-                    "url": "https://www.suviraimmigration.com/about/"
-                }
-            },
-            "reviewedBy": {
-                "@type": "Person",
-                "name": "Priya Raghavan",
-                "jobTitle": "Head of Overseas Education & Visa Compliance (15+ Yrs)"
+                "@type": "Organization",
+                "name": "Suvira Immigration Research Team",
+                "url": "https://www.suviraimmigration.com/about/"
             },
             "publisher": {
                 "@type": "Organization",
@@ -1167,16 +1147,20 @@ def render_static_html(page):
         .replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace(
             "<strong>Corporate &amp; Tax Registration:</strong> Ministry of Corporate Affairs (MCA) &amp; MSME Udyam Registered (Tamil Nadu · NIC 7990/8550) • GST Registered (State Code 33 – Tamil Nadu)",
-            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+            "<strong>Corporate &amp; Statutory Registrations:</strong> Ministry of Corporate Affairs (MCA) Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (State Code 33 – Tamil Nadu)"
         )
         .replace(
             "Registered with\n                    Ministry of Corporate Affairs • GST Registered",
-            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+            "<strong>Corporate &amp; Statutory Registrations:</strong> Ministry of Corporate Affairs (MCA) Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (State Code 33 – Tamil Nadu)"
         )
         .replace(
             "Registered with Ministry of Corporate Affairs • GST Registered",
-            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+            "<strong>Corporate &amp; Statutory Registrations:</strong> Ministry of Corporate Affairs (MCA) Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (State Code 33 – Tamil Nadu)"
         )
+        .replace("15+ Yrs Chennai Desk", "Chennai Headquarters")
+        .replace("Updated Nov 2026 · Suvira Chennai Desk", "Updated November 2026")
+        .replace(" • Senior Advisory Leads: <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Raghunath KP</span></span>, <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Karthik Subramanian</span></span> &amp; <span itemprop=\"employee\" itemscope itemtype=\"https://schema.org/Person\"><span itemprop=\"name\">Priya Raghavan</span></span>", "")
+        .replace("• Senior Advisory Leads: Raghunath KP, Karthik Subramanian & Priya Raghavan", "")
         .replace(
             '<a href="/study-visas" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Study Visa</a>',
             '<a href="/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
