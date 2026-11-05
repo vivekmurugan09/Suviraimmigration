@@ -838,6 +838,9 @@ def load_ts_page(path):
     json_line = re.sub(r"(\.replaceAll\(\s*\"[^\"]+\"\s*,\s*[a-zA-Z0-9_]+\s*\))+", "", json_line)
     data = json.loads(json_line)
     body = data["body"]
+    bs_quote = chr(92) + chr(34)
+    if bs_quote in body:
+        body = body.replace(bs_quote, chr(34))
     for old, var in replaces:
         asset_file = imports[var]
         body = body.replace(old, "/assets/" + asset_file)
@@ -1200,15 +1203,16 @@ def render_static_html(page):
     # Load site-enhancements.js BEFORE legacy scripts so capture-phase form handling & onsubmit removal happen immediately
     script_parts = ['  <script src="/site-enhancements.js"></script>']
     for sc in page.get("scripts", []):
+        type_attr = f' type="{sc["type"]}"' if sc.get("type") else ""
         if sc.get("src"):
-            script_parts.append(f'  <script src="{html.escape(sc["src"], quote=True)}"></script>')
+            script_parts.append(f'  <script{type_attr} src="{html.escape(sc["src"], quote=True)}"></script>')
         elif sc.get("code") or sc.get("inline"):
             code = sc.get("code") or sc.get("inline")
             code = code.replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
             code = code.replace("const fields = Object.assign({}, payload, {", 'const fields = Object.assign({}, payload, { access_key: "ea06d6ee-0dba-458c-9e09-39db85dfaf1a", from_name: "SubmitForm",')
-            script_parts.append(f'  <script>{code}</script>')
+            script_parts.append(f'  <script{type_attr}>{code}</script>')
 
     return (
         "<!DOCTYPE html>\n"

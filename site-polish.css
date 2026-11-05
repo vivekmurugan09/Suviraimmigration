@@ -1926,7 +1926,15 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero, .blog-hero-section, .blog-article-hero) .study-fly-4 { top: 14%; left: 28%; width: 56px; animation-duration: 20s; animation-delay: -3s; }
 .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero, .blog-hero-section, .blog-article-hero) .study-fly-5 { top: 82%; left: 58%; width: 42px; animation-duration: 24s; animation-delay: -14s; }
 @keyframes famFly { 0% { opacity: 0; transform: translate(0,0) rotate(-8deg) scaleX(1); } 10% { opacity: .95; } 25% { transform: translate(-80px,-90px) rotate(6deg) scaleX(.8); } 50% { transform: translate(60px,-170px) rotate(-6deg) scaleX(1); } 75% { transform: translate(140px,-80px) rotate(8deg) scaleX(.8); } 90% { opacity: .95; } 100% { opacity: 0; transform: translate(40px,20px) rotate(-8deg) scaleX(1); } }
-@media (max-width: 900px) { .suvira-site .family-premium-hero::before { background: color-mix(in oklab, var(--site-surface) 88%, transparent) !important; } .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly { display: none; } }
+@media (max-width: 900px) {
+  .suvira-site .family-premium-hero::before { background: color-mix(in oklab, var(--site-surface) 88%, transparent) !important; }
+  .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero, .blog-hero-section, .blog-article-hero) .study-fly {
+    width: 42px !important;
+  }
+  .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero, .blog-hero-section, .blog-article-hero) :is(.study-fly-3, .study-fly-4, .study-fly-5) {
+    display: none !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) { .study-hero-slides .study-hero-slide, .suvira-site :is(.family-premium-hero, .study-premium-hero, .pp-hero, .page-hero, .about-hero) .study-fly { animation: none !important; } .study-hero-slides .study-hero-slide:first-child { opacity: 1; } }
 
 /* ==== Flying header icons (plane, globe, pin) across page heroes ==== */
@@ -2645,22 +2653,76 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 .suvira-site .home-faq-cta-secondary { background: #25D366; color: #fff !important; box-shadow: 0 8px 20px rgba(37,211,102,0.28); }
 .suvira-site .home-faq-cta-secondary i { color: #fff !important; }
 .suvira-site .home-faq-list { display: flex; flex-direction: column; gap: 14px; max-width: none !important; width: 100%; }
-.suvira-site .home-faq-list .faq-item { margin: 0 !important; }
-.suvira-site .home-faq-list .faq-question {
-  display: flex !important; align-items: center; gap: 14px; padding: 18px 22px !important;
+.suvira-site .home-faq-list .faq-item {
+  margin: 0 !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: #ffffff !important;
 }
-.suvira-site .home-faq-list .faq-question > .home-faq-qtext { flex: 1 1 auto; font-weight: 700; color: var(--site-ink); }
+.suvira-site .home-faq-list .faq-item:hover {
+  border-color: rgba(4, 120, 87, 0.35) !important;
+  box-shadow: 0 10px 24px -10px rgba(4, 80, 48, 0.18) !important;
+  transform: translateY(-2px);
+}
+.suvira-site .home-faq-list .faq-question {
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px !important;
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  text-align: left !important;
+  cursor: pointer !important;
+  font-family: inherit !important;
+}
+.suvira-site .home-faq-list .faq-question > .home-faq-qtext {
+  flex: 1 1 auto;
+  font-weight: 700;
+  color: var(--site-ink);
+  font-size: 16px;
+  line-height: 1.45;
+}
 .suvira-site .home-faq-badge {
-  flex: 0 0 38px; width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center;
-  background: color-mix(in oklab, var(--site-action) 10%, #fff); color: var(--site-action);
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in oklab, var(--site-action) 10%, #fff);
+  color: var(--site-action);
   transition: background .3s ease, color .3s ease, transform .3s ease;
 }
 .suvira-site .home-faq-badge i { color: inherit !important; font-size: 15px; }
-.suvira-site .home-faq-list .faq-item.active .home-faq-badge { background: var(--site-action); color: #fff; transform: rotate(-8deg) scale(1.05); }
-.suvira-site .home-faq-list .faq-question > i { transition: transform .3s ease; color: var(--site-action) !important; }
-.suvira-site .home-faq-list .faq-item.active .faq-question > i { transform: rotate(180deg); }
-.suvira-site .home-faq-list .faq-item.active { border-color: color-mix(in oklab, var(--site-action) 45%, transparent) !important; box-shadow: 0 16px 34px -20px rgba(4, 80, 48, 0.35) !important; }
-.suvira-site .home-faq-list .faq-answer { color: var(--site-muted); font-size: 14.5px; line-height: 1.7; padding-left: 74px !important; }
+.suvira-site .home-faq-list .faq-item.active .home-faq-badge {
+  background: var(--site-action);
+  color: #fff;
+  transform: rotate(-8deg) scale(1.05);
+}
+.suvira-site .home-faq-list .faq-question > i {
+  transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  color: var(--site-action) !important;
+  margin-left: auto;
+  font-size: 14px;
+}
+.suvira-site .home-faq-list .faq-item.active .faq-question > i {
+  transform: rotate(180deg) !important;
+}
+.suvira-site .home-faq-list .faq-item.active {
+  border-color: color-mix(in oklab, var(--site-action) 45%, transparent) !important;
+  border-left: 4px solid var(--site-gold, #c99a35) !important;
+  box-shadow: 0 16px 34px -20px rgba(4, 80, 48, 0.35) !important;
+}
+.suvira-site .home-faq-list .faq-answer {
+  color: var(--site-muted);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+.suvira-site .home-faq-list .faq-item.active .faq-answer {
+  padding: 14px 24px 22px 74px !important;
+  opacity: 1 !important;
+  max-height: 600px !important;
+}
 
 @media (max-width: 1024px) {
   .suvira-site .split-why-form-container { grid-template-columns: 1fr !important; gap: 40px !important; }
@@ -2675,7 +2737,7 @@ body:has(.suvira-confirmation) { display: block; padding: 0; background: var(--s
 }
 @media (max-width: 560px) {
   .suvira-site .partners-3d-stats { grid-template-columns: 1fr; }
-  .suvira-site .home-faq-list .faq-answer { padding-left: 24px !important; }
+  .suvira-site .home-faq-list .faq-item.active .faq-answer { padding: 12px 18px 18px 18px !important; }
   .suvira-site .home-faq-orbit-stage { height: 230px; }
   .suvira-site .home-faq-pill { font-size: 11px; padding: 6px 10px; }
 }
