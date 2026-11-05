@@ -406,6 +406,26 @@
         }).catch(function () {});
       } catch (err) {}
 
+      // 3b. Fire GA4 / GTM / Meta Pixel Lead Conversion Events
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "generate_lead",
+          lead_service: String(serviceVal || "General Inquiry"),
+          page_path: window.location.pathname
+        });
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            event_category: "Lead Form",
+            event_label: String(serviceVal || "General Inquiry"),
+            value: 1
+          });
+        }
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", { content_name: String(serviceVal || "General Inquiry") });
+        }
+      } catch (err) {}
+
       // 4. Reset form, close modal, and re-enable buttons
       busy.delete(form);
       form.removeAttribute("aria-busy");
@@ -441,6 +461,28 @@
 
     window.suviraSubmitLead = submit;
     document.addEventListener("submit", submit, { capture: true });
+
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      var anchor = target && target.closest ? target.closest("a[href]") : null;
+      if (!anchor) return;
+      var href = anchor.getAttribute("href") || "";
+      if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp.com") !== -1) {
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "whatsapp_click", href: href, page_path: window.location.pathname });
+          if (typeof window.gtag === "function") window.gtag("event", "contact", { method: "WhatsApp", event_label: href });
+          if (typeof window.fbq === "function") window.fbq("track", "Contact", { content_name: "WhatsApp Click" });
+        } catch (e) {}
+      } else if (href.indexOf("tel:") === 0) {
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "phone_call_click", href: href, page_path: window.location.pathname });
+          if (typeof window.gtag === "function") window.gtag("event", "contact", { method: "Phone", event_label: href });
+          if (typeof window.fbq === "function") window.fbq("track", "Contact", { content_name: "Phone Call Click" });
+        } catch (e) {}
+      }
+    }, { capture: true });
 
     root.querySelectorAll('a[href^="/"]').forEach(function (link) {
       link.removeAttribute("target");

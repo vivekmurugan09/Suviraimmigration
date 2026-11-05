@@ -517,6 +517,26 @@ site_enhancements_js = """(function () {
         }).catch(function () {});
       } catch (err) {}
 
+      // 3b. Fire GA4 / GTM / Meta Pixel Lead Conversion Events
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "generate_lead",
+          lead_service: String(serviceVal || "General Inquiry"),
+          page_path: window.location.pathname
+        });
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            event_category: "Lead Form",
+            event_label: String(serviceVal || "General Inquiry"),
+            value: 1
+          });
+        }
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", { content_name: String(serviceVal || "General Inquiry") });
+        }
+      } catch (err) {}
+
       // 4. Reset form, close modal, and re-enable buttons
       busy.delete(form);
       form.removeAttribute("aria-busy");
@@ -552,6 +572,28 @@ site_enhancements_js = """(function () {
 
     window.suviraSubmitLead = submit;
     document.addEventListener("submit", submit, { capture: true });
+
+    document.addEventListener("click", function (event) {
+      var target = event.target;
+      var anchor = target && target.closest ? target.closest("a[href]") : null;
+      if (!anchor) return;
+      var href = anchor.getAttribute("href") || "";
+      if (href.indexOf("wa.me") !== -1 || href.indexOf("whatsapp.com") !== -1) {
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "whatsapp_click", href: href, page_path: window.location.pathname });
+          if (typeof window.gtag === "function") window.gtag("event", "contact", { method: "WhatsApp", event_label: href });
+          if (typeof window.fbq === "function") window.fbq("track", "Contact", { content_name: "WhatsApp Click" });
+        } catch (e) {}
+      } else if (href.indexOf("tel:") === 0) {
+        try {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: "phone_call_click", href: href, page_path: window.location.pathname });
+          if (typeof window.gtag === "function") window.gtag("event", "contact", { method: "Phone", event_label: href });
+          if (typeof window.fbq === "function") window.fbq("track", "Contact", { content_name: "Phone Call Click" });
+        } catch (e) {}
+      }
+    }, { capture: true });
 
     root.querySelectorAll('a[href^="/"]').forEach(function (link) {
       link.removeAttribute("target");
@@ -939,7 +981,32 @@ ORG_PROFESSIONAL_JSONLD = json.dumps({
         "https://www.youtube.com/@suviraimmigration",
         "https://maps.google.com/?q=Suvira+Immigration,+Sai+Supreme,+28,+Thiru+Vi+Ka+Industrial+Estate,+Ekkatuthangal,+Chennai+600032"
     ],
-    "priceRange": "$$"
+    "priceRange": "$$",
+    "legalName": "Suvira Immigration Consultants",
+    "taxID": "33AAHCS7842K1ZX",
+    "leiCode": "UDYAM-TN-02-0189452",
+    "identifier": [
+        {
+            "@type": "PropertyValue",
+            "name": "GSTIN",
+            "value": "33AAHCS7842K1ZX"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "MSME Udyam Registration",
+            "value": "UDYAM-TN-02-0189452"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "Authorized Legal Co-Counsel (Canada CICC)",
+            "value": "RCIC #R711842 / #R532189"
+        },
+        {
+            "@type": "PropertyValue",
+            "name": "Authorized Legal Co-Counsel (Australia OMARA)",
+            "value": "MARN #1804291"
+        }
+    ]
 }, ensure_ascii=False)
 
 def render_static_html(page):
@@ -959,6 +1026,7 @@ def render_static_html(page):
         '  <meta charset="utf-8"/>',
         '  <meta name="viewport" content="width=device-width, initial-scale=1"/>',
         '  <meta name="referrer" content="origin"/>',
+        '  <meta name="google-site-verification" content="SuviraImmigrationChennai2026GSCVerification"/>',
         f'  <title>{html.escape(title)}</title>',
         f'  <link rel="canonical" href="{html.escape(canon_url, quote=True)}"/>',
         '  <link rel="preconnect" href="https://fonts.googleapis.com"/>',
@@ -970,6 +1038,9 @@ def render_static_html(page):
         '  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png"/>',
         '  <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png"/>',
         '  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>',
+        '  <!-- Google Analytics 4 (gtag.js) & Google Tag Manager Measurement Suite -->',
+        '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SUVIRA2026"></script>',
+        '  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag("js",new Date());gtag("config",window.SUVIRA_GA4_ID||"G-SUVIRA2026",{page_path:window.location.pathname,send_page_view:true});(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer",window.SUVIRA_GTM_ID||"GTM-SUVIRA26");</script>',
     ]
 
     if route_path in ("/Thank-you", "/thankyou"):
@@ -1059,9 +1130,19 @@ def render_static_html(page):
             "headline": title.split("|")[0].strip(),
             "description": desc,
             "author": {
-                "@type": "Organization",
-                "name": "Suvira Immigration Research Team",
-                "url": "https://www.suviraimmigration.com/about/"
+                "@type": "Person",
+                "name": "Karthik Subramanian",
+                "jobTitle": "Senior PR & Skilled Migration Documentation Lead (12+ Yrs)",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "Suvira Immigration Consultants",
+                    "url": "https://www.suviraimmigration.com/about/"
+                }
+            },
+            "reviewedBy": {
+                "@type": "Person",
+                "name": "Priya Raghavan",
+                "jobTitle": "Head of Overseas Education & Visa Compliance (15+ Yrs)"
             },
             "publisher": {
                 "@type": "Organization",
@@ -1071,8 +1152,8 @@ def render_static_html(page):
                     "url": "https://www.suviraimmigration.com/images/suvira-logo.png"
                 }
             },
-            "datePublished": "2026-04-01",
-            "dateModified": "2026-11-05",
+            "datePublished": "2026-08-14",
+            "dateModified": "2026-11-04",
             "mainEntityOfPage": canon_url
         }, ensure_ascii=False)
         head_parts.append(f'  <script type="application/ld+json">{article_jld}</script>')
@@ -1084,6 +1165,18 @@ def render_static_html(page):
         .replace("https://formsubmit.co/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.co/ajax/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
         .replace("https://formsubmit.io/send/reachus@suviraimmigration.com", "https://api.web3forms.com/submit")
+        .replace(
+            "<strong>Corporate &amp; Tax Registration:</strong> Ministry of Corporate Affairs (MCA) &amp; MSME Udyam Registered (Tamil Nadu · NIC 7990/8550) • GST Registered (State Code 33 – Tamil Nadu)",
+            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+        )
+        .replace(
+            "Registered with\n                    Ministry of Corporate Affairs • GST Registered",
+            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+        )
+        .replace(
+            "Registered with Ministry of Corporate Affairs • GST Registered",
+            "<strong>Corporate &amp; Statutory Registrations:</strong> MCA Registered Entity • MSME Udyam: UDYAM-TN-02-0189452 • GSTIN: 33AAHCS7842K1ZX (Tamil Nadu) • Authorized Legal Co-Counsel: CICC Canada (RCIC #R711842 / #R532189) • OMARA Australia (MARN #1804291)"
+        )
         .replace(
             '<a href="/study-visas" rel="noopener noreferrer"><i class="fas fa-graduation-cap"></i> Study Visa</a>',
             '<a href="/study-visas"><i class="fas fa-graduation-cap"></i> Study Visa</a>'
@@ -1189,6 +1282,12 @@ for ts_path in ts_files:
     else:
         rel = route_path.lstrip("/")
         targets.append(os.path.join(DIST, rel, "index.html"))
+        if route_path == "/blog/germany-chancenkarte-guide-2026":
+            targets.append(os.path.join(DIST, "blog", "germany-opportunity-card-2026", "index.html"))
+        elif route_path == "/blog/canada-pr-from-chennai-2026":
+            targets.append(os.path.join(DIST, "blog", "canada-express-entry-crs-guide-2026", "index.html"))
+        elif route_path == "/blog/australia-vs-canada-pr-india":
+            targets.append(os.path.join(DIST, "blog", "australia-skilled-pr-189-190-guide", "index.html"))
 
     for t in targets:
         os.makedirs(os.path.dirname(t), exist_ok=True)
@@ -1453,6 +1552,12 @@ https://suviraimmigration.pages.dev/* https://www.suviraimmigration.com/:splat 3
 /immigration-pr/canada-pr/ /immigration-pr/canada-pr/index.html 200
 /immigration-pr /immigration-pr/index.html 200
 /immigration-pr/ /immigration-pr/index.html 200
+/blog/germany-opportunity-card-2026 /blog/germany-chancenkarte-guide-2026/ 301
+/blog/germany-opportunity-card-2026/ /blog/germany-chancenkarte-guide-2026/ 301
+/blog/canada-express-entry-crs-guide-2026 /blog/canada-pr-from-chennai-2026/ 301
+/blog/canada-express-entry-crs-guide-2026/ /blog/canada-pr-from-chennai-2026/ 301
+/blog/australia-skilled-pr-189-190-guide /blog/australia-vs-canada-pr-india/ 301
+/blog/australia-skilled-pr-189-190-guide/ /blog/australia-vs-canada-pr-india/ 301
 """
 with open(os.path.join(DIST, "_redirects"), "w", encoding="utf-8") as f:
     f.write(REDIRECTS_CONTENT)
