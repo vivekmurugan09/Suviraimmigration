@@ -1034,18 +1034,9 @@ def render_static_html(page):
         '  <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png"/>',
         '  <link rel="icon" href="/favicon-192x192.png" sizes="192x192" type="image/png"/>',
         '  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>',
-        '  <!-- Google Tag Manager -->',
-        '  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TLFFCMMJ"></script>',
+        '  <!-- Google Analytics 4 (gtag.js) & Google Tag Manager Measurement Suite -->',
         '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SUVIRAIN"></script>',
-        '  <script>',
-        '    window.dataLayer = window.dataLayer || [];',
-        '    function gtag(){dataLayer.push(arguments);}',
-        '    gtag("js", new Date());',
-        '    gtag("config", window.SUVIRA_GA4_ID || "G-SUVIRAIN", { page_path: window.location.pathname, send_page_view: true });',
-        '    dataLayer.push({"gtm.start": new Date().getTime(), event: "gtm.js"});',
-        '  </script>',
-        '  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLFFCMMJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>',
-        '  <!-- End Google Tag Manager -->',
+        '  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag("js",new Date());gtag("config",window.SUVIRA_GA4_ID||"G-SUVIRAIN",{page_path:window.location.pathname,send_page_view:true});(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer",window.SUVIRA_GTM_ID||"GTM-SUVIRAIN");</script>',
         '  <!-- Meta Pixel Code -->',
         '  <script>',
         '  !function(f,b,e,v,n,t,s)',
@@ -1366,16 +1357,6 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
     .prep-uncertainties { margin-top: 28px; background: var(--site-soft); padding: 20px; border-radius: 6px; }
     @media (max-width: 900px) { .prep-hero-grid, .prep-main-grid { grid-template-columns: 1fr; gap: 28px; } }
   </style>
-  <!-- Google Tag Manager -->
-  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TLFFCMMJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    dataLayer.push({'gtm.start': new Date().getTime(), event: 'gtm.js'});
-  </script>
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLFFCMMJ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager -->
   <!-- Meta Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
