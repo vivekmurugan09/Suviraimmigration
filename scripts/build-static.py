@@ -1037,6 +1037,23 @@ def render_static_html(page):
         '  <!-- Google Analytics 4 (gtag.js) & Google Tag Manager Measurement Suite -->',
         '  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SUVIRAIN"></script>',
         '  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag("js",new Date());gtag("config",window.SUVIRA_GA4_ID||"G-SUVIRAIN",{page_path:window.location.pathname,send_page_view:true});(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);})(window,document,"script","dataLayer",window.SUVIRA_GTM_ID||"GTM-SUVIRAIN");</script>',
+        '  <!-- Meta Pixel Code -->',
+        '  <script>',
+        '  !function(f,b,e,v,n,t,s)',
+        '  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?',
+        '  n.callMethod.apply(n,arguments):n.queue.push(arguments)};',
+        '  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version=\'2.0\';',
+        '  n.queue=[];t=b.createElement(e);t.async=!0;',
+        '  t.src=v;s=b.getElementsByTagName(e)[0];',
+        '  s.parentNode.insertBefore(t,s)}(window, document,\'script\',',
+        '  \'https://connect.facebook.net/en_US/fbevents.js\');',
+        '  fbq(\'init\', \'975154048582167\');',
+        '  fbq(\'track\', \'PageView\');',
+        '  </script>',
+        '  <noscript><img height="1" width="1" style="display:none"',
+        '  src="https://www.facebook.com/tr?id=975154048582167&ev=PageView&noscript=1"',
+        '  /></noscript>',
+        '  <!-- End Meta Pixel Code -->',
     ]
 
     if route_path in ("/Thank-you", "/thankyou"):
@@ -1340,6 +1357,23 @@ with open(os.path.join(ai_prep_dir, "index.html"), "w", encoding="utf-8") as f:
     .prep-uncertainties { margin-top: 28px; background: var(--site-soft); padding: 20px; border-radius: 6px; }
     @media (max-width: 900px) { .prep-hero-grid, .prep-main-grid { grid-template-columns: 1fr; gap: 28px; } }
   </style>
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '975154048582167');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=975154048582167&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 </head>
 <body>
   <div class="prep-page">
